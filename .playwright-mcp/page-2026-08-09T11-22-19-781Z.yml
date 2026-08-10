@@ -1,0 +1,101 @@
+- generic [ref=f16e3]:
+  - complementary [ref=f16e4]:
+    - generic [ref=f16e5]:
+      - heading "Canva Concepts" [level=1] [ref=f16e6]
+      - paragraph [ref=f16e7]: Industrial ERP
+    - navigation [ref=f16e8]:
+      - link "manufacturing Work Orders" [ref=f16e9] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f16e10]: manufacturing
+        - generic [ref=f16e11]: Work Orders
+      - link "precision_manufacturing Production" [ref=f16e12] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f16e13]: precision_manufacturing
+        - generic [ref=f16e14]: Production
+      - link "group Users" [ref=f16e15] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f16e16]: group
+        - generic [ref=f16e17]: Users
+      - link "payments Finance" [ref=f16e18] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f16e19]: payments
+        - generic [ref=f16e20]: Finance
+    - generic [ref=f16e21]:
+      - link "settings Settings" [ref=f16e22] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f16e23]: settings
+        - generic [ref=f16e24]: Settings
+      - link "help Support" [ref=f16e25] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f16e26]: help
+        - generic [ref=f16e27]: Support
+      - generic [ref=f16e28]:
+        - generic [ref=f16e29]:
+          - img "Marcus Chen" [ref=f16e31]
+          - generic [ref=f16e32]:
+            - paragraph [ref=f16e33]: Marcus Chen
+            - paragraph [ref=f16e34]: Factory Manager
+        - generic [ref=f16e35]:
+          - generic [ref=f16e36]: Toggle System Role
+          - combobox [ref=f16e37] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f16e38]:
+    - generic [ref=f16e39]:
+      - generic [ref=f16e40]:
+        - heading "Dashboard Overview" [level=2] [ref=f16e41]
+        - generic [ref=f16e42]:
+          - generic [ref=f16e43]: search
+          - textbox "Search orders, clients, items..." [ref=f16e44]
+      - generic [ref=f16e46]:
+        - button "notifications" [ref=f16e47] [cursor=pointer]
+        - button "help" [ref=f16e48] [cursor=pointer]
+        - button "settings" [ref=f16e49] [cursor=pointer]
+    - generic [ref=f16e50]:
+      - generic [ref=f16e51]:
+        - heading "Welcome back, Marcus Chen" [level=2] [ref=f16e52]
+        - paragraph [ref=f16e53]: Here is your operational snapshot for August 9, 2026.
+      - generic [ref=f16e54]:
+        - generic [ref=f16e55]:
+          - generic [ref=f16e56]:
+            - paragraph [ref=f16e57]: MTD Revenue
+            - paragraph [ref=f16e58]: ₹24,80,000
+            - text: ↑ 12% vs last month
+          - generic [ref=f16e59]:
+            - paragraph [ref=f16e60]: Receivables Aging
+            - paragraph [ref=f16e61]: ₹8,45,000
+            - text: Within 30-day bucket
+          - generic [ref=f16e62]:
+            - paragraph [ref=f16e63]: Payables Due
+            - paragraph [ref=f16e64]: ₹3,12,000
+            - text: Due this Friday
+          - generic [ref=f16e65]:
+            - paragraph [ref=f16e66]: Liquid Cash Balance
+            - paragraph [ref=f16e67]: ₹42,10,000
+            - text: HDFC bank accounts
+        - generic [ref=f16e68]:
+          - generic [ref=f16e69]:
+            - heading "notifications_active Critical In-Floor Alerts" [level=3] [ref=f16e70]:
+              - generic [ref=f16e71]: notifications_active
+              - text: Critical In-Floor Alerts
+            - generic [ref=f16e72]:
+              - generic [ref=f16e73]:
+                - generic [ref=f16e74]: cancel
+                - generic [ref=f16e75]: Machine breakdown on Edgebanding Line B
+                - button "Resolve" [ref=f16e76] [cursor=pointer]
+              - generic [ref=f16e77]:
+                - generic [ref=f16e78]: warning
+                - generic [ref=f16e79]: "Low Stock: Laminate glue (Stock B) - 12L remaining"
+                - button "Resolve" [ref=f16e80] [cursor=pointer]
+              - generic [ref=f16e81]:
+                - generic [ref=f16e82]: info
+                - generic [ref=f16e83]: "Overdue Invoice: #INV-2026-089 (Global Tech Holdings)"
+                - button "Resolve" [ref=f16e84] [cursor=pointer]
+          - generic [ref=f16e85]:
+            - generic [ref=f16e86]:
+              - heading "precision_manufacturing Production Snapshot" [level=3] [ref=f16e87]:
+                - generic [ref=f16e88]: precision_manufacturing
+                - text: Production Snapshot
+              - paragraph [ref=f16e89]: Currently loading 3 active Job Cards across 4 present floor technicians. Current Plant capacity load is at 68%.
+            - button "Open Production Floor Panel" [ref=f16e90] [cursor=pointer]

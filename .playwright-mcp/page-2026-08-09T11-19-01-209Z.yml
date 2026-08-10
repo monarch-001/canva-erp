@@ -1,0 +1,126 @@
+- generic [ref=f14e3]:
+  - complementary [ref=f14e4]:
+    - generic [ref=f14e5]:
+      - heading "Canva Concepts" [level=1] [ref=f14e6]
+      - paragraph [ref=f14e7]: Industrial ERP
+    - navigation [ref=f14e8]:
+      - link "manufacturing Work Orders" [ref=f14e9] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f14e10]: manufacturing
+        - generic [ref=f14e11]: Work Orders
+      - link "group Users" [ref=f14e12] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f14e13]: group
+        - generic [ref=f14e14]: Users
+      - link "payments Finance" [ref=f14e15] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f14e16]: payments
+        - generic [ref=f14e17]: Finance
+    - generic [ref=f14e18]:
+      - link "settings Settings" [ref=f14e19] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f14e20]: settings
+        - generic [ref=f14e21]: Settings
+      - link "help Support" [ref=f14e22] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f14e23]: help
+        - generic [ref=f14e24]: Support
+      - generic [ref=f14e25]:
+        - generic [ref=f14e26]:
+          - img "Sarah Jenkins" [ref=f14e28]
+          - generic [ref=f14e29]:
+            - paragraph [ref=f14e30]: Sarah Jenkins
+            - paragraph [ref=f14e31]: Site Manager
+        - generic [ref=f14e32]:
+          - generic [ref=f14e33]: Toggle System Role
+          - combobox [ref=f14e34] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor"
+            - option "Site Manager" [selected]
+  - main [ref=f14e35]:
+    - generic [ref=f14e36]:
+      - generic [ref=f14e37]:
+        - heading "Work Order Detail" [level=2] [ref=f14e38]
+        - generic [ref=f14e39]:
+          - generic [ref=f14e40]: search
+          - textbox "Search orders, clients, items..." [ref=f14e41]
+      - generic [ref=f14e43]:
+        - button "notifications" [ref=f14e44] [cursor=pointer]
+        - button "help" [ref=f14e45] [cursor=pointer]
+        - button "settings" [ref=f14e46] [cursor=pointer]
+    - generic [ref=f14e47]:
+      - generic [ref=f14e48]:
+        - generic [ref=f14e49]:
+          - generic [ref=f14e50]: precision_manufacturing
+          - generic [ref=f14e52]:
+            - generic [ref=f14e53]:
+              - 'heading "WO-0005-26: Test Executive Desk" [level=2] [ref=f14e54]'
+              - generic [ref=f14e55]: DRAFT
+            - generic [ref=f14e56]:
+              - generic [ref=f14e57]:
+                - generic [ref=f14e58]: priority_high
+                - text: NORMAL PRIORITY
+              - generic [ref=f14e59]: "|"
+              - generic [ref=f14e60]: "Created: 8/9/2026"
+        - generic [ref=f14e61]:
+          - button "download Export PDF" [ref=f14e62] [cursor=pointer]:
+            - generic [ref=f14e63]: download
+            - text: Export PDF
+          - button "arrow_back Back" [ref=f14e64] [cursor=pointer]:
+            - generic [ref=f14e65]: arrow_back
+            - text: Back
+      - generic [ref=f14e66]:
+        - generic [ref=f14e67]:
+          - button "info Details" [ref=f14e68] [cursor=pointer]:
+            - generic [ref=f14e69]: info
+            - text: Details
+          - button "history Status History" [ref=f14e70] [cursor=pointer]:
+            - generic [ref=f14e71]: history
+            - text: Status History
+          - button "architecture Drawings" [ref=f14e72] [cursor=pointer]:
+            - generic [ref=f14e73]: architecture
+            - text: Drawings
+        - generic [ref=f14e75]:
+          - generic [ref=f14e76]:
+            - heading "corporate_fare Client Information" [level=3] [ref=f14e77]:
+              - generic [ref=f14e78]: corporate_fare
+              - text: Client Information
+            - generic [ref=f14e79]:
+              - generic [ref=f14e80]: Client Name
+              - paragraph [ref=f14e81]: Test Client Inc
+            - generic [ref=f14e82]:
+              - generic [ref=f14e83]: Client Type
+              - paragraph [ref=f14e84]: b2b
+            - generic [ref=f14e85]:
+              - generic [ref=f14e86]: Project Name
+              - paragraph [ref=f14e87]: Test Project
+          - generic [ref=f14e88]:
+            - heading "chair Furniture Specs" [level=3] [ref=f14e89]:
+              - generic [ref=f14e90]: chair
+              - text: Furniture Specs
+            - generic [ref=f14e91]:
+              - generic [ref=f14e92]: Type
+              - paragraph [ref=f14e93]: Table
+            - generic [ref=f14e94]:
+              - generic [ref=f14e95]:
+                - generic [ref=f14e96]: Quantity
+                - paragraph [ref=f14e97]: 1 Units
+              - generic [ref=f14e98]:
+                - generic [ref=f14e99]: Finish Type
+                - paragraph [ref=f14e100]: Natural Veneer
+            - generic [ref=f14e101]:
+              - generic [ref=f14e102]: Dimensions (L x H x D)
+              - paragraph [ref=f14e103]: 0mm x 0mm x 0mm
+          - generic [ref=f14e104]:
+            - heading "local_shipping Logistics & Committed Delivery" [level=3] [ref=f14e105]:
+              - generic [ref=f14e106]: local_shipping
+              - text: Logistics & Committed Delivery
+            - generic [ref=f14e109]:
+              - generic [ref=f14e110]: Committed Delivery Date
+              - paragraph [ref=f14e111]: Aug 15, 2026
+            - generic [ref=f14e112]:
+              - generic [ref=f14e113]: Delivery Terms
+              - paragraph [ref=f14e114]: included
+            - generic [ref=f14e115]:
+              - generic [ref=f14e116]: Delivery Address
+              - paragraph [ref=f14e117]: 123 Factory Lane

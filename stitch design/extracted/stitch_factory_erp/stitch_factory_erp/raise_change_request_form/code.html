@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Raise Change Request | Canva Concepts Industrial ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            border-left-width: 4px;
+        }
+        /* Custom Scrollbar for heavy data apps */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c8c6c5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #858383;
+        }
+        .step-transition {
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#745b00",
+                        "on-primary-fixed-variant": "#474746",
+                        "surface-container-highest": "#e3e2df",
+                        "status-material": "#0891B2",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "primary-container": "#1c1b1b",
+                        "secondary-fixed-dim": "#e5c363",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "status-pending": "#F59E0B",
+                        "status-error": "#C0392B",
+                        "outline": "#747878",
+                        "surface-tint": "#5f5e5e",
+                        "secondary-container": "#fdd977",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#444748",
+                        "status-production": "#F97316",
+                        "background": "#faf9f5",
+                        "tertiary-container": "#001e30",
+                        "surface-variant": "#e3e2df",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1c1a",
+                        "surface": "#faf9f5",
+                        "status-financial": "#14532D",
+                        "border-subtle": "#E8E8E8",
+                        "status-invoice": "#7C3AED",
+                        "on-primary-fixed": "#1c1b1b",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed": "#001e30",
+                        "surface-container-low": "#f5f4f0",
+                        "surface-container-high": "#e9e8e4",
+                        "on-secondary-container": "#775e00",
+                        "on-secondary-fixed-variant": "#584400",
+                        "primary": "#000000",
+                        "inverse-surface": "#30312e",
+                        "outline-variant": "#c4c7c7",
+                        "status-success": "#2D7D46",
+                        "surface-container": "#efeeea",
+                        "on-surface": "#1b1c1a",
+                        "on-primary-container": "#858383",
+                        "on-tertiary-container": "#5889af",
+                        "inverse-primary": "#c8c6c5",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#faf9f5",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#cbe6ff",
+                        "status-draft": "#888888",
+                        "secondary-fixed": "#ffe08c",
+                        "surface-dim": "#dbdad6",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-card": "#FFFFFF",
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ed",
+                        "gold-brand": "#C8A84B"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-max": "1440px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sidebar-width": "260px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "status-pill": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-primary flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-bold">Canva Concepts</h1>
+<p class="text-on-primary opacity-60 text-xs tracking-wider">INDUSTRIAL ERP</p>
+</div>
+<nav class="flex-1 px-sm space-y-1">
+<a class="flex items-center gap-md px-md py-sm text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-title-md text-title-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary text-on-primary border-l-4 border-secondary-container transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">manufacturing</span>
+<span class="font-title-md text-title-md">Work Orders</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-title-md text-title-md">Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-title-md text-title-md">Finance</span>
+</a>
+</nav>
+<div class="px-sm pt-md border-t border-white/10 space-y-1">
+<a class="flex items-center gap-md px-md py-sm text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-title-md text-title-md">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-title-md text-title-md">Support</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation -->
+<header class="fixed top-0 right-0 left-0 h-16 ml-sidebar-width bg-surface border-b border-border-subtle flex justify-between items-center px-lg z-40">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-sm text-headline-sm text-primary">User Management</h2>
+<div class="h-6 w-px bg-border-subtle"></div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-64" placeholder="Search orders..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all duration-200">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all duration-200">help</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all duration-200">settings</button>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a factory manager wearing a modern industrial uniform, captured in soft studio lighting with a neutral gray background. The lighting is crisp and clear, highlighting a focused and authoritative expression appropriate for a high-end corporate ERP application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAPBFT9wMJ1K79sOjv3-SmeRXcmvDDBPyyvGwskRhwCPJQ1NDYAiENj-r55H5Ytvn5StRuCv1O_Y3ATsY4S2yWuS2hJs4S8lMIr9iwHD5ExEXdhvHclc9l_eNzcjDwybbnbKE3RfP2btmcvZejcjH7MiwrrF-InPFoarQd1xT6r3dNDSYU5JYzCWNi7tP74Fev7gIr8klSFR8m6buDJll4YxL13jbcAf5V8QPPcNUDXRzAFmbvycRzmw"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width mt-16 p-lg h-[calc(100vh-64px)] overflow-y-auto relative">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-on-background/50 backdrop-blur-sm z-10 flex items-center justify-center p-md">
+<!-- Multi-Step Form Modal -->
+<div class="bg-surface-card w-full max-w-2xl shadow-2xl rounded-lg overflow-hidden border border-border-subtle flex flex-col h-fit max-h-[921px]" id="change-request-modal">
+<!-- Modal Header -->
+<div class="px-xl py-lg border-b border-border-subtle flex justify-between items-center bg-surface-container-low">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">New Change Request</h3>
+<p class="text-on-surface-variant text-sm">Work Order: <span class="font-bold">#WO-8842-PRECISION</span></p>
+</div>
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-colors" onclick="window.history.back()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Progress Indicator -->
+<div class="flex px-xl py-md bg-white border-b border-border-subtle">
+<div class="flex items-center gap-md w-full">
+<div class="flex items-center gap-sm" id="step-1-indicator">
+<div class="w-8 h-8 rounded-full bg-gold-brand text-white flex items-center justify-center font-bold text-sm">1</div>
+<span class="font-label-md text-label-md text-primary">Details</span>
+</div>
+<div class="flex-1 h-px bg-border-subtle"></div>
+<div class="flex items-center gap-sm opacity-40" id="step-2-indicator">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-sm">2</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Review</span>
+</div>
+</div>
+</div>
+<!-- Form Content -->
+<form class="flex-1 overflow-y-auto p-xl" id="multi-step-form">
+<!-- STEP 1: Details -->
+<div class="space-y-lg step-transition" id="step-1-content">
+<!-- Change Type -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Change Type</label>
+<select class="w-full h-10 px-md border border-border-subtle rounded focus:border-gold-brand focus:ring-0 text-body-md bg-surface-container-lowest transition-all" id="change-type">
+<option value="">Select impact area...</option>
+<option value="dimension">Dimension</option>
+<option value="finish">Finish</option>
+<option value="additional_item">Additional Item</option>
+<option value="design">Design</option>
+<option value="quantity">Quantity</option>
+<option value="other">Other</option>
+</select>
+</div>
+<!-- Description & Reason -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Description</label>
+<textarea class="w-full p-md border border-border-subtle rounded focus:border-gold-brand focus:ring-0 text-body-md bg-surface-container-lowest resize-none transition-all" placeholder="What specific changes are required?" rows="3"></textarea>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Reason for Change</label>
+<textarea class="w-full p-md border border-border-subtle rounded focus:border-gold-brand focus:ring-0 text-body-md bg-surface-container-lowest resize-none transition-all" placeholder="Why is this change necessary?" rows="3"></textarea>
+</div>
+</div>
+<!-- Delivery Impact -->
+<div class="p-md bg-surface-container-low rounded border border-border-subtle space-y-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline">schedule</span>
+<div>
+<p class="font-label-md text-label-md text-primary">Delivery Impact</p>
+<p class="text-xs text-on-surface-variant">Does this affect delivery date?</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="impact-toggle" onchange="toggleImpactDelay()" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold-brand"></div>
+</label>
+</div>
+<div class="hidden animate-in fade-in slide-in-from-top-2 duration-300" id="delay-input-container">
+<div class="h-px bg-border-subtle mb-md"></div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Estimated delay (days)</label>
+<input class="w-full h-10 px-md border border-border-subtle rounded focus:border-gold-brand focus:ring-0 text-body-md bg-surface-container-lowest transition-all" min="0" placeholder="0" type="number"/>
+</div>
+</div>
+</div>
+<!-- Drawing Upload -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Drawing Upload</label>
+<div class="border-2 border-dashed border-border-subtle rounded-lg p-xl flex flex-col items-center justify-center gap-sm bg-surface-container-lowest hover:border-gold-brand hover:bg-surface-container-low transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-gold-brand text-4xl">cloud_upload</span>
+<p class="text-body-md text-on-surface-variant">Drop PDF or DWG files here, or <span class="text-gold-brand font-bold">browse</span></p>
+<p class="text-xs text-outline italic">Required for design and dimension changes</p>
+</div>
+</div>
+<!-- Tier Suggestion -->
+<div class="hidden p-md bg-tertiary-fixed border border-on-tertiary-fixed-variant rounded-lg flex gap-md items-start animate-in fade-in" id="tier-box">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant mt-0.5">info</span>
+<div class="space-y-xs">
+<p class="font-label-md text-label-md text-on-tertiary-fixed-variant">Suggested: Tier 2 — Significant Change</p>
+<p class="text-xs text-on-tertiary-fixed-variant opacity-80">This type of adjustment involves material repositioning and requires Factory Manager approval before implementation.</p>
+</div>
+</div>
+</div>
+<!-- STEP 2: Review (Hidden by default) -->
+<div class="hidden space-y-lg step-transition" id="step-2-content">
+<div class="bg-surface-container-low p-lg rounded border border-border-subtle">
+<h4 class="font-label-md text-label-md text-primary mb-md border-b border-border-subtle pb-sm uppercase tracking-wider">Summary of Proposed Changes</h4>
+<div class="space-y-md">
+<div class="grid grid-cols-3 gap-md">
+<span class="text-on-surface-variant">Type:</span>
+<span class="col-span-2 font-bold" id="review-type">Dimension Change</span>
+</div>
+<div class="grid grid-cols-3 gap-md">
+<span class="text-on-surface-variant">Estimated Delay:</span>
+<span class="col-span-2 text-status-error font-bold" id="review-delay">+5 Business Days</span>
+</div>
+<div class="grid grid-cols-3 gap-md">
+<span class="text-on-surface-variant">Attached Files:</span>
+<span class="col-span-2 flex items-center gap-sm">
+<span class="material-symbols-outlined text-sm">attachment</span>
+                                        schematic_v2_updated.dwg
+                                    </span>
+</div>
+</div>
+</div>
+<div class="p-md rounded border border-status-pending bg-status-pending/5 flex items-center gap-md">
+<span class="material-symbols-outlined text-status-pending">warning</span>
+<p class="text-xs text-on-surface">Submitting this request will pause the current production line for WO-8842 until approval is granted.</p>
+</div>
+</div>
+</form>
+<!-- Modal Footer -->
+<div class="px-xl py-lg border-t border-border-subtle flex justify-between items-center bg-surface-container-low">
+<button class="hidden items-center gap-sm px-lg py-sm font-label-md text-label-md border border-primary text-primary hover:bg-surface-container-highest transition-colors active:scale-95" id="prev-btn" onclick="goToStep(1)">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                        Back
+                    </button>
+<div class="flex-1"></div>
+<button class="flex items-center gap-sm px-xl py-sm font-label-md text-label-md bg-gold-brand text-white hover:bg-secondary transition-colors active:scale-95 shadow-lg" id="next-btn" onclick="goToStep(2)">
+                        Continue to Review
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+<button class="hidden items-center gap-sm px-xl py-sm font-label-md text-label-md bg-gold-brand text-white hover:bg-secondary transition-colors active:scale-95 shadow-lg" id="submit-btn">
+                        Raise Change Request
+                        <span class="material-symbols-outlined text-lg">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Fake Dashboard Background for Context -->
+<div class="grid grid-cols-12 gap-lg opacity-20 pointer-events-none">
+<div class="col-span-3 h-32 bg-surface-card border border-border-subtle rounded"></div>
+<div class="col-span-3 h-32 bg-surface-card border border-border-subtle rounded"></div>
+<div class="col-span-3 h-32 bg-surface-card border border-border-subtle rounded"></div>
+<div class="col-span-3 h-32 bg-surface-card border border-border-subtle rounded"></div>
+<div class="col-span-8 h-96 bg-surface-card border border-border-subtle rounded"></div>
+<div class="col-span-4 h-96 bg-surface-card border border-border-subtle rounded"></div>
+</div>
+</main>
+<script>
+        function toggleImpactDelay() {
+            const toggle = document.getElementById('impact-toggle');
+            const container = document.getElementById('delay-input-container');
+            if (toggle.checked) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        // Logic for Tier Suggestion based on dropdown
+        document.getElementById('change-type').addEventListener('change', function(e) {
+            const tierBox = document.getElementById('tier-box');
+            if (e.target.value === 'dimension' || e.target.value === 'design') {
+                tierBox.classList.remove('hidden');
+            } else {
+                tierBox.classList.add('hidden');
+            }
+        });
+
+        function goToStep(step) {
+            const step1Content = document.getElementById('step-1-content');
+            const step2Content = document.getElementById('step-2-content');
+            const step1Ind = document.getElementById('step-1-indicator');
+            const step2Ind = document.getElementById('step-2-indicator');
+            const nextBtn = document.getElementById('next-btn');
+            const prevBtn = document.getElementById('prev-btn');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if (step === 2) {
+                step1Content.classList.add('hidden');
+                step2Content.classList.remove('hidden');
+                
+                step2Ind.classList.remove('opacity-40');
+                step2Ind.querySelector('div').classList.replace('bg-surface-container-highest', 'bg-gold-brand');
+                step2Ind.querySelector('div').classList.replace('text-on-surface-variant', 'text-white');
+                
+                nextBtn.classList.add('hidden');
+                prevBtn.classList.remove('hidden');
+                prevBtn.classList.add('flex');
+                submitBtn.classList.remove('hidden');
+                submitBtn.classList.add('flex');
+            } else {
+                step1Content.classList.remove('hidden');
+                step2Content.classList.add('hidden');
+                
+                step2Ind.classList.add('opacity-40');
+                step2Ind.querySelector('div').classList.replace('bg-gold-brand', 'bg-surface-container-highest');
+                step2Ind.querySelector('div').classList.replace('text-white', 'text-on-surface-variant');
+                
+                nextBtn.classList.remove('hidden');
+                prevBtn.classList.add('hidden');
+                prevBtn.classList.remove('flex');
+                submitBtn.classList.add('hidden');
+                submitBtn.classList.remove('flex');
+            }
+        }
+
+        // Simple button active effects
+        document.querySelectorAll('button, a').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+    </script>
+</body></html>

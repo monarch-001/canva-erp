@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vendor Management | Canva Concepts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "status-invoice": "#7C3AED",
+                        "background": "#faf9f5",
+                        "tertiary-fixed": "#cbe6ff",
+                        "surface-bright": "#faf9f5",
+                        "on-tertiary-container": "#5889af",
+                        "inverse-primary": "#c8c6c5",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#001e30",
+                        "secondary-fixed": "#ffe08c",
+                        "secondary-container": "#fdd977",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-error-container": "#93000a",
+                        "status-financial": "#14532D",
+                        "surface-tint": "#5f5e5e",
+                        "on-surface-variant": "#444748",
+                        "on-surface": "#1b1c1a",
+                        "status-success": "#2D7D46",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#584400",
+                        "surface": "#faf9f5",
+                        "inverse-on-surface": "#f2f1ed",
+                        "on-background": "#1b1c1a",
+                        "status-pending": "#F59E0B",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e5e2e1",
+                        "status-production": "#F97316",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "on-tertiary-fixed": "#001e30",
+                        "primary-container": "#1c1b1b",
+                        "tertiary": "#000000",
+                        "on-error": "#ffffff",
+                        "outline": "#747878",
+                        "error": "#ba1a1a",
+                        "secondary": "#C8A84B",
+                        "surface-variant": "#e3e2df",
+                        "surface-dim": "#dbdad6",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary-container": "#858383",
+                        "on-primary-fixed-variant": "#474746",
+                        "status-draft": "#888888",
+                        "inverse-surface": "#30312e",
+                        "surface-container-low": "#f5f4f0",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "on-primary": "#ffffff",
+                        "status-material": "#0891B2",
+                        "secondary-fixed-dim": "#e5c363",
+                        "surface-container-highest": "#e3e2df",
+                        "on-secondary": "#ffffff",
+                        "status-error": "#C0392B",
+                        "surface-container-high": "#e9e8e4",
+                        "outline-variant": "#c4c7c7",
+                        "on-primary-fixed": "#1c1b1b",
+                        "border-subtle": "#E8E8E8",
+                        "primary": "#000000",
+                        "on-secondary-container": "#775e00",
+                        "surface-container": "#efeeea",
+                        "surface-card": "#FFFFFF"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "container-max": "1440px",
+                        "xl": "32px",
+                        "sidebar-width": "260px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "status-pill": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .sidebar-active { background-color: #C8A84B; color: #ffffff; border-left: 4px solid #fdd977; opacity: 1 !important; }
+        .input-focus:focus { border-color: #C8A84B; outline: none; ring: 0; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary flex flex-col py-lg z-50">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-bold">Canva Concepts</h1>
+<p class="font-label-md text-label-md text-on-primary-container opacity-70">Industrial ERP</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-md">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-md">manufacturing</span> Work Orders
+            </a>
+<!-- Active State: Users represents the Vendor/Contact Ecosystem -->
+<a class="sidebar-active flex items-center px-lg py-md font-title-md text-title-md transition-all" href="#">
+<span class="material-symbols-outlined mr-md">group</span> Users
+            </a>
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-md">payments</span> Finance
+            </a>
+</nav>
+<div class="mt-auto px-lg space-y-1">
+<a class="flex items-center py-sm text-on-primary opacity-80 hover:opacity-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-md">settings</span> Settings
+            </a>
+<a class="flex items-center py-sm text-on-primary opacity-80 hover:opacity-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-md">help</span> Support
+            </a>
+<div class="mt-lg pt-lg border-t border-on-primary/10 flex items-center">
+<div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-primary font-bold mr-md">CC</div>
+<div>
+<p class="text-on-primary text-label-md font-bold">Admin Portal</p>
+<p class="text-on-primary/60 text-[11px]">System Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-[260px] min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="h-16 bg-surface border-b border-border-subtle flex justify-between items-center px-lg sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-all">arrow_back</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Vendor Registration</h2>
+</div>
+<div class="flex items-center gap-xl">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-border-subtle rounded-lg text-label-md focus:outline-none focus:border-secondary w-64" placeholder="Search Master Data..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all">help</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all">settings</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-border-subtle ml-sm">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a corporate administrator in industrial setting, high-end photography, neutral colors, sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr0_GH6-I8qKF_HSO5PKkrnR0HPRmk788_8_Cd8W1WFCM10R9o413FfaTeZxCMnZbDz8KlUlaHXB-6eGaFhCBwaHnVNjwrOwhSGHq5UphA7hOaYFeAKtxzTYwH_-Iee_5It7RO5B-Y6evK1cdX3zJY3sDqZskwLBKIVYkFrWl2ZSb1Oyp_vKGu9FktrdWJjAWN4B3ykjoqYD4L9rz7dldfPaaEKhzKMausF_cHA3vDrRUt8IFhvy0KWQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Form Canvas -->
+<div class="flex-1 p-lg max-w-container-max mx-auto w-full">
+<div class="bg-surface-card border border-border-subtle rounded-lg shadow-sm overflow-hidden">
+<!-- Section 1: Basic Info -->
+<section class="p-lg border-b border-border-subtle">
+<div class="flex items-center gap-sm mb-lg">
+<span class="w-1 h-6 bg-secondary"></span>
+<h3 class="font-title-md text-title-md text-primary uppercase tracking-wider">1. Basic Information</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Legal Name</label>
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md" placeholder="Enter company legal name" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Display Name</label>
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md" placeholder="Trade name or alias" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Vendor Type</label>
+<select class="w-full h-10 px-md border border-border-subtle input-focus text-body-md bg-surface">
+<option>Manufacturer</option>
+<option>Trader</option>
+<option>Service Provider</option>
+<option>Raw Material Supplier</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Section 2: Address -->
+<section class="p-lg border-b border-border-subtle">
+<div class="flex items-center gap-sm mb-lg">
+<span class="w-1 h-6 bg-secondary"></span>
+<h3 class="font-title-md text-title-md text-primary uppercase tracking-wider">2. Registered Address</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<div class="md:col-span-12">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Street Address</label>
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md" placeholder="House No, Building, Street, Area" type="text"/>
+</div>
+<div class="md:col-span-4">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">City</label>
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md" placeholder="City" type="text"/>
+</div>
+<div class="md:col-span-4">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">State</label>
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md" placeholder="State/Province" type="text"/>
+</div>
+<div class="md:col-span-4">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Pincode</label>
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md" placeholder="6-digit PIN" type="text"/>
+</div>
+</div>
+</section>
+<!-- Section 3: Contact Details -->
+<section class="p-lg border-b border-border-subtle bg-surface-container-lowest">
+<div class="flex justify-between items-center mb-lg">
+<div class="flex items-center gap-sm">
+<span class="w-1 h-6 bg-secondary"></span>
+<h3 class="font-title-md text-title-md text-primary uppercase tracking-wider">3. Contact Details</h3>
+</div>
+<button class="flex items-center gap-xs px-md py-1.5 border border-primary text-label-md font-bold hover:bg-surface-container-highest transition-all group">
+<span class="material-symbols-outlined text-sm group-hover:rotate-90 transition-transform">add</span> ADD CONTACT
+                        </button>
+</div>
+<div class="space-y-md">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg p-md border border-dashed border-outline-variant bg-surface rounded-lg relative">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Primary Phone</label>
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md" placeholder="+91 00000 00000" type="tel"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Primary Email</label>
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md" placeholder="vendor@example.com" type="email"/>
+</div>
+<div class="md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Contact Person Name</label>
+<div class="flex gap-md">
+<input class="flex-1 h-10 px-md border border-border-subtle input-focus text-body-md" placeholder="Full Name" type="text"/>
+<button class="material-symbols-outlined text-error p-2 hover:bg-error/5 rounded transition-all">delete</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4 & 5: GST & Banking (Two Column Layout for efficiency) -->
+<div class="grid grid-cols-1 lg:grid-cols-2">
+<section class="p-lg border-r border-b border-border-subtle">
+<div class="flex justify-between items-center mb-lg">
+<div class="flex items-center gap-sm">
+<span class="w-1 h-6 bg-secondary"></span>
+<h3 class="font-title-md text-title-md text-primary uppercase tracking-wider">4. GST Registrations</h3>
+</div>
+<button class="text-secondary font-bold text-label-md hover:underline">+ ADD GSTIN</button>
+</div>
+<div class="space-y-sm">
+<div class="flex gap-sm">
+<div class="flex-1 relative">
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md uppercase" placeholder="27AAAAA0000A1Z5" type="text"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-status-success text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<select class="w-24 h-10 px-sm border border-border-subtle text-label-md bg-surface">
+<option>MH</option>
+<option>DL</option>
+<option>KA</option>
+</select>
+</div>
+<p class="text-[11px] text-on-surface-variant italic">Registration verified via API integration.</p>
+</div>
+</section>
+<section class="p-lg border-b border-border-subtle bg-tertiary-container/5">
+<div class="flex justify-between items-center mb-lg">
+<div class="flex items-center gap-sm">
+<span class="w-1 h-6 bg-secondary"></span>
+<h3 class="font-title-md text-title-md text-primary uppercase tracking-wider flex items-center gap-xs">
+                                    5. Banking Details
+                                    <span class="px-2 py-0.5 bg-status-financial/10 text-status-financial text-[10px] font-bold rounded">FM ONLY</span>
+</h3>
+</div>
+<button class="text-secondary font-bold text-label-md hover:underline">+ ADD ACCOUNT</button>
+</div>
+<div class="p-md bg-surface border border-border-subtle rounded shadow-inner">
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase mb-1">Account No.</label>
+<input class="w-full h-8 px-sm border border-border-subtle text-body-md" disabled="" type="password" value="8888888888"/>
+</div>
+<div>
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase mb-1">IFSC Code</label>
+<input class="w-full h-8 px-sm border border-border-subtle text-body-md uppercase" placeholder="SBIN0001234" type="text"/>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Section 6: Compliance -->
+<section class="p-lg border-b border-border-subtle">
+<div class="flex items-center gap-sm mb-lg">
+<span class="w-1 h-6 bg-secondary"></span>
+<h3 class="font-title-md text-title-md text-primary uppercase tracking-wider">6. Compliance &amp; Terms</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">PAN Card</label>
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md uppercase" placeholder="ABCDE1234F" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Credit Days</label>
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md" placeholder="30" type="number"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">Credit Limit</label>
+<input class="w-full h-10 px-md border border-border-subtle input-focus text-body-md" placeholder="₹ 0.00" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1">TDS Category</label>
+<select class="w-full h-10 px-md border border-border-subtle input-focus text-body-md bg-surface">
+<option>194C - Contractor</option>
+<option>194J - Professional</option>
+<option>194Q - Purchase of Goods</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Section 7: Material Categories -->
+<section class="p-lg border-b border-border-subtle">
+<div class="flex items-center gap-sm mb-lg">
+<span class="w-1 h-6 bg-secondary"></span>
+<h3 class="font-title-md text-title-md text-primary uppercase tracking-wider">7. Approved Material Categories</h3>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-md">
+<label class="flex items-center gap-sm p-sm border border-border-subtle rounded cursor-pointer hover:bg-surface-container-low transition-all">
+<input class="rounded-sm border-border-subtle text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-label-md">Steel Sheets</span>
+</label>
+<label class="flex items-center gap-sm p-sm border border-border-subtle rounded cursor-pointer hover:bg-surface-container-low transition-all">
+<input class="rounded-sm border-border-subtle text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-label-md">Aluminium Extrusion</span>
+</label>
+<label class="flex items-center gap-sm p-sm border border-border-subtle rounded cursor-pointer hover:bg-surface-container-low transition-all">
+<input class="rounded-sm border-border-subtle text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-label-md">Fasteners</span>
+</label>
+<label class="flex items-center gap-sm p-sm border border-border-subtle rounded cursor-pointer hover:bg-surface-container-low transition-all">
+<input class="rounded-sm border-border-subtle text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-label-md">Paints/Coating</span>
+</label>
+<label class="flex items-center gap-sm p-sm border border-border-subtle rounded cursor-pointer hover:bg-surface-container-low transition-all">
+<input class="rounded-sm border-border-subtle text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-label-md">Electronics</span>
+</label>
+<label class="flex items-center gap-sm p-sm border border-border-subtle rounded cursor-pointer hover:bg-surface-container-low transition-all">
+<input class="rounded-sm border-border-subtle text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-label-md">Packaging</span>
+</label>
+</div>
+</section>
+<!-- Section 8: Internal Notes -->
+<section class="p-lg">
+<div class="flex items-center gap-sm mb-lg">
+<span class="w-1 h-6 bg-secondary"></span>
+<h3 class="font-title-md text-title-md text-primary uppercase tracking-wider">8. Internal Notes</h3>
+</div>
+<textarea class="w-full p-md border border-border-subtle input-focus text-body-md bg-surface-container-lowest" placeholder="Log compliance history, special handling instructions, or onboarding feedback..." rows="4"></textarea>
+</section>
+<!-- Sticky Action Footer -->
+<footer class="p-lg bg-surface border-t border-border-subtle flex justify-end items-center gap-lg">
+<button class="px-xl py-2.5 border border-primary text-label-md font-bold hover:bg-surface-container-highest transition-all">DISCARD CHANGES</button>
+<button class="px-xl py-2.5 bg-secondary text-on-primary text-label-md font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all">SUBMIT VENDOR PROFILE</button>
+</footer>
+</div>
+<div class="mt-lg flex items-center justify-between px-md text-[11px] text-on-surface-variant uppercase tracking-widest font-bold">
+<p>System Log: PRD-07 COMPLIANT</p>
+<p>Last Sync: 2 Mins Ago</p>
+</div>
+</div>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('input, select, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.querySelector('label')?.classList.add('text-secondary');
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.querySelector('label')?.classList.remove('text-secondary');
+            });
+        });
+
+        // Simple GST validator visual simulation
+        const gstInput = document.querySelector('input[placeholder="27AAAAA0000A1Z5"]');
+        gstInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            const indicator = e.target.nextElementSibling;
+            if(val.length >= 15) {
+                indicator.style.opacity = "1";
+                indicator.textContent = "check_circle";
+                indicator.style.color = "#2D7D46";
+            } else {
+                indicator.style.opacity = "0.5";
+                indicator.textContent = "pending";
+                indicator.style.color = "#F59E0B";
+            }
+        });
+    </script>
+</body></html>

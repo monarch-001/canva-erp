@@ -1,0 +1,58 @@
+- generic [ref=f21e3]:
+  - complementary [ref=f21e4]:
+    - generic [ref=f21e5]:
+      - heading "Canva Concepts" [level=1] [ref=f21e6]
+      - paragraph [ref=f21e7]: Industrial ERP
+    - navigation [ref=f21e8]:
+      - link "manufacturing Work Orders" [ref=f21e9] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f21e10]: manufacturing
+        - generic [ref=f21e11]: Work Orders
+      - link "precision_manufacturing Production" [ref=f21e12] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f21e13]: precision_manufacturing
+        - generic [ref=f21e14]: Production
+      - link "group Users" [ref=f21e15] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f21e16]: group
+        - generic [ref=f21e17]: Users
+      - link "payments Finance" [ref=f21e18] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f21e19]: payments
+        - generic [ref=f21e20]: Finance
+    - generic [ref=f21e21]:
+      - link "settings Settings" [ref=f21e22] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f21e23]: settings
+        - generic [ref=f21e24]: Settings
+      - link "help Support" [ref=f21e25] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f21e26]: help
+        - generic [ref=f21e27]: Support
+      - generic [ref=f21e28]:
+        - generic [ref=f21e29]:
+          - img "Robert Hudson" [ref=f21e31]
+          - generic [ref=f21e32]:
+            - paragraph [ref=f21e33]: Robert Hudson
+            - paragraph [ref=f21e34]: Factory Supervisor
+        - generic [ref=f21e35]:
+          - generic [ref=f21e36]: Toggle System Role
+          - combobox [ref=f21e37] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor" [selected]
+            - option "Site Manager"
+  - main [ref=f21e38]:
+    - generic [ref=f21e39]:
+      - generic [ref=f21e40]:
+        - heading "Production Floor" [level=2] [ref=f21e41]
+        - generic [ref=f21e42]:
+          - generic [ref=f21e43]: search
+          - textbox "Search orders, clients, items..." [ref=f21e44]
+      - generic [ref=f21e45]:
+        - button "event_available Daily Attendance" [ref=f21e46] [cursor=pointer]:
+          - generic [ref=f21e47]: event_available
+          - text: Daily Attendance
+        - generic [ref=f21e48]:
+          - button "notifications" [ref=f21e49] [cursor=pointer]
+          - button "help" [ref=f21e50] [cursor=pointer]
+          - button "settings" [ref=f21e51] [cursor=pointer]

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Titan ERP - Create New Job Card</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar for data-heavy areas */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c8c6c5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #747878;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e9e8e4",
+                        "surface-bright": "#faf9f5",
+                        "secondary-fixed-dim": "#e5c363",
+                        "border-subtle": "#E8E8E8",
+                        "on-secondary-fixed-variant": "#584400",
+                        "surface-container-low": "#f5f4f0",
+                        "status-draft": "#888888",
+                        "outline": "#747878",
+                        "status-production": "#F97316",
+                        "secondary-fixed": "#ffe08c",
+                        "inverse-primary": "#c8c6c5",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary": "#000000",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#5889af",
+                        "status-material": "#0891B2",
+                        "surface-variant": "#e3e2df",
+                        "on-surface": "#1b1c1a",
+                        "status-financial": "#14532D",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#444748",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-container-highest": "#e3e2df",
+                        "outline-variant": "#c4c7c7",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-background": "#1b1c1a",
+                        "status-error": "#C0392B",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#858383",
+                        "tertiary-container": "#001e30",
+                        "status-invoice": "#7C3AED",
+                        "on-tertiary-fixed": "#001e30",
+                        "surface-container": "#efeeea",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "on-primary-fixed-variant": "#474746",
+                        "inverse-surface": "#30312e",
+                        "surface-dim": "#dbdad6",
+                        "primary-fixed": "#e5e2e1",
+                        "primary-container": "#1c1b1b",
+                        "tertiary-fixed": "#cbe6ff",
+                        "secondary": "#745b00",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "status-pending": "#F59E0B",
+                        "surface-card": "#FFFFFF",
+                        "background": "#faf9f5",
+                        "on-secondary-container": "#775e00",
+                        "on-primary": "#ffffff",
+                        "surface": "#faf9f5",
+                        "primary": "#000000",
+                        "inverse-on-surface": "#f2f1ed",
+                        "surface-tint": "#5f5e5e",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#fdd977",
+                        "status-success": "#2D7D46",
+                        "gold-accent": "#C8A84B"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sidebar-width": "260px",
+                        "container-max": "1440px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "status-pill": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- Side Navigation Shell -->
+<aside class="flex flex-col h-screen w-sidebar-width fixed left-0 z-50 py-lg bg-inverse-surface">
+<div class="px-md mb-xl flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined font-bold">factory</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-surface-lowest leading-none">Plant Floor A1</h2>
+<p class="text-surface-variant opacity-60 text-[11px] uppercase tracking-widest mt-1">Production Unit</p>
+</div>
+</div>
+<nav class="flex-grow space-y-1">
+<!-- Dashboard -->
+<a class="text-surface-variant opacity-80 p-md flex items-center gap-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-150 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Work Orders (Active) -->
+<a class="bg-secondary-fixed-dim text-on-secondary-fixed border-l-4 border-secondary-fixed p-md flex items-center gap-md transition-all duration-150 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined fill-icon" data-icon="assignment">assignment</span>
+<span>Work Orders</span>
+</a>
+<!-- Inventory -->
+<a class="text-surface-variant opacity-80 p-md flex items-center gap-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-150 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span>Inventory</span>
+</a>
+<!-- Production -->
+<a class="text-surface-variant opacity-80 p-md flex items-center gap-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-150 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span>Production</span>
+</a>
+<!-- Finance -->
+<a class="text-surface-variant opacity-80 p-md flex items-center gap-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-150 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Finance</span>
+</a>
+<!-- Users -->
+<a class="text-surface-variant opacity-80 p-md flex items-center gap-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-150 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Users</span>
+</a>
+</nav>
+<div class="mt-auto px-md pt-lg border-t border-surface-variant/10">
+<div class="mb-lg">
+<span class="inline-flex items-center gap-2 text-[12px] font-bold text-success-container text-status-success">
+<span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+                    System Status: Online
+                </span>
+</div>
+<a class="text-surface-variant opacity-80 py-sm flex items-center gap-md hover:opacity-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<a class="text-surface-variant opacity-80 py-sm flex items-center gap-md hover:opacity-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-sidebar-width min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface border-b border-border-subtle flex justify-between items-center px-lg h-16 w-full max-w-container-max mx-auto docked full-width top-0 sticky z-40">
+<div class="flex items-center gap-lg">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">Titan ERP</span>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-lg text-body-md w-64 focus:ring-2 focus:ring-gold-accent/50 transition-all" placeholder="Search orders, tasks..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-2 px-md py-2 bg-primary text-white font-label-md text-label-md rounded hover:bg-opacity-90 transition-all active:opacity-80">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                    Create Order
+                </button>
+<div class="h-6 w-px bg-border-subtle mx-2"></div>
+<button class="p-2 text-outline hover:bg-surface-container-low rounded-full transition-all relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-status-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-2 text-outline hover:bg-surface-container-low rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="ml-2 w-10 h-10 rounded-full border border-border-subtle overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a factory supervisor in a modern industrial setting, wearing a clean charcoal polo shirt with a subtle gold logo. The background is a slightly blurred high-tech manufacturing floor with warm ambient lighting. Professional, authoritative, and sharp aesthetic consistent with a corporate ERP interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARN1w0jeO-wgQ0R_yMru4N7d5b9mQ0ZNmhjf4tGUEAL2did7AI9Le3lxB_4srk6pqYZXXbzrbrKRU8sJSKpJ914HXf9JbFvhtnDPNLGWdXtc7BbfzPb14ncMCpA-c1nHTGrtpH-UlzMNsF007jEi8uBtnXnC9jj8RlTS6Ff1mJFYbEpz8Oa3TBHcw_KbwuVoqdfPY2yxzWfnwt65VjIYVKPJRt-RRMkP3B8R-6QCj-XMaCPnpwz4jsSQ"/>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-xl max-w-container-max mx-auto w-full flex-grow">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-outline font-label-md text-[12px] mb-md">
+<a class="hover:text-primary" href="#">Production</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary" href="#">Work Orders</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-bold">New Job Card</span>
+</nav>
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Create New Job Card</h1>
+<p class="text-on-surface-variant font-body-md mt-1 italic text-opacity-70">PRD-09 Section 4.2: Daily Morning Supervisor Allocation</p>
+</div>
+<div class="flex items-center gap-3 bg-surface-container p-2 rounded-lg border border-border-subtle">
+<span class="material-symbols-outlined text-gold-accent" data-icon="calendar_today">calendar_today</span>
+<div class="text-right">
+<p class="text-[10px] uppercase font-bold text-outline">Allocation Date</p>
+<p class="font-label-md text-primary" id="current-date-display">October 24, 2023</p>
+</div>
+</div>
+</div>
+<!-- Form Container -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Main Form Section -->
+<div class="col-span-12 lg:col-span-8 space-y-lg">
+<section class="bg-surface-card border border-border-subtle rounded-xl p-xl shadow-sm">
+<form class="space-y-xl">
+<!-- Header Info -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface block">Work Order Search</label>
+<div class="relative">
+<select class="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-gold-accent focus:ring-0 appearance-none font-body-md cursor-pointer">
+<option disabled="" selected="">Select Active Work Order</option>
+<option>WO-2023-0892 [In Production]</option>
+<option>WO-2023-0915 [In Production]</option>
+<option>WO-2023-1002 [In Production]</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+<p class="text-[11px] text-on-surface-variant mt-1">Only displaying orders currently on floor.</p>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface block">Production Stage</label>
+<div class="relative">
+<select class="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-gold-accent focus:ring-0 appearance-none font-body-md cursor-pointer">
+<option disabled="" selected="">Select Stage</option>
+<option>Cutting</option>
+<option>Edge Banding</option>
+<option>Assembly</option>
+<option>Finishing</option>
+<option>Quality Control</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Task Title -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface block">Task Title</label>
+<input class="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-gold-accent focus:ring-0 font-body-md" placeholder="e.g., Cut plywood for base unit" type="text"/>
+</div>
+<!-- Task Description -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface block">Task Description</label>
+<textarea class="w-full p-md bg-surface border border-border-subtle rounded focus:border-gold-accent focus:ring-0 font-body-md" placeholder="Detailed technical instructions for the team..." rows="3"></textarea>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+<!-- Units -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface block">Quantity of Units</label>
+<input class="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-gold-accent focus:ring-0 font-body-md" min="1" type="number" value="1"/>
+</div>
+<!-- Estimated Hours -->
+<div class="space-y-1">
+<div class="flex justify-between items-center mb-1">
+<label class="font-label-md text-label-md text-on-surface block">Estimated Time</label>
+<div class="flex items-center gap-2 bg-surface-container-low p-1 rounded border border-border-subtle">
+<button class="text-[10px] px-2 py-0.5 rounded bg-white shadow-sm font-bold border border-border-subtle" id="toggle-unit" type="button">PER UNIT</button>
+<button class="text-[10px] px-2 py-0.5 rounded text-outline font-bold" id="toggle-total" type="button">TOTAL</button>
+</div>
+</div>
+<div class="relative">
+<input class="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-gold-accent focus:ring-0 font-body-md" placeholder="0.0" step="0.5" type="number"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[12px] font-bold">HOURS</span>
+</div>
+</div>
+</div>
+<!-- Priority Radio -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface block">Job Priority</label>
+<div class="flex flex-wrap gap-md">
+<label class="flex-1 min-w-[120px] cursor-pointer group">
+<input checked="" class="hidden peer" name="priority" type="radio"/>
+<div class="p-md border border-border-subtle rounded text-center peer-checked:border-status-success peer-checked:bg-status-success/5 transition-all group-hover:bg-surface-container-low">
+<span class="block font-bold text-label-md">Normal</span>
+<span class="text-[10px] text-outline">Standard Flow</span>
+</div>
+</label>
+<label class="flex-1 min-w-[120px] cursor-pointer group">
+<input class="hidden peer" name="priority" type="radio"/>
+<div class="p-md border border-border-subtle rounded text-center peer-checked:border-status-pending peer-checked:bg-status-pending/5 transition-all group-hover:bg-surface-container-low">
+<span class="block font-bold text-label-md text-on-secondary-container">High</span>
+<span class="text-[10px] text-outline">Expedite Production</span>
+</div>
+</label>
+<label class="flex-1 min-w-[120px] cursor-pointer group">
+<input class="hidden peer" name="priority" type="radio"/>
+<div class="p-md border border-border-subtle rounded text-center peer-checked:border-status-error peer-checked:bg-status-error/5 transition-all group-hover:bg-surface-container-low">
+<span class="block font-bold text-label-md text-status-error">CRITICAL</span>
+<span class="text-[10px] text-outline">Immediate Attention</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Notes -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface block">Supervisor Notes <span class="text-outline font-normal">(Internal Only)</span></label>
+<textarea class="w-full p-md bg-surface border border-border-subtle rounded focus:border-gold-accent focus:ring-0 font-body-md" placeholder="Private notes for the Glide shift manager..." rows="2"></textarea>
+</div>
+</form>
+</section>
+<!-- Sticky Bottom Actions -->
+<div class="flex items-center justify-end gap-md pt-md">
+<button class="px-xl py-3 border border-tertiary text-tertiary font-label-md rounded hover:bg-surface-container transition-all">
+                            Cancel
+                        </button>
+<button class="px-xl py-3 bg-gold-accent text-white font-label-md rounded shadow-lg shadow-gold-accent/20 hover:brightness-110 active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="post_add">post_add</span>
+                            Create Job Card
+                        </button>
+</div>
+</div>
+<!-- Sidebar Assignment Section -->
+<div class="col-span-12 lg:col-span-4 space-y-lg">
+<!-- Carpenter Allocation Card -->
+<section class="bg-surface-card border border-border-subtle rounded-xl p-lg shadow-sm">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-title-md text-title-md text-primary">Resource Allocation</h3>
+<span class="bg-status-success/10 text-status-success text-[10px] px-2 py-0.5 rounded font-bold">6 PRESENT</span>
+</div>
+<div class="space-y-4">
+<!-- Lead Carpenter -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface block">Lead Carpenter</label>
+<div class="relative">
+<select class="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-gold-accent focus:ring-0 appearance-none font-body-md cursor-pointer">
+<option disabled="" selected="">Assign Lead</option>
+<option>Arjun Singh (Senior)</option>
+<option>Vikram Reddy (Master)</option>
+<option>Sanjay Gupta (Senior)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">person</span>
+</div>
+</div>
+<!-- Team Multi-select -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface block">Assign Support Team</label>
+<div class="max-h-[300px] overflow-y-auto pr-2 space-y-2">
+<!-- Carpenter Item -->
+<div class="flex items-center justify-between p-3 border border-border-subtle rounded hover:bg-surface-container-low cursor-pointer transition-all border-l-4 border-l-status-success">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 text-gold-accent border-border-subtle rounded focus:ring-0" type="checkbox"/>
+<div>
+<p class="font-label-md text-primary">Ramesh Kumar</p>
+<p class="text-[11px] text-outline italic">1 active job</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="construction">construction</span>
+</div>
+<!-- Carpenter Item -->
+<div class="flex items-center justify-between p-3 border border-border-subtle rounded hover:bg-surface-container-low cursor-pointer transition-all border-l-4 border-l-status-success">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 text-gold-accent border-border-subtle rounded focus:ring-0" type="checkbox"/>
+<div>
+<p class="font-label-md text-primary">Sunil Verma</p>
+<p class="text-[11px] text-outline italic">0 active jobs</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="construction">construction</span>
+</div>
+<!-- Carpenter Item (Busy) -->
+<div class="flex items-center justify-between p-3 border border-border-subtle rounded hover:bg-surface-container-low cursor-pointer transition-all border-l-4 border-l-status-pending">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 text-gold-accent border-border-subtle rounded focus:ring-0" type="checkbox"/>
+<div>
+<p class="font-label-md text-primary">Mohit Shah</p>
+<p class="text-[11px] text-on-secondary-container font-bold">3 active jobs</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="construction">construction</span>
+</div>
+<!-- Carpenter Item -->
+<div class="flex items-center justify-between p-3 border border-border-subtle rounded hover:bg-surface-container-low cursor-pointer transition-all border-l-4 border-l-status-success">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 text-gold-accent border-border-subtle rounded focus:ring-0" type="checkbox"/>
+<div>
+<p class="font-label-md text-primary">Deepak Jha</p>
+<p class="text-[11px] text-outline italic">1 active job</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="construction">construction</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Daily Production Summary -->
+<section class="bg-inverse-surface text-surface-lowest rounded-xl p-lg shadow-xl overflow-hidden relative">
+<div class="relative z-10">
+<h4 class="font-label-md text-label-md mb-md opacity-80 uppercase tracking-widest">Floor Statistics</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-[12px] opacity-60">Pending Jobs</span>
+<span class="font-bold text-headline-sm">12</span>
+</div>
+<div class="w-full bg-surface-variant/20 h-1.5 rounded-full">
+<div class="bg-gold-accent h-full w-2/3 rounded-full"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[12px] opacity-60">Capacity Used</span>
+<span class="font-bold text-headline-sm">68%</span>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-surface-variant/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gold-accent" data-icon="info">info</span>
+<p class="text-[11px] opacity-70">Creating this job will increase floor load to 72%.</p>
+</div>
+</div>
+</div>
+<!-- Abstract Decorative Element -->
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">precision_manufacturing</span>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Sticky Mobile Nav (Suppressed for high-density desktop ERP focus, but template ready) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-border-subtle grid grid-cols-5 h-16 items-center px-2">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-outline" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="text-[10px]">Orders</span>
+</a>
+<div class="flex justify-center -translate-y-4">
+<button class="w-12 h-12 bg-gold-accent text-white rounded-full shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-outline" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-[10px]">Staff</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-outline" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px]">Admin</span>
+</a>
+</nav>
+</main>
+<script>
+        // Set today's date
+        const dateEl = document.getElementById('current-date-display');
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateEl.textContent = new Date().toLocaleDateString('en-US', options);
+
+        // Toggle logic for Hours
+        const btnUnit = document.getElementById('toggle-unit');
+        const btnTotal = document.getElementById('toggle-total');
+
+        btnUnit.addEventListener('click', () => {
+            btnUnit.classList.add('bg-white', 'shadow-sm', 'border', 'border-border-subtle');
+            btnUnit.classList.remove('text-outline');
+            btnTotal.classList.add('text-outline');
+            btnTotal.classList.remove('bg-white', 'shadow-sm', 'border', 'border-border-subtle');
+        });
+
+        btnTotal.addEventListener('click', () => {
+            btnTotal.classList.add('bg-white', 'shadow-sm', 'border', 'border-border-subtle');
+            btnTotal.classList.remove('text-outline');
+            btnUnit.classList.add('text-outline');
+            btnUnit.classList.remove('bg-white', 'shadow-sm', 'border', 'border-border-subtle');
+        });
+
+        // Simple form hover effects
+        document.querySelectorAll('input, select, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.classList.add('scale-[1.005]');
+                el.parentElement.style.transition = 'all 0.2s ease-out';
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.classList.remove('scale-[1.005]');
+            });
+        });
+    </script>
+</body></html>

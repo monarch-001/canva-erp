@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New User | Canva Concepts Industrial ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#faf9f5",
+                    "surface-card": "#FFFFFF",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e3e2df",
+                    "outline": "#747878",
+                    "border-subtle": "#E8E8E8",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "on-tertiary-fixed": "#001e30",
+                    "on-primary-fixed-variant": "#474746",
+                    "secondary-container": "#fdd977",
+                    "inverse-on-surface": "#f2f1ed",
+                    "tertiary": "#000000",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#5f5e5e",
+                    "on-surface": "#1b1c1a",
+                    "surface-container-lowest": "#ffffff",
+                    "status-material": "#0891B2",
+                    "secondary-fixed-dim": "#e5c363",
+                    "primary": "#000000",
+                    "status-financial": "#14532D",
+                    "on-background": "#1b1c1a",
+                    "tertiary-fixed": "#cbe6ff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "surface-container-high": "#e9e8e4",
+                    "secondary": "#745b00",
+                    "on-secondary-fixed": "#241a00",
+                    "primary-fixed": "#e5e2e1",
+                    "surface-container-highest": "#e3e2df",
+                    "on-tertiary-container": "#5889af",
+                    "error": "#ba1a1a",
+                    "background": "#faf9f5",
+                    "inverse-surface": "#30312e",
+                    "outline-variant": "#c4c7c7",
+                    "status-draft": "#888888",
+                    "surface-container": "#efeeea",
+                    "surface-dim": "#dbdad6",
+                    "status-error": "#C0392B",
+                    "tertiary-container": "#001e30",
+                    "on-secondary-container": "#775e00",
+                    "on-primary-fixed": "#1c1b1b",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-surface-variant": "#444748",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#584400",
+                    "secondary-fixed": "#ffe08c",
+                    "surface": "#faf9f5",
+                    "status-production": "#F97316",
+                    "inverse-primary": "#c8c6c5",
+                    "status-pending": "#F59E0B",
+                    "status-success": "#2D7D46",
+                    "on-primary-container": "#858383",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f5f4f0",
+                    "on-tertiary": "#ffffff",
+                    "status-invoice": "#7C3AED"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xs": "4px",
+                    "container-max": "1440px",
+                    "sidebar-width": "260px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "status-pill": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F7F6F2;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #dbdad6;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background overflow-hidden">
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-primary flex flex-col h-full py-lg z-40">
+<div class="px-md mb-xl flex items-center gap-sm">
+<div class="w-10 h-10 bg-secondary flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-on-primary">manufacturing</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-bold">Canva Concepts</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-primary-container">Industrial ERP</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-md">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-md">manufacturing</span>
+                Work Orders
+            </a>
+<a class="flex items-center px-lg py-md bg-secondary text-on-primary border-l-4 border-secondary-container font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-md">group</span>
+                Users
+            </a>
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-md">payments</span>
+                Finance
+            </a>
+</nav>
+<div class="mt-auto border-t border-on-primary/10 pt-md">
+<a class="flex items-center px-lg py-sm text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-md">settings</span>
+                Settings
+            </a>
+<a class="flex items-center px-lg py-sm text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-md">help</span>
+                Support
+            </a>
+</div>
+</aside>
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 right-0 left-sidebar-width h-16 bg-surface border-b border-border-subtle flex justify-between items-center px-lg z-30">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-sm text-headline-sm text-primary">User Management</h2>
+<div class="hidden md:flex relative ml-xl">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-border-subtle rounded font-label-md text-label-md focus:outline-none focus:border-secondary transition-all w-64" placeholder="Search system..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="text-on-surface-variant hover:text-secondary transition-all"><span class="material-symbols-outlined">notifications</span></button>
+<button class="text-on-surface-variant hover:text-secondary transition-all"><span class="material-symbols-outlined">help</span></button>
+<div class="h-8 w-px bg-border-subtle mx-2"></div>
+<div class="flex items-center gap-sm cursor-pointer group">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior industrial administrator in a clean office environment. The person has a serious, authoritative yet approachable expression. Lighting is crisp and cool-toned to match a modern factory ERP interface, emphasizing high precision and corporate professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwK04fPEcSVjFGr_mZfumDgy6eUBm5ppH-wNpOZOrJZ3LDLGPm08jwsn0jOt8PsOMrgtlDVzDGNJJrFmPQduzqyaGR4UwIPAkkXaMrxqCdAbJqIR75U4RBLYAnK4BCgP63wZBcDQH7mG42xQijcMCuLrIaMqBgNCQI9TtdcW2GSCCDfzdVnus1QZhAxjuH1e1uDH-3q5nyTpbnhH7Bq9yzzpssMdLw4JUR69y5rR42h9-BOl1HbrKacg"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface group-hover:text-secondary transition-colors">Admin Portal</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas (Background behind modal) -->
+<main class="ml-sidebar-width pt-16 min-h-screen p-lg max-w-container-max mx-auto">
+<div class="mb-lg flex justify-between items-end">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">System Administration</p>
+<h3 class="font-headline-md text-headline-md text-primary">All Registered Users</h3>
+</div>
+<button class="bg-secondary text-on-primary px-lg py-md font-label-md text-label-md rounded flex items-center gap-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                New Work Order
+            </button>
+</div>
+<!-- Placeholder Table for context -->
+<div class="bg-surface-card border border-border-subtle rounded shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-border-subtle">
+<tr>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant">EMPLOYEE ID</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant">FULL NAME</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant">ROLE</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant">EMAIL</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant">STATUS</th>
+<th class="px-md py-md font-label-md text-label-md text-on-surface-variant">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-md font-label-md text-label-md text-on-surface">CC-8821</td>
+<td class="px-md py-md font-title-md text-title-md text-primary">Marcus Holloway</td>
+<td class="px-md py-md font-body-md text-body-md">Factory Manager</td>
+<td class="px-md py-md font-body-md text-body-md">m.holloway@canvaconcepts.com</td>
+<td class="px-md py-md">
+<span class="px-sm py-[2px] bg-status-success/10 text-status-success rounded-full font-status-pill text-status-pill">ACTIVE</span>
+</td>
+<td class="px-md py-md text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-md font-label-md text-label-md text-on-surface">CC-8822</td>
+<td class="px-md py-md font-title-md text-title-md text-primary">Sarah Chen</td>
+<td class="px-md py-md font-body-md text-body-md">Carpenter</td>
+<td class="px-md py-md font-body-md text-body-md">s.chen@canvaconcepts.com</td>
+<td class="px-md py-md">
+<span class="px-sm py-[2px] bg-status-success/10 text-status-success rounded-full font-status-pill text-status-pill">ACTIVE</span>
+</td>
+<td class="px-md py-md text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary">more_vert</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</main>
+<!-- Modal Overlay -->
+<div class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-md" id="addUserModal">
+<!-- Modal Container -->
+<div class="bg-surface-card w-full max-w-[640px] shadow-2xl rounded-lg overflow-hidden border border-border-subtle transform transition-all duration-300 scale-100 opacity-100">
+<!-- Modal Header -->
+<div class="bg-primary px-xl py-lg flex justify-between items-center">
+<div>
+<h2 class="text-on-primary font-headline-sm text-headline-sm">Add New User</h2>
+<p class="text-on-primary/60 font-label-md text-label-md">Provision a new employee account in the ERP system.</p>
+</div>
+<button class="text-on-primary/80 hover:text-on-primary transition-colors active:scale-90" onclick="closeModal()">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+<!-- Modal Content (Form) -->
+<form class="p-xl custom-scrollbar max-h-[716px] overflow-y-auto" id="newUserForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-lg gap-y-xl">
+<!-- Full Name -->
+<div class="col-span-full md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="fullName">Full Name <span class="text-error">*</span></label>
+<input class="w-full h-10 px-md border border-border-subtle rounded font-body-md text-body-md focus:outline-none focus:border-secondary transition-all placeholder:text-on-surface-variant/40" id="fullName" placeholder="e.g. Robert Smith" required="" type="text"/>
+</div>
+<!-- Email -->
+<div class="col-span-full md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="email">Email Address <span class="text-error">*</span></label>
+<input class="w-full h-10 px-md border border-border-subtle rounded font-body-md text-body-md focus:outline-none focus:border-secondary transition-all placeholder:text-on-surface-variant/40" id="email" placeholder="r.smith@canva.com" required="" type="email"/>
+</div>
+<!-- Role Dropdown -->
+<div class="col-span-full md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="role">System Role <span class="text-error">*</span></label>
+<div class="relative">
+<select class="w-full h-10 pl-md pr-10 border border-border-subtle rounded font-body-md text-body-md focus:outline-none focus:border-secondary appearance-none transition-all bg-white" id="role" required="">
+<option disabled="" selected="" value="">Select user role</option>
+<option value="super_admin">Super Admin</option>
+<option value="factory_manager">Factory Manager</option>
+<option value="factory_supervisor">Factory Supervisor</option>
+<option value="site_manager">Site Manager</option>
+<option value="carpenter">Carpenter</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- Employee ID -->
+<div class="col-span-full md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="empId">Employee ID</label>
+<input class="w-full h-10 px-md border border-border-subtle rounded font-body-md text-body-md focus:outline-none focus:border-secondary transition-all placeholder:text-on-surface-variant/40" id="empId" placeholder="CC-XXXX" type="text"/>
+</div>
+<!-- Temporary Password -->
+<div class="col-span-full">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="tempPass">Temporary Password <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full h-10 px-md border border-border-subtle rounded font-body-md text-body-md focus:outline-none focus:border-secondary transition-all placeholder:text-on-surface-variant/40" id="tempPass" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-secondary" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<p class="mt-xs text-[11px] text-on-surface-variant/70 italic">User will be prompted to change this on first login</p>
+</div>
+<!-- Phone Number -->
+<div class="col-span-full md:col-span-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="phone">Phone Number</label>
+<input class="w-full h-10 px-md border border-border-subtle rounded font-body-md text-body-md focus:outline-none focus:border-secondary transition-all placeholder:text-on-surface-variant/40" id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<!-- Active Toggle -->
+<div class="col-span-full md:col-span-1 flex items-center justify-between bg-surface-container-low p-md rounded border border-border-subtle">
+<div>
+<span class="block font-label-md text-label-md text-primary">Account Status</span>
+<span class="text-[11px] text-on-surface-variant">Enable login access immediately</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="activeToggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-status-success"></div>
+</label>
+</div>
+</div>
+</form>
+<!-- Modal Footer -->
+<div class="px-xl py-lg bg-surface border-t border-border-subtle flex justify-end gap-md">
+<button class="px-lg h-10 border border-primary text-primary font-label-md text-label-md rounded hover:bg-surface-container-low transition-colors active:scale-95" onclick="closeModal()">
+                    Cancel
+                </button>
+<button class="px-xl h-10 bg-secondary text-on-primary font-label-md text-label-md rounded shadow-sm hover:brightness-110 transition-all active:scale-95" form="newUserForm" type="submit">
+                    Add User
+                </button>
+</div>
+</div>
+</div>
+<script>
+        // Modal Interaction logic
+        function closeModal() {
+            const modal = document.getElementById('addUserModal');
+            const container = modal.querySelector('.bg-surface-card');
+            
+            // Exit animation
+            container.classList.add('scale-95', 'opacity-0');
+            modal.style.opacity = '0';
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Handle form submission
+        document.getElementById('newUserForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.closest('div').nextElementSibling.querySelector('button[type="submit"]');
+            
+            // Micro-interaction: Visual feedback
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Provisioning...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                alert('User account provisioned successfully.');
+                closeModal();
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1500);
+        });
+
+        // Atmospheric Micro-interaction for form inputs
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+                input.parentElement.style.transition = 'transform 0.2s ease-out';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

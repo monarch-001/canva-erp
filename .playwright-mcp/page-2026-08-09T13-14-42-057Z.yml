@@ -1,0 +1,241 @@
+- generic [ref=f19e157]:
+  - complementary [ref=f19e158]:
+    - generic [ref=f19e159]:
+      - heading "Canva Concepts" [level=1] [ref=f19e160]
+      - paragraph [ref=f19e161]: Industrial ERP
+    - navigation [ref=f19e162]:
+      - link "manufacturing Work Orders" [ref=f19e163] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f19e164]: manufacturing
+        - generic [ref=f19e165]: Work Orders
+      - link "precision_manufacturing Production" [ref=f19e166] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f19e167]: precision_manufacturing
+        - generic [ref=f19e168]: Production
+      - link "group Users" [ref=f19e169] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f19e170]: group
+        - generic [ref=f19e171]: Users
+      - link "payments Finance" [ref=f19e172] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f19e173]: payments
+        - generic [ref=f19e174]: Finance
+    - generic [ref=f19e175]:
+      - link "settings Settings" [ref=f19e176] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f19e177]: settings
+        - generic [ref=f19e178]: Settings
+      - link "help Support" [ref=f19e179] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f19e180]: help
+        - generic [ref=f19e181]: Support
+      - generic [ref=f19e182]:
+        - generic [ref=f19e183]:
+          - img "Robert Hudson" [ref=f19e185]
+          - generic [ref=f19e186]:
+            - paragraph [ref=f19e187]: Robert Hudson
+            - paragraph [ref=f19e188]: Factory Supervisor
+        - generic [ref=f19e189]:
+          - generic [ref=f19e190]: Toggle System Role
+          - combobox [ref=f19e191] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor" [selected]
+            - option "Site Manager"
+  - main [ref=f19e192]:
+    - generic [ref=f19e193]:
+      - generic [ref=f19e194]:
+        - heading "Production Floor" [level=2] [ref=f19e195]
+        - generic [ref=f19e196]:
+          - generic [ref=f19e197]: search
+          - textbox "Search orders, clients, items..." [ref=f19e198]
+      - generic [ref=f19e199]:
+        - button "event_available Daily Attendance" [ref=f19e200] [cursor=pointer]:
+          - generic [ref=f19e201]: event_available
+          - text: Daily Attendance
+        - generic [ref=f19e202]:
+          - button "notifications" [ref=f19e203] [cursor=pointer]
+          - button "help" [ref=f19e204] [cursor=pointer]
+          - button "settings" [ref=f19e205] [cursor=pointer]
+    - generic [ref=f19e206]:
+      - generic [ref=f19e207]:
+        - generic [ref=f19e208]:
+          - heading "Production Dashboard" [level=2] [ref=f19e209]
+          - paragraph [ref=f19e210]: "Section 4.1: PRD-09 Woodworking & Assembly"
+        - generic [ref=f19e211]:
+          - generic [ref=f19e212]: calendar_today
+          - textbox [ref=f19e213] [cursor=pointer]: 2026-08-09
+          - button "Today" [ref=f19e215] [cursor=pointer]
+      - generic [ref=f19e216]:
+        - generic [ref=f19e217]:
+          - generic [ref=f19e218]:
+            - generic [ref=f19e219]: engineering
+            - generic [ref=f19e220]: 80%
+          - paragraph [ref=f19e221]: Carpenters
+          - heading "4/5" [level=3] [ref=f19e222]
+          - paragraph [ref=f19e223]: 1 Absent today
+        - generic [ref=f19e224]:
+          - generic [ref=f19e225]: assignment_turned_in
+          - paragraph [ref=f19e227]: Active Jobs
+          - heading "4" [level=3] [ref=f19e228]
+        - generic [ref=f19e231]:
+          - generic [ref=f19e232]: check_circle
+          - paragraph [ref=f19e234]: Completed
+          - heading "03" [level=3] [ref=f19e235]
+          - paragraph [ref=f19e236]: Ready for QC
+        - generic [ref=f19e237]:
+          - generic [ref=f19e238]: trending_up
+          - paragraph [ref=f19e240]: In Progress
+          - heading "02" [level=3] [ref=f19e241]
+          - paragraph [ref=f19e242]: Steady flow
+        - generic [ref=f19e243]:
+          - generic [ref=f19e244]: schedule
+          - paragraph [ref=f19e246]: Not Started
+          - heading "02" [level=3] [ref=f19e247]
+          - paragraph [ref=f19e248]: "Queue priority: Low"
+        - generic [ref=f19e249]:
+          - generic [ref=f19e250]: warning
+          - paragraph [ref=f19e252]: Blocked/Paused
+          - heading "01" [level=3] [ref=f19e253]
+          - paragraph [ref=f19e254]: Requires Attention
+      - generic [ref=f19e255]:
+        - generic [ref=f19e256]:
+          - heading "groups Carpenter Status Board" [level=3] [ref=f19e258]:
+            - generic [ref=f19e259]: groups
+            - text: Carpenter Status Board
+          - generic [ref=f19e260]:
+            - generic [ref=f19e261]:
+              - generic [ref=f19e263]:
+                - generic [ref=f19e264]:
+                  - generic [ref=f19e265]: RH
+                  - generic [ref=f19e267]:
+                    - heading "Robert Hudson" [level=4] [ref=f19e268]
+                    - text: PRESENT
+                - generic [ref=f19e269]:
+                  - paragraph [ref=f19e270]: JC-0001
+                  - text: IN PROGRESS
+              - generic [ref=f19e271]:
+                - paragraph [ref=f19e272]: Reception Counter - Assembly (ASSEMBLY)
+                - generic [ref=f19e273]:
+                  - generic [ref=f19e274]: "Progress: 2/3 units"
+                  - generic [ref=f19e275]: 67%
+              - button "View Assignment Details" [ref=f19e278] [cursor=pointer]
+            - generic [ref=f19e279]:
+              - generic [ref=f19e281]:
+                - generic [ref=f19e282]:
+                  - generic [ref=f19e283]: MS
+                  - generic [ref=f19e285]:
+                    - heading "Michael Santos" [level=4] [ref=f19e286]
+                    - text: PRESENT
+                - generic [ref=f19e287]:
+                  - paragraph [ref=f19e288]: JC-0002
+                  - text: IN PROGRESS
+              - generic [ref=f19e289]:
+                - paragraph [ref=f19e290]: Modular Cabinet - Edge Banding (EDGEBANDING)
+                - generic [ref=f19e291]:
+                  - generic [ref=f19e292]: "Progress: 4/10 units"
+                  - generic [ref=f19e293]: 40%
+              - button "View Assignment Details" [ref=f19e296] [cursor=pointer]
+            - generic [ref=f19e297]:
+              - generic [ref=f19e299]:
+                - generic [ref=f19e300]:
+                  - generic [ref=f19e301]: AW
+                  - generic [ref=f19e303]:
+                    - heading "Anil Wilson" [level=4] [ref=f19e304]
+                    - text: PRESENT
+                - generic [ref=f19e305]:
+                  - paragraph [ref=f19e306]: JC-0003
+                  - text: PAUSED
+              - generic [ref=f19e307]:
+                - paragraph [ref=f19e308]: Wall Paneling - Sanding (FINISHING)
+                - generic [ref=f19e309]:
+                  - generic [ref=f19e310]: "Progress: 0/15 units"
+                  - generic [ref=f19e311]: 0%
+                - paragraph [ref=f19e313]: "Pause: Awaiting Plywood Delivery"
+              - button "View Assignment Details" [ref=f19e314] [cursor=pointer]
+            - generic [ref=f19e315]:
+              - generic [ref=f19e317]:
+                - generic [ref=f19e318]:
+                  - generic [ref=f19e319]: MC
+                  - generic [ref=f19e321]:
+                    - heading "Marcus Chen" [level=4] [ref=f19e322]
+                    - text: PRESENT
+                - generic [ref=f19e323]:
+                  - paragraph [ref=f19e324]: JC-0004
+                  - text: ASSIGNED
+              - generic [ref=f19e325]:
+                - paragraph [ref=f19e326]: Assemble Conference Table Main Frames (ASSEMBLY)
+                - generic [ref=f19e327]:
+                  - generic [ref=f19e328]: "Progress: 0/5 units"
+                  - generic [ref=f19e329]: 0%
+              - button "View Assignment Details" [ref=f19e331] [cursor=pointer]
+            - generic [ref=f19e332]:
+              - generic [ref=f19e334]:
+                - generic [ref=f19e335]:
+                  - generic [ref=f19e336]: MS
+                  - generic [ref=f19e338]:
+                    - heading "Michael Santos" [level=4] [ref=f19e339]
+                    - text: PRESENT
+                - generic [ref=f19e340]:
+                  - paragraph [ref=f19e341]: JC-0005
+                  - text: ASSIGNED
+              - generic [ref=f19e342]:
+                - paragraph [ref=f19e343]: Base Board Cutting (CUTTING)
+                - generic [ref=f19e344]:
+                  - generic [ref=f19e345]: "Progress: 0/1 units"
+                  - generic [ref=f19e346]: 0%
+              - button "View Assignment Details" [ref=f19e348] [cursor=pointer]
+        - generic [ref=f19e349]:
+          - heading "timeline WO Production Progress" [level=3] [ref=f19e350]:
+            - generic [ref=f19e351]: timeline
+            - text: WO Production Progress
+          - generic [ref=f19e352]:
+            - generic [ref=f19e353]:
+              - generic [ref=f19e354]:
+                - generic [ref=f19e355]:
+                  - heading "WO-8835-23" [level=4] [ref=f19e356]
+                  - paragraph [ref=f19e357]: Modular Coworking Pods - Indigo Edition
+                - generic [ref=f19e358]: "PRIORITY: NORMAL"
+              - generic [ref=f19e360]:
+                - generic [ref=f19e361]: 4 of 10 Assigned Units Complete
+                - generic [ref=f19e362]: 40%
+              - generic [ref=f19e365]:
+                - generic [ref=f19e366]:
+                  - generic [ref=f19e367]: content_cut
+                  - generic [ref=f19e370]:
+                    - generic [ref=f19e371]: Cutting Stage
+                    - generic [ref=f19e372]: 0/0 DONE
+                - generic [ref=f19e374]:
+                  - generic [ref=f19e375]: texture
+                  - generic [ref=f19e378]:
+                    - generic [ref=f19e379]: Edge Banding Stage
+                    - generic [ref=f19e380]: 4/10 DONE
+                - generic [ref=f19e383]:
+                  - generic [ref=f19e384]: handyman
+                  - generic [ref=f19e387]:
+                    - generic [ref=f19e388]: Assembly Stage
+                    - generic [ref=f19e389]: 0/0 DONE
+            - generic [ref=f19e391]:
+              - generic [ref=f19e392]:
+                - generic [ref=f19e393]:
+                  - heading "WO-8841-23" [level=4] [ref=f19e394]
+                  - paragraph [ref=f19e395]: Hospitality Lobby Lounge - Custom Oak
+                - generic [ref=f19e396]: "PRIORITY: HIGH"
+              - generic [ref=f19e398]:
+                - generic [ref=f19e399]: 0 of 1 Assigned Units Complete
+                - generic [ref=f19e400]: 0%
+              - generic [ref=f19e402]:
+                - generic [ref=f19e403]:
+                  - generic [ref=f19e404]: content_cut
+                  - generic [ref=f19e407]:
+                    - generic [ref=f19e408]: Cutting Stage
+                    - generic [ref=f19e409]: 0/1 DONE
+                - generic [ref=f19e411]:
+                  - generic [ref=f19e412]: texture
+                  - generic [ref=f19e415]:
+                    - generic [ref=f19e416]: Edge Banding Stage
+                    - generic [ref=f19e417]: 0/0 DONE
+                - generic [ref=f19e419]:
+                  - generic [ref=f19e420]: handyman
+                  - generic [ref=f19e423]:
+                    - generic [ref=f19e424]: Assembly Stage
+                    - generic [ref=f19e425]: 0/0 DONE

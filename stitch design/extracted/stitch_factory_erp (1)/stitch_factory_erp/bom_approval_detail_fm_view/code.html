@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BOM Detail & Approval | Canva Concepts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#5f5e5e",
+                        "on-secondary-container": "#775e00",
+                        "tertiary-fixed": "#cbe6ff",
+                        "on-primary-fixed": "#1c1b1b",
+                        "outline-variant": "#c4c7c7",
+                        "status-draft": "#888888",
+                        "primary": "#000000",
+                        "status-material": "#0891B2",
+                        "surface-container-highest": "#e3e2df",
+                        "primary-fixed": "#e5e2e1",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fdd977",
+                        "secondary": "#745b00",
+                        "status-production": "#F97316",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#30312e",
+                        "on-surface-variant": "#444748",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "status-financial": "#14532D",
+                        "surface-card": "#FFFFFF",
+                        "inverse-primary": "#c8c6c5",
+                        "background": "#faf9f5",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffe08c",
+                        "on-surface": "#1b1c1a",
+                        "surface-bright": "#faf9f5",
+                        "on-primary-container": "#858383",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f5f4f0",
+                        "on-tertiary-container": "#5889af",
+                        "border-subtle": "#E8E8E8",
+                        "tertiary": "#000000",
+                        "status-success": "#2D7D46",
+                        "status-pending": "#F59E0B",
+                        "on-secondary-fixed-variant": "#584400",
+                        "on-background": "#1b1c1a",
+                        "secondary-fixed-dim": "#e5c363",
+                        "on-tertiary-fixed": "#001e30",
+                        "status-error": "#C0392B",
+                        "surface": "#faf9f5",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "inverse-on-surface": "#f2f1ed",
+                        "surface-container": "#efeeea",
+                        "status-invoice": "#7C3AED",
+                        "primary-container": "#1c1b1b",
+                        "surface-variant": "#e3e2df",
+                        "tertiary-container": "#001e30",
+                        "surface-dim": "#dbdad6",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#747878",
+                        "gold-brand": "#C8A84B"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "sidebar-width": "260px",
+                        "md": "16px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "status-pill": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c8c6c5; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #858383; }
+        .active-nav-border { border-left: 4px solid #C8A84B; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary flex flex-col py-lg z-50">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-bold">Canva Concepts</h1>
+<p class="text-[11px] uppercase tracking-widest text-on-primary opacity-60">Industrial ERP</p>
+</div>
+<nav class="flex-1 flex flex-col gap-xs">
+<!-- Dashboard -->
+<a class="flex items-center gap-md px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-title-md text-title-md">Dashboard</span>
+</a>
+<!-- Work Orders (Active) -->
+<a class="flex items-center gap-md px-lg py-md bg-secondary-container/10 text-on-primary active-nav-border transition-colors" href="#">
+<span class="material-symbols-outlined" style="color: #C8A84B;">manufacturing</span>
+<span class="font-title-md text-title-md">Work Orders</span>
+</a>
+<!-- Users -->
+<a class="flex items-center gap-md px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-title-md text-title-md">Users</span>
+</a>
+<!-- Finance -->
+<a class="flex items-center gap-md px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-title-md text-title-md">Finance</span>
+</a>
+<div class="mt-auto pt-lg border-t border-on-primary/10 flex flex-col gap-xs">
+<a class="flex items-center gap-md px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-title-md text-title-md">Settings</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-title-md text-title-md">Support</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[260px] min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-lg h-16 bg-surface border-b border-border-subtle sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">User Management</h2>
+<div class="h-6 w-px bg-border-subtle mx-sm"></div>
+<nav class="flex items-center gap-lg">
+<span class="font-label-md text-label-md text-on-surface-variant cursor-pointer hover:text-secondary transition-all">Directory</span>
+<span class="font-label-md text-label-md text-secondary font-bold cursor-pointer">BOM Approvals</span>
+<span class="font-label-md text-label-md text-on-surface-variant cursor-pointer hover:text-secondary transition-all">Roles</span>
+</nav>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant scale-75">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-low border border-border-subtle rounded-lg text-sm focus:ring-1 focus:ring-gold-brand focus:border-gold-brand outline-none w-64" placeholder="Search orders..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">help</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">settings</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-border-subtle overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up professional headshot of a factory operations manager wearing a neat industrial uniform, neutral corporate lighting, high quality portrait photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxqbt7hf39ZWHj9PW2sACxFPs9ai11hMtIELOCgbnJFBgLUMMsBYpdxfn-I6wJ_W4BVIxjcgVYhW5Mb0PfSSVbxH3TtsPeDC6He7kTHq8jXSN60U6mtqsY13MOMM5IrGgVSPjoY2HiFkVm6xlPl7_1dO3JiqHF2udxLRhjnxT90mob5u8aZerGwhpNYyUvCoqhpGUNAb1GxMHOq-CcQccFP9EOeVW1h_5RE2HEk7EhaNiNolfsNdocQw"/>
+</div>
+</div>
+</header>
+<!-- Screen Content Container -->
+<div class="p-lg max-w-container-max mx-auto w-full grid grid-cols-12 gap-lg">
+<!-- Page Header -->
+<div class="col-span-12 flex flex-col md:flex-row md:items-end justify-between gap-md mb-md">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-label-md text-label-md text-on-surface-variant">Work Order Detail</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="font-label-md text-label-md text-on-surface-variant">BOM Detail</span>
+</div>
+<div class="flex items-center gap-md">
+<h1 class="font-headline-lg text-headline-lg text-primary">BOM-WO-CHH-26-001</h1>
+<span class="px-3 py-1 bg-secondary-container/20 text-secondary font-status-pill text-status-pill border border-secondary-container/50 rounded-full">SUBMITTED</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-xs px-md py-2 border border-border-subtle hover:bg-surface-container-low transition-colors font-label-md text-label-md rounded">
+<span class="material-symbols-outlined text-sm">print</span> Print BOM
+                    </button>
+<button class="flex items-center gap-xs px-md py-2 border border-border-subtle hover:bg-surface-container-low transition-colors font-label-md text-label-md rounded">
+<span class="material-symbols-outlined text-sm">history</span> Revision History
+                    </button>
+</div>
+</div>
+<!-- Left: Main Data Section -->
+<div class="col-span-12 lg:col-span-9 space-y-lg">
+<!-- Insights Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Gross Margin Card -->
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Estimated Margin</p>
+<h3 class="font-headline-lg text-headline-lg text-primary">28.4%</h3>
+</div>
+<div class="flex items-center gap-xs text-status-success bg-status-success/10 px-md py-2 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-title-md text-title-md">Healthy</span>
+</div>
+</div>
+<!-- Stock Check Card -->
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Silent Stock Check</p>
+<h3 class="font-headline-lg text-headline-lg text-primary">4/5 Items</h3>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-32 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-status-pending" style="width: 80%"></div>
+</div>
+<span class="font-label-md text-label-md text-status-pending">Partial Availability</span>
+</div>
+</div>
+</div>
+<!-- BOM Table -->
+<div class="bg-surface-card border border-border-subtle rounded-xl overflow-hidden shadow-sm">
+<div class="px-lg py-md border-b border-border-subtle flex justify-between items-center bg-surface-container-low/30">
+<h4 class="font-title-md text-title-md text-primary">BOM Line Items</h4>
+<span class="text-xs text-on-surface-variant">Last updated: 2h ago</span>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider border-b border-border-subtle">SKU/Item Name</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider border-b border-border-subtle text-right">Qty</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider border-b border-border-subtle text-right">Unit Price</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider border-b border-border-subtle text-right">Template Qty</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider border-b border-border-subtle text-right bg-secondary-container/5">Variance</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider border-b border-border-subtle">Stock Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<!-- Row: Plywood -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary">18mm Birch Plywood</span>
+<span class="text-xs text-on-surface-variant">MAT-WOD-001</span>
+</div>
+</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">24 Sheets</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">$42.00</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">20 Sheets</td>
+<td class="px-lg py-md text-right font-title-md text-title-md text-status-error bg-status-error/5">+4 Sheets</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs text-status-success font-label-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            In Stock
+                                        </span>
+</td>
+</tr>
+<!-- Row: Laminate -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary">Matte Charcoal Laminate</span>
+<span class="text-xs text-on-surface-variant">MAT-LAM-045</span>
+</div>
+</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">12 Rolls</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">$115.00</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">12 Rolls</td>
+<td class="px-lg py-md text-right font-title-md text-title-md text-on-surface-variant bg-surface-container-low/10">0</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs text-status-success font-label-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            In Stock
+                                        </span>
+</td>
+</tr>
+<!-- Row: Hardware -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary">Soft-Close Hinges (Blum)</span>
+<span class="text-xs text-on-surface-variant">HW-HNG-992</span>
+</div>
+</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">48 Pcs</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">$8.50</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">48 Pcs</td>
+<td class="px-lg py-md text-right font-title-md text-title-md text-on-surface-variant bg-surface-container-low/10">0</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs text-status-error font-label-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">error</span>
+                                            Out of Stock
+                                        </span>
+</td>
+</tr>
+<!-- Row: Edge Tape -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary">PVC Edge Tape 2mm</span>
+<span class="text-xs text-on-surface-variant">MAT-EDG-002</span>
+</div>
+</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">150m</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">$1.20</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">120m</td>
+<td class="px-lg py-md text-right font-title-md text-title-md text-status-error bg-status-error/5">+30m</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs text-status-success font-label-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            In Stock
+                                        </span>
+</td>
+</tr>
+<!-- Row: Adhesive -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary">Industrial Wood Glue 5L</span>
+<span class="text-xs text-on-surface-variant">MAT-ADH-771</span>
+</div>
+</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">4 Cans</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">$34.00</td>
+<td class="px-lg py-md text-right font-body-md text-body-md">5 Cans</td>
+<td class="px-lg py-md text-right font-title-md text-title-md text-status-success bg-status-success/5">-1 Can</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs text-status-success font-label-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            In Stock
+                                        </span>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="bg-surface-container-highest/20 font-bold">
+<td class="px-lg py-md text-right font-title-md text-title-md" colspan="4">Estimated Total Cost</td>
+<td class="px-lg py-md font-headline-sm text-headline-sm text-primary" colspan="2">$3,124.00</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+</div>
+<!-- Right: Action Sidebar -->
+<div class="col-span-12 lg:col-span-3">
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg sticky top-24 shadow-sm">
+<h3 class="font-title-md text-title-md text-primary mb-lg">Approval Actions</h3>
+<div class="space-y-lg">
+<!-- Approval Buttons -->
+<div class="flex flex-col gap-md">
+<button class="w-full py-3 bg-gold-brand text-on-primary font-title-md text-title-md rounded hover:brightness-110 active:scale-[0.98] transition-all flex justify-center items-center gap-sm shadow-md">
+<span class="material-symbols-outlined">verified</span>
+                                Approve BOM
+                            </button>
+<button class="w-full py-3 border border-primary text-primary font-title-md text-title-md rounded hover:bg-surface-container-low active:scale-[0.98] transition-all flex justify-center items-center gap-sm">
+<span class="material-symbols-outlined">assignment_return</span>
+                                Send Back for Revision
+                            </button>
+</div>
+<hr class="border-border-subtle"/>
+<!-- Template Management -->
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-primary cursor-pointer" for="saveTemplate">Save as Template</label>
+<button class="w-10 h-5 bg-surface-container-highest rounded-full relative transition-colors duration-200" id="saveTemplateToggle" onclick="this.classList.toggle('bg-gold-brand'); this.classList.toggle('bg-surface-container-highest'); document.getElementById('templateInputWrapper').classList.toggle('hidden');">
+<div class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform duration-200 transform"></div>
+</button>
+<style>
+                                    #saveTemplateToggle.bg-gold-brand div { transform: translateX(20px); }
+                                </style>
+</div>
+<div class="hidden animate-in fade-in slide-in-from-top-1 duration-200" id="templateInputWrapper">
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase mb-xs">Template Name</label>
+<input class="w-full px-md py-2 border border-border-subtle rounded focus:ring-1 focus:ring-gold-brand focus:border-gold-brand outline-none text-body-md" placeholder="e.g., Luxury Birch 2024" type="text"/>
+</div>
+</div>
+<!-- Notes Area -->
+<div class="space-y-xs">
+<label class="block text-[11px] font-semibold text-on-surface-variant uppercase">Approval Notes</label>
+<textarea class="w-full px-md py-2 border border-border-subtle rounded focus:ring-1 focus:ring-gold-brand focus:border-gold-brand outline-none text-body-md resize-none" placeholder="Add comments for the production team..." rows="4"></textarea>
+</div>
+<!-- Info Snippets -->
+<div class="bg-surface-container-low p-md rounded border border-border-subtle space-y-sm">
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Submitted By:</span>
+<span class="font-bold text-primary">K. Sharma</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Lead Time:</span>
+<span class="font-bold text-primary">12-14 Days</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-on-surface-variant">Priority:</span>
+<span class="font-bold text-status-error">CRITICAL</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple Micro-interaction for table rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', () => {
+                // Potential selection logic
+                console.log('Row clicked for inspection');
+            });
+        });
+    </script>
+</body></html>

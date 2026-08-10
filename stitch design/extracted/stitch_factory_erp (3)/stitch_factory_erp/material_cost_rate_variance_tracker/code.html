@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Material Variance | Industrial MIS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background-color: #f7f9fb;
+            color: #191c1e;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 2px;
+        }
+        .variance-pos { color: #059669; } /* trend-up-pos */
+        .variance-neg { color: #DC2626; } /* trend-up-neg */
+        
+        /* High density table specifics */
+        .dense-table th, .dense-table td {
+            height: 32px;
+            padding: 0 8px;
+            white-space: nowrap;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#161c27",
+                        "surface-container-high": "#e6e8ea",
+                        "status-warning": "#F59E0B",
+                        "on-surface": "#191c1e",
+                        "outline-variant": "#c6c6cc",
+                        "inverse-primary": "#c1c6d7",
+                        "tertiary-fixed": "#f5dfc4",
+                        "secondary-fixed": "#d8e3fa",
+                        "on-primary-fixed-variant": "#414754",
+                        "on-secondary-container": "#586377",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#96856d",
+                        "primary-container": "#1a202c",
+                        "surface": "#f7f9fb",
+                        "surface-tint": "#585e6c",
+                        "surface-variant": "#e0e3e5",
+                        "trend-up-neg": "#DC2626",
+                        "surface-dim": "#d8dadc",
+                        "secondary": "#545f72",
+                        "primary": "#030813",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#828796",
+                        "status-danger": "#EF4444",
+                        "inverse-surface": "#2d3133",
+                        "status-success": "#10B981",
+                        "trend-up-pos": "#059669",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#d8c3a9",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed-dim": "#c1c6d7",
+                        "surface-bright": "#f7f9fb",
+                        "on-surface-variant": "#45474c",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline": "#76777c",
+                        "data-border": "#E2E8F0",
+                        "on-tertiary-fixed-variant": "#524531",
+                        "on-background": "#191c1e",
+                        "secondary-fixed-dim": "#bcc7dd",
+                        "secondary-container": "#d5e0f7",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#291e0d",
+                        "primary-fixed": "#dde2f3",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-fixed": "#241a09",
+                        "error": "#ba1a1a",
+                        "tertiary": "#0e0700",
+                        "surface-container": "#eceef0",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed": "#111c2c",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "filter-bar-height": "56px",
+                        "margin-page": "24px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "table-row-height": "32px"
+                    },
+                    "fontFamily": {
+                        "kpi-value": ["IBM Plex Sans"],
+                        "headline-md": ["IBM Plex Sans"],
+                        "status-tag": ["IBM Plex Sans"],
+                        "headline-lg": ["IBM Plex Sans"],
+                        "label-caps": ["IBM Plex Sans"],
+                        "body-fixed": ["JetBrains Mono"],
+                        "table-cell": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "kpi-value": ["28px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "status-tag": ["10px", {"lineHeight": "12px", "fontWeight": "800"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-fixed": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "table-cell": ["13px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full h-[56px] flex justify-between items-center px-margin-page z-50 bg-surface dark:bg-primary-container border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">MIS &amp; Reporting</span>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded border border-data-border">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-body-fixed text-body-fixed w-48 outline-none" placeholder="Search parameters..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high transition-colors p-2 rounded-full" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high transition-colors p-2 rounded-full" data-icon="settings">settings</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-fixed-dim flex items-center justify-center border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Corporate headshot of a financial operations manager in a professional office setting. The lighting is crisp and formal, aligning with high-density MIS design standards. Soft neutral tones dominate the background to maintain focus on the user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1KgtWgNgmElxflvGrP4V7QMWpbA6Z0EFZ6RInmDTggvIkcWaxI4FgXEr421_ZPSIyHoexRxJ9r1wNqqyA48zzH76zZYsIjnLm2oj227Pyo3Vi5eOgcKeTNtC8WH0diKmR2nXhXP4jTAZPQvKMn-fKYL6JGY6PLrbtJU7S7uKcqMg-6kX5ZH2TfFVKgT8w_GIuxuzrL22EL2erxbC0OItxZMmzabjMMsR545e2Jp7hARabqKDuz07GEg"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Side Navigation Bar -->
+<nav class="fixed left-0 top-[56px] h-[calc(100vh-56px)] w-64 flex flex-col z-40 bg-surface-container-low dark:bg-primary-container border-r border-outline-variant dark:border-outline">
+<div class="p-4 mb-4">
+<p class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant">Industrial MIS</p>
+<p class="text-[10px] font-medium text-outline">Precision Analytics</p>
+</div>
+<div class="flex-grow flex flex-col gap-1 px-2">
+<!-- Active Tab Mapping to Material Variance -->
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span> WO P&amp;L
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span> Client Profitability
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="chair">chair</span> Furniture Type
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary font-bold transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span> Material Variance
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span> P&amp;L Report
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span> Profitability Drivers
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span> Stream-wise P&amp;L
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="track_changes">track_changes</span> AOP Tracker
+            </a>
+</div>
+<div class="mt-auto border-t border-outline-variant p-2 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span> Help
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span> Logout
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-[56px] h-[calc(100vh-56px)] flex flex-col overflow-hidden">
+<!-- Filter Bar -->
+<section class="h-filter-bar-height min-h-[56px] flex items-center px-6 gap-6 bg-surface-container-lowest border-b border-data-border">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">DATE RANGE:</span>
+<select class="bg-transparent border-none font-body-fixed text-body-fixed font-bold focus:ring-0 p-0 pr-6 cursor-pointer">
+<option>APR 2024 - JUN 2024</option>
+<option>JUL 2024 - SEP 2024</option>
+</select>
+</div>
+<div class="h-6 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">FACTORY:</span>
+<select class="bg-transparent border-none font-body-fixed text-body-fixed font-bold focus:ring-0 p-0 pr-6 cursor-pointer">
+<option>SOUTH UNIT-01</option>
+<option>NORTH UNIT-04</option>
+</select>
+</div>
+<div class="flex items-center gap-2 ml-auto">
+<button class="flex items-center gap-2 px-3 py-1.5 bg-primary text-on-primary rounded font-label-caps text-[11px] tracking-wide hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">file_download</span> EXPORT XLS
+                </button>
+</div>
+</section>
+<!-- Data Content Area -->
+<div class="flex-grow p-6 overflow-y-auto custom-scrollbar flex flex-col gap-6">
+<!-- Top Row: Summary & Variance Trend -->
+<div class="grid grid-cols-12 gap-6">
+<!-- KPI Card -->
+<div class="col-span-3 p-4 bg-white border border-data-border flex flex-col justify-between">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">TOTAL VARIANCE (M-o-M)</p>
+<h2 class="font-kpi-value text-kpi-value mt-1 text-trend-up-neg font-jetbrains-mono">(142,500)</h2>
+</div>
+<div class="mt-4">
+<div class="flex justify-between items-end">
+<span class="text-[10px] font-bold text-outline">TREND</span>
+<span class="text-[10px] font-bold text-trend-up-neg">+8.4% vs Prev</span>
+</div>
+<div class="h-8 w-full mt-1 bg-surface-container flex items-end gap-0.5 px-0.5">
+<div class="flex-1 bg-outline-variant h-1/2"></div>
+<div class="flex-1 bg-outline-variant h-3/4"></div>
+<div class="flex-1 bg-outline-variant h-2/3"></div>
+<div class="flex-1 bg-outline-variant h-5/6"></div>
+<div class="flex-1 bg-trend-up-neg h-full"></div>
+</div>
+</div>
+</div>
+<!-- Rate Variance Chart (18mm Plywood Trend) -->
+<div class="col-span-9 p-4 bg-white border border-data-border">
+<div class="flex justify-between items-center mb-4">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">RATE VARIANCE TREND: 18MM PLYWOOD (IS:710)</p>
+<p class="text-[11px] text-outline">Comparison of Market Rate vs BOM Estimate (INR/sqft)</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-[10px] font-bold">ACTUAL</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="text-[10px] font-bold">BOM EST.</span>
+</div>
+</div>
+</div>
+<div class="h-32 w-full flex items-end gap-12 px-8 relative">
+<!-- Chart Grid Lines -->
+<div class="absolute inset-x-0 top-0 border-t border-data-border border-dashed w-full opacity-50"></div>
+<div class="absolute inset-x-0 top-1/2 border-t border-data-border border-dashed w-full opacity-50"></div>
+<!-- April -->
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+<div class="w-12 bg-outline-variant h-[80px]"></div>
+<div class="w-12 bg-primary h-[85px] -mt-[85px]"></div>
+<span class="font-label-caps text-[10px] mt-2">APR</span>
+</div>
+<!-- May -->
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+<div class="w-12 bg-outline-variant h-[80px]"></div>
+<div class="w-12 bg-primary h-[92px] -mt-[92px]"></div>
+<span class="font-label-caps text-[10px] mt-2">MAY</span>
+</div>
+<!-- June -->
+<div class="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+<div class="w-12 bg-outline-variant h-[80px]"></div>
+<div class="w-12 bg-primary h-[105px] -mt-[105px]"></div>
+<span class="font-label-caps text-[10px] mt-2">JUN</span>
+</div>
+<div class="absolute right-0 top-0 text-[10px] text-trend-up-neg font-bold bg-error-container px-2 py-1">
+                            +18.5% PEAK VARIANCE
+                        </div>
+</div>
+</div>
+</div>
+<!-- Variance Table Section -->
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-8">
+<div class="bg-white border border-data-border">
+<div class="p-3 border-b border-data-border bg-surface-container-low flex justify-between items-center">
+<h3 class="font-headline-md text-[14px] font-bold">MATERIAL PERFORMANCE MATRIX</h3>
+<span class="font-label-caps text-[10px] text-outline">DATA SOURCE: SAP-S4H HANA</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full dense-table text-left border-collapse">
+<thead class="bg-surface-container">
+<tr class="text-[11px] font-bold text-on-surface-variant border-b border-outline-variant">
+<th class="border-r border-outline-variant">MATERIAL CATEGORY</th>
+<th class="text-right border-r border-outline-variant">BOM EST. (INR)</th>
+<th class="text-right">WO-001</th>
+<th class="text-right">WO-007</th>
+<th class="text-right">WO-014</th>
+<th class="text-right bg-surface-container-highest">AVG VAR (%)</th>
+</tr>
+</thead>
+<tbody class="font-table-cell text-table-cell">
+<tr class="border-b border-data-border hover:bg-surface-container-low transition-colors">
+<td class="font-bold border-r border-data-border">Plywood (18mm Commercial)</td>
+<td class="text-right border-r border-data-border">850,000</td>
+<td class="text-right">892,500</td>
+<td class="text-right">910,000</td>
+<td class="text-right">925,000</td>
+<td class="text-right font-bold variance-neg bg-surface-container-low">(6.9%)</td>
+</tr>
+<tr class="border-b border-data-border hover:bg-surface-container-low transition-colors">
+<td class="font-bold border-r border-data-border">Laminate (0.8mm Frosty White)</td>
+<td class="text-right border-r border-data-border">225,000</td>
+<td class="text-right">222,000</td>
+<td class="text-right">228,000</td>
+<td class="text-right">224,500</td>
+<td class="text-right font-bold variance-pos bg-surface-container-low">+0.1%</td>
+</tr>
+<tr class="border-b border-data-border hover:bg-surface-container-low transition-colors">
+<td class="font-bold border-r border-data-border">Hardware (Soft-close Hinges)</td>
+<td class="text-right border-r border-data-border">145,000</td>
+<td class="text-right">158,000</td>
+<td class="text-right">162,500</td>
+<td class="text-right">160,000</td>
+<td class="text-right font-bold variance-neg bg-surface-container-low">(10.5%)</td>
+</tr>
+<tr class="border-b border-data-border hover:bg-surface-container-low transition-colors">
+<td class="font-bold border-r border-data-border">Edge Banding (PVC 2mm)</td>
+<td class="text-right border-r border-data-border">62,000</td>
+<td class="text-right">74,400</td>
+<td class="text-right">76,000</td>
+<td class="text-right">73,200</td>
+<td class="text-right font-bold variance-neg bg-surface-container-low">(20.2%)</td>
+</tr>
+<tr class="border-b-2 border-primary bg-surface-container-low">
+<td class="font-bold border-r border-data-border">TOTAL MATERIAL COST</td>
+<td class="text-right font-bold border-r border-data-border">1,282,000</td>
+<td class="text-right font-bold">1,346,900</td>
+<td class="text-right font-bold">1,376,500</td>
+<td class="text-right font-bold">1,382,700</td>
+<td class="text-right font-bold variance-neg bg-surface-container-high">(6.8%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Auto-Analysis Panel -->
+<div class="col-span-4 flex flex-col gap-4">
+<div class="bg-surface-container-low border border-data-border p-4 h-full">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-headline-md text-[14px] font-bold">AUTO-ANALYSIS INSIGHTS</h3>
+</div>
+<div class="space-y-4">
+<!-- Insight Item -->
+<div class="bg-white p-3 border-l-4 border-status-danger border border-data-border">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-[10px] text-on-surface-variant">ROOT CAUSE: QUALITY LOSS</span>
+<span class="px-1.5 py-0.5 bg-error-container text-on-error-container text-[9px] font-bold rounded">CRITICAL</span>
+</div>
+<p class="text-[12px] font-medium leading-relaxed">High variance in <span class="font-bold">Edge Banding</span> is traced to abnormal wastage levels. Re-cutting required on WO-007 due to <span class="text-trend-up-neg italic underline">Damage during cutting</span> (Machine #4 calibration issue).</p>
+</div>
+<!-- Insight Item -->
+<div class="bg-white p-3 border-l-4 border-status-warning border border-data-border">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-[10px] text-on-surface-variant">ROOT CAUSE: RATE HIKE</span>
+<span class="px-1.5 py-0.5 bg-secondary-container text-on-secondary-container text-[9px] font-bold rounded">EXTERNAL</span>
+</div>
+<p class="text-[12px] font-medium leading-relaxed">Plywood price increase (+11% vs BOM) is systemic across all WOs. Vendor "Supreme Woods" updated price list on May 15th citing raw timber shortage.</p>
+</div>
+<!-- Insight Item -->
+<div class="bg-white p-3 border-l-4 border-status-success border border-data-border">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-[10px] text-on-surface-variant">OPTIMIZATION FOUND</span>
+<span class="px-1.5 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed text-[9px] font-bold rounded">EFFICIENCY</span>
+</div>
+<p class="text-[12px] font-medium leading-relaxed">Laminate consumption on WO-001 was <span class="text-trend-up-pos font-bold">below estimate</span> due to optimized nesting patterns implemented by Shopfloor Lead A.</p>
+</div>
+</div>
+<button class="w-full mt-6 py-2 border border-primary text-primary font-label-caps text-[11px] hover:bg-primary hover:text-on-primary transition-all">
+                            GENERATE FULL INVESTIGATION REPORT
+                        </button>
+</div>
+</div>
+</div>
+<!-- Bottom Detail Grid (Minor Materials) -->
+<div class="bg-white border border-data-border p-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">AUXILIARY MATERIALS CONSUMPTION</h3>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 border border-data-border text-[10px] font-bold bg-surface">GLUE</span>
+<span class="px-2 py-0.5 border border-data-border text-[10px] font-bold bg-surface">SCREWS</span>
+<span class="px-2 py-0.5 border border-data-border text-[10px] font-bold bg-surface">PACKAGING</span>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-4 h-16">
+<div class="border-r border-data-border pr-4">
+<p class="text-[10px] font-bold text-outline uppercase">Standard Consumption</p>
+<p class="font-jetbrains-mono text-[16px] font-bold">12.5 Kg/Unit</p>
+</div>
+<div class="border-r border-data-border px-4">
+<p class="text-[10px] font-bold text-outline uppercase">Actual Consumption</p>
+<p class="font-jetbrains-mono text-[16px] font-bold">14.2 Kg/Unit</p>
+</div>
+<div class="border-r border-data-border px-4">
+<p class="text-[10px] font-bold text-outline uppercase">Wastage %</p>
+<p class="font-jetbrains-mono text-[16px] font-bold text-trend-up-neg">13.6%</p>
+</div>
+<div class="pl-4">
+<p class="text-[10px] font-bold text-outline uppercase">Efficiency Index</p>
+<div class="w-full bg-surface-container h-2 mt-2 rounded-full overflow-hidden">
+<div class="bg-status-warning h-full w-[72%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Tooltip Simulation Layer (Hidden by default) -->
+<div class="fixed hidden bg-inverse-surface text-inverse-on-surface text-[11px] px-3 py-2 rounded-lg z-[100] shadow-xl pointer-events-none" id="tooltip">
+        Sample Tooltip Text
+    </div>
+<script>
+        // Micro-interactions for table rows and chart bars
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.boxShadow = 'inset 4px 0 0 #030813';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.boxShadow = 'none';
+            });
+        });
+
+        const tooltip = document.getElementById('tooltip');
+        document.querySelectorAll('.bg-primary, .bg-outline-variant').forEach(bar => {
+            bar.addEventListener('mousemove', (e) => {
+                tooltip.classList.remove('hidden');
+                tooltip.style.left = (e.clientX + 10) + 'px';
+                tooltip.style.top = (e.clientY + 10) + 'px';
+                tooltip.innerText = 'Val: INR ' + Math.floor(Math.random() * 1000) + '/sqft';
+            });
+            bar.addEventListener('mouseleave', () => {
+                tooltip.classList.add('hidden');
+            });
+        });
+    </script>
+</body></html>

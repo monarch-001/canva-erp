@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Work Order List - Canva Concepts ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "status-financial": "#14532D",
+                "on-primary-container": "#858383",
+                "on-tertiary-fixed-variant": "#0e4b6e",
+                "inverse-surface": "#30312e",
+                "on-primary-fixed": "#1c1b1b",
+                "error": "#ba1a1a",
+                "inverse-on-surface": "#f2f1ed",
+                "on-secondary": "#ffffff",
+                "on-tertiary-fixed": "#001e30",
+                "border-subtle": "#E8E8E8",
+                "on-surface": "#1b1c1a",
+                "primary-fixed-dim": "#c8c6c5",
+                "surface-container-high": "#e9e8e4",
+                "secondary-container": "#fdd977",
+                "on-secondary-fixed": "#241a00",
+                "surface-variant": "#e3e2df",
+                "primary-container": "#1c1b1b",
+                "on-error": "#ffffff",
+                "outline": "#747878",
+                "surface-container": "#efeeea",
+                "status-production": "#F97316",
+                "primary-fixed": "#e5e2e1",
+                "surface": "#faf9f5",
+                "secondary": "#C8A84B",
+                "surface-dim": "#dbdad6",
+                "on-error-container": "#93000a",
+                "secondary-fixed": "#ffe08c",
+                "tertiary-fixed": "#cbe6ff",
+                "surface-bright": "#faf9f5",
+                "on-background": "#1b1c1a",
+                "surface-card": "#FFFFFF",
+                "status-invoice": "#7C3AED",
+                "on-tertiary": "#ffffff",
+                "error-container": "#ffdad6",
+                "on-secondary-container": "#775e00",
+                "on-primary": "#ffffff",
+                "on-primary-fixed-variant": "#474746",
+                "status-material": "#0891B2",
+                "outline-variant": "#c4c7c7",
+                "tertiary-container": "#001e30",
+                "surface-container-low": "#f5f4f0",
+                "status-error": "#C0392B",
+                "status-draft": "#888888",
+                "secondary-fixed-dim": "#e5c363",
+                "surface-container-lowest": "#ffffff",
+                "tertiary": "#000000",
+                "primary": "#000000",
+                "background": "#faf9f5",
+                "tertiary-fixed-dim": "#9bccf6",
+                "status-success": "#2D7D46",
+                "on-secondary-fixed-variant": "#584400",
+                "surface-tint": "#5f5e5e",
+                "status-pending": "#F59E0B",
+                "on-tertiary-container": "#5889af",
+                "inverse-primary": "#c8c6c5",
+                "surface-container-highest": "#e3e2df",
+                "on-surface-variant": "#444748"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "xl": "32px",
+                "md": "16px",
+                "sm": "8px",
+                "lg": "24px",
+                "container-max": "1440px",
+                "base": "4px",
+                "xs": "4px",
+                "sidebar-width": "260px"
+            },
+            "fontFamily": {
+                "title-md": ["Inter"],
+                "status-pill": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "label-md": ["Inter"],
+                "headline-sm": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #faf9f5; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .sidebar-active {
+            background-color: #C8A84B;
+            border-left: 4px solid #fdd977;
+            color: #ffffff !important;
+            opacity: 1 !important;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-primary flex flex-col py-lg z-50 overflow-y-auto no-scrollbar">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-bold">Canva Concepts</h1>
+<p class="text-on-primary opacity-60 text-xs tracking-widest uppercase">Industrial ERP</p>
+</div>
+<nav class="flex-1 px-sm space-y-base">
+<a class="flex items-center gap-md px-lg py-md rounded-lg text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-title-md text-title-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md rounded-lg sidebar-active transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">manufacturing</span>
+<span class="font-title-md text-title-md">Work Orders</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md rounded-lg text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-title-md text-title-md">Users</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md rounded-lg text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-title-md text-title-md">Finance</span>
+</a>
+</nav>
+<div class="px-sm pt-xl border-t border-on-primary/10 space-y-base">
+<a class="flex items-center gap-md px-lg py-md rounded-lg text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-title-md text-title-md">Settings</span>
+</a>
+<a class="flex items-center gap-md px-lg py-md rounded-lg text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-title-md text-title-md">Support</span>
+</a>
+<div class="mt-xl px-lg py-md bg-white/5 rounded-xl border border-white/10">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional factory manager in a clean industrial environment, wearing a sleek black polo shirt with a subtle gold logo, neutral lighting, corporate photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0qNoj8973HzwwBaiuLFfEZpcw_5PFF3FH517j1n_iaEoQ88_b8FKJG0onAOQBZuR3pCLgqsyq-5TrOK_x-eHMXG2_t7otErd98u_FzDSjPBgM1KQt27w3eK4DZadTM9w8DT5kzExOSVTGVrCANvORfiiMzaB-gU3NMI_i-3A4ll7tz5cL0fJ04tLDetDmsIVzv4ln94TVtGYyodto_xJZRQgpZnqNljqIlbwE-VjdjGNcFTjNbIWo0w"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-on-primary font-bold text-sm truncate">Marcus Chen</p>
+<p class="text-on-primary opacity-60 text-xs truncate">Factory Manager</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-sidebar-width min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 flex justify-between items-center w-full px-lg h-16 bg-surface border-b border-border-subtle max-w-container-max mx-auto">
+<div class="flex items-center gap-xl">
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Work Orders</h2>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-sm w-80 focus:ring-1 focus:ring-secondary transition-all" placeholder="Search orders, clients, items..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="bg-secondary text-on-primary px-lg py-2.5 rounded-lg flex items-center gap-sm font-label-md text-label-md hover:brightness-110 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    New Work Order
+                </button>
+<div class="flex gap-md border-l border-border-subtle pl-lg">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all">help</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all">settings</button>
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<div class="max-w-container-max mx-auto p-lg">
+<!-- Filters Section -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg mb-lg flex flex-wrap items-end gap-lg shadow-sm">
+<div class="space-y-base min-w-[160px]">
+<label class="font-label-md text-label-md text-on-surface-variant block">Status</label>
+<select class="w-full border-border-subtle rounded-lg text-sm h-10 focus:border-secondary focus:ring-0">
+<option>All Statuses</option>
+<option>Production</option>
+<option>Material Prep</option>
+<option>Quality Check</option>
+</select>
+</div>
+<div class="space-y-base min-w-[160px]">
+<label class="font-label-md text-label-md text-on-surface-variant block">Client Type</label>
+<select class="w-full border-border-subtle rounded-lg text-sm h-10 focus:border-secondary focus:ring-0">
+<option>All Clients</option>
+<option>Enterprise</option>
+<option>Boutique</option>
+<option>Government</option>
+</select>
+</div>
+<div class="space-y-base min-w-[160px]">
+<label class="font-label-md text-label-md text-on-surface-variant block">Priority</label>
+<select class="w-full border-border-subtle rounded-lg text-sm h-10 focus:border-secondary focus:ring-0">
+<option>Any Priority</option>
+<option>Critical</option>
+<option>High</option>
+<option>Normal</option>
+</select>
+</div>
+<div class="space-y-base flex-1 min-w-[200px]">
+<label class="font-label-md text-label-md text-on-surface-variant block">Date Range</label>
+<div class="flex items-center gap-sm h-10 border border-border-subtle rounded-lg px-md bg-white">
+<span class="material-symbols-outlined text-sm opacity-50">calendar_today</span>
+<input class="border-none p-0 text-sm focus:ring-0 w-full" placeholder="Oct 01 - Oct 31, 2023" type="text"/>
+</div>
+</div>
+<button class="h-10 px-lg bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary/90 transition-all">
+                    Apply Filters
+                </button>
+</div>
+<!-- Dashboard Stats Summary (Optional high-end touch) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg mb-lg">
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl flex items-center gap-lg">
+<div class="w-12 h-12 rounded-full bg-status-production/10 text-status-production flex items-center justify-center">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-wider font-bold">Active Orders</p>
+<h3 class="text-headline-md font-headline-md">124</h3>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl flex items-center gap-lg">
+<div class="w-12 h-12 rounded-full bg-status-pending/10 text-status-pending flex items-center justify-center">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-wider font-bold">Pending QC</p>
+<h3 class="text-headline-md font-headline-md">18</h3>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl flex items-center gap-lg">
+<div class="w-12 h-12 rounded-full bg-status-error/10 text-status-error flex items-center justify-center">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-wider font-bold">Critical Delay</p>
+<h3 class="text-headline-md font-headline-md">04</h3>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl flex items-center gap-lg">
+<div class="w-12 h-12 rounded-full bg-status-success/10 text-status-success flex items-center justify-center">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase tracking-wider font-bold">Shipped Today</p>
+<h3 class="text-headline-md font-headline-md">32</h3>
+</div>
+</div>
+</div>
+<!-- Work Order Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-lg">
+<!-- WO Card 1: Critical -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg hover:shadow-md transition-all group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 pointer-events-none">
+<div class="absolute top-2 right-[-24px] rotate-45 bg-status-error text-white text-[10px] font-bold py-1 px-8">URGENT</div>
+</div>
+<div class="flex justify-between items-start mb-md">
+<div>
+<span class="text-secondary font-bold text-sm tracking-widest">WO-8829-23</span>
+<h4 class="font-title-md text-title-md mt-1">Executive Boardroom Suite - Walnut Series</h4>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<span class="bg-status-error text-on-primary px-3 py-1 rounded-full font-status-pill text-status-pill">CRITICAL</span>
+<span class="bg-status-production/15 text-status-production px-3 py-1 rounded-full font-status-pill text-status-pill border border-status-production/20">IN PRODUCTION</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-y-md border-t border-border-subtle pt-md">
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Client</p>
+<p class="text-sm">Global Tech Holdings</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Furniture Type</p>
+<p class="text-sm">Premium Office / Seating</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Quantity</p>
+<p class="text-sm">12 Units</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Delivery Target</p>
+<div class="flex items-center gap-sm">
+<span class="text-sm font-bold">Oct 24, 2023</span>
+<div class="flex items-center gap-1 px-2 py-0.5 bg-status-error/10 text-status-error rounded text-[11px] font-bold">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                    2 Days Left
+                                </div>
+</div>
+</div>
+</div>
+<div class="mt-lg flex gap-md">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg text-sm font-bold hover:bg-secondary transition-all">Manage Order</button>
+<button class="w-10 h-10 flex items-center justify-center border border-border-subtle rounded-lg hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- WO Card 2: Normal/Green -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg hover:shadow-md transition-all group">
+<div class="flex justify-between items-start mb-md">
+<div>
+<span class="text-secondary font-bold text-sm tracking-widest">WO-8835-23</span>
+<h4 class="font-title-md text-title-md mt-1">Modular Coworking Pods - Indigo Edition</h4>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<span class="bg-status-success/15 text-status-success px-3 py-1 rounded-full font-status-pill text-status-pill border border-status-success/20">NORMAL</span>
+<span class="bg-status-material/15 text-status-material px-3 py-1 rounded-full font-status-pill text-status-pill border border-status-material/20">MATERIAL PREP</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-y-md border-t border-border-subtle pt-md">
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Client</p>
+<p class="text-sm">Studio North Architecture</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Furniture Type</p>
+<p class="text-sm">Modular Systems</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Quantity</p>
+<p class="text-sm">45 Units</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Delivery Target</p>
+<div class="flex items-center gap-sm">
+<span class="text-sm font-bold">Nov 15, 2023</span>
+<div class="flex items-center gap-1 px-2 py-0.5 bg-status-success/10 text-status-success rounded text-[11px] font-bold">
+<span class="material-symbols-outlined text-[12px]">calendar_today</span>
+                                    24 Days Left
+                                </div>
+</div>
+</div>
+</div>
+<div class="mt-lg flex gap-md">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg text-sm font-bold hover:bg-secondary transition-all">Manage Order</button>
+<button class="w-10 h-10 flex items-center justify-center border border-border-subtle rounded-lg hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- WO Card 3: High/Amber -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg hover:shadow-md transition-all group">
+<div class="flex justify-between items-start mb-md">
+<div>
+<span class="text-secondary font-bold text-sm tracking-widest">WO-8841-23</span>
+<h4 class="font-title-md text-title-md mt-1">Hospitality Lobby Lounge - Custom Oak</h4>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<span class="bg-status-pending/15 text-status-pending px-3 py-1 rounded-full font-status-pill text-status-pill border border-status-pending/20">HIGH</span>
+<span class="bg-status-production/15 text-status-production px-3 py-1 rounded-full font-status-pill text-status-pill border border-status-production/20">ASSEMBLY</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-y-md border-t border-border-subtle pt-md">
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Client</p>
+<p class="text-sm">Ritz Carlton Group</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Furniture Type</p>
+<p class="text-sm">Hospitality / Decor</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Quantity</p>
+<p class="text-sm">08 Units</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Delivery Target</p>
+<div class="flex items-center gap-sm">
+<span class="text-sm font-bold">Oct 30, 2023</span>
+<div class="flex items-center gap-1 px-2 py-0.5 bg-status-pending/10 text-status-pending rounded text-[11px] font-bold">
+<span class="material-symbols-outlined text-[12px]">priority_high</span>
+                                    8 Days Left
+                                </div>
+</div>
+</div>
+</div>
+<div class="mt-lg flex gap-md">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg text-sm font-bold hover:bg-secondary transition-all">Manage Order</button>
+<button class="w-10 h-10 flex items-center justify-center border border-border-subtle rounded-lg hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- WO Card 4: Gray/Draft -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg hover:shadow-md transition-all group opacity-75">
+<div class="flex justify-between items-start mb-md">
+<div>
+<span class="text-secondary font-bold text-sm tracking-widest">WO-8850-23</span>
+<h4 class="font-title-md text-title-md mt-1">Retail Display Unit - Matte Black</h4>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<span class="bg-status-draft/15 text-status-draft px-3 py-1 rounded-full font-status-pill text-status-pill border border-status-draft/20">DRAFT</span>
+<span class="bg-status-draft/15 text-status-draft px-3 py-1 rounded-full font-status-pill text-status-pill border border-status-draft/20">ESTIMATING</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-y-md border-t border-border-subtle pt-md">
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Client</p>
+<p class="text-sm">Urban Outfitters HQ</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Furniture Type</p>
+<p class="text-sm">Retail Fixtures</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Quantity</p>
+<p class="text-sm">110 Units</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Delivery Target</p>
+<div class="flex items-center gap-sm">
+<span class="text-sm font-bold">Dec 20, 2023</span>
+<div class="flex items-center gap-1 px-2 py-0.5 bg-status-draft/10 text-status-draft rounded text-[11px] font-bold">
+<span class="material-symbols-outlined text-[12px]">pause</span>
+                                    Pending
+                                </div>
+</div>
+</div>
+</div>
+<div class="mt-lg flex gap-md">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg text-sm font-bold hover:bg-secondary transition-all">Manage Order</button>
+<button class="w-10 h-10 flex items-center justify-center border border-border-subtle rounded-lg hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-xl flex flex-col items-center gap-md">
+<button class="group flex items-center gap-sm bg-white border border-border-subtle px-xl py-3 rounded-full font-label-md text-label-md shadow-sm hover:border-secondary hover:text-secondary transition-all active:scale-95">
+<span class="material-symbols-outlined group-hover:animate-bounce">expand_more</span>
+                    Load More Work Orders
+                </button>
+<p class="text-sm text-on-surface-variant">Showing <span class="font-bold">4</span> of <span class="font-bold">124</span> orders</p>
+</div>
+</div>
+<!-- Role Badge (Fixed bottom right) -->
+<div class="fixed bottom-lg right-lg z-50 bg-primary text-on-primary px-lg py-2 rounded-full shadow-2xl flex items-center gap-md border border-white/10 backdrop-blur-sm bg-opacity-90">
+<span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+<span class="text-xs font-bold tracking-widest uppercase">System Role: Factory Manager</span>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.bg-surface-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

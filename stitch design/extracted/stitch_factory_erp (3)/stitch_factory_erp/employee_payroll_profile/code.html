@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Employee Payroll Profile | Industrial Authority ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "status-draft": "#888888",
+                "on-surface": "#1b1c1a",
+                "background": "#faf9f5",
+                "on-primary-container": "#858383",
+                "on-tertiary-fixed": "#001e30",
+                "inverse-on-surface": "#f2f1ed",
+                "surface-container-low": "#f5f4f0",
+                "on-error-container": "#93000a",
+                "on-error": "#ffffff",
+                "secondary-fixed-dim": "#e5c363",
+                "secondary-fixed": "#ffe08c",
+                "surface-variant": "#e3e2df",
+                "inverse-primary": "#c8c6c5",
+                "tertiary-fixed-dim": "#9bccf6",
+                "status-pending": "#F59E0B",
+                "on-tertiary-container": "#5889af",
+                "status-success": "#2D7D46",
+                "on-secondary-fixed-variant": "#584400",
+                "surface-card": "#FFFFFF",
+                "on-tertiary": "#ffffff",
+                "surface": "#faf9f5",
+                "on-primary-fixed-variant": "#474746",
+                "on-primary": "#ffffff",
+                "surface-dim": "#dbdad6",
+                "on-primary-fixed": "#1c1b1b",
+                "outline": "#747878",
+                "status-material": "#0891B2",
+                "surface-container-highest": "#e3e2df",
+                "on-tertiary-fixed-variant": "#0e4b6e",
+                "status-production": "#F97316",
+                "surface-bright": "#faf9f5",
+                "primary": "#000000",
+                "inverse-surface": "#30312e",
+                "outline-variant": "#c4c7c7",
+                "on-surface-variant": "#444748",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed": "#e5e2e1",
+                "tertiary": "#000000",
+                "status-invoice": "#7C3AED",
+                "surface-container-high": "#e9e8e4",
+                "surface-tint": "#5f5e5e",
+                "on-background": "#1b1c1a",
+                "on-secondary": "#ffffff",
+                "surface-container": "#efeeea",
+                "error": "#ba1a1a",
+                "tertiary-container": "#001e30",
+                "border-subtle": "#E8E8E8",
+                "primary-fixed-dim": "#c8c6c5",
+                "status-error": "#C0392B",
+                "error-container": "#ffdad6",
+                "on-secondary-fixed": "#241a00",
+                "secondary-container": "#fdd977",
+                "secondary": "#745b00",
+                "primary-container": "#1c1b1b",
+                "status-financial": "#14532D",
+                "tertiary-fixed": "#cbe6ff",
+                "on-secondary-container": "#775e00",
+                "brand-gold": "#C8A84B"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "sidebar-width": "260px",
+                "base": "4px",
+                "sm": "8px",
+                "xl": "32px",
+                "lg": "24px",
+                "container-max": "1440px",
+                "xs": "4px",
+                "md": "16px"
+            },
+            "fontFamily": {
+                "headline-sm": ["Inter"],
+                "headline-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "title-md": ["Inter"],
+                "status-pill": ["Inter"],
+                "label-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-md": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #F7F6F2;
+            font-family: 'Inter', sans-serif;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .sidebar-active {
+            background-color: #C8A84B;
+            color: #FFFFFF;
+            border-left: 4px solid #C8A84B;
+            opacity: 1 !important;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #C8A84B;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-primary-container flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<div class="flex items-center gap-sm mb-xs">
+<div class="w-8 h-8 bg-brand-gold flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+</div>
+<h1 class="font-headline-sm text-headline-sm text-on-primary">Precision Ops</h1>
+</div>
+<p class="font-label-md text-label-md text-on-primary-container opacity-60">Unit 04 - Heavy Mfg</p>
+</div>
+<nav class="flex-1 flex flex-col gap-base overflow-y-auto custom-scrollbar">
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">inventory_2</span> Inventory
+            </a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">fact_check</span> Blind GRN
+            </a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">factory</span> Production
+            </a>
+<a class="bg-secondary-container text-on-secondary-container border-l-4 border-secondary flex items-center gap-md px-md py-sm active:scale-95 duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span> Financials
+            </a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">analytics</span> Reports
+            </a>
+</nav>
+<div class="mt-auto px-md pt-lg flex flex-col gap-base border-t border-on-primary-container border-opacity-10">
+<button class="bg-brand-gold text-white font-label-md text-label-md py-sm px-md rounded-sm flex items-center justify-center gap-sm hover:opacity-90 transition-opacity mb-md">
+<span class="material-symbols-outlined text-[18px]">add</span> New Batch
+            </button>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">support_agent</span> Support
+            </a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span> Sign Out
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] min-h-screen flex flex-col relative">
+<!-- Top Bar -->
+<header class="bg-surface-container-lowest sticky top-0 z-40 border-b border-border-subtle h-16 w-full px-md flex items-center justify-between">
+<div class="flex items-center gap-lg flex-1">
+<h2 class="font-headline-sm text-headline-sm font-bold text-primary">Industrial Authority ERP</h2>
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-sm py-2 pl-10 pr-4 text-body-md focus:ring-1 focus:ring-brand-gold" placeholder="Search employee records..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-border-subtle mx-sm"></div>
+<div class="flex items-center gap-sm">
+<div class="text-right hidden sm:block">
+<p class="font-label-md text-label-md text-on-surface">Rajesh Kumar</p>
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold">HR Administrator</p>
+</div>
+<img class="w-10 h-10 rounded-full border border-border-subtle object-cover" data-alt="A professional headshot of a middle-aged male HR Administrator with a friendly expression, wearing a crisp white shirt against a neutral grey background. The lighting is professional and even, conveying a sense of authority and reliability in a corporate manufacturing environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1ZKGDC2aO2Af1HhQ2cMcj9MMR-zDrm589ipxovls5eL2BzjTeToP_-Mnyfm7hYVepPDxm6PuXps8wXKFAYUiQYQfjKrgb0Zj4PiYJOl54MoCoUN1ODvwHNMae5Z2doBTvvcyDwn1hOQkd226V5pFbVmTeqmpiD2mtqOXgmIS_v2Ph2w2HtrYHAribfnK67eNBl2rgfEW76747hgnK40YyqdSO6f2sUVE5y6JSnPXywEBToXCi3Htxcw"/>
+</div>
+</div>
+</header>
+<!-- Profile Content -->
+<div class="p-lg max-w-container-max mx-auto w-full">
+<!-- Breadcrumbs & Header Actions -->
+<div class="flex items-center justify-between mb-lg">
+<nav class="flex items-center gap-xs text-on-surface-variant font-label-md text-label-md">
+<span>Financials</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>Employee Payroll</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary">EMP-4092: Vikram Singh</span>
+</nav>
+<div class="flex gap-sm">
+<button class="px-md py-sm border border-primary text-primary font-label-md text-label-md rounded-sm hover:bg-surface-container-low transition-colors">
+                        Edit Profile
+                    </button>
+<button class="px-md py-sm bg-brand-gold text-white font-label-md text-label-md rounded-sm hover:opacity-90 transition-opacity flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">download</span> Export All Data
+                    </button>
+</div>
+</div>
+<!-- Profile Summary Card -->
+<section class="bg-surface-card border border-border-subtle p-lg rounded-sm mb-lg flex flex-col md:flex-row gap-lg items-center">
+<div class="relative">
+<img class="w-32 h-32 rounded-sm object-cover border-2 border-brand-gold p-1 bg-white" data-alt="A high-quality portrait of a focused Indian factory engineer wearing a navy blue industrial uniform and a yellow safety helmet held under his arm. He stands in a bright, modern industrial facility with blurred machinery in the background. The aesthetic is clean, professional, and authoritative, emphasizing industrial precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSFYHHWr1d5EJWEeLAn2SQQI_JrGVMaxgUVBiDu2iB5ZZjcPb_HGxivGa2vIM_FaXjCEmUX14m0keMGOKpJn7eDMZ33F1vVnOtRvKYpyg3nWz5HecFtYZ-Uo99T7Lu0_YwYNIOiRRrpMON8q_RDTxFFyYnluuZq4gcAAq44if7PhZ_MEY53Xs_0TTtlkxFjR7NUiEUhqbSp6YiG2gXlUl2JzQSNGQDGcgkVv85IEL9S9jezLiqZjmLsA"/>
+<span class="absolute -bottom-2 -right-2 bg-status-success text-white px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border-2 border-white">Active</span>
+</div>
+<div class="flex-1 space-y-2">
+<h1 class="font-headline-md text-headline-md text-primary">Vikram Singh</h1>
+<div class="flex flex-wrap gap-xl">
+<div>
+<p class="text-[11px] uppercase font-bold text-on-surface-variant tracking-tighter">Designation</p>
+<p class="font-title-md text-title-md">Senior Production Supervisor</p>
+</div>
+<div>
+<p class="text-[11px] uppercase font-bold text-on-surface-variant tracking-tighter">Department</p>
+<p class="font-title-md text-title-md">Heavy Machining - Unit 04</p>
+</div>
+<div>
+<p class="text-[11px] uppercase font-bold text-on-surface-variant tracking-tighter">Employee ID</p>
+<p class="font-title-md text-title-md">IND-2023-4092</p>
+</div>
+<div>
+<p class="text-[11px] uppercase font-bold text-on-surface-variant tracking-tighter">Date of Joining</p>
+<p class="font-title-md text-title-md">14 May 2018</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Main Content -->
+<div class="bento-grid">
+<!-- 1. Salary Master -->
+<div class="col-span-12 lg:col-span-8 bg-surface-card border border-border-subtle p-lg rounded-sm">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-brand-gold">payments</span>
+<h3 class="font-headline-sm text-headline-sm">Salary Master</h3>
+</div>
+<span class="text-[10px] bg-surface-container-high px-2 py-1 rounded font-bold text-on-surface-variant">REV. FY 2023-24</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-md">
+<div class="p-md bg-surface-container-low border-l-4 border-brand-gold">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Monthly Gross Salary</label>
+<p class="font-headline-md text-headline-md text-primary">₹ 84,500.00</p>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Basic Salary</label>
+<p class="font-title-md text-title-md">₹ 42,250.00</p>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">HRA (40%)</label>
+<p class="font-title-md text-title-md">₹ 16,900.00</p>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Special Allowance</label>
+<p class="font-title-md text-title-md">₹ 25,350.00</p>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Statutory Bonus</label>
+<p class="font-title-md text-title-md">₹ 3,500.00</p>
+</div>
+</div>
+</div>
+<div class="space-y-md">
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-widest border-b border-border-subtle pb-xs">Deductions &amp; Statutory</h4>
+<div class="space-y-sm">
+<div class="flex justify-between items-center p-sm border border-border-subtle rounded-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-status-success text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">PF Applicability</span>
+</div>
+<span class="font-title-md text-title-md">12% Deducted</span>
+</div>
+<div class="flex justify-between items-center p-sm border border-border-subtle rounded-sm opacity-50">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">cancel</span>
+<span class="font-body-md text-body-md">ESIC Applicability</span>
+</div>
+<span class="font-title-md text-title-md">Exempt</span>
+</div>
+<div class="flex justify-between items-center p-sm border border-border-subtle rounded-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-status-success text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">Professional Tax</span>
+</div>
+<span class="font-title-md text-title-md">₹ 200.00 / Mo</span>
+</div>
+</div>
+<div class="mt-md p-md bg-primary-container text-white rounded-sm">
+<p class="text-[11px] font-bold opacity-60 uppercase">Estimated Net Take Home</p>
+<p class="text-headline-sm font-headline-sm">₹ 78,840.00</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Leave Balance -->
+<div class="col-span-12 lg:col-span-4 bg-surface-card border border-border-subtle p-lg rounded-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-brand-gold">calendar_month</span>
+<h3 class="font-headline-sm text-headline-sm">Leave Balance</h3>
+</div>
+<div class="space-y-lg">
+<div>
+<div class="flex justify-between items-end mb-xs">
+<span class="font-label-md text-label-md">Casual Leave (CL)</span>
+<span class="font-headline-md text-headline-md text-status-material">08 <span class="text-body-md text-on-surface-variant font-normal">/ 12</span></span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-status-material h-full" style="width: 66%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-xs">
+<span class="font-label-md text-label-md">Sick Leave (SL)</span>
+<span class="font-headline-md text-headline-md text-status-production">04 <span class="text-body-md text-on-surface-variant font-normal">/ 10</span></span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-status-production h-full" style="width: 40%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-xs">
+<span class="font-label-md text-label-md">Earned Leave (EL)</span>
+<span class="font-headline-md text-headline-md text-status-success">22 <span class="text-body-md text-on-surface-variant font-normal">Remaining</span></span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-status-success h-full" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-lg w-full border border-border-subtle py-sm text-body-md hover:bg-surface-container-low transition-colors rounded-sm">
+                        Apply for Leave
+                    </button>
+</div>
+<!-- 3. Monthly Payslip History -->
+<div class="col-span-12 lg:col-span-8 bg-surface-card border border-border-subtle p-lg rounded-sm">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-brand-gold">history</span>
+<h3 class="font-headline-sm text-headline-sm">Payslip History</h3>
+</div>
+<p class="text-label-md text-on-surface-variant">Last 12 Months</p>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-border-subtle">
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant">MONTH / YEAR</th>
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant">GROSS</th>
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant">NET PAID</th>
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant">STATUS</th>
+<th class="py-sm px-md font-label-md text-label-md text-on-surface-variant text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-md px-md font-title-md text-title-md">October 2023</td>
+<td class="py-md px-md font-body-md">₹ 84,500.00</td>
+<td class="py-md px-md font-body-md font-bold text-status-success">₹ 78,840.00</td>
+<td class="py-md px-md">
+<span class="px-2 py-1 bg-[#2D7D4615] text-status-success text-[10px] font-bold uppercase rounded">Disbursed</span>
+</td>
+<td class="py-md px-md text-right">
+<button class="text-brand-gold hover:underline font-label-md text-label-md flex items-center gap-xs justify-end ml-auto">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">download</span> PDF
+                                        </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-md px-md font-title-md text-title-md">September 2023</td>
+<td class="py-md px-md font-body-md">₹ 84,500.00</td>
+<td class="py-md px-md font-body-md font-bold text-status-success">₹ 78,840.00</td>
+<td class="py-md px-md">
+<span class="px-2 py-1 bg-[#2D7D4615] text-status-success text-[10px] font-bold uppercase rounded">Disbursed</span>
+</td>
+<td class="py-md px-md text-right">
+<button class="text-brand-gold hover:underline font-label-md text-label-md flex items-center gap-xs justify-end ml-auto">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">download</span> PDF
+                                        </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-md px-md font-title-md text-title-md">August 2023</td>
+<td class="py-md px-md font-body-md">₹ 82,000.00</td>
+<td class="py-md px-md font-body-md font-bold text-status-success">₹ 76,500.00</td>
+<td class="py-md px-md">
+<span class="px-2 py-1 bg-[#2D7D4615] text-status-success text-[10px] font-bold uppercase rounded">Disbursed</span>
+</td>
+<td class="py-md px-md text-right">
+<button class="text-brand-gold hover:underline font-label-md text-label-md flex items-center gap-xs justify-end ml-auto">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">download</span> PDF
+                                        </button>
+</td>
+</tr>
+<!-- More rows for the 12 month history -->
+<tr class="hover:bg-surface-container-lowest transition-colors opacity-50">
+<td class="py-md px-md font-title-md text-title-md">July 2023</td>
+<td class="py-md px-md font-body-md">₹ 82,000.00</td>
+<td class="py-md px-md font-body-md font-bold text-status-success">₹ 76,500.00</td>
+<td class="py-md px-md">
+<span class="px-2 py-1 bg-[#2D7D4615] text-status-success text-[10px] font-bold uppercase rounded">Disbursed</span>
+</td>
+<td class="py-md px-md text-right">
+<button class="text-brand-gold hover:underline font-label-md text-label-md flex items-center gap-xs justify-end ml-auto">
+<span class="material-symbols-outlined text-[18px]">download</span> PDF
+                                        </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-md text-center">
+<button class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors">View All Archive</button>
+</div>
+</div>
+<!-- 4. Documents Vault -->
+<div class="col-span-12 lg:col-span-4 bg-surface-card border border-border-subtle p-lg rounded-sm">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-brand-gold">verified_user</span>
+<h3 class="font-headline-sm text-headline-sm">Documents Vault</h3>
+</div>
+<div class="space-y-md">
+<div class="group relative bg-surface-container-low border border-dashed border-outline-variant p-md rounded-sm hover:border-brand-gold transition-colors">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md">Aadhaar Card</span>
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Uploaded: 12 Jan 2023</p>
+<div class="mt-md flex gap-sm">
+<button class="text-[11px] font-bold uppercase text-brand-gold hover:opacity-80">View</button>
+<button class="text-[11px] font-bold uppercase text-on-surface-variant hover:opacity-80">Replace</button>
+</div>
+</div>
+<div class="group relative bg-surface-container-low border border-dashed border-outline-variant p-md rounded-sm hover:border-brand-gold transition-colors">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md">PAN Card</span>
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Uploaded: 12 Jan 2023</p>
+<div class="mt-md flex gap-sm">
+<button class="text-[11px] font-bold uppercase text-brand-gold hover:opacity-80">View</button>
+<button class="text-[11px] font-bold uppercase text-on-surface-variant hover:opacity-80">Replace</button>
+</div>
+</div>
+<div class="group relative bg-surface-container-low border border-dashed border-outline-variant p-md rounded-sm hover:border-brand-gold transition-colors">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md">Bank Details (Passbook/Cheque)</span>
+<span class="material-symbols-outlined text-status-pending">warning</span>
+</div>
+<p class="text-[11px] text-on-surface-variant">Awaiting Verification</p>
+<div class="mt-md flex gap-sm">
+<button class="text-[11px] font-bold uppercase text-brand-gold hover:opacity-80">Review</button>
+<button class="text-[11px] font-bold uppercase text-on-surface-variant hover:opacity-80">Replace</button>
+</div>
+</div>
+<button class="w-full border-2 border-dotted border-outline-variant p-lg text-on-surface-variant hover:text-brand-gold hover:border-brand-gold transition-all rounded-sm flex flex-col items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[32px]">upload_file</span>
+<span class="font-label-md text-label-md">Upload New Document</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Compliance Note -->
+<footer class="mt-xl py-lg border-t border-border-subtle flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="font-body-md text-body-md text-on-surface-variant">© 2023 Industrial Authority ERP. All payroll data is encrypted and handled per ISO 27001 standards.</p>
+<div class="flex gap-lg">
+<a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Data Retention</a>
+<a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Compliance Log</a>
+</div>
+</footer>
+</div>
+</main>
+<!-- Success Notification Toast (JS Simulation) -->
+<div class="fixed bottom-lg right-lg bg-primary-container text-white p-md rounded-sm shadow-xl translate-y-24 transition-transform duration-300 flex items-center gap-md z-[100]" id="toast">
+<span class="material-symbols-outlined text-brand-gold">verified</span>
+<div>
+<p class="font-title-md text-title-md leading-tight">Data Exported Successfully</p>
+<p class="text-[11px] opacity-70">Check your downloads folder for EMP_4092_MASTER.zip</p>
+</div>
+</div>
+<script>
+        // Micro-interaction for Export Button
+        const exportBtn = document.querySelector('button:has(.material-symbols-outlined:contains("download"))');
+        const toast = document.getElementById('toast');
+        
+        if(exportBtn) {
+            exportBtn.addEventListener('click', () => {
+                toast.classList.remove('translate-y-24');
+                setTimeout(() => {
+                    toast.classList.add('translate-y-24');
+                }, 4000);
+            });
+        }
+
+        // Custom selector for Material Icons (fallback helper)
+        document.querySelectorAll('.material-symbols-outlined').forEach(icon => {
+            if (icon.textContent === 'download' || icon.textContent === 'verified' || icon.textContent === 'precision_manufacturing') {
+                icon.style.fontVariationSettings = "'FILL' 1";
+            }
+        });
+    </script>
+</body></html>

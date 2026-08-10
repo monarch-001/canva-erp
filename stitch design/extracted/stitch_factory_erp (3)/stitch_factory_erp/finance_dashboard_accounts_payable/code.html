@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FurniERP Billing | Finance Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "status-success": "#2D7D46",
+                        "secondary-fixed-dim": "#e5c363",
+                        "border-subtle": "#E8E8E8",
+                        "on-tertiary-fixed": "#001e30",
+                        "surface-variant": "#e3e2df",
+                        "secondary-container": "#fdd977",
+                        "status-invoice": "#7C3AED",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1c1a",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "outline": "#747878",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#efeeea",
+                        "on-primary-container": "#858383",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#584400",
+                        "status-material": "#0891B2",
+                        "tertiary-container": "#001e30",
+                        "on-tertiary": "#ffffff",
+                        "status-draft": "#888888",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "surface-bright": "#faf9f5",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#cbe6ff",
+                        "surface": "#faf9f5",
+                        "on-primary-fixed-variant": "#474746",
+                        "surface-card": "#FFFFFF",
+                        "primary-fixed": "#e5e2e1",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#444748",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "status-pending": "#F59E0B",
+                        "primary-container": "#1c1b1b",
+                        "secondary-fixed": "#ffe08c",
+                        "surface-tint": "#5f5e5e",
+                        "status-financial": "#14532D",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-container-highest": "#e3e2df",
+                        "status-error": "#C0392B",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "status-production": "#F97316",
+                        "inverse-on-surface": "#f2f1ed",
+                        "surface-dim": "#dbdad6",
+                        "surface-container-low": "#f5f4f0",
+                        "inverse-surface": "#30312e",
+                        "outline-variant": "#c4c7c7",
+                        "background": "#faf9f5",
+                        "surface-container-high": "#e9e8e4",
+                        "on-secondary-fixed": "#241a00",
+                        "on-secondary-container": "#775e00",
+                        "on-background": "#1b1c1a",
+                        "inverse-primary": "#c8c6c5",
+                        "secondary": "#745b00",
+                        "on-tertiary-container": "#5889af",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-max": "1440px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sidebar-width": "260px"
+                    },
+                    "fontFamily": {
+                        "status-pill": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { border-left-width: 4px; border-color: #C8A84B; background-color: rgba(229, 195, 99, 0.1); color: #e5c363 !important; font-weight: 700; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e3e2df; border-radius: 10px; }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- Sidebar Navigation -->
+<aside class="w-sidebar-width h-screen fixed left-0 top-0 bg-inverse-surface flex flex-col py-md z-50 hidden md:flex">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-sm text-headline-sm font-bold text-secondary-fixed">Billing &amp; Collections</h1>
+<p class="text-surface-variant opacity-80 font-label-md text-label-md">Unit: Chhabee / B2B / D2C</p>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="sidebar-active px-lg py-md flex items-center space-x-md cursor-pointer transition-all duration-200">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Receivables Dashboard</span>
+</div>
+<div class="px-lg py-md flex items-center space-x-md cursor-pointer text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md">Invoicing</span>
+</div>
+<div class="px-lg py-md flex items-center space-x-md cursor-pointer text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Receipts &amp; TDS</span>
+</div>
+<div class="px-lg py-md flex items-center space-x-md cursor-pointer text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Credit/Debit Notes</span>
+</div>
+<div class="px-lg py-md flex items-center space-x-md cursor-pointer text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-label-md text-label-md">Tally Export</span>
+</div>
+<div class="px-lg py-md flex items-center space-x-md cursor-pointer text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Customer Ledger</span>
+</div>
+</nav>
+<div class="px-lg mt-auto space-y-md">
+<button class="w-full bg-secondary text-on-secondary font-label-md text-label-md py-md rounded-lg active:scale-95 transition-transform">
+                Generate New Invoice
+            </button>
+<div class="pt-xl border-t border-surface-variant/20">
+<div class="flex items-center space-x-md p-xs text-surface-variant opacity-80 hover:opacity-100 cursor-pointer">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-label-md">User Profile</span>
+</div>
+<div class="flex items-center space-x-md p-xs text-error opacity-80 hover:opacity-100 cursor-pointer">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-sidebar-width min-h-screen flex flex-col pb-24 md:pb-0">
+<!-- Top Bar -->
+<header class="h-16 flex justify-between items-center w-full px-lg max-w-container-max mx-auto border-b border-border-subtle bg-surface">
+<div class="flex items-center space-x-lg">
+<div class="font-headline-md text-headline-md font-bold text-primary">FurniERP Billing</div>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-11 pr-md py-xs bg-surface-container border border-outline-variant rounded-lg w-80 text-body-md focus:ring-1 focus:ring-secondary outline-none" placeholder="Search invoices, vendors..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-md">
+<div class="flex space-x-xs">
+<span class="material-symbols-outlined p-xs hover:bg-surface-container-low rounded-lg cursor-pointer">notifications</span>
+<span class="material-symbols-outlined p-xs hover:bg-surface-container-low rounded-lg cursor-pointer">help</span>
+<span class="material-symbols-outlined p-xs hover:bg-surface-container-low rounded-lg cursor-pointer">settings</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior male accounting executive wearing a dark formal suit and light blue tie. He has a neutral, authoritative expression and is positioned against a clean, minimalist factory office backdrop with soft natural lighting and high-end industrial furniture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjUou75h7XXb905UVEZyIUzZHVSBB6IOfEzruOpl6J2iVy79y2ZUxWjkq2dfDQkh4cX8F78pPyB6n96DKwzWjTi775NppQ1X9UN5f6Ceu_QG6S2eCbEfk6MN95IgjkFyf9Zva6oDYvVuH92gR7d1kHWMbVyuppDMpNuDxZ0dI9TqqmOTz7VoUhRse7vAhsJujO4RASEYpuvQpTXTeOPRnq1SeDEEMsTXCok9h5xAGree4bdxKG4ee_LA"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-lg max-w-container-max w-full mx-auto space-y-lg">
+<!-- Summary Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+<div class="bg-surface-card p-lg border border-border-subtle rounded-lg flex items-center space-x-md">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed">account_balance_wallet</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">Cash &amp; Bank</p>
+<h2 class="text-headline-sm font-bold text-primary">₹42.8M</h2>
+</div>
+</div>
+<div class="bg-surface-card p-lg border border-border-subtle rounded-lg flex items-center space-x-md">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed">hourglass_bottom</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">Receivables</p>
+<h2 class="text-headline-sm font-bold text-status-pending">₹18.4M</h2>
+</div>
+</div>
+<div class="bg-surface-card p-lg border border-border-subtle rounded-lg flex items-center space-x-md">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-status-error">emergency</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">Payables (This Week)</p>
+<h2 class="text-headline-sm font-bold text-status-error">₹6.2M</h2>
+</div>
+</div>
+<div class="bg-surface-card p-lg border border-border-subtle rounded-lg flex items-center space-x-md">
+<div class="w-12 h-12 rounded-full bg-status-success/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-success">trending_up</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">MTD Revenue</p>
+<h2 class="text-headline-sm font-bold text-status-success">₹28.5M</h2>
+</div>
+</div>
+</div>
+<!-- Dashboard Main Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-lg">
+<!-- Main Content (Payables) -->
+<div class="lg:col-span-3 space-y-lg">
+<!-- Tabs -->
+<div class="flex border-b border-border-subtle space-x-lg">
+<button class="pb-md px-xs font-label-md text-label-md text-on-surface-variant opacity-70 hover:opacity-100 transition-all">Accounts Receivable</button>
+<button class="pb-md px-xs font-label-md text-label-md text-secondary border-b-2 border-secondary font-bold">Accounts Payable</button>
+<button class="pb-md px-xs font-label-md text-label-md text-on-surface-variant opacity-70 hover:opacity-100 transition-all">Financial Reports</button>
+<button class="pb-md px-xs font-label-md text-label-md text-on-surface-variant opacity-70 hover:opacity-100 transition-all">Audit Logs</button>
+</div>
+<!-- Payable Summary Card -->
+<div class="bg-surface-card border border-border-subtle rounded-lg p-lg">
+<h3 class="text-title-md font-bold mb-md">Payable Summary</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="p-md rounded bg-surface-container">
+<p class="text-label-md text-on-surface-variant">This Week</p>
+<p class="text-headline-sm font-bold text-primary">₹6,24,000</p>
+</div>
+<div class="p-md rounded bg-surface-container">
+<p class="text-label-md text-on-surface-variant">Next Week</p>
+<p class="text-headline-sm font-bold text-primary">₹12,45,000</p>
+</div>
+<div class="p-md rounded bg-surface-container">
+<p class="text-label-md text-on-surface-variant">Later</p>
+<p class="text-headline-sm font-bold text-primary">₹34,10,000</p>
+</div>
+<div class="p-md rounded bg-error-container/30">
+<p class="text-label-md text-status-error">Disputed</p>
+<p class="text-headline-sm font-bold text-status-error">₹2,15,000</p>
+</div>
+</div>
+</div>
+<!-- Vendor Invoice List -->
+<div class="bg-surface-card border border-border-subtle rounded-lg overflow-hidden">
+<div class="p-lg border-b border-border-subtle flex justify-between items-center">
+<h3 class="text-title-md font-bold">Vendor Invoice List</h3>
+<div class="flex space-x-sm">
+<button class="px-md py-xs border border-outline rounded-lg font-label-md text-label-md flex items-center space-x-xs">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span>Filters</span>
+</button>
+<button class="px-md py-xs bg-primary text-on-primary rounded-lg font-label-md text-label-md">Export PDF</button>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<tr>
+<th class="p-md border-b border-border-subtle sticky left-0 bg-surface-container">Invoice No</th>
+<th class="p-md border-b border-border-subtle">Vendor</th>
+<th class="p-md border-b border-border-subtle">GRN Ref</th>
+<th class="p-md border-b border-border-subtle">Invoice Date</th>
+<th class="p-md border-b border-border-subtle">Due Date</th>
+<th class="p-md border-b border-border-subtle">Amount</th>
+<th class="p-md border-b border-border-subtle">Match Status</th>
+<th class="p-md border-b border-border-subtle">Payment</th>
+<th class="p-md border-b border-border-subtle text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="text-body-md">
+<tr class="hover:bg-surface-container-low transition-colors border-b border-border-subtle">
+<td class="p-md font-bold sticky left-0 bg-white">INV-8821</td>
+<td class="p-md">Bharat Steels Ltd</td>
+<td class="p-md">GRN/24/012</td>
+<td class="p-md">12 Oct 2023</td>
+<td class="p-md">26 Oct 2023</td>
+<td class="p-md font-bold">₹1,45,000</td>
+<td class="p-md">
+<span class="bg-status-success/10 text-status-success px-sm py-xs rounded-full font-status-pill text-status-pill">MATCHED</span>
+</td>
+<td class="p-md">
+<span class="bg-status-pending/10 text-status-pending px-sm py-xs rounded-full font-status-pill text-status-pill">PENDING</span>
+</td>
+<td class="p-md text-center">
+<div class="flex justify-center space-x-xs">
+<button class="p-xs text-secondary hover:bg-secondary/10 rounded" title="Approve">
+<span class="material-symbols-outlined">check_circle</span>
+</button>
+<button class="p-xs text-primary hover:bg-primary/10 rounded" title="Record Payment">
+<span class="material-symbols-outlined">payments</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-border-subtle">
+<td class="p-md font-bold sticky left-0 bg-white">INV-8904</td>
+<td class="p-md">Royal Textiles</td>
+<td class="p-md">GRN/24/015</td>
+<td class="p-md">15 Oct 2023</td>
+<td class="p-md">22 Oct 2023</td>
+<td class="p-md font-bold">₹82,000</td>
+<td class="p-md">
+<span class="bg-status-error/10 text-status-error px-sm py-xs rounded-full font-status-pill text-status-pill">DISPUTED</span>
+</td>
+<td class="p-md">
+<span class="bg-status-draft/10 text-status-draft px-sm py-xs rounded-full font-status-pill text-status-pill">HOLD</span>
+</td>
+<td class="p-md text-center">
+<div class="flex justify-center space-x-xs">
+<button class="p-xs text-outline hover:bg-outline/10 rounded" title="Approve">
+<span class="material-symbols-outlined">check_circle</span>
+</button>
+<button class="p-xs text-outline opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined">payments</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors border-b border-border-subtle bg-surface-container-lowest">
+<td class="p-md font-bold sticky left-0 bg-white">INV-8912</td>
+<td class="p-md">Oakwood Timber</td>
+<td class="p-md">GRN/24/019</td>
+<td class="p-md">18 Oct 2023</td>
+<td class="p-md">19 Oct 2023</td>
+<td class="p-md font-bold text-status-error">₹3,20,000</td>
+<td class="p-md">
+<span class="bg-status-pending/10 text-status-pending px-sm py-xs rounded-full font-status-pill text-status-pill">PENDING</span>
+</td>
+<td class="p-md">
+<span class="bg-status-pending/10 text-status-pending px-sm py-xs rounded-full font-status-pill text-status-pill">DUE NOW</span>
+</td>
+<td class="p-md text-center">
+<div class="flex justify-center space-x-xs">
+<button class="p-xs text-secondary hover:bg-secondary/10 rounded">
+<span class="material-symbols-outlined">check_circle</span>
+</button>
+<button class="p-xs text-primary hover:bg-primary/10 rounded">
+<span class="material-symbols-outlined">payments</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md font-bold sticky left-0 bg-white">INV-8955</td>
+<td class="p-md">Precision Lathes</td>
+<td class="p-md">GRN/24/022</td>
+<td class="p-md">20 Oct 2023</td>
+<td class="p-md">05 Nov 2023</td>
+<td class="p-md font-bold">₹1,12,000</td>
+<td class="p-md">
+<span class="bg-status-success/10 text-status-success px-sm py-xs rounded-full font-status-pill text-status-pill">MATCHED</span>
+</td>
+<td class="p-md">
+<span class="bg-status-pending/10 text-status-pending px-sm py-xs rounded-full font-status-pill text-status-pill">UPCOMING</span>
+</td>
+<td class="p-md text-center">
+<div class="flex justify-center space-x-xs">
+<button class="p-xs text-secondary hover:bg-secondary/10 rounded">
+<span class="material-symbols-outlined">check_circle</span>
+</button>
+<button class="p-xs text-primary hover:bg-primary/10 rounded">
+<span class="material-symbols-outlined">payments</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Sidebar (Alerts) -->
+<div class="space-y-lg">
+<div class="bg-surface-card border border-border-subtle rounded-lg p-lg">
+<div class="flex items-center space-x-sm mb-lg">
+<span class="material-symbols-outlined text-status-error">notifications_active</span>
+<h3 class="text-title-md font-bold text-primary">Payment Due Alerts</h3>
+</div>
+<div class="space-y-md">
+<div class="p-md border-l-4 border-status-error bg-error-container/10 rounded-r-lg space-y-xs">
+<div class="flex justify-between items-start">
+<p class="font-bold text-label-md">Oakwood Timber</p>
+<span class="text-status-error font-bold text-status-pill">Due Today</span>
+</div>
+<p class="text-body-md">Invoice: INV-8912</p>
+<p class="text-title-md font-bold">₹3,20,000</p>
+<button class="w-full mt-sm py-xs bg-status-error text-on-primary font-label-md text-label-md rounded">Release Payment</button>
+</div>
+<div class="p-md border-l-4 border-status-pending bg-secondary-container/10 rounded-r-lg space-y-xs">
+<div class="flex justify-between items-start">
+<p class="font-bold text-label-md">Bharat Steels Ltd</p>
+<span class="text-status-pending font-bold text-status-pill">2 Days Left</span>
+</div>
+<p class="text-body-md">Invoice: INV-8821</p>
+<p class="text-title-md font-bold">₹1,45,000</p>
+</div>
+<div class="p-md border-l-4 border-status-pending bg-secondary-container/10 rounded-r-lg space-y-xs">
+<div class="flex justify-between items-start">
+<p class="font-bold text-label-md">Modern Packaging</p>
+<span class="text-status-pending font-bold text-status-pill">3 Days Left</span>
+</div>
+<p class="text-body-md">Invoice: INV-8991</p>
+<p class="text-title-md font-bold">₹44,200</p>
+</div>
+</div>
+<button class="w-full mt-lg py-md border border-outline text-primary font-label-md text-label-md rounded-lg hover:bg-surface-container transition-colors">View All Reminders</button>
+</div>
+<div class="bg-inverse-surface text-on-secondary rounded-lg p-lg relative overflow-hidden">
+
+<div class="relative z-10">
+<h4 class="font-bold text-label-md mb-xs">CASH FLOW FORECAST</h4>
+<p class="text-headline-sm font-bold text-secondary-fixed-dim">Projected Stability</p>
+<p class="text-body-md opacity-80 mt-md">System projects 15% surplus by next month-end based on current invoicing trends.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Mobile Bottom Nav -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-surface-container-highest flex justify-around items-center px-4 py-2 pb-safe border-t border-border-subtle shadow-lg">
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 cursor-pointer">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-fixed text-on-secondary-fixed rounded-xl px-3 py-1 cursor-pointer">
+<span class="material-symbols-outlined">receipt</span>
+<span class="font-label-md text-label-md">Invoices</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 cursor-pointer">
+<span class="material-symbols-outlined">add_card</span>
+<span class="font-label-md text-label-md">Receipts</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 cursor-pointer">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Reports</span>
+</div>
+</nav>
+</main>
+<script>
+        // Micro-interaction: Active tab switching
+        document.querySelectorAll('button.font-label-md').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.textContent.includes('Receivable') || this.textContent.includes('Reports') || this.textContent.includes('Logs')) {
+                    // Logic to simulate tab switching (ui only for demo)
+                    const parent = this.parentElement;
+                    parent.querySelectorAll('button').forEach(b => {
+                        b.classList.remove('text-secondary', 'border-b-2', 'border-secondary', 'font-bold');
+                        b.classList.add('text-on-surface-variant', 'opacity-70');
+                    });
+                    this.classList.add('text-secondary', 'border-b-2', 'border-secondary', 'font-bold');
+                    this.classList.remove('text-on-surface-variant', 'opacity-70');
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quotations - Canva Concepts Industrial ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#e5e2e1",
+                    "surface": "#faf9f5",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#474746",
+                    "on-surface": "#1b1c1a",
+                    "tertiary": "#000000",
+                    "status-financial": "#14532D",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#cbe6ff",
+                    "primary": "#000000",
+                    "on-background": "#1b1c1a",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "error": "#ba1a1a",
+                    "status-material": "#0891B2",
+                    "surface-container-highest": "#e3e2df",
+                    "inverse-primary": "#c8c6c5",
+                    "background": "#faf9f5",
+                    "outline": "#747878",
+                    "secondary-container": "#fdd977",
+                    "inverse-surface": "#30312e",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c4c7c7",
+                    "status-production": "#F97316",
+                    "primary-container": "#1c1b1b",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "on-secondary-container": "#775e00",
+                    "status-success": "#2D7D46",
+                    "on-primary-fixed": "#1c1b1b",
+                    "on-surface-variant": "#444748",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e3e2df",
+                    "surface-container-low": "#f5f4f0",
+                    "inverse-on-surface": "#f2f1ed",
+                    "status-draft": "#888888",
+                    "surface-bright": "#faf9f5",
+                    "on-tertiary-fixed": "#001e30",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "tertiary-container": "#001e30",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#dbdad6",
+                    "status-invoice": "#7C3AED",
+                    "status-error": "#C0392B",
+                    "secondary": "#745b00",
+                    "border-subtle": "#E8E8E8",
+                    "surface-tint": "#5f5e5e",
+                    "surface-container-high": "#e9e8e4",
+                    "secondary-fixed-dim": "#e5c363",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-card": "#FFFFFF",
+                    "on-tertiary-container": "#5889af",
+                    "surface-container": "#efeeea",
+                    "status-pending": "#F59E0B",
+                    "secondary-fixed": "#ffe08c",
+                    "on-primary-container": "#858383"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "xs": "4px",
+                    "sidebar-width": "260px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "title-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "status-pill": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active {
+            background-color: #745b00; /* secondary */
+            color: #ffffff;
+            border-left: 4px solid #fdd977; /* secondary-container */
+        }
+        /* Custom scrollbar for data tables */
+        .data-table-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .data-table-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .data-table-container::-webkit-scrollbar-thumb {
+            background: #c8c6c5;
+            border-radius: 4px;
+        }
+        .data-table-container::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary flex flex-col py-lg z-50">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-bold tracking-tight">Canva Concepts</h1>
+<p class="text-on-primary opacity-60 text-xs uppercase tracking-widest font-semibold mt-1">Industrial ERP</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-md px-lg py-3 text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-title-md text-title-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-lg py-3 text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">manufacturing</span>
+<span class="font-title-md text-title-md">Work Orders</span>
+</a>
+<!-- Active State: Quotations (mapping to Finance/Sales logic) -->
+<a class="flex items-center gap-md px-lg py-3 sidebar-active" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-title-md text-title-md">Finance</span>
+</a>
+<a class="flex items-center gap-md px-lg py-3 text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-title-md text-title-md">Users</span>
+</a>
+</nav>
+<div class="px-lg mt-auto pt-lg border-t border-white/10 space-y-1">
+<a class="flex items-center gap-md py-2 text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-md py-2 text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-[260px] min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="h-16 flex items-center justify-between px-lg bg-surface sticky top-0 z-40 border-b border-border-subtle">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Quotations</h2>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-border-subtle rounded-lg text-sm w-64 focus:outline-none focus:border-secondary transition-all" placeholder="Quick search..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all">help</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a factory manager in their early 40s wearing a clean dark polo shirt with a subtle industrial logo. The background is a brightly lit, modern office with soft architectural lines and a glass window overlooking a clean manufacturing floor. The lighting is crisp and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqLR0-eQFoqNNm1Ei84rYAP3aGFOZQyNrVstyr1sHmPYQzT10Xawd_ykbcsX_ai022ScxFZLW6A-criWebkxYiB7aPUZkIXp0WAwstjDH948sxfp31-R0mTfi2voFwrIjPyhdSgvLd1-F2kFIn6Tet9FDz8GPSC-r2hY6u4VKNEwrtQn7voUWBvsUsxxEQUY6Wi4-uXle7id1jex_IpFxu1IeY0vPx4oNW9-3gOnNYKpJSSxx7NdO51w"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-lg max-w-[1440px] w-full mx-auto space-y-lg">
+<!-- Page Header Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<h3 class="font-headline-md text-headline-md">Manage Quotations</h3>
+<p class="text-on-surface-variant font-body-md">Review, create, and track industrial project quotes.</p>
+</div>
+<button class="flex items-center gap-2 bg-secondary text-on-secondary px-lg py-2.5 rounded-lg font-title-md text-title-md hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+                    New Quotation
+                </button>
+</div>
+<!-- Summary Cards (Bento Grid Style) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Total Open -->
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-on-surface-variant font-label-md">Total Open</span>
+<span class="material-symbols-outlined text-status-pending">pending_actions</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold">24</span>
+<span class="text-status-pending text-xs font-bold mb-1">+3 this week</span>
+</div>
+</div>
+<!-- Accepted -->
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-on-surface-variant font-label-md">Accepted (Month)</span>
+<span class="material-symbols-outlined text-status-success">check_circle</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold">12</span>
+<span class="text-status-success text-xs font-bold mb-1">Target met</span>
+</div>
+</div>
+<!-- Rejected -->
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-on-surface-variant font-label-md">Rejected (Month)</span>
+<span class="material-symbols-outlined text-status-error">cancel</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold">5</span>
+<span class="text-status-error text-xs font-bold mb-1">-2 vs last month</span>
+</div>
+</div>
+<!-- Conversion Rate -->
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-on-surface-variant font-label-md">Conversion Rate</span>
+<span class="material-symbols-outlined text-status-material">analytics</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold">68%</span>
+<div class="w-16 h-1.5 bg-surface-container rounded-full mb-2">
+<div class="bg-status-material h-full rounded-full" style="width: 68%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Filters & Search -->
+<div class="bg-surface-card border border-border-subtle p-md rounded-xl shadow-sm flex flex-wrap items-center gap-md">
+<div class="flex-1 min-w-[240px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface rounded border border-border-subtle focus:border-secondary focus:ring-0 text-sm" placeholder="Search by QT Number or Client Name..." type="text"/>
+</div>
+<div class="flex flex-wrap items-center gap-sm">
+<select class="px-sm py-2 bg-surface rounded border border-border-subtle text-sm focus:border-secondary focus:ring-0">
+<option>All Statuses</option>
+<option>Draft</option>
+<option>Sent</option>
+<option>Accepted</option>
+<option>Rejected</option>
+</select>
+<select class="px-sm py-2 bg-surface rounded border border-border-subtle text-sm focus:border-secondary focus:ring-0">
+<option>Client Type</option>
+<option>B2B</option>
+<option>D2C</option>
+</select>
+<div class="flex items-center bg-surface border border-border-subtle rounded px-sm py-2 text-sm">
+<span class="material-symbols-outlined text-sm mr-2">calendar_today</span>
+<span>Oct 01 - Oct 31, 2023</span>
+</div>
+<button class="p-2 border border-border-subtle rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Quotations Table -->
+<div class="bg-surface-card border border-border-subtle rounded-xl shadow-sm overflow-hidden">
+<div class="data-table-container overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-border-subtle">
+<tr>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">QT Number</th>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Client Name</th>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Type</th>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Items</th>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total (ex-GST)</th>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Quoted (inc-GST)</th>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Valid Until</th>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<!-- Row 1: Accepted -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-4 font-bold text-secondary cursor-pointer hover:underline">QT-2023-0892</td>
+<td class="px-lg py-4 font-title-md text-title-md">Stark Industries Logistical</td>
+<td class="px-lg py-4">
+<span class="bg-primary/5 text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider border border-primary/10">B2B</span>
+</td>
+<td class="px-lg py-4 text-on-surface-variant text-sm">12 items</td>
+<td class="px-lg py-4 font-medium text-sm">$4,250.00</td>
+<td class="px-lg py-4 font-medium text-sm">$4,675.00</td>
+<td class="px-lg py-4 text-sm text-on-surface-variant">Nov 15, 2023</td>
+<td class="px-lg py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-status-pill bg-status-success/10 text-status-success border border-status-success/20">
+                                        ACCEPTED
+                                    </span>
+</td>
+<td class="px-lg py-4 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl" title="View">visibility</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl" title="Edit">edit</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl" title="Duplicate">content_copy</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Sent -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-4 font-bold text-secondary cursor-pointer hover:underline">QT-2023-0901</td>
+<td class="px-lg py-4 font-title-md text-title-md">Urban Micro-Foundry</td>
+<td class="px-lg py-4">
+<span class="bg-primary/5 text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider border border-primary/10">B2B</span>
+</td>
+<td class="px-lg py-4 text-on-surface-variant text-sm">3 items</td>
+<td class="px-lg py-4 font-medium text-sm">$1,100.00</td>
+<td class="px-lg py-4 font-medium text-sm">$1,210.00</td>
+<td class="px-lg py-4 text-sm text-on-surface-variant">Nov 22, 2023</td>
+<td class="px-lg py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-status-pill bg-status-material/10 text-status-material border border-status-material/20">
+                                        SENT
+                                    </span>
+</td>
+<td class="px-lg py-4 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl">visibility</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl">edit</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl">content_copy</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Draft -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-4 font-bold text-secondary cursor-pointer hover:underline">QT-2023-0914</td>
+<td class="px-lg py-4 font-title-md text-title-md">Alice Henderson</td>
+<td class="px-lg py-4">
+<span class="bg-secondary/5 text-secondary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider border border-secondary/10">D2C</span>
+</td>
+<td class="px-lg py-4 text-on-surface-variant text-sm">1 item</td>
+<td class="px-lg py-4 font-medium text-sm">$450.00</td>
+<td class="px-lg py-4 font-medium text-sm">$495.00</td>
+<td class="px-lg py-4 text-sm text-on-surface-variant">Dec 01, 2023</td>
+<td class="px-lg py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-status-pill bg-status-draft/10 text-status-draft border border-status-draft/20">
+                                        DRAFT
+                                    </span>
+</td>
+<td class="px-lg py-4 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl">visibility</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl">edit</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl">content_copy</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Rejected -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-4 font-bold text-secondary cursor-pointer hover:underline">QT-2023-0888</td>
+<td class="px-lg py-4 font-title-md text-title-md">Goliath National Corp</td>
+<td class="px-lg py-4">
+<span class="bg-primary/5 text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider border border-primary/10">B2B</span>
+</td>
+<td class="px-lg py-4 text-on-surface-variant text-sm">45 items</td>
+<td class="px-lg py-4 font-medium text-sm">$22,800.00</td>
+<td class="px-lg py-4 font-medium text-sm">$25,080.00</td>
+<td class="px-lg py-4 text-sm text-error/60">EXPIRED</td>
+<td class="px-lg py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-status-pill bg-status-error/10 text-status-error border border-status-error/20">
+                                        REJECTED
+                                    </span>
+</td>
+<td class="px-lg py-4 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl">visibility</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl">edit</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary text-xl">content_copy</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Empty State (Hidden by default, shown via JS if needed) -->
+<div class="hidden flex flex-col items-center justify-center py-20 px-lg text-center" id="empty-state">
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-on-surface-variant text-5xl">inventory_2</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-xs">No Quotations Found</h4>
+<p class="text-on-surface-variant font-body-md max-w-sm">We couldn't find any quotes matching your current filters. Try adjusting your search criteria or create a new quote.</p>
+<button class="mt-lg px-lg py-2 border border-secondary text-secondary rounded-lg font-title-md hover:bg-secondary/5 transition-colors">Clear All Filters</button>
+</div>
+<!-- Pagination -->
+<div class="px-lg py-4 border-t border-border-subtle bg-surface-container-lowest flex items-center justify-between">
+<span class="text-sm text-on-surface-variant font-body-md">Showing <span class="font-bold">1-4</span> of <span class="font-bold">46</span> results</span>
+<div class="flex gap-1">
+<button class="p-2 border border-border-subtle rounded disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="px-3 py-1 text-sm font-bold bg-secondary text-on-secondary rounded">1</button>
+<button class="px-3 py-1 text-sm font-medium hover:bg-surface-container rounded transition-colors">2</button>
+<button class="px-3 py-1 text-sm font-medium hover:bg-surface-container rounded transition-colors">3</button>
+<span class="px-2 py-1">...</span>
+<button class="px-3 py-1 text-sm font-medium hover:bg-surface-container rounded transition-colors">12</button>
+<button class="p-2 border border-border-subtle rounded hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Detail Insight (Bento Bottom) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg pb-lg">
+<div class="lg:col-span-2 bg-surface-card border border-border-subtle rounded-xl p-lg">
+<div class="flex items-center justify-between mb-lg">
+<h4 class="font-title-md text-title-md">Monthly Trend</h4>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-xs font-bold text-status-success">
+<span class="w-2 h-2 rounded-full bg-status-success"></span> Accepted
+                            </span>
+<span class="flex items-center gap-1 text-xs font-bold text-status-material">
+<span class="w-2 h-2 rounded-full bg-status-material"></span> Sent
+                            </span>
+</div>
+</div>
+<!-- Placeholder for Chart -->
+<div class="h-48 w-full bg-surface-container-low rounded-lg flex items-end justify-between px-lg pt-lg relative overflow-hidden">
+<!-- Simulated Chart Bars -->
+<div class="flex items-end gap-2 h-full w-full">
+<div class="flex-1 bg-status-material/20 h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-status-material/40 h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-status-material/30 h-[50%] rounded-t-sm"></div>
+<div class="flex-1 bg-status-material/70 h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-status-success/60 h-[70%] rounded-t-sm border-t-2 border-status-success"></div>
+<div class="flex-1 bg-status-material/50 h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-status-success/80 h-[90%] rounded-t-sm border-t-2 border-status-success"></div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center bg-surface/40 backdrop-blur-[1px] pointer-events-none">
+<p class="text-xs font-bold text-on-surface-variant bg-surface px-3 py-1 rounded shadow-sm border border-border-subtle">LIVE FORECAST ACTIVE</p>
+</div>
+</div>
+</div>
+<div class="bg-primary text-on-primary rounded-xl p-lg flex flex-col justify-between overflow-hidden relative group">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-all"></div>
+<div>
+<h4 class="font-title-md text-title-md text-secondary mb-2">Performance Tip</h4>
+<p class="text-sm opacity-80 leading-relaxed">Quotes sent with 3D product previews have a <span class="text-secondary font-bold">15% higher</span> conversion rate. Enable "Interactive Previews" in settings to automate this for Stark Industries and similar accounts.</p>
+</div>
+<button class="mt-lg flex items-center justify-between bg-white/5 border border-white/10 hover:bg-white/10 px-md py-3 rounded-lg transition-all">
+<span class="text-sm font-bold">Review Automation</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple search interactivity simulation
+        document.querySelector('input[placeholder="Quick search..."]').addEventListener('input', function(e) {
+            const val = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            let visibleCount = 0;
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                if (text.includes(val)) {
+                    row.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    row.classList.add('hidden');
+                }
+            });
+
+            const emptyState = document.getElementById('empty-state');
+            if (visibleCount === 0) {
+                emptyState.classList.remove('hidden');
+                document.querySelector('table').classList.add('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                document.querySelector('table').classList.remove('hidden');
+            }
+        });
+
+        // Dropdown visual feedback
+        document.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', function() {
+                this.classList.add('border-secondary');
+                setTimeout(() => this.classList.remove('border-secondary'), 1000);
+            });
+        });
+    </script>
+</body></html>

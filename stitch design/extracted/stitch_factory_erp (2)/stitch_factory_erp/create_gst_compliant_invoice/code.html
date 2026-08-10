@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FurniERP Billing - Create Invoice</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#e5c363",
+                        "inverse-surface": "#30312e",
+                        "inverse-primary": "#c8c6c5",
+                        "status-success": "#2D7D46",
+                        "on-background": "#1b1c1a",
+                        "status-financial": "#14532D",
+                        "on-secondary": "#ffffff",
+                        "status-invoice": "#7C3AED",
+                        "secondary-fixed": "#ffe08c",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "tertiary": "#000000",
+                        "surface-variant": "#e3e2df",
+                        "surface-bright": "#faf9f5",
+                        "surface": "#faf9f5",
+                        "surface-container-highest": "#e3e2df",
+                        "on-secondary-container": "#775e00",
+                        "status-production": "#F97316",
+                        "surface-dim": "#dbdad6",
+                        "on-tertiary-fixed": "#001e30",
+                        "surface-container-high": "#e9e8e4",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#e5e2e1",
+                        "on-surface-variant": "#444748",
+                        "primary": "#000000",
+                        "secondary-container": "#fdd977",
+                        "on-primary-fixed-variant": "#474746",
+                        "outline": "#747878",
+                        "surface-card": "#FFFFFF",
+                        "status-draft": "#888888",
+                        "tertiary-container": "#001e30",
+                        "outline-variant": "#c4c7c7",
+                        "on-primary-container": "#858383",
+                        "on-secondary-fixed": "#241a00",
+                        "on-tertiary-container": "#5889af",
+                        "border-subtle": "#E8E8E8",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-secondary-fixed-variant": "#584400",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "secondary": "#745b00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#5f5e5e",
+                        "inverse-on-surface": "#f2f1ed",
+                        "surface-container-low": "#f5f4f0",
+                        "tertiary-fixed": "#cbe6ff",
+                        "status-pending": "#F59E0B",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#efeeea",
+                        "on-surface": "#1b1c1a",
+                        "background": "#faf9f5",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "status-error": "#C0392B",
+                        "status-material": "#0891B2",
+                        "primary-container": "#1c1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "sidebar-width": "260px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "status-pill": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .stepper-active { color: #c8a84b; border-bottom: 2px solid #c8a84b; }
+        .sidebar-active { background-color: #e5c363; color: #241a00; border-left: 4px solid #745b00; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Desktop Sidebar Navigation -->
+<aside class="hidden md:flex flex-col h-screen fixed left-0 top-0 w-sidebar-width bg-inverse-surface shadow-md z-50 py-md">
+<div class="px-md mb-xl">
+<h1 class="font-headline-sm text-headline-sm font-bold text-secondary-fixed">Billing &amp; Collections</h1>
+<p class="font-label-md text-label-md text-surface-variant opacity-80">Unit: Chhabee / B2B / D2C</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-label-md text-label-md">Receivables Dashboard</span>
+</a>
+<a class="flex items-center px-md py-3 sidebar-active font-bold transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">receipt_long</span>
+<span class="font-label-md text-label-md">Invoicing</span>
+</a>
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">payments</span>
+<span class="font-label-md text-label-md">Receipts &amp; TDS</span>
+</a>
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">payments</span>
+<span class="font-label-md text-label-md">Credit/Debit Notes</span>
+</a>
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">account_balance</span>
+<span class="font-label-md text-label-md">Tally Export</span>
+</a>
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-label-md text-label-md">Customer Ledger</span>
+</a>
+</nav>
+<div class="mt-auto px-md pt-md border-t border-outline-variant/20">
+<a class="flex items-center py-2 text-surface-variant opacity-80 hover:opacity-100" href="#">
+<span class="material-symbols-outlined mr-3">account_circle</span>
+<span class="font-label-md text-label-md">User Profile</span>
+</a>
+<a class="flex items-center py-2 text-surface-variant opacity-80 hover:opacity-100" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-sidebar-width min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface sticky top-0 z-40 border-b border-border-subtle h-16 flex items-center justify-between px-lg max-w-container-max mx-auto w-full">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">FurniERP Billing</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex bg-surface-container-low px-sm py-1 rounded-lg border border-outline-variant items-center gap-2">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-64" placeholder="Search Invoices..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full"><span class="material-symbols-outlined">help</span></button>
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full"><span class="material-symbols-outlined">settings</span></button>
+</div>
+</div>
+</header>
+<!-- Centered Container -->
+<div class="flex-1 w-full max-w-container-max mx-auto px-lg py-xl flex flex-col lg:flex-row gap-xl overflow-hidden">
+<!-- Stepper and Invoice Flow Content -->
+<div class="flex-1 space-y-xl overflow-y-auto scrollbar-hide pb-24">
+<!-- Stepper Progress -->
+<div class="flex items-center justify-between border-b border-border-subtle pb-md sticky top-0 bg-background z-10">
+<div class="flex space-x-xl overflow-x-auto scrollbar-hide">
+<button class="font-label-md text-label-md pb-2 transition-all stepper-active" id="step-btn-1" onclick="showStep(1)">1. AUTO-DRAFT</button>
+<button class="font-label-md text-label-md pb-2 text-on-surface-variant transition-all" id="step-btn-2" onclick="showStep(2)">2. GST CALCULATION</button>
+<button class="font-label-md text-label-md pb-2 text-on-surface-variant transition-all" id="step-btn-3" onclick="showStep(3)">3. ADJUSTMENT</button>
+<button class="font-label-md text-label-md pb-2 text-on-surface-variant transition-all" id="step-btn-4" onclick="showStep(4)">4. REVIEW &amp; SUBMIT</button>
+</div>
+</div>
+<!-- Step 1: Auto-Draft Details -->
+<section class="space-y-lg animate-in fade-in duration-500" id="step-1">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg">
+<h3 class="font-title-md text-title-md mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">corporate_fare</span>
+                                Client Details (Pre-filled)
+                            </h3>
+<div class="space-y-md">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Legal Name</label>
+<p class="font-body-md text-body-md font-semibold">Grand Heritage Hotel &amp; Spa</p>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Billing Address</label>
+<p class="font-body-md text-body-md">Plot 45, Industrial Estate Phase II, Gurugram, Haryana - 122015</p>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">GSTIN</label>
+<p class="font-body-md text-body-md uppercase">06AAACG1234F1Z5</p>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Place of Supply</label>
+<p class="font-body-md text-body-md">Haryana (06)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg">
+<h3 class="font-title-md text-title-md mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">assignment</span>
+                                Reference &amp; Trigger
+                            </h3>
+<div class="space-y-md">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Work Order (WO) Reference</label>
+<p class="font-body-md text-body-md font-semibold">WO/2023/GHH-089</p>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Billing Trigger</label>
+<div class="flex items-center gap-2 text-status-success bg-status-success/10 px-3 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-status-pill text-status-pill">Material Dispatch Confirmed</span>
+</div>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Due Date</label>
+<p class="font-body-md text-body-md">Oct 28, 2023 (Net 30)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 2: GST Calculation Table -->
+<section class="hidden space-y-lg animate-in fade-in duration-500" id="step-2">
+<div class="bg-surface-card border border-border-subtle rounded-xl overflow-hidden">
+<div class="p-lg border-b border-border-subtle flex justify-between items-center">
+<h3 class="font-title-md text-title-md">GST Calculation Preview</h3>
+<span class="font-label-md text-label-md text-on-surface-variant">Intra-state Billing (CGST + SGST)</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-border-subtle">
+<tr>
+<th class="p-md font-label-md text-label-md text-on-surface-variant">Description</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant text-center">HSN</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant text-right">Qty</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant">Unit</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant text-right">Rate</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant text-right">Taxable Amt</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant">GST Type</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant text-right">GST Amt</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant text-right">Line Total</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-md font-body-md text-body-md">Reception Counter - Bespoke Oak Finish</td>
+<td class="p-md font-body-md text-body-md text-center">9403</td>
+<td class="p-md font-body-md text-body-md text-right">1</td>
+<td class="p-md font-body-md text-body-md">Unit</td>
+<td class="p-md font-body-md text-body-md text-right">₹85,000</td>
+<td class="p-md font-body-md text-body-md text-right">₹85,000</td>
+<td class="p-md font-body-md text-body-md text-secondary-container bg-secondary-container/10 px-2 rounded">CGST+SGST @ 9%</td>
+<td class="p-md font-body-md text-body-md text-right">₹15,300</td>
+<td class="p-md font-body-md text-body-md text-right font-semibold">₹1,00,300</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-md font-body-md text-body-md">Bar Stools - Industrial Gold Accent</td>
+<td class="p-md font-body-md text-body-md text-center">9401</td>
+<td class="p-md font-body-md text-body-md text-right">12</td>
+<td class="p-md font-body-md text-body-md">Unit</td>
+<td class="p-md font-body-md text-body-md text-right">₹4,500</td>
+<td class="p-md font-body-md text-body-md text-right">₹54,000</td>
+<td class="p-md font-body-md text-body-md text-secondary-container bg-secondary-container/10 px-2 rounded">CGST+SGST @ 9%</td>
+<td class="p-md font-body-md text-body-md text-right">₹9,720</td>
+<td class="p-md font-body-md text-body-md text-right font-semibold">₹63,720</td>
+</tr>
+</tbody>
+<tfoot class="bg-surface-container-high border-t-2 border-primary">
+<tr>
+<td class="p-md text-right font-label-md text-label-md" colspan="5">Total Taxable Value</td>
+<td class="p-md text-right font-body-md text-body-md">₹1,39,000</td>
+<td class="p-md text-right font-label-md text-label-md">Total GST</td>
+<td class="p-md text-right font-body-md text-body-md">₹25,020</td>
+<td class="p-md text-right font-title-md text-title-md text-primary">₹1,64,020</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+</section>
+<!-- Step 3: Advance Adjustment -->
+<section class="hidden space-y-lg animate-in fade-in duration-500" id="step-3">
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg">
+<h3 class="font-title-md text-title-md mb-md">Payment Reconciliation</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+<div class="p-md bg-surface-container-low border border-border-subtle rounded-lg flex flex-col items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Advance Received</span>
+<span class="font-headline-md text-headline-md text-status-success">₹50,000.00</span>
+<p class="font-body-md text-body-md mt-2">Ref: PR/2023/102 (Aug 15)</p>
+</div>
+<div class="space-y-md">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Advance to adjust in this invoice</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-body-md">₹</span>
+<input class="w-full pl-8 pr-4 py-2 border border-border-subtle rounded focus:border-secondary-fixed focus:ring-0 font-body-md h-10" type="number" value="50000"/>
+</div>
+<p class="text-[11px] mt-1 text-on-surface-variant">Remaining balance will be available for next billing.</p>
+</div>
+<div class="bg-surface-container-highest p-md rounded-lg">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-label-md text-label-md">Net Payable Amount</span>
+<span class="font-title-md text-title-md text-primary">₹1,14,020.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 4: Final Preview & Submission -->
+<section class="hidden space-y-lg animate-in fade-in duration-500" id="step-4">
+<div class="bg-surface-card border border-border-subtle rounded-xl p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-16 h-16 bg-secondary-fixed/20 text-secondary-fixed-dim rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Review Complete</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">
+                            The invoice draft for <strong>Grand Heritage Hotel</strong> has been generated with internal reference <strong>#INV-DFT-2023-0045</strong>. All GST validations have passed.
+                        </p>
+<div class="flex flex-col md:flex-row gap-md w-full max-w-lg mt-xl">
+<button class="flex-1 px-lg py-3 border border-primary text-primary font-title-md hover:bg-surface-container-low transition-all">
+                                Save as Draft
+                            </button>
+<button class="flex-1 px-lg py-3 bg-secondary text-on-secondary font-title-md hover:bg-secondary-fixed-dim transition-all shadow-md">
+                                Approve &amp; Send
+                            </button>
+</div>
+</div>
+</section>
+</div>
+<!-- Sidebar Checklist (Mandatory GST Fields) -->
+<aside class="w-full lg:w-80 shrink-0 space-y-md">
+<div class="bg-surface-card border border-border-subtle rounded-xl p-md">
+<h4 class="font-title-md text-title-md mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">fact_check</span>
+                        GST Compliance Check
+                    </h4>
+<ul class="space-y-sm">
+<li class="flex items-center gap-3 p-2 bg-status-success/5 rounded border border-status-success/20">
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Buyer GSTIN Validated</span>
+</li>
+<li class="flex items-center gap-3 p-2 bg-status-success/5 rounded border border-status-success/20">
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">HSN Codes Present</span>
+</li>
+<li class="flex items-center gap-3 p-2 bg-status-success/5 rounded border border-status-success/20">
+<span class="material-symbols-outlined text-status-success" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">State Codes Mapped</span>
+</li>
+<li class="flex items-center gap-3 p-2 bg-status-pending/5 rounded border border-status-pending/20">
+<span class="material-symbols-outlined text-status-pending" style="font-variation-settings: 'FILL' 1;">pending</span>
+<span class="font-label-md text-label-md">E-Way Bill Not Required</span>
+</li>
+<li class="flex items-center gap-3 p-2 bg-surface-container-low rounded border border-outline-variant opacity-50">
+<span class="material-symbols-outlined text-outline">circle</span>
+<span class="font-label-md text-label-md">Digital Signature Ready</span>
+</li>
+</ul>
+</div>
+<div class="bg-inverse-surface text-on-secondary p-md rounded-xl space-y-md">
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-secondary-fixed">Internal Audit Log</h4>
+<div class="space-y-md border-l border-outline-variant ml-2 pl-4 py-2">
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-secondary-fixed"></div>
+<p class="font-label-md text-label-md">Draft Created</p>
+<p class="font-body-md text-[11px] opacity-70">Admin (System) • 09:12 AM</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-secondary-fixed"></div>
+<p class="font-label-md text-label-md">Details Verified</p>
+<p class="font-body-md text-[11px] opacity-70">Accounting Head • 10:45 AM</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Mobile Bottom NavBar -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-surface-container-highest border-t border-border-subtle shadow-lg flex justify-around items-center px-4 py-2 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-fixed text-on-secondary-fixed rounded-xl px-3 py-1">
+<span class="material-symbols-outlined">receipt</span>
+<span class="font-label-md text-label-md">Invoices</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined">add_card</span>
+<span class="font-label-md text-label-md">Receipts</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Reports</span>
+</button>
+</nav>
+</main>
+<script>
+        function showStep(stepNumber) {
+            // Hide all sections
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`step-${i}`).classList.add('hidden');
+                document.getElementById(`step-btn-${i}`).classList.remove('stepper-active');
+                document.getElementById(`step-btn-${i}`).classList.add('text-on-surface-variant');
+            }
+            
+            // Show selected section
+            document.getElementById(`step-${stepNumber}`).classList.remove('hidden');
+            document.getElementById(`step-btn-${stepNumber}`).classList.add('stepper-active');
+            document.getElementById(`step-btn-${stepNumber}`).classList.remove('text-on-surface-variant');
+        }
+
+        // Add some interaction for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // If it's a real app we'd navigate, here we just show feedback
+                console.log('Navigating to:', link.innerText);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WhatsApp Automation | Connection Status</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "status-success": "#2D7D46",
+                "tertiary-fixed": "#cbe6ff",
+                "secondary-container": "#fdd977",
+                "status-error": "#C0392B",
+                "on-error-container": "#93000a",
+                "error-container": "#ffdad6",
+                "status-production": "#F97316",
+                "status-financial": "#14532D",
+                "on-secondary-fixed-variant": "#584400",
+                "surface-card": "#FFFFFF",
+                "error": "#ba1a1a",
+                "secondary": "#745b00",
+                "on-error": "#ffffff",
+                "inverse-primary": "#c8c6c5",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed-dim": "#c8c6c5",
+                "surface-container": "#efeeea",
+                "on-primary-fixed-variant": "#474746",
+                "on-secondary-fixed": "#241a00",
+                "on-primary": "#ffffff",
+                "primary-fixed": "#e5e2e1",
+                "on-tertiary-fixed-variant": "#0e4b6e",
+                "on-secondary-container": "#775e00",
+                "outline-variant": "#c4c7c7",
+                "tertiary": "#000000",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed": "#1c1b1b",
+                "tertiary-fixed-dim": "#9bccf6",
+                "surface-bright": "#faf9f5",
+                "outline": "#747878",
+                "primary-container": "#1c1b1b",
+                "tertiary-container": "#001e30",
+                "status-pending": "#F59E0B",
+                "status-invoice": "#7C3AED",
+                "secondary-fixed-dim": "#e5c363",
+                "surface": "#faf9f5",
+                "on-tertiary": "#ffffff",
+                "surface-variant": "#e3e2df",
+                "border-subtle": "#E8E8E8",
+                "on-primary-container": "#858383",
+                "surface-container-low": "#f5f4f0",
+                "surface-dim": "#dbdad6",
+                "secondary-fixed": "#ffe08c",
+                "status-material": "#0891B2",
+                "inverse-surface": "#30312e",
+                "on-surface-variant": "#444748",
+                "primary": "#000000",
+                "surface-tint": "#5f5e5e",
+                "on-surface": "#1b1c1a",
+                "inverse-on-surface": "#f2f1ed",
+                "surface-container-high": "#e9e8e4",
+                "surface-container-highest": "#e3e2df",
+                "on-tertiary-fixed": "#001e30",
+                "background": "#faf9f5",
+                "on-tertiary-container": "#5889af",
+                "status-draft": "#888888",
+                "on-background": "#1b1c1a"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "md": "16px",
+                "container-max": "1440px",
+                "xs": "4px",
+                "sidebar-width": "260px",
+                "lg": "24px",
+                "base": "4px",
+                "xl": "32px",
+                "sm": "8px"
+            },
+            "fontFamily": {
+                "title-md": ["Inter"],
+                "status-pill": ["Inter"],
+                "label-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E8E8E8;
+        }
+        .sidebar-active {
+            background-color: #ffe08c; /* secondary-fixed */
+            color: #241a00; /* on-secondary-fixed */
+            border-left: 4px solid #e5c363; /* secondary-fixed-dim */
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Desktop SideNavBar -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full w-[260px] bg-primary-container py-md px-sm z-40">
+<div class="mb-xl px-md">
+<h1 class="font-headline-md text-headline-md text-secondary-fixed">Factory ERP</h1>
+<p class="font-label-md text-label-md text-on-primary-container/60">V2.4.0</p>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded transition-all text-on-primary-container/80 hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-label-md text-label-md">Connection Status</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded transition-all text-on-primary-container/80 hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-md text-label-md">QR Pairing</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded transition-all text-on-primary-container/80 hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="font-label-md text-label-md">Usage Stats</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded transition-all text-on-primary-container/80 hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">schedule_send</span>
+<span class="font-label-md text-label-md">Message Queue</span>
+</a>
+<!-- Active State: Settings -->
+<a class="flex items-center gap-md px-md py-sm rounded transition-all sidebar-active font-bold" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-sm pb-md">
+<button class="w-full bg-[#C8A84B] text-white py-sm rounded-lg font-title-md text-title-md hover:brightness-110 transition-all mb-md">
+                New Broadcast
+            </button>
+<div class="space-y-xs border-t border-on-primary-container/20 pt-md">
+<a class="flex items-center gap-md px-md py-sm rounded text-on-primary-container/80 hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-primary-container/80 hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-[260px] min-h-screen">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-lg h-16 max-w-container-max mx-auto border-b border-border-subtle bg-surface sticky top-0 z-30">
+<div class="flex items-center gap-md">
+<span class="md:hidden material-symbols-outlined text-primary cursor-pointer">menu</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">WhatsApp Automation</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center bg-surface-container rounded-full px-md py-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md font-body-md w-64" placeholder="Search automation logs..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant p-sm hover:bg-surface-container rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant p-sm hover:bg-surface-container rounded-full transition-colors">help_outline</button>
+<div class="w-8 h-8 rounded-full bg-primary-fixed overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a middle-aged factory manager in a clean, minimalist setting. He is wearing a dark polo shirt with a subtle industrial logo. The background is a slightly blurred high-tech manufacturing floor with warm gold and cool charcoal tones, conveying authority and technical expertise in a modern light-mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU_AuuJyZg9f1JeiUKpDZcT1muNfxfyPptJWtJ6--bmr-nnA4Q283l3jNXf5HmwjmOcI_Fc3hz6CVrRqLloIvRDWu6X7Ndw7RZ8TiqTMUlf-5WhLWusgTX9vrVvRycPPh6E6ElvGZVedr0ilAwetyO7ayCWN2cyyAmBfGo9YJwl5dFIpqD0WIPXrE5gMvfHvyNmyK7ZS0brr7Pn5WUWk5WqNpN_kaaUyI-bE3Vdxz5vIx4DvKeWcOx8g"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-lg max-w-container-max mx-auto">
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Connection Status</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your WhatsApp instance and monitor real-time system performance.</p>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Status Main Card (Bento Large) -->
+<div class="lg:col-span-8 glass-card rounded-xl p-xl flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-full bg-status-success/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-success text-3xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<div class="flex items-center gap-sm">
+<h3 class="font-headline-sm text-headline-sm">CONNECTED</h3>
+<span class="flex h-2 w-2 rounded-full bg-status-success animate-pulse"></span>
+</div>
+<p class="font-title-md text-title-md text-primary font-bold">+1 (555) 012-3456</p>
+<p class="font-label-md text-label-md text-on-surface-variant mt-xs">WhatsApp Bot Instance #WA-492</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-sm px-md py-sm border border-primary rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                                Refresh Status
+                            </button>
+<button class="flex items-center gap-sm px-md py-sm bg-primary text-white rounded-lg font-label-md text-label-md hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">send</span>
+                                Test WhatsApp
+                            </button>
+</div>
+</div>
+<div class="mt-xl grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-lg bg-surface-container-low rounded-lg border border-border-subtle">
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Uptime</p>
+<p class="font-headline-md text-headline-md">14d 06h 22m</p>
+<div class="w-full bg-surface-container-high h-1 rounded-full mt-md overflow-hidden">
+<div class="bg-status-success h-full w-[99.8%]"></div>
+</div>
+</div>
+<div class="p-lg bg-surface-container-low rounded-lg border border-border-subtle">
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Last Ping</p>
+<p class="font-headline-md text-headline-md">4 seconds ago</p>
+<p class="font-label-md text-label-md text-status-success mt-md">Latency: 42ms</p>
+</div>
+</div>
+</div>
+<!-- Usage Statistics (Bento Small) -->
+<div class="lg:col-span-4 glass-card rounded-xl p-xl">
+<h4 class="font-title-md text-title-md mb-lg">Daily Statistics</h4>
+<div class="space-y-xl">
+<div class="flex items-end justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Messages Sent</p>
+<p class="font-headline-lg text-headline-lg text-primary">142</p>
+</div>
+<div class="flex items-center text-status-success gap-xs mb-xs">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-md">12%</span>
+</div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Messages Failed</p>
+<p class="font-headline-lg text-headline-lg text-status-error">3</p>
+</div>
+<div class="flex items-center text-status-error gap-xs mb-xs">
+<span class="material-symbols-outlined text-sm">warning</span>
+<span class="font-label-md">2.1% fail rate</span>
+</div>
+</div>
+<div class="pt-lg border-t border-border-subtle">
+<p class="font-label-md text-label-md text-on-surface-variant mb-md">Delivery Performance</p>
+<div class="flex h-2 w-full rounded-full overflow-hidden bg-surface-container-highest">
+<div class="bg-status-success w-[97.9%]"></div>
+<div class="bg-status-error w-[2.1%]"></div>
+</div>
+<div class="flex justify-between mt-sm">
+<span class="font-label-md text-xs text-on-surface-variant">Successful</span>
+<span class="font-label-md text-xs text-on-surface-variant">Failed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed (Bento Wide) -->
+<div class="lg:col-span-12 glass-card rounded-xl p-xl overflow-hidden">
+<div class="flex justify-between items-center mb-lg">
+<h4 class="font-title-md text-title-md">Instance Activity Log</h4>
+<button class="text-secondary font-label-md hover:underline">View All Logs</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="border-b border-border-subtle">
+<tr>
+<th class="py-sm font-label-md text-on-surface-variant">Event ID</th>
+<th class="py-sm font-label-md text-on-surface-variant">Type</th>
+<th class="py-sm font-label-md text-on-surface-variant">Recipient</th>
+<th class="py-sm font-label-md text-on-surface-variant">Status</th>
+<th class="py-sm font-label-md text-on-surface-variant">Timestamp</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<tr>
+<td class="py-md font-body-md text-primary font-bold">#LOG-8291</td>
+<td class="py-md font-body-md">Production Update</td>
+<td class="py-md font-body-md">+1 (555) 998-1122</td>
+<td class="py-md">
+<span class="inline-flex items-center px-sm py-xs rounded bg-status-success/10 text-status-success font-status-pill text-status-pill">DELIVERED</span>
+</td>
+<td class="py-md font-body-md text-on-surface-variant">10:42:15 AM</td>
+</tr>
+<tr>
+<td class="py-md font-body-md text-primary font-bold">#LOG-8290</td>
+<td class="py-md font-body-md">Alert: Maintenance</td>
+<td class="py-md font-body-md">+1 (555) 777-4433</td>
+<td class="py-md">
+<span class="inline-flex items-center px-sm py-xs rounded bg-status-success/10 text-status-success font-status-pill text-status-pill">DELIVERED</span>
+</td>
+<td class="py-md font-body-md text-on-surface-variant">10:40:02 AM</td>
+</tr>
+<tr>
+<td class="py-md font-body-md text-primary font-bold">#LOG-8289</td>
+<td class="py-md font-body-md">Shift Report</td>
+<td class="py-md font-body-md">+1 (555) 332-1199</td>
+<td class="py-md">
+<span class="inline-flex items-center px-sm py-xs rounded bg-status-error/10 text-status-error font-status-pill text-status-pill">FAILED</span>
+</td>
+<td class="py-md font-body-md text-on-surface-variant">10:35:48 AM</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-16 pb-safe bg-surface shadow-lg border-t border-border-subtle">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">link</span>
+<span class="font-status-pill text-status-pill">Connection</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">qr_code</span>
+<span class="font-status-pill text-status-pill">Pairing</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-status-pill text-status-pill">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary-fixed bg-primary-container rounded-xl py-xs px-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-status-pill text-status-pill">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for the Refresh button
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Refresh Status')) {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('.material-symbols-outlined');
+                    icon.classList.add('animate-spin');
+                    setTimeout(() => {
+                        icon.classList.remove('animate-spin');
+                    }, 1000);
+                });
+            }
+        });
+    </script>
+</body></html>

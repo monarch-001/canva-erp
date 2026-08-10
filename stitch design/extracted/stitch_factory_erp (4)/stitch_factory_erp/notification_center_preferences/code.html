@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LignaERP - Notification Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar for data-dense notifications */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c8c6c5;
+            border-radius: 10px;
+        }
+        .notification-overlay-enter {
+            animation: slideDown 0.2s ease-out forwards;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-subtle": "#E8E8E8",
+                        "surface-card": "#FFFFFF",
+                        "surface": "#faf9f5",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "surface-container-high": "#e9e8e4",
+                        "status-success": "#2D7D46",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#001e30",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e3e2df",
+                        "status-invoice": "#7C3AED",
+                        "background": "#faf9f5",
+                        "status-financial": "#14532D",
+                        "outline": "#747878",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container": "#efeeea",
+                        "status-production": "#F97316",
+                        "on-error-container": "#93000a",
+                        "status-draft": "#888888",
+                        "on-surface-variant": "#444748",
+                        "on-tertiary-container": "#5889af",
+                        "status-error": "#C0392B",
+                        "on-surface": "#1b1c1a",
+                        "on-primary": "#ffffff",
+                        "secondary": "#745b00",
+                        "primary": "#000000",
+                        "secondary-container": "#fdd977",
+                        "gold-accent": "#C8A84B"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "sidebar-width": "260px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-primary flex flex-col py-lg z-50 shadow-md">
+<div class="px-lg mb-xl">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-10 h-10 bg-gold-accent rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white fill-icon">factory</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-white text-[18px] leading-tight font-bold">Main Facility</h1>
+<p class="text-[11px] text-white/60 uppercase tracking-widest font-bold">Production Unit A</p>
+</div>
+</div>
+<button class="w-full bg-gold-accent text-white font-label-md py-sm rounded flex items-center justify-center gap-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                New Work Order
+            </button>
+</div>
+<nav class="flex-1 overflow-y-auto">
+<div class="space-y-1">
+<!-- Dashboard -->
+<a class="text-white/80 flex items-center gap-md px-lg py-sm hover:bg-white/10 transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<!-- Work Orders -->
+<a class="text-white/80 flex items-center gap-md px-lg py-sm hover:bg-white/10 transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-md">Work Orders</span>
+</a>
+<!-- Inventory -->
+<a class="text-white/80 flex items-center gap-md px-lg py-sm hover:bg-white/10 transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md">Inventory</span>
+</a>
+<!-- Production -->
+<a class="text-white/80 flex items-center gap-md px-lg py-sm hover:bg-white/10 transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-md">Production</span>
+</a>
+<!-- Finance -->
+<a class="text-white/80 flex items-center gap-md px-lg py-sm hover:bg-white/10 transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md">Finance</span>
+</a>
+<!-- Settings (Active) -->
+<a class="bg-gold-accent text-white border-l-4 border-white flex items-center gap-md px-lg py-sm transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined fill-icon">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+</div>
+</nav>
+<div class="mt-auto border-t border-white/10 pt-lg">
+<a class="text-white/80 flex items-center gap-md px-lg py-sm hover:bg-white/10 transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md">Support</span>
+</a>
+<a class="text-white/80 flex items-center gap-md px-lg py-sm hover:bg-white/10 transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 ml-sidebar-width min-w-0 flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="h-16 bg-surface-card border-b border-border-subtle flex justify-between items-center px-lg sticky top-0 z-40">
+<div class="flex items-center gap-lg flex-1">
+<span class="font-headline-sm text-primary font-bold tracking-tight">LignaERP</span>
+<div class="relative w-96 max-w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full bg-surface-container-low border border-border-subtle rounded-lg py-2 pl-10 pr-4 text-body-md focus:outline-none focus:border-gold-accent transition-colors" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<!-- Notification Bell -->
+<div class="relative">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors relative cursor-pointer active:scale-95" id="notif-bell">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-status-error rounded-full ring-2 ring-white"></span>
+</button>
+<!-- Notifications Dropdown Overlay (Simulated Open) -->
+<div class="hidden absolute right-0 mt-2 w-[420px] bg-white border border-border-subtle shadow-lg rounded-xl z-50 notification-overlay-enter overflow-hidden" id="notif-overlay">
+<div class="px-md py-sm border-b border-border-subtle flex justify-between items-center bg-surface-container-low">
+<h3 class="font-title-md text-primary">Notifications</h3>
+<button class="text-gold-accent font-label-md hover:underline">Mark All as Read</button>
+</div>
+<div class="max-h-[480px] overflow-y-auto custom-scrollbar">
+<!-- Critical Item -->
+<div class="p-md border-b border-border-subtle hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-status-error fill-icon">report</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="text-body-md font-bold text-status-error truncate">Critical: WO-CHH-26-001 Blocked</h4>
+<span class="text-[11px] text-outline whitespace-nowrap">2 hours ago</span>
+</div>
+<p class="text-body-md text-on-surface-variant mt-1">Material shortage reported for chassis assembly. Production line 4 halted.</p>
+<div class="mt-2 flex items-center justify-between">
+<a class="text-gold-accent font-label-md flex items-center gap-1 hover:underline" href="#">
+                                                View Work Order <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+<button class="text-[12px] text-outline hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">Mark Read</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Warning Item -->
+<div class="p-md border-b border-border-subtle hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-pending fill-icon">pending_actions</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="text-body-md font-bold text-on-surface truncate">Approval Needed: OT Request OTR-26-005</h4>
+<span class="text-[11px] text-outline whitespace-nowrap">4 hours ago</span>
+</div>
+<p class="text-body-md text-on-surface-variant mt-1">Overtime request submitted for Weekend Shift B by James Miller.</p>
+<div class="mt-2 flex items-center justify-between">
+<a class="text-gold-accent font-label-md flex items-center gap-1 hover:underline" href="#">
+                                                Review Request <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+<button class="text-[12px] text-outline hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">Mark Read</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Info Item -->
+<div class="p-md border-b border-border-subtle hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-tertiary-fixed-dim/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container fill-icon">local_shipping</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="text-body-md font-bold text-on-surface truncate">Material Arrived: PO-26-008</h4>
+<span class="text-[11px] text-outline whitespace-nowrap">6 hours ago</span>
+</div>
+<p class="text-body-md text-on-surface-variant mt-1">Bulk steel supply from Apex Ltd has been received at Dock 2.</p>
+<div class="mt-2 flex items-center justify-between">
+<a class="text-gold-accent font-label-md flex items-center gap-1 hover:underline" href="#">
+                                                View Receipt <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+<button class="text-[12px] text-outline hover:text-primary opacity-0 group-hover:opacity-100 transition-opacity">Mark Read</button>
+</div>
+</div>
+</div>
+</div>
+<!-- More Items Placeholder -->
+<div class="p-4 text-center">
+<button class="text-body-md text-outline hover:text-primary transition-colors">Load older notifications (17 more)</button>
+</div>
+</div>
+</div>
+</div>
+<div class="w-px h-8 bg-border-subtle mx-1"></div>
+<div class="flex items-center gap-sm cursor-pointer group">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a factory manager in a clean white industrial polo shirt, posing in front of a subtly blurred background of a modern automated assembly line with golden light reflecting off metallic surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAEzfLJFKxgtl-xvmPyBqRNWPRaQ_cSu494b7Wa8oPvyFQT1SP_ZuLUO4tsuDSggCtlA3EAex09Cqu5-I0j3FcoHzqaCegScCxQLLe-irstxIFhfGqrgs15pRFkLVr_Aq_t-FnUdx93H83J0vbx-OtofW6a5hDtmaKw78QiLJl5SsxL5_5RfKCg84E_dtalBlhy1277_BikSoDgFlZWnzl8Eu6gpx1nFaYV7eJX0xw_7A5f3nCQVi5nQ"/>
+</div>
+<span class="font-label-md text-primary group-hover:text-gold-accent transition-colors">FM John Doe</span>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto p-lg">
+<div class="max-w-container-max mx-auto">
+<!-- Breadcrumbs & Header -->
+<div class="mb-lg">
+<nav class="flex gap-2 text-outline text-[12px] mb-2">
+<a class="hover:text-primary" href="#">Settings</a>
+<span>/</span>
+<span class="text-primary font-semibold">Notifications</span>
+</nav>
+<h2 class="font-headline-md text-primary">Notification Preferences</h2>
+<p class="text-on-surface-variant mt-1">Configure how you want to be alerted for facility operations and critical events.</p>
+</div>
+<!-- Settings Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Left Column: Notification Channels -->
+<div class="lg:col-span-2 space-y-lg">
+<!-- Section: Automated Channels -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg">
+<div class="flex items-center gap-sm mb-lg border-b border-border-subtle pb-md">
+<span class="material-symbols-outlined text-gold-accent">broadcast_on_personal</span>
+<h3 class="font-title-md text-primary">Channel Configuration</h3>
+</div>
+<div class="space-y-8">
+<!-- Critical Alerts (Cannot Disable) -->
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-2">
+<h4 class="text-body-lg font-bold text-primary">Critical Production Alerts</h4>
+<span class="px-2 py-0.5 bg-error-container text-status-error text-[10px] font-bold uppercase rounded">Required</span>
+</div>
+<p class="text-body-md text-on-surface-variant">Stoppages, safety hazards, and major blockages.</p>
+</div>
+<div class="flex items-center gap-4">
+<!-- Toggle UI -->
+<div class="flex flex-col items-center gap-1 opacity-50 cursor-not-allowed">
+<div class="w-10 h-5 bg-gold-accent rounded-full relative">
+<div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full"></div>
+</div>
+<span class="text-[10px] font-bold text-outline">In-app</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-50 cursor-not-allowed">
+<div class="w-10 h-5 bg-gold-accent rounded-full relative">
+<div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full"></div>
+</div>
+<span class="text-[10px] font-bold text-outline">WhatsApp</span>
+</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg border border-border-subtle flex gap-3 items-center">
+<span class="material-symbols-outlined text-outline text-[20px]">lock</span>
+<p class="text-[12px] text-on-surface-variant italic">Critical alerts cannot be disabled to ensure facility safety and compliance.</p>
+</div>
+</div>
+<!-- Approvals & Tasks -->
+<div class="flex justify-between items-center">
+<div>
+<h4 class="text-body-lg font-bold text-primary">Approvals &amp; Workflow Tasks</h4>
+<p class="text-body-md text-on-surface-variant">OT requests, PO approvals, and maintenance sign-offs.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center gap-1">
+<button class="w-10 h-5 bg-gold-accent rounded-full relative transition-colors" onclick="toggleSwitch(this)">
+<div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full transition-all"></div>
+</button>
+<span class="text-[10px] font-bold text-primary">In-app</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<button class="w-10 h-5 bg-border-subtle rounded-full relative transition-colors" onclick="toggleSwitch(this)">
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-all"></div>
+</button>
+<span class="text-[10px] font-bold text-outline">WhatsApp</span>
+</div>
+</div>
+</div>
+<!-- Logistics & Inventory -->
+<div class="flex justify-between items-center">
+<div>
+<h4 class="text-body-lg font-bold text-primary">Logistics &amp; Material Updates</h4>
+<p class="text-body-md text-on-surface-variant">Shipment arrivals, low stock alerts, and carrier updates.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center gap-1">
+<button class="w-10 h-5 bg-gold-accent rounded-full relative transition-colors" onclick="toggleSwitch(this)">
+<div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full transition-all"></div>
+</button>
+<span class="text-[10px] font-bold text-primary">In-app</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<button class="w-10 h-5 bg-gold-accent rounded-full relative transition-colors" onclick="toggleSwitch(this)">
+<div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full transition-all"></div>
+</button>
+<span class="text-[10px] font-bold text-primary">WhatsApp</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- WhatsApp Configuration -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg">
+<div class="flex items-center gap-sm mb-lg border-b border-border-subtle pb-md">
+<span class="material-symbols-outlined text-gold-accent">phone_android</span>
+<h3 class="font-title-md text-primary">Mobile Connectivity</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div>
+<label class="block text-label-md text-on-surface font-bold mb-1">Facility Manager's WhatsApp Number</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<span class="text-outline text-body-md font-semibold">+1</span>
+</div>
+<input class="w-full bg-white border border-border-subtle rounded-lg py-2.5 pl-10 pr-4 text-body-md focus:outline-none focus:border-gold-accent" type="tel" value="555-012-3456"/>
+</div>
+<p class="mt-2 text-[11px] text-on-surface-variant">Enter number for automated Critical and Operational alerts via WhatsApp Business.</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg flex items-center gap-md self-center">
+<div class="w-12 h-12 bg-status-success/10 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-status-success">verified</span>
+</div>
+<div>
+<p class="text-body-md font-bold text-primary">Number Verified</p>
+<p class="text-[12px] text-on-surface-variant">Last ping: Today, 08:45 AM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Info & Summary -->
+<div class="space-y-lg">
+<div class="bg-primary text-white rounded-xl p-lg relative overflow-hidden">
+
+<div class="relative z-10">
+<h3 class="font-headline-sm mb-2">Operational Insight</h3>
+<p class="text-body-md text-white/70 mb-4 leading-relaxed">System notifications ensure a 14% faster response time to production bottlenecks by alerting floor managers instantly.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gold-accent text-[20px]">bolt</span>
+<span class="text-[13px]">Average alert latency: &lt; 200ms</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gold-accent text-[20px]">notifications_active</span>
+<span class="text-[13px]">Active alerts today: 12</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle rounded-xl p-lg">
+<h3 class="font-title-md text-primary mb-md">System Health</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-on-surface-variant">Push Service</span>
+<span class="flex items-center gap-1 text-status-success font-bold">
+<span class="w-2 h-2 bg-status-success rounded-full"></span> Online
+                                    </span>
+</div>
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-on-surface-variant">WhatsApp Gateway</span>
+<span class="flex items-center gap-1 text-status-success font-bold">
+<span class="w-2 h-2 bg-status-success rounded-full"></span> Online
+                                    </span>
+</div>
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-on-surface-variant">Notification Logs</span>
+<span class="text-primary font-bold">Last 24h: 1,402</span>
+</div>
+</div>
+<button class="w-full mt-lg border border-border-subtle py-2 rounded font-label-md text-primary hover:bg-surface-container-low transition-colors">Download History CSV</button>
+</div>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="mt-xl flex justify-end gap-md">
+<button class="px-lg py-sm border border-primary text-primary font-label-md rounded active:scale-95 transition-all">Reset to Defaults</button>
+<button class="px-xl py-sm bg-gold-accent text-white font-label-md rounded shadow-lg shadow-gold-accent/20 active:scale-95 transition-all">Save All Changes</button>
+</div>
+</div>
+</main>
+</div>
+<script>
+        // Notification Toggle UI
+        const bell = document.getElementById('notif-bell');
+        const overlay = document.getElementById('notif-overlay');
+
+        bell.addEventListener('click', (e) => {
+            e.stopPropagation();
+            overlay.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!overlay.contains(e.target) && e.target !== bell) {
+                overlay.classList.add('hidden');
+            }
+        });
+
+        // Toggle Switch Functionality
+        function toggleSwitch(btn) {
+            const dot = btn.querySelector('div');
+            const label = btn.nextElementSibling;
+            
+            if (btn.classList.contains('bg-gold-accent')) {
+                // Turn OFF
+                btn.classList.remove('bg-gold-accent');
+                btn.classList.add('bg-border-subtle');
+                dot.classList.remove('right-1');
+                dot.classList.add('left-1');
+                label.classList.remove('text-primary');
+                label.classList.add('text-outline');
+            } else {
+                // Turn ON
+                btn.classList.remove('bg-border-subtle');
+                btn.classList.add('bg-gold-accent');
+                dot.classList.remove('left-1');
+                dot.classList.add('right-1');
+                label.classList.remove('text-outline');
+                label.classList.add('text-primary');
+            }
+        }
+    </script>
+</body></html>

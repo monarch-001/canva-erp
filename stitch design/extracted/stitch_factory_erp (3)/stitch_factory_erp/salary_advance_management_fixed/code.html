@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salary Advance Management | Industrial Authority ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Industrial Authority Theme Overrides */
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #745b00;
+            --surface-container: #efeeea;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffe08c",
+                        "secondary-container": "#fdd977",
+                        "on-tertiary": "#ffffff",
+                        "background": "#faf9f5",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "status-pending": "#F59E0B",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e3e2df",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#e5c363",
+                        "on-secondary-container": "#775e00",
+                        "error-container": "#ffdad6",
+                        "status-production": "#F97316",
+                        "surface": "#faf9f5",
+                        "on-surface-variant": "#444748",
+                        "primary": "#1a1a1a",
+                        "status-material": "#0891B2",
+                        "surface-container-low": "#f5f4f0",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#cbe6ff",
+                        "surface-card": "#FFFFFF",
+                        "status-error": "#C0392B",
+                        "secondary": "#745b00",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "outline-variant": "#c4c7c7",
+                        "status-invoice": "#7C3AED",
+                        "inverse-primary": "#c8c6c5",
+                        "status-financial": "#14532D",
+                        "surface-tint": "#5f5e5e",
+                        "primary-fixed": "#e5e2e1",
+                        "inverse-surface": "#30312e",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "border-subtle": "#E8E8E8",
+                        "inverse-on-surface": "#f2f1ed",
+                        "tertiary-container": "#001e30",
+                        "on-primary-container": "#858383",
+                        "status-success": "#2D7D46",
+                        "on-tertiary-fixed": "#001e30",
+                        "tertiary": "#000000",
+                        "status-draft": "#888888",
+                        "on-background": "#1b1c1a",
+                        "primary-container": "#1c1b1b",
+                        "on-surface": "#1b1c1a",
+                        "surface-dim": "#dbdad6",
+                        "surface-container-high": "#e9e8e4",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-error": "#ffffff",
+                        "outline": "#747878",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "surface-variant": "#e3e2df",
+                        "on-tertiary-container": "#5889af",
+                        "on-secondary-fixed-variant": "#584400",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#efeeea",
+                        "surface-bright": "#faf9f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sidebar-width": "260px",
+                        "container-max": "1440px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "base": "4px"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-on-surface">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-primary-container flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<div class="flex items-center gap-sm mb-base">
+<div class="w-8 h-8 bg-secondary flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-on-secondary text-[20px]">factory</span>
+</div>
+<h1 class="font-bold text-lg text-on-primary">Precision Ops</h1>
+</div>
+<p class="text-xs text-on-primary-container opacity-70">Unit 04 - Heavy Mfg</p>
+</div>
+<nav class="flex-1 space-y-1 overflow-y-auto hide-scrollbar px-sm">
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all rounded-sm" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all rounded-sm" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all rounded-sm" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="text-sm font-medium">Blind GRN</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all rounded-sm" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="text-sm font-medium">Production</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container border-l-4 border-secondary flex items-center gap-md px-md py-sm rounded-sm" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-sm font-semibold">Financials</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all rounded-sm" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</nav>
+<div class="px-md mt-auto pt-lg border-t border-on-primary-container/10">
+<button class="w-full bg-secondary text-on-secondary font-semibold text-sm py-sm rounded-sm mb-lg hover:opacity-90 transition-opacity">
+                    New Batch
+                </button>
+<div class="space-y-1">
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-sidebar-width min-h-screen flex flex-col relative">
+<!-- Header -->
+<header class="bg-white sticky top-0 z-40 border-b border-border-subtle h-16 w-full shrink-0">
+<div class="flex justify-between items-center h-full px-lg max-w-container-max mx-auto">
+<div class="flex flex-col">
+<div class="flex items-center gap-xs text-[11px] text-on-surface-variant font-medium">
+<span>Financials</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-primary">Salary Advance</span>
+</div>
+<h1 class="text-xl font-bold text-primary">Salary Advance Management</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center border border-border-subtle rounded-sm px-sm py-1 bg-surface-container-low">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-xs">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48" placeholder="Global Search..." type="text"/>
+</div>
+<div class="flex items-center gap-sm pl-md border-l border-border-subtle">
+<button class="p-1 hover:bg-surface-container-low rounded-sm"><span class="material-symbols-outlined text-lg">notifications</span></button>
+<button class="p-1 hover:bg-surface-container-low rounded-sm"><span class="material-symbols-outlined text-lg">settings</span></button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle ml-sm">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApRIzqD5sRiQ5s4NX1plvvHHr8HfyeXDXLfXFz66_8929P0FE9KXFMTTNx2Ns87J0axk1NfyFcVgt_C3ZKW0fQVK08c1vbmA3NXI6yjD2AfWOgLiRzJ1uLbniSmoYSoeFtmqXrm6q5aOzJIeVtQ-i07oV-o9ef7hjYAvcBUUTQ2ts_cmmrl0RkiKfWHd9ZtWcaAq8RPY7S28YU8B8QO85dZGwFJ_oOCspqqvfQi2l-f0Kexmfj6Ng5Hw"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Body -->
+<div class="p-lg max-w-container-max mx-auto w-full space-y-lg">
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-white border border-border-subtle p-md rounded-sm">
+<p class="text-[11px] uppercase font-bold text-on-surface-variant mb-1">Total Outstanding Advances</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold text-primary">₹8,42,500.00</h3>
+<span class="text-status-error text-xs font-semibold flex items-center bg-error-container/20 px-1 rounded-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span> 4%
+                            </span>
+</div>
+</div>
+<div class="bg-white border border-border-subtle p-md rounded-sm">
+<p class="text-[11px] uppercase font-bold text-on-surface-variant mb-1">Recovered This Month</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold text-status-success">₹1,18,250.00</h3>
+<span class="text-status-success text-xs font-semibold flex items-center bg-status-success/10 px-1 rounded-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span> Target Meta
+                            </span>
+</div>
+</div>
+<div class="bg-white border border-border-subtle p-md rounded-sm">
+<p class="text-[11px] uppercase font-bold text-on-surface-variant mb-1">Avg. Recovery Period</p>
+<div class="flex items-end justify-between">
+<h3 class="text-2xl font-bold text-primary">5.2 Months</h3>
+<span class="text-on-surface-variant text-xs font-semibold flex items-center">
+<span class="material-symbols-outlined text-sm mr-1">timer</span> Trending Down
+                            </span>
+</div>
+</div>
+</div>
+<!-- Main Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-10 gap-lg items-start">
+<!-- Left: Form (40%) -->
+<section class="lg:col-span-4 space-y-lg">
+<div class="bg-white border border-border-subtle rounded-sm overflow-hidden shadow-sm">
+<div class="p-md border-b border-border-subtle bg-surface-container-low flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-xl">add_circle</span>
+<h2 class="font-bold text-md text-primary">Raise New Advance</h2>
+</div>
+<form class="p-lg space-y-md" id="advanceForm">
+<div class="space-y-1">
+<label class="text-xs font-bold text-on-surface-variant uppercase">Employee Search</label>
+<div class="relative">
+<input class="w-full h-10 px-md border border-border-subtle rounded-sm focus:border-primary focus:ring-0 text-sm" placeholder="Search by ID or Name..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-1">
+<label class="text-xs font-bold text-on-surface-variant uppercase">Advance Amount (INR)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-on-surface-variant">₹</span>
+<input class="w-full h-10 pl-7 pr-md border border-border-subtle rounded-sm focus:border-primary focus:ring-0 text-sm" id="advAmount" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold text-on-surface-variant uppercase">Monthly Recovery (INR)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-on-surface-variant">₹</span>
+<input class="w-full h-10 pl-7 pr-md border border-border-subtle rounded-sm focus:border-primary focus:ring-0 text-sm" id="monthlyAmount" placeholder="0.00" type="number"/>
+</div>
+</div>
+</div>
+<!-- Recovery Summary -->
+<div class="bg-surface-container-low border-l-4 border-secondary p-md rounded-sm">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary text-sm">info</span>
+<span class="text-[11px] font-bold text-on-secondary-container uppercase">Calculation Summary</span>
+</div>
+<p class="text-sm font-semibold text-primary" id="recoverySummary">₹0 at ₹0/mo = 0 months</p>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold text-on-surface-variant uppercase">Recovery Start Month</label>
+<input class="w-full h-10 px-md border border-border-subtle rounded-sm focus:border-primary focus:ring-0 text-sm bg-white" type="month" value="2023-11"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold text-on-surface-variant uppercase">Reason / Description</label>
+<textarea class="w-full p-md border border-border-subtle rounded-sm focus:border-primary focus:ring-0 text-sm" placeholder="Detailed reason for advance request..." rows="3"></textarea>
+</div>
+<div class="pt-2 flex gap-md">
+<button class="flex-1 font-bold text-sm border border-border-subtle py-2.5 rounded-sm hover:bg-surface-container-low transition-colors" type="button">Save Draft</button>
+<button class="flex-1 font-bold text-sm bg-primary text-on-primary py-2.5 rounded-sm hover:opacity-90 transition-opacity" type="submit">Issue Advance</button>
+</div>
+</form>
+</div>
+</section>
+<!-- Right: Ledger (60%) -->
+<section class="lg:col-span-6 space-y-lg">
+<div class="bg-white border border-border-subtle rounded-sm shadow-sm overflow-hidden">
+<div class="p-md border-b border-border-subtle flex justify-between items-center bg-white">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+<h2 class="font-bold text-md text-primary">Active Advance Ledger</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-1.5 border border-border-subtle rounded-sm hover:bg-surface-container-low"><span class="material-symbols-outlined text-sm">filter_alt</span></button>
+<button class="p-1.5 border border-border-subtle rounded-sm hover:bg-surface-container-low"><span class="material-symbols-outlined text-sm">download</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse text-left">
+<thead>
+<tr class="bg-surface-container-low border-b border-border-subtle">
+<th class="px-md py-3 text-[11px] font-bold text-on-surface-variant uppercase">Employee</th>
+<th class="px-md py-3 text-[11px] font-bold text-on-surface-variant uppercase">Original / Bal.</th>
+<th class="px-md py-3 text-[11px] font-bold text-on-surface-variant uppercase">Ded.</th>
+<th class="px-md py-3 text-[11px] font-bold text-on-surface-variant uppercase">Progress</th>
+<th class="px-md py-3 text-[11px] font-bold text-on-surface-variant uppercase text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-md py-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-sm bg-primary text-white flex items-center justify-center font-bold text-xs shrink-0">MS</div>
+<div class="flex flex-col min-w-0">
+<span class="text-sm font-bold text-primary truncate">Marcus Sterling</span>
+<span class="text-[10px] text-on-surface-variant">EMP-082</span>
+</div>
+</div>
+</td>
+<td class="px-md py-3">
+<div class="flex flex-col">
+<span class="text-sm font-medium">₹24,000</span>
+<span class="text-[10px] text-status-error font-bold">₹12,000 left</span>
+</div>
+</td>
+<td class="px-md py-3">
+<span class="text-sm font-medium">₹4,000</span>
+</td>
+<td class="px-md py-3">
+<div class="w-24">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[9px] font-bold text-on-surface-variant uppercase">50%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 50%"></div>
+</div>
+</div>
+</td>
+<td class="px-md py-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-status-material/10 text-status-material font-bold text-[10px]">ACTIVE</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-md py-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-sm bg-primary text-white flex items-center justify-center font-bold text-xs shrink-0">ER</div>
+<div class="flex flex-col min-w-0">
+<span class="text-sm font-bold text-primary truncate">Elena Rodriguez</span>
+<span class="text-[10px] text-on-surface-variant">EMP-115</span>
+</div>
+</div>
+</td>
+<td class="px-md py-3">
+<div class="flex flex-col">
+<span class="text-sm font-medium">₹15,000</span>
+<span class="text-[10px] text-status-success font-bold">₹0 left</span>
+</div>
+</td>
+<td class="px-md py-3">
+<span class="text-sm font-medium">₹3,000</span>
+</td>
+<td class="px-md py-3">
+<div class="w-24">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[9px] font-bold text-on-surface-variant uppercase">100%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-status-success h-full" style="width: 100%"></div>
+</div>
+</div>
+</td>
+<td class="px-md py-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-status-success/10 text-status-success font-bold text-[10px]">FULLY RECOVERED</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-md py-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-sm bg-primary text-white flex items-center justify-center font-bold text-xs shrink-0">TK</div>
+<div class="flex flex-col min-w-0">
+<span class="text-sm font-bold text-primary truncate">Thomas Kovic</span>
+<span class="text-[10px] text-on-surface-variant">EMP-044</span>
+</div>
+</div>
+</td>
+<td class="px-md py-3">
+<div class="flex flex-col">
+<span class="text-sm font-medium">₹50,000</span>
+<span class="text-[10px] text-status-error font-bold">₹37,500 left</span>
+</div>
+</td>
+<td class="px-md py-3">
+<span class="text-sm font-medium">₹6,250</span>
+</td>
+<td class="px-md py-3">
+<div class="w-24">
+<div class="flex justify-between items-center mb-1">
+<span class="text-[9px] font-bold text-on-surface-variant uppercase">25%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 25%"></div>
+</div>
+</div>
+</td>
+<td class="px-md py-3 text-right">
+<span class="px-2 py-0.5 rounded-full bg-status-material/10 text-status-material font-bold text-[10px]">ACTIVE</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-md py-3 bg-surface-container-low flex items-center justify-between border-t border-border-subtle">
+<span class="text-[11px] font-bold text-on-surface-variant uppercase">Showing 1-10 of 42 Ledger Items</span>
+<div class="flex items-center gap-1">
+<button class="p-1 border border-border-subtle rounded-sm hover:bg-white"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-1 border border-border-subtle rounded-sm hover:bg-white"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<!-- Scripts -->
+<script>
+        const advAmountInput = document.getElementById('advAmount');
+        const monthlyAmountInput = document.getElementById('monthlyAmount');
+        const recoverySummary = document.getElementById('recoverySummary');
+
+        function updateSummary() {
+            const total = parseFloat(advAmountInput.value) || 0;
+            const monthly = parseFloat(monthlyAmountInput.value) || 0;
+
+            if (total > 0 && monthly > 0) {
+                const months = Math.ceil(total / monthly);
+                recoverySummary.innerText = `₹${total.toLocaleString()} at ₹${monthly.toLocaleString()}/mo = ${months} month${months > 1 ? 's' : ''}`;
+            } else {
+                recoverySummary.innerText = '₹0 at ₹0/mo = 0 months';
+            }
+        }
+
+        advAmountInput.addEventListener('input', updateSummary);
+        monthlyAmountInput.addEventListener('input', updateSummary);
+
+        document.getElementById('advanceForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Advance request has been successfully issued for processing.');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,85 @@
+- generic [ref=f3e3]:
+  - complementary [ref=f3e4]:
+    - generic [ref=f3e5]:
+      - heading "Canva Concepts" [level=1] [ref=f3e6]
+      - paragraph [ref=f3e7]: Industrial ERP
+    - navigation [ref=f3e8]:
+      - link "dashboard Dashboard" [ref=f3e9] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=f3e10]: dashboard
+        - generic [ref=f3e11]: Dashboard
+      - link "manufacturing Work Orders" [ref=f3e12] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f3e13]: manufacturing
+        - generic [ref=f3e14]: Work Orders
+      - link "precision_manufacturing Production" [ref=f3e15] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f3e16]: precision_manufacturing
+        - generic [ref=f3e17]: Production
+      - link "group Users" [ref=f3e18] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f3e19]: group
+        - generic [ref=f3e20]: Users
+      - link "payments Finance" [ref=f3e21] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f3e22]: payments
+        - generic [ref=f3e23]: Finance
+    - generic [ref=f3e24]:
+      - link "settings Settings" [ref=f3e25] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f3e26]: settings
+        - generic [ref=f3e27]: Settings
+      - link "help Support" [ref=f3e28] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f3e29]: help
+        - generic [ref=f3e30]: Support
+      - generic [ref=f3e32]:
+        - img "Marcus Chen" [ref=f3e34]
+        - generic [ref=f3e35]:
+          - paragraph [ref=f3e36]: Marcus Chen
+          - paragraph [ref=f3e37]: Factory Manager
+  - main [ref=f3e38]:
+    - generic [ref=f3e39]:
+      - generic [ref=f3e40]:
+        - heading "Daily Attendance" [level=2] [ref=f3e41]
+        - generic [ref=f3e42]:
+          - generic [ref=f3e43]: search
+          - textbox "Search orders, clients, items..." [ref=f3e44]
+      - generic [ref=f3e46]:
+        - button "notifications" [ref=f3e47] [cursor=pointer]
+        - button "help" [ref=f3e48] [cursor=pointer]
+        - button "settings" [ref=f3e49] [cursor=pointer]
+    - generic [ref=f3e51]:
+      - generic [ref=f3e52]:
+        - generic [ref=f3e53]:
+          - heading "Attendance - August 9, 2026" [level=2] [ref=f3e54]
+          - paragraph [ref=f3e55]: Daily manpower tracking for Plant Floor A1.
+        - generic [ref=f3e56]:
+          - generic [ref=f3e57]:
+            - generic [ref=f3e58]: calendar_today
+            - textbox [ref=f3e59]: 2026-08-09
+          - button "done_all Mark All Present" [ref=f3e60] [cursor=pointer]:
+            - generic [ref=f3e61]: done_all
+            - text: Mark All Present
+      - generic [ref=f3e62]:
+        - generic [ref=f3e63]:
+          - generic [ref=f3e64]: groups
+          - generic [ref=f3e66]:
+            - paragraph [ref=f3e67]: Total Staff
+            - paragraph [ref=f3e68]: "0"
+        - generic [ref=f3e69]:
+          - generic [ref=f3e70]: check_circle
+          - generic [ref=f3e72]:
+            - paragraph [ref=f3e73]: Total Present
+            - paragraph [ref=f3e74]: "0"
+        - generic [ref=f3e75]:
+          - generic [ref=f3e76]: cancel
+          - generic [ref=f3e78]:
+            - paragraph [ref=f3e79]: Absent
+            - paragraph [ref=f3e80]: "0"
+        - generic [ref=f3e81]:
+          - generic [ref=f3e82]: event_busy
+          - generic [ref=f3e84]:
+            - paragraph [ref=f3e85]: On Leave / Half
+            - paragraph [ref=f3e86]: "0"
+      - heading "Staff Roster" [level=3] [ref=f3e90]

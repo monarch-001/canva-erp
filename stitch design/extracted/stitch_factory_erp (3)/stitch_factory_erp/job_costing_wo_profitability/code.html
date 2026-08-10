@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FurniERP Billing | Job Costing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "status-success": "#2D7D46",
+                    "secondary-fixed-dim": "#e5c363",
+                    "border-subtle": "#E8E8E8",
+                    "on-tertiary-fixed": "#001e30",
+                    "surface-variant": "#e3e2df",
+                    "secondary-container": "#fdd977",
+                    "status-invoice": "#7C3AED",
+                    "error": "#ba1a1a",
+                    "on-surface": "#1b1c1a",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "outline": "#747878",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#efeeea",
+                    "on-primary-container": "#858383",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#584400",
+                    "status-material": "#0891B2",
+                    "tertiary-container": "#001e30",
+                    "on-tertiary": "#ffffff",
+                    "status-draft": "#888888",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "surface-bright": "#faf9f5",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#cbe6ff",
+                    "surface": "#faf9f5",
+                    "on-primary-fixed-variant": "#474746",
+                    "surface-card": "#FFFFFF",
+                    "primary-fixed": "#e5e2e1",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#444748",
+                    "primary": "#000000",
+                    "tertiary": "#000000",
+                    "status-pending": "#F59E0B",
+                    "primary-container": "#1c1b1b",
+                    "secondary-fixed": "#ffe08c",
+                    "surface-tint": "#5f5e5e",
+                    "status-financial": "#14532D",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#1c1b1b",
+                    "surface-container-highest": "#e3e2df",
+                    "status-error": "#C0392B",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "status-production": "#F97316",
+                    "inverse-on-surface": "#f2f1ed",
+                    "surface-dim": "#dbdad6",
+                    "surface-container-low": "#f5f4f0",
+                    "inverse-surface": "#30312e",
+                    "outline-variant": "#c4c7c7",
+                    "background": "#faf9f5",
+                    "surface-container-high": "#e9e8e4",
+                    "on-secondary-fixed": "#241a00",
+                    "on-secondary-container": "#775e00",
+                    "on-background": "#1b1c1a",
+                    "inverse-primary": "#c8c6c5",
+                    "secondary": "#745b00",
+                    "on-tertiary-container": "#5889af",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "container-max": "1440px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "sidebar-width": "260px"
+            },
+            "fontFamily": {
+                    "status-pill": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .sidebar-active { border-left: 4px solid #C8A84B; background-color: rgba(229, 195, 99, 0.2); color: white !important; font-weight: 700; }
+        .zebra-row:nth-child(even) { background-color: #f5f4f0; }
+        .sticky-col { position: sticky; left: 0; background-color: inherit; z-index: 10; }
+        .status-badge { @apply px-2 py-1 rounded text-status-pill font-status-pill; }
+        .card-outline { border: 1px solid #E8E8E8; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-lg h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-secondary-fixed-dim">FurniERP Billing</span>
+<div class="hidden md:flex ml-lg items-center gap-md">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border-none rounded-lg pl-10 pr-md py-2 text-body-md focus:ring-1 focus:ring-secondary-fixed-dim w-64" placeholder="Search Work Orders..." type="text"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-inverse-primary cursor-pointer active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant p-2 rounded-full">notifications</button>
+<button class="material-symbols-outlined text-primary dark:text-inverse-primary cursor-pointer active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant p-2 rounded-full">help</button>
+<button class="material-symbols-outlined text-primary dark:text-inverse-primary cursor-pointer active:scale-95 hover:bg-surface-container-low dark:hover:bg-surface-variant p-2 rounded-full">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a senior accounting executive in a modern factory setting with warm, industrial lighting. The executive has a focused yet approachable expression, wearing professional attire. The background features high-end woodworking machinery softly blurred, maintaining the manufacturing heritage of the company." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeeL4-eEfY6TfxAooQ6YzJpWjfMlrWYkmJZPfRflQqZXcb1Qa-u6nY524KDCVivqB5zq5ntphn9sEP3N1s55CqKhGvg_hTpnWWQtlwrCMKFcxr50rviq0_9bKmraKIsLojPF3uoXbcLwqaKgFgMeRIbTMuQmEzA7UsFaHyCIdpxZ41LKUmpu9gVQVt5yLQNn8miy2DNkfs_EA5J-8I9kLCML0djq_pTQ0VoJ0WvDuJGf7VBGKoZsZVdg"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="w-sidebar-width h-screen fixed left-0 top-0 bg-inverse-surface hidden md:flex flex-col py-md z-40">
+<div class="px-md mb-xl">
+<div class="flex items-center gap-sm mt-16">
+<div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-on-secondary-fixed">factory</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-secondary-fixed leading-tight">Billing &amp; Collections</h2>
+<p class="text-surface-variant opacity-80 text-xs">Unit: Chhabee / B2B / D2C</p>
+</div>
+</div>
+</div>
+<nav class="flex-grow">
+<ul class="space-y-1">
+<li><a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 font-label-md text-label-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-200" href="#"><span class="material-symbols-outlined">dashboard</span> Receivables Dashboard</a></li>
+<li><a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 font-label-md text-label-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-200" href="#"><span class="material-symbols-outlined">receipt_long</span> Invoicing</a></li>
+<li><a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 font-label-md text-label-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-200" href="#"><span class="material-symbols-outlined">payments</span> Receipts &amp; TDS</a></li>
+<li><a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 font-label-md text-label-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-200" href="#"><span class="material-symbols-outlined">payments</span> Credit/Debit Notes</a></li>
+<li><a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 font-label-md text-label-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-200" href="#"><span class="material-symbols-outlined">account_balance</span> Tally Export</a></li>
+<li><a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 font-label-md text-label-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-200" href="#"><span class="material-symbols-outlined">group</span> Customer Ledger</a></li>
+<!-- Active Item for Finance Context -->
+<li><a class="flex items-center gap-md px-md py-3 sidebar-active font-label-md text-label-md transition-all duration-200" href="#"><span class="material-symbols-outlined">analytics</span> Job Costing</a></li>
+</ul>
+</nav>
+<div class="px-md mt-auto">
+<button class="w-full bg-secondary-fixed-dim text-on-secondary-fixed font-bold py-3 px-md rounded flex items-center justify-center gap-sm active:scale-95 transition-transform mb-xl">
+<span class="material-symbols-outlined">add</span> Generate New Invoice
+            </button>
+<div class="border-t border-surface-variant/20 pt-md space-y-1">
+<a class="flex items-center gap-md px-sm py-2 text-surface-variant opacity-80 text-label-md hover:opacity-100" href="#"><span class="material-symbols-outlined">account_circle</span> User Profile</a>
+<a class="flex items-center gap-md px-sm py-2 text-surface-variant opacity-80 text-label-md hover:opacity-100" href="#"><span class="material-symbols-outlined">logout</span> Sign Out</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-sidebar-width pt-20 pb-24 md:pb-8 px-md md:px-lg min-h-screen">
+<div class="max-w-container-max mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-lg gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary">Job Costing Analysis</h1>
+<p class="text-on-surface-variant text-body-md">Financial Performance &amp; Profitability per Work Order</p>
+</div>
+<div class="flex gap-sm">
+<button class="bg-surface border border-border-subtle text-primary font-bold py-2 px-lg rounded flex items-center gap-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined">download</span> Export P&amp;L
+                    </button>
+<button class="bg-primary text-on-primary font-bold py-2 px-lg rounded flex items-center gap-sm active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined">refresh</span> Recalculate
+                    </button>
+</div>
+</div>
+<!-- Dashboard Statistics Bento -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-md mb-lg">
+<div class="bg-surface-card card-outline p-md rounded-xl">
+<p class="text-on-surface-variant text-label-md uppercase tracking-wider mb-xs">Total Revenue</p>
+<h3 class="text-headline-md font-bold text-primary">₹48.2M</h3>
+<p class="text-status-success text-xs flex items-center gap-1 mt-xs"><span class="material-symbols-outlined text-xs">trending_up</span> +12% vs last month</p>
+</div>
+<div class="bg-surface-card card-outline p-md rounded-xl">
+<p class="text-on-surface-variant text-label-md uppercase tracking-wider mb-xs">Avg. Margin %</p>
+<h3 class="text-headline-md font-bold text-primary">21.4%</h3>
+<div class="w-full bg-surface-container rounded-full h-1.5 mt-sm">
+<div class="bg-status-pending h-1.5 rounded-full" style="width: 71%"></div>
+</div>
+</div>
+<div class="bg-surface-card card-outline p-md rounded-xl">
+<p class="text-on-surface-variant text-label-md uppercase tracking-wider mb-xs">Active Work Orders</p>
+<h3 class="text-headline-md font-bold text-primary">142</h3>
+<p class="text-on-surface-variant text-xs mt-xs">84 In-Production, 58 Completed</p>
+</div>
+<div class="bg-surface-card card-outline p-md rounded-xl">
+<p class="text-on-surface-variant text-label-md uppercase tracking-wider mb-xs">Avg. Days to Collect</p>
+<h3 class="text-headline-md font-bold text-status-error">42 Days</h3>
+<p class="text-status-error text-xs flex items-center gap-1 mt-xs"><span class="material-symbols-outlined text-xs">warning</span> Target: 30 Days</p>
+</div>
+</div>
+<!-- Filters Bar -->
+<div class="bg-surface-container-low card-outline rounded-xl p-md mb-lg flex flex-wrap gap-md items-end">
+<div class="flex-1 min-w-[200px]">
+<label class="block text-label-md font-semibold text-on-surface-variant mb-1">Work Order #</label>
+<input class="w-full border-border-subtle rounded px-3 py-2 text-body-md focus:border-secondary" placeholder="e.g. WO-CHH-26" type="text"/>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block text-label-md font-semibold text-on-surface-variant mb-1">Client Name</label>
+<select class="w-full border-border-subtle rounded px-3 py-2 text-body-md focus:border-secondary">
+<option>All Clients</option>
+<option>Prestige Group</option>
+<option>Embassy Office Parks</option>
+<option>Sobha Developers</option>
+</select>
+</div>
+<div class="flex-1 min-w-[150px]">
+<label class="block text-label-md font-semibold text-on-surface-variant mb-1">Stream
+<select class="w-full border-border-subtle rounded px-3 py-2 text-body-md focus:border-secondary">
+<option>All Streams</option>
+<option>Hospitality</option>
+<option>Residential</option>
+<option>Commercial</option>
+</select>
+</label></div>
+<button class="bg-inverse-surface text-on-secondary font-bold py-2 px-lg rounded flex items-center gap-sm">
+<span class="material-symbols-outlined">filter_list</span> Apply Filters
+                </button>
+</div>
+<!-- Main Data Table -->
+<div class="bg-surface-card card-outline rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-on-surface font-label-md text-label-md border-b border-border-subtle">
+<th class="p-md sticky-col bg-surface-container-high">WO Number</th>
+<th class="p-md">Client</th>
+<th class="p-md">Stream</th>
+<th class="p-md text-right">Revenue (₹)</th>
+<th class="p-md text-right">Mat. Cost</th>
+<th class="p-md text-right">Labour</th>
+<th class="p-md text-right">OH</th>
+<th class="p-md text-right">Total Cost</th>
+<th class="p-md text-right">GM (₹)</th>
+<th class="p-md text-center">Margin %</th>
+<th class="p-md text-center">Action</th>
+</tr>
+</thead>
+<tbody class="text-body-md">
+<!-- Table Row 1 -->
+<tr class="zebra-row hover:bg-surface-container transition-colors group">
+<td class="p-md font-semibold sticky-col border-r border-border-subtle">WO-CHH-26-001</td>
+<td class="p-md">Prestige King's Court</td>
+<td class="p-md"><span class="bg-status-invoice/10 text-status-invoice px-2 py-0.5 rounded text-[11px] font-bold uppercase">Residential</span></td>
+<td class="p-md text-right">4,500,000</td>
+<td class="p-md text-right">1,850,000</td>
+<td class="p-md text-right">620,000</td>
+<td class="p-md text-right">250,000</td>
+<td class="p-md text-right font-semibold">2,720,000</td>
+<td class="p-md text-right text-status-success font-semibold">1,780,000</td>
+<td class="p-md text-center">
+<span class="bg-status-success/15 text-status-success px-2 py-1 rounded-full font-bold text-xs">39.5%</span>
+</td>
+<td class="p-md text-center">
+<button class="text-secondary-fixed-dim hover:text-secondary font-bold flex items-center justify-center mx-auto" onclick="document.getElementById('detail-view').classList.remove('hidden')">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 2 -->
+<tr class="zebra-row hover:bg-surface-container transition-colors">
+<td class="p-md font-semibold sticky-col border-r border-border-subtle">WO-CHH-26-002</td>
+<td class="p-md">Hilton Garden Inn</td>
+<td class="p-md"><span class="bg-status-production/10 text-status-production px-2 py-0.5 rounded text-[11px] font-bold uppercase">Hospitality</span></td>
+<td class="p-md text-right">8,200,000</td>
+<td class="p-md text-right">4,200,000</td>
+<td class="p-md text-right">1,900,000</td>
+<td class="p-md text-right">500,000</td>
+<td class="p-md text-right font-semibold">6,600,000</td>
+<td class="p-md text-right text-status-pending font-semibold">1,600,000</td>
+<td class="p-md text-center">
+<span class="bg-status-pending/15 text-status-pending px-2 py-1 rounded-full font-bold text-xs">19.5%</span>
+</td>
+<td class="p-md text-center">
+<button class="text-secondary-fixed-dim hover:text-secondary font-bold flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 3 -->
+<tr class="zebra-row hover:bg-surface-container transition-colors">
+<td class="p-md font-semibold sticky-col border-r border-border-subtle">WO-CHH-26-003</td>
+<td class="p-md">Oracle HQ Bengaluru</td>
+<td class="p-md"><span class="bg-status-material/10 text-status-material px-2 py-0.5 rounded text-[11px] font-bold uppercase">Commercial</span></td>
+<td class="p-md text-right">3,100,000</td>
+<td class="p-md text-right">1,750,000</td>
+<td class="p-md text-right">980,000</td>
+<td class="p-md text-right">150,000</td>
+<td class="p-md text-right font-semibold">2,880,000</td>
+<td class="p-md text-right text-status-error font-semibold">220,000</td>
+<td class="p-md text-center">
+<span class="bg-status-error/15 text-status-error px-2 py-1 rounded-full font-bold text-xs">7.1%</span>
+</td>
+<td class="p-md text-center">
+<button class="text-secondary-fixed-dim hover:text-secondary font-bold flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- More rows could follow... -->
+</tbody>
+</table>
+</div>
+</div>
+<!-- Expanded Detail View (Modal/Overlay Style) -->
+<div class="hidden fixed inset-0 z-[60] bg-primary/40 backdrop-blur-sm flex items-center justify-center p-md" id="detail-view">
+<div class="bg-background w-full max-w-5xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[921px]">
+<!-- Header -->
+<div class="bg-inverse-surface p-lg text-on-secondary flex justify-between items-start">
+<div>
+<div class="flex items-center gap-md mb-xs">
+<h2 class="font-headline-md text-headline-md text-secondary-fixed">WO-CHH-26-001 Detail Analysis</h2>
+<span class="bg-status-success text-on-primary text-[10px] px-2 py-1 rounded uppercase font-bold tracking-widest">Invoiced</span>
+</div>
+<p class="text-surface-variant opacity-80">Prestige King's Court • Residential Stream • Project Value: ₹4,500,000</p>
+</div>
+<button class="text-surface-variant hover:text-white transition-colors" onclick="document.getElementById('detail-view').classList.add('hidden')">
+<span class="material-symbols-outlined text-4xl">close</span>
+</button>
+</div>
+<div class="p-lg overflow-y-auto no-scrollbar">
+<!-- Summary Flags -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
+<div class="bg-surface-container-low p-md rounded-lg border-l-4 border-status-success">
+<p class="text-label-md text-on-surface-variant mb-1">Collection Status</p>
+<h4 class="text-title-md font-bold text-status-success">Fully Paid</h4>
+<p class="text-body-md">Collected in <span class="font-bold">22 Days</span></p>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg border-l-4 border-status-pending">
+<p class="text-label-md text-on-surface-variant mb-1">Production Variance</p>
+<h4 class="text-title-md font-bold text-status-pending">+4.2% Cost Overrun</h4>
+<p class="text-body-md text-status-error flex items-center gap-1"><span class="material-symbols-outlined text-xs">trending_up</span> Labour exceeded estimates</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg border-l-4 border-status-success">
+<p class="text-label-md text-on-surface-variant mb-1">Material Procurement</p>
+<h4 class="text-title-md font-bold text-status-success">-2.1% Saving</h4>
+<p class="text-body-md text-status-success flex items-center gap-1"><span class="material-symbols-outlined text-xs">trending_down</span> Bulk buy benefit achieved</p>
+</div>
+</div>
+<!-- 3-Column Cost Matrix -->
+<div class="border border-border-subtle rounded-xl overflow-hidden mb-lg">
+<table class="w-full text-left">
+<thead class="bg-surface-container-highest">
+<tr class="text-label-md font-bold">
+<th class="p-md border-b border-border-subtle">Cost Head</th>
+<th class="p-md text-right border-b border-border-subtle">ESTIMATED (₹)</th>
+<th class="p-md text-right border-b border-border-subtle">COMMITTED (₹)</th>
+<th class="p-md text-right border-b border-border-subtle">ACTUAL (₹)</th>
+<th class="p-md text-center border-b border-border-subtle">VARIANCE</th>
+</tr>
+</thead>
+<tbody class="text-body-md">
+<tr class="border-b border-border-subtle">
+<td class="p-md font-semibold">Timber &amp; Veneer</td>
+<td class="p-md text-right">1,200,000</td>
+<td class="p-md text-right">1,150,000</td>
+<td class="p-md text-right">1,145,000</td>
+<td class="p-md text-center">
+<span class="text-status-success flex items-center justify-center gap-1 font-bold"><span class="material-symbols-outlined text-sm">check_circle</span> 4.5%</span>
+</td>
+</tr>
+<tr class="border-b border-border-subtle">
+<td class="p-md font-semibold">Hardware &amp; Fittings</td>
+<td class="p-md text-right">450,000</td>
+<td class="p-md text-right">460,000</td>
+<td class="p-md text-right">462,000</td>
+<td class="p-md text-center">
+<span class="text-status-error flex items-center justify-center gap-1 font-bold"><span class="material-symbols-outlined text-sm">warning</span> -2.6%</span>
+</td>
+</tr>
+<tr class="border-b border-border-subtle">
+<td class="p-md font-semibold">Direct Labour</td>
+<td class="p-md text-right">580,000</td>
+<td class="p-md text-right">610,000</td>
+<td class="p-md text-right">620,000</td>
+<td class="p-md text-center">
+<span class="text-status-error flex items-center justify-center gap-1 font-bold"><span class="material-symbols-outlined text-sm">warning</span> -6.8%</span>
+</td>
+</tr>
+<tr class="border-b border-border-subtle">
+<td class="p-md font-semibold">Factory Overheads</td>
+<td class="p-md text-right">250,000</td>
+<td class="p-md text-right">250,000</td>
+<td class="p-md text-right">250,000</td>
+<td class="p-md text-center">
+<span class="text-on-surface-variant flex items-center justify-center gap-1 font-bold">0%</span>
+</td>
+</tr>
+<tr class="bg-surface-container-low font-bold">
+<td class="p-md">TOTAL PRODUCTION COST</td>
+<td class="p-md text-right">2,480,000</td>
+<td class="p-md text-right">2,470,000</td>
+<td class="p-md text-right">2,477,000</td>
+<td class="p-md text-center">
+<span class="text-status-success flex items-center justify-center gap-1 font-bold">0.12%</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Graphical Insight Mockup -->
+<div class="h-48 w-full bg-surface-container rounded-xl flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 flex items-end px-lg gap-lg">
+<div class="w-16 bg-status-invoice rounded-t-lg transition-all duration-1000" style="height: 100%"></div>
+<div class="w-16 bg-status-pending rounded-t-lg transition-all duration-1000" style="height: 60%"></div>
+<div class="w-16 bg-status-success rounded-t-lg transition-all duration-1000" style="height: 40%"></div>
+<div class="ml-auto mb-lg flex gap-md">
+<div class="flex items-center gap-2"><span class="w-3 h-3 bg-status-invoice rounded-full"></span> Revenue</div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 bg-status-pending rounded-full"></span> Total Cost</div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 bg-status-success rounded-full"></span> Gross Profit</div>
+</div>
+</div>
+<p class="text-on-surface-variant text-label-md font-bold absolute top-4 left-4">FINANCIAL FLOW TREND</p>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="p-md bg-surface-container-high flex justify-end gap-md">
+<button class="px-md py-2 text-body-md font-bold text-primary border border-border-subtle rounded hover:bg-surface">Audit Log</button>
+<button class="px-md py-2 text-body-md font-bold text-on-primary bg-primary rounded shadow-sm">Download Work Order P&amp;L PDF</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-surface-container-highest dark:bg-inverse-surface border-t border-border-subtle dark:border-outline shadow-lg flex justify-around items-center px-4 py-2 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 scale-95 transition-transform active:bg-secondary-container p-2 rounded-xl">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-fixed text-on-secondary-fixed rounded-xl px-3 py-1 scale-95 transition-transform">
+<span class="material-symbols-outlined">receipt</span>
+<span class="text-label-md font-label-md">Invoices</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 scale-95 transition-transform active:bg-secondary-container p-2 rounded-xl">
+<span class="material-symbols-outlined">add_card</span>
+<span class="text-label-md font-label-md">Receipts</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 scale-95 transition-transform active:bg-secondary-container p-2 rounded-xl">
+<span class="material-symbols-outlined">description</span>
+<span class="text-label-md font-label-md">Reports</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for detail view ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('detail-view').classList.add('hidden');
+            }
+        });
+    </script>
+</body></html>

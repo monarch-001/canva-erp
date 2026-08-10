@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FurniERP Billing - Record Payment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#e5c363",
+                    "inverse-surface": "#30312e",
+                    "inverse-primary": "#c8c6c5",
+                    "status-success": "#2D7D46",
+                    "on-background": "#1b1c1a",
+                    "status-financial": "#14532D",
+                    "on-secondary": "#ffffff",
+                    "status-invoice": "#7C3AED",
+                    "secondary-fixed": "#ffe08c",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "tertiary": "#000000",
+                    "surface-variant": "#e3e2df",
+                    "surface-bright": "#faf9f5",
+                    "surface": "#faf9f5",
+                    "surface-container-highest": "#e3e2df",
+                    "on-secondary-container": "#775e00",
+                    "status-production": "#F97316",
+                    "surface-dim": "#dbdad6",
+                    "on-tertiary-fixed": "#001e30",
+                    "surface-container-high": "#e9e8e4",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#e5e2e1",
+                    "on-surface-variant": "#444748",
+                    "primary": "#000000",
+                    "secondary-container": "#fdd977",
+                    "on-primary-fixed-variant": "#474746",
+                    "outline": "#747878",
+                    "surface-card": "#FFFFFF",
+                    "status-draft": "#888888",
+                    "tertiary-container": "#001e30",
+                    "outline-variant": "#c4c7c7",
+                    "on-primary-container": "#858383",
+                    "on-secondary-fixed": "#241a00",
+                    "on-tertiary-container": "#5889af",
+                    "border-subtle": "#E8E8E8",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "secondary": "#745b00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#5f5e5e",
+                    "inverse-on-surface": "#f2f1ed",
+                    "surface-container-low": "#f5f4f0",
+                    "tertiary-fixed": "#cbe6ff",
+                    "status-pending": "#F59E0B",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#1c1b1b",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#efeeea",
+                    "on-surface": "#1b1c1a",
+                    "background": "#faf9f5",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "status-error": "#C0392B",
+                    "status-material": "#0891B2",
+                    "primary-container": "#1c1b1b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "sidebar-width": "260px",
+                    "container-max": "1440px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "status-pill": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #faf9f5;
+            color: #1b1c1a;
+            font-family: 'Inter', sans-serif;
+        }
+        .sidebar-active {
+            background-color: #e5c363;
+            color: #241a00 !important;
+            border-left: 4px solid #745b00;
+        }
+        .form-input-focus:focus {
+            outline: none;
+            border-color: #745b00;
+            box-shadow: 0 0 0 1px #745b00;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex">
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex flex-col w-sidebar-width h-screen fixed left-0 top-0 bg-inverse-surface shadow-md py-md z-50">
+<div class="px-md mb-xl">
+<h1 class="font-headline-sm text-headline-sm font-bold text-secondary-fixed">Billing & Collections</h1>
+<p class="font-label-md text-label-md text-surface-variant opacity-80 mt-1">Unit: Chhabee / B2B / D2C</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all font-label-md text-label-md duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                Receivables Dashboard
+            </a>
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all font-label-md text-label-md duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">receipt_long</span>
+                Invoicing
+            </a>
+<a class="flex items-center px-md py-3 bg-secondary-fixed-dim text-on-secondary-fixed font-bold border-l-4 border-secondary font-label-md text-label-md duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">payments</span>
+                Receipts & TDS
+            </a>
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all font-label-md text-label-md duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">payments</span>
+                Credit/Debit Notes
+            </a>
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all font-label-md text-label-md duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">account_balance</span>
+                Tally Export
+            </a>
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all font-label-md text-label-md duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+                Customer Ledger
+            </a>
+</nav>
+<div class="px-md mt-auto pt-md border-t border-surface-variant/10">
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-3">account_circle</span>
+                User Profile
+            </a>
+<a class="flex items-center px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+                Sign Out
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[260px] min-h-screen flex flex-col pb-24 md:pb-0">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant h-16 flex items-center justify-between px-lg sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined md:hidden cursor-pointer">menu</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-secondary-fixed-dim">FurniERP Billing</span>
+</div>
+<div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-body-md font-body-md focus:ring-1 focus:ring-secondary outline-none" placeholder="Search invoices, clients..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">help</span>
+<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">settings</span>
+</div>
+<div class="h-8 w-8 bg-secondary-fixed rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a corporate accounting executive with a sharp, minimalist aesthetic. The lighting is soft and even, highlighting a clean-cut look suitable for a high-end industrial furniture manufacturing company's financial software interface. Neutral background with charcoal tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb_hL7fFp1HEUFQKB61bCMdy8E6ql4meT3ppYf1S2UuN6_o-9jpDwaiVZBa_DtRABt25IkPW_QsADcbCvIq0Q0OXdOr1DCwevcGce67Kcmm-byIswu5ddExaqj2GNsCmucl-WzyX9qY7FV4H_k78dOR3kiEPkE1_7PwV2ty-8nenN5al-oT4hSdcVvFmSLa5j0or19yux7YaQxRL4XO5MIggvljzcU9SFlGL6_roSwtMW5CpC0i7--Hg"/>
+</div>
+</div>
+</header>
+<!-- Canvas / Content -->
+<div class="p-lg max-w-container-max mx-auto w-full">
+<div class="mb-lg flex justify-between items-end">
+<div>
+<nav class="flex items-center gap-2 text-label-md font-label-md text-on-surface-variant mb-2">
+<span>Receipts & TDS</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-secondary font-bold">Record Payment</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-primary">Record New Receipt</h2>
+</div>
+<div class="hidden md:block">
+<span class="font-label-md text-label-md bg-surface-container-high px-3 py-1 rounded-full text-on-surface-variant">Financial Year: 2023-24</span>
+</div>
+</div>
+<!-- Main Layout: Form & Summary Card -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Form -->
+<div class="lg:col-span-8 space-y-lg">
+<div class="bg-surface-card border border-border-subtle p-xl rounded-lg shadow-sm">
+<form class="space-y-xl" id="recordPaymentForm">
+<!-- Search & Date Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">Invoice Search</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">receipt</span>
+<input class="w-full h-10 pl-10 pr-4 border border-border-subtle rounded text-body-md font-body-md form-input-focus" placeholder="Enter Invoice No. or Client Name" type="text"/>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">Receipt Date</label>
+<input class="w-full h-10 px-md border border-border-subtle rounded text-body-md font-body-md form-input-focus" type="date" value="2023-11-20"/>
+</div>
+</div>
+<!-- Amount Details -->
+<div class="p-md bg-surface-container-low rounded-lg border border-border-subtle grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">Invoice Total</label>
+<div class="font-headline-sm text-headline-sm text-primary">₹ 0.00</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">Outstanding</label>
+<div class="font-headline-sm text-headline-sm text-status-error">₹ 0.00</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-primary font-bold block">Amount Received</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-bold">₹</span>
+<input class="w-full h-10 pl-8 pr-4 border border-secondary rounded font-bold text-body-lg font-body-lg form-input-focus" placeholder="0.00" type="number"/>
+</div>
+</div>
+</div>
+<!-- Mode & Reference -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">Payment Mode</label>
+<select class="w-full h-10 px-md border border-border-subtle rounded text-body-md font-body-md form-input-focus bg-white">
+<option>NEFT</option>
+<option>RTGS</option>
+<option>UPI</option>
+<option>Cheque</option>
+<option>Cash</option>
+</select>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">Bank Reference / UTR</label>
+<input class="w-full h-10 px-md border border-border-subtle rounded text-body-md font-body-md form-input-focus" placeholder="Enter UTR or Cheque No." type="text"/>
+</div>
+</div>
+<!-- TDS Section -->
+<div class="pt-lg border-t border-border-subtle">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-status-financial">verified_user</span>
+<div>
+<span class="font-title-md text-title-md block">TDS Deducted by Client</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Record withholding tax details</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="tdsToggle" onchange="toggleTdsFields(this.checked)" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="hidden grid grid-cols-1 md:grid-cols-2 gap-md p-md bg-secondary-container/10 rounded-lg animate-in fade-in duration-300" id="tdsFields">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">TDS Amount</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-bold">₹</span>
+<input class="w-full h-10 pl-8 pr-4 border border-border-subtle rounded text-body-md font-body-md form-input-focus" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">TDS Section</label>
+<select class="w-full h-10 px-md border border-border-subtle rounded text-body-md font-body-md form-input-focus bg-white">
+<option>194C - Contractors</option>
+<option>194J - Professional Fees</option>
+<option>194H - Commission/Brokerage</option>
+<option>194I - Rent</option>
+</select>
+</div>
+<div class="md:col-span-2 flex items-center gap-2 text-status-success font-label-md text-label-md mt-2">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">info</span>
+                                        Expected Form 16A: YES
+                                    </div>
+</div>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Verification & Summary -->
+<div class="lg:col-span-4 space-y-lg">
+<div class="bg-inverse-surface text-white p-xl rounded-lg shadow-md space-y-lg">
+<h3 class="font-title-md text-title-md text-secondary-fixed">Verification Summary</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center border-b border-surface-variant/20 pb-2">
+<span class="text-surface-variant opacity-80 font-body-md text-body-md">Net Payment</span>
+<span class="font-headline-sm text-headline-sm">₹ 0.00</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-variant/20 pb-2">
+<span class="text-surface-variant opacity-80 font-body-md text-body-md">TDS Provision</span>
+<span class="font-title-md text-title-md" id="summaryTds">₹ 0.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-secondary-fixed font-bold font-body-md text-body-md">Total Settled</span>
+<span class="font-headline-md text-headline-md text-secondary-fixed">₹ 0.00</span>
+</div>
+</div>
+<div class="p-md bg-white/5 rounded-lg border border-white/10 flex gap-3">
+<span class="material-symbols-outlined text-secondary-fixed">warning</span>
+<p class="font-body-md text-body-md text-surface-variant">Ensure UTR matches bank statement for automated Tally reconciliation.</p>
+</div>
+<button class="w-full bg-secondary-fixed text-on-secondary-fixed py-4 rounded font-bold font-title-md text-title-md hover:brightness-110 active:scale-95 transition-all shadow-lg flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">save</span>
+                            Record Payment
+                        </button>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-lg shadow-sm">
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-md uppercase tracking-wider">Quick History</h4>
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md">RCP-230911</p>
+<p class="text-[12px] text-on-surface-variant">15 Nov 2023 • NEFT</p>
+</div>
+<span class="font-title-md text-title-md">₹ 42,500</span>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md">RCP-230908</p>
+<p class="text-[12px] text-on-surface-variant">12 Nov 2023 • RTGS</p>
+</div>
+<span class="font-title-md text-title-md">₹ 1,12,000</span>
+</div>
+</div>
+<button class="w-full mt-md py-2 border border-border-subtle text-on-surface-variant font-label-md text-label-md rounded hover:bg-surface-container-low transition-colors">View All Receipts</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-surface-container-highest dark:bg-inverse-surface border-t border-border-subtle dark:border-outline shadow-lg flex justify-around items-center px-4 py-2 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 cursor-pointer active:bg-secondary-container p-2 rounded-xl">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 cursor-pointer active:bg-secondary-container p-2 rounded-xl">
+<span class="material-symbols-outlined">receipt</span>
+<span class="font-label-md text-label-md">Invoices</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-fixed text-on-secondary-fixed rounded-xl px-4 py-1 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_card</span>
+<span class="font-label-md text-label-md">Receipts</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 cursor-pointer active:bg-secondary-container p-2 rounded-xl">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Reports</span>
+</div>
+</nav>
+<script>
+        function toggleTdsFields(isVisible) {
+            const fields = document.getElementById('tdsFields');
+            const summaryTds = document.getElementById('summaryTds');
+            if (isVisible) {
+                fields.classList.remove('hidden');
+            } else {
+                fields.classList.add('hidden');
+                summaryTds.innerText = "₹ 0.00";
+            }
+        }
+
+        // Lightweight interaction for invoice search simulation
+        const searchInput = document.querySelector('input[placeholder="Enter Invoice No. or Client Name"]');
+        searchInput.addEventListener('input', (e) => {
+            if (e.target.value.length > 3) {
+                // In a real app, this would trigger an API call
+                // Simulating discovery for visual feedback
+                e.target.classList.add('border-status-success');
+            } else {
+                e.target.classList.remove('border-status-success');
+            }
+        });
+    </script>
+</body></html>

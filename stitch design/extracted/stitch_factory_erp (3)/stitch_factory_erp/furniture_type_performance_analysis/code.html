@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar for high-density tables */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .table-sticky-header th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#161c27",
+                        "surface-container-high": "#e6e8ea",
+                        "status-warning": "#F59E0B",
+                        "on-surface": "#191c1e",
+                        "outline-variant": "#c6c6cc",
+                        "inverse-primary": "#c1c6d7",
+                        "tertiary-fixed": "#f5dfc4",
+                        "secondary-fixed": "#d8e3fa",
+                        "on-primary-fixed-variant": "#414754",
+                        "on-secondary-container": "#586377",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#96856d",
+                        "primary-container": "#1a202c",
+                        "surface": "#f7f9fb",
+                        "surface-tint": "#585e6c",
+                        "surface-variant": "#e0e3e5",
+                        "trend-up-neg": "#DC2626",
+                        "surface-dim": "#d8dadc",
+                        "secondary": "#545f72",
+                        "primary": "#030813",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#828796",
+                        "status-danger": "#EF4444",
+                        "inverse-surface": "#2d3133",
+                        "status-success": "#10B981",
+                        "trend-up-pos": "#059669",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#d8c3a9",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed-dim": "#c1c6d7",
+                        "surface-bright": "#f7f9fb",
+                        "on-surface-variant": "#45474c",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline": "#76777c",
+                        "data-border": "#E2E8F0",
+                        "on-tertiary-fixed-variant": "#524531",
+                        "on-background": "#191c1e",
+                        "secondary-fixed-dim": "#bcc7dd",
+                        "secondary-container": "#d5e0f7",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#291e0d",
+                        "primary-fixed": "#dde2f3",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-fixed": "#241a09",
+                        "error": "#ba1a1a",
+                        "tertiary": "#0e0700",
+                        "surface-container": "#eceef0",
+                        "background": "#f7f9fb",
+                        "on-secondary-fixed": "#111c2c",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "filter-bar-height": "56px",
+                        "margin-page": "24px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "table-row-height": "32px"
+                    },
+                    "fontFamily": {
+                        "kpi-value": ["IBM Plex Sans"],
+                        "headline-md": ["IBM Plex Sans"],
+                        "status-tag": ["IBM Plex Sans"],
+                        "headline-lg": ["IBM Plex Sans"],
+                        "label-caps": ["IBM Plex Sans"],
+                        "body-fixed": ["JetBrains Mono"],
+                        "table-cell": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "kpi-value": ["28px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "status-tag": ["10px", {"lineHeight": "12px", "fontWeight": "800"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-fixed": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "table-cell": ["13px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-fixed overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full h-[56px] flex justify-between items-center px-margin-page z-50 bg-surface border-b border-outline-variant dark:bg-primary-container dark:border-outline">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">MIS & Reporting</span>
+<div class="h-6 w-px bg-outline-variant ml-4 mr-2"></div>
+<div class="flex items-center gap-6">
+<span class="font-body-fixed text-body-fixed text-on-surface-variant cursor-pointer hover:text-primary transition-colors">Dashboard</span>
+<span class="font-body-fixed text-body-fixed text-primary dark:text-primary-fixed border-b-2 border-primary cursor-pointer">Furniture Profitability</span>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="relative group">
+<input class="bg-surface-container-low border border-outline-variant rounded px-3 py-1 text-sm w-64 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Search data points..." type="text"/>
+<span class="material-symbols-outlined absolute right-2 top-1.5 text-on-surface-variant text-sm">search</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high p-2 rounded transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high p-2 rounded transition-colors" data-icon="settings">settings</span>
+<div class="w-8 h-8 rounded bg-secondary-container flex items-center justify-center border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Corporate headshot of a professional industrial analyst in a clean-cut white shirt, looking directly at the camera with a confident expression. The background is a blurred high-tech manufacturing environment with blue and silver tones, maintaining a professional and technical MIS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUiQIuZgZzHWuE8frWQl-NXGUK-Qod4pxR0ezB9ZwXX2AyjwYkXdgjqIAETq08R9h0OePaUXxfsQf9HVEqwpfGSMp3ti47TV9F7ma6ZvB9tshYCCDgD3U_cur3YvUnvcTBiYlUUTLRQzBfrRtPM_jUp5LvV0qjJtgUvC5dG_1W18hMBnFMqtixpQ-5CM674_EXYUspdOg7o6EtW1ewHigNgWELf5jvuGoC4RfMxONQfTmnh3kr8HKfeg"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Side Navigation Bar -->
+<nav class="fixed left-0 top-[56px] h-[calc(100vh-56px)] w-64 flex flex-col z-40 bg-surface-container-low dark:bg-primary-container border-r border-outline-variant dark:border-outline">
+<div class="px-6 py-6">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant">Industrial MIS</span>
+<p class="text-xs text-on-surface-variant opacity-70">Precision Analytics</p>
+</div>
+<div class="flex-1 px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>WO P&L</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Client Profitability</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded font-body-fixed text-body-fixed bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary font-bold transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="chair">chair</span>
+<span>Furniture Type</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span>Material Variance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>P&L Report</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span>Profitability Drivers</span>
+</a>
+</div>
+<div class="px-3 pb-6 space-y-1 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded font-body-fixed text-body-fixed text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 mt-[56px] h-[calc(100vh-56px)] overflow-y-auto bg-surface p-margin-page">
+<!-- Filter Bar -->
+<div class="mb-gutter flex flex-wrap items-end gap-4 bg-white p-4 rounded border border-data-border shadow-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Reporting Period</label>
+<select class="bg-surface-container-low border border-outline-variant rounded h-8 px-2 text-xs min-w-[140px] focus:ring-1 focus:ring-primary">
+<option>Q3 FY2024</option>
+<option>Q2 FY2024</option>
+<option>FY 2023 Full</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Production Plant</label>
+<select class="bg-surface-container-low border border-outline-variant rounded h-8 px-2 text-xs min-w-[160px] focus:ring-1 focus:ring-primary">
+<option>Main Facility - Zone A</option>
+<option>Secondary - Zone B</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Client Segment</label>
+<select class="bg-surface-container-low border border-outline-variant rounded h-8 px-2 text-xs min-w-[140px] focus:ring-1 focus:ring-primary">
+<option>All Segments</option>
+<option>Enterprise</option>
+<option>SME</option>
+</select>
+</div>
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-4 h-8 rounded hover:opacity-90 transition-opacity ml-auto">Generate Report</button>
+</div>
+<!-- Top KPIs -->
+<div class="grid grid-cols-4 gap-gutter mb-gutter">
+<div class="bg-white border border-data-border p-4 rounded shadow-sm relative overflow-hidden group">
+<div class="absolute right-[-10px] top-[-10px] opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl" data-icon="inventory">inventory</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">Total Furniture Units</p>
+<div class="flex items-baseline gap-2">
+<h2 class="font-kpi-value text-kpi-value text-primary">12,482</h2>
+<span class="text-trend-up-pos font-bold text-xs">+4.2%</span>
+</div>
+</div>
+<div class="bg-white border border-data-border p-4 rounded shadow-sm relative overflow-hidden group">
+<div class="absolute right-[-10px] top-[-10px] opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl" data-icon="payments">payments</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">Avg. Margin/Unit</p>
+<div class="flex items-baseline gap-2">
+<h2 class="font-kpi-value text-kpi-value text-primary">$412.00</h2>
+<span class="text-trend-up-neg font-bold text-xs">-1.5%</span>
+</div>
+</div>
+<div class="bg-white border border-data-border p-4 rounded shadow-sm border-l-4 border-l-status-success relative overflow-hidden group">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">Best Margin Category</p>
+<div class="flex flex-col">
+<h2 class="font-headline-md text-headline-md text-primary">Storage Units</h2>
+<span class="text-status-success font-bold text-xs uppercase tracking-tight">38.2% Net Margin</span>
+</div>
+</div>
+<div class="bg-white border border-data-border p-4 rounded shadow-sm border-l-4 border-l-status-danger relative overflow-hidden group">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">Critical Rework Risk</p>
+<div class="flex flex-col">
+<h2 class="font-headline-md text-headline-md text-primary">Workstations</h2>
+<span class="text-status-danger font-bold text-xs uppercase tracking-tight">12.4% Rework Rate</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-gutter items-start">
+<!-- Main Comparative Table -->
+<div class="col-span-8 bg-white border border-data-border rounded shadow-sm overflow-hidden flex flex-col h-[520px]">
+<div class="p-4 border-b border-data-border flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline-md text-headline-md text-primary">Furniture Type Performance Analysis</h3>
+<div class="flex gap-2">
+<button class="p-1 border border-outline-variant rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+</button>
+<button class="p-1 border border-outline-variant rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<div class="overflow-y-auto flex-1">
+<table class="w-full text-left table-sticky-header">
+<thead class="bg-surface-container font-label-caps text-label-caps text-on-surface-variant border-b border-outline-variant">
+<tr>
+<th class="px-4 py-3 font-semibold">Furniture Category</th>
+<th class="px-4 py-3 font-semibold text-right">WO Count</th>
+<th class="px-4 py-3 font-semibold text-right">Avg Revenue</th>
+<th class="px-4 py-3 font-semibold text-right">Avg Margin</th>
+<th class="px-4 py-3 font-semibold text-center">Rework %</th>
+<th class="px-4 py-3 font-semibold text-right">Avg Prod Days</th>
+</tr>
+</thead>
+<tbody class="font-table-cell text-table-cell divide-y divide-data-border">
+<!-- High Margin Success -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer group">
+<td class="px-4 py-3 font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-status-success text-lg fill-icon" data-icon="stars">stars</span>
+                                    Storage Units
+                                </td>
+<td class="px-4 py-3 text-right">1,240</td>
+<td class="px-4 py-3 text-right">$1,850.00</td>
+<td class="px-4 py-3 text-right text-status-success font-bold">$706.70 (38.2%)</td>
+<td class="px-4 py-3">
+<div class="flex items-center justify-center gap-2">
+<div class="w-16 h-2 bg-surface-container rounded overflow-hidden">
+<div class="bg-status-success h-full" style="width: 2.1%"></div>
+</div>
+<span>2.1%</span>
+</div>
+</td>
+<td class="px-4 py-3 text-right">4.2</td>
+</tr>
+<!-- Standard Performer -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer">
+<td class="px-4 py-3 font-bold">Executive Chairs</td>
+<td class="px-4 py-3 text-right">4,502</td>
+<td class="px-4 py-3 text-right">$820.00</td>
+<td class="px-4 py-3 text-right">$205.00 (25.0%)</td>
+<td class="px-4 py-3">
+<div class="flex items-center justify-center gap-2">
+<div class="w-16 h-2 bg-surface-container rounded overflow-hidden">
+<div class="bg-status-warning h-full" style="width: 4.8%"></div>
+</div>
+<span>4.8%</span>
+</div>
+</td>
+<td class="px-4 py-3 text-right">2.8</td>
+</tr>
+<!-- High Revenue, Low Margin Problem Child -->
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer bg-error-container/10">
+<td class="px-4 py-3 font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-status-danger text-lg fill-icon" data-icon="warning">warning</span>
+                                    Workstations
+                                </td>
+<td class="px-4 py-3 text-right">3,120</td>
+<td class="px-4 py-3 text-right">$3,450.00</td>
+<td class="px-4 py-3 text-right text-status-danger font-bold">$414.00 (12.0%)</td>
+<td class="px-4 py-3">
+<div class="flex items-center justify-center gap-2">
+<div class="w-16 h-2 bg-surface-container rounded overflow-hidden">
+<div class="bg-status-danger h-full" style="width: 12.4%"></div>
+</div>
+<span class="text-status-danger font-bold">12.4%</span>
+</div>
+</td>
+<td class="px-4 py-3 text-right">8.5</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer">
+<td class="px-4 py-3 font-bold">Conference Tables</td>
+<td class="px-4 py-3 text-right">540</td>
+<td class="px-4 py-3 text-right">$5,200.00</td>
+<td class="px-4 py-3 text-right">$1,144.00 (22.0%)</td>
+<td class="px-4 py-3">
+<div class="flex items-center justify-center gap-2">
+<div class="w-16 h-2 bg-surface-container rounded overflow-hidden">
+<div class="bg-status-warning h-full" style="width: 6.2%"></div>
+</div>
+<span>6.2%</span>
+</div>
+</td>
+<td class="px-4 py-3 text-right">12.2</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer">
+<td class="px-4 py-3 font-bold">Modular Partitions</td>
+<td class="px-4 py-3 text-right">2,880</td>
+<td class="px-4 py-3 text-right">$450.00</td>
+<td class="px-4 py-3 text-right">$112.50 (25.0%)</td>
+<td class="px-4 py-3">
+<div class="flex items-center justify-center gap-2">
+<div class="w-16 h-2 bg-surface-container rounded overflow-hidden">
+<div class="bg-status-success h-full" style="width: 3.5%"></div>
+</div>
+<span>3.5%</span>
+</div>
+</td>
+<td class="px-4 py-3 text-right">1.5</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors cursor-pointer">
+<td class="px-4 py-3 font-bold">Cafe Seating</td>
+<td class="px-4 py-3 text-right">1,200</td>
+<td class="px-4 py-3 text-right">$320.00</td>
+<td class="px-4 py-3 text-right">$89.60 (28.0%)</td>
+<td class="px-4 py-3">
+<div class="flex items-center justify-center gap-2">
+<div class="w-16 h-2 bg-surface-container rounded overflow-hidden">
+<div class="bg-status-success h-full" style="width: 1.8%"></div>
+</div>
+<span>1.8%</span>
+</div>
+</td>
+<td class="px-4 py-3 text-right">3.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-3 bg-surface-container-low border-t border-data-border text-[11px] text-on-surface-variant flex justify-between">
+<span>Showing 6 categories across 4 factories</span>
+<span class="flex gap-4">
+<span class="flex items-center gap-1"><span class="w-2 h-2 bg-status-success rounded-full"></span> Healthy</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 bg-status-warning rounded-full"></span> At Risk</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 bg-status-danger rounded-full"></span> Critical intervention</span>
+</span>
+</div>
+</div>
+<!-- Side Insight Rail -->
+<div class="col-span-4 space-y-gutter">
+<!-- Rework Drill-down -->
+<div class="bg-white border border-data-border rounded shadow-sm overflow-hidden">
+<div class="p-4 border-b border-data-border flex items-center gap-2 bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="build">build</span>
+<h3 class="font-headline-md text-headline-md text-primary">Rework Root Causes</h3>
+</div>
+<div class="p-4">
+<p class="text-xs text-on-surface-variant mb-4 uppercase tracking-wider font-bold">Primary Drivers: Workstations</p>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span>Material Defects (Laminate Chipping)</span>
+<span class="font-bold">42%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded">
+<div class="bg-primary h-full rounded" style="width: 42%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span>Dimensional Variance (±2mm)</span>
+<span class="font-bold">28%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded">
+<div class="bg-primary h-full rounded" style="width: 28%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span>Edge Banding Adhesion Failure</span>
+<span class="font-bold">18%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded">
+<div class="bg-primary h-full rounded" style="width: 18%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span>Hardware Shortage / Substitution</span>
+<span class="font-bold">12%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded">
+<div class="bg-primary h-full rounded" style="width: 12%"></div>
+</div>
+</div>
+</div>
+<div class="mt-6 p-3 bg-error-container/20 rounded border border-error/10">
+<p class="text-[11px] leading-tight text-on-error-container italic">
+<strong>Technical Note:</strong> High humidity in Zone B detected between Nov 12-18 correlating with 65% of edge banding rework incidents.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Material Cost Breakdown -->
+<div class="bg-white border border-data-border rounded shadow-sm overflow-hidden">
+<div class="p-4 border-b border-data-border flex items-center gap-2 bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="pie_chart">pie_chart</span>
+<h3 class="font-headline-md text-headline-md text-primary">Cost Components (Storage)</h3>
+</div>
+<div class="p-6 flex flex-col items-center">
+<!-- Abstract Visual Representative of Donut Chart using Tailwind -->
+<div class="relative w-32 h-32 mb-6">
+<div class="absolute inset-0 rounded-full border-[12px] border-primary-container border-t-primary border-l-secondary"></div>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="text-xs text-on-surface-variant font-bold">TOTAL</span>
+<span class="text-sm font-bold">$1,143</span>
+</div>
+</div>
+<div class="w-full grid grid-cols-2 gap-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant leading-none">Substrate (MDF)</span>
+<span class="text-xs font-bold">$420</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant leading-none">Finishing</span>
+<span class="text-xs font-bold">$315</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant leading-none">Hardware</span>
+<span class="text-xs font-bold">$228</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant leading-none">Labor/OH</span>
+<span class="text-xs font-bold">$180</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Trend Section -->
+<div class="mt-gutter grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-white border border-data-border rounded shadow-sm p-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-primary">Margin Trend by Type (6-Month)</h3>
+<select class="text-[11px] border-none bg-surface-container-low p-1 rounded font-bold uppercase cursor-pointer">
+<option>Cumulative</option>
+<option>By Plant</option>
+</select>
+</div>
+<div class="h-40 w-full flex items-end gap-2 px-2 pb-2 border-b border-data-border">
+<!-- High Margin Path Visual -->
+<div class="flex-1 flex flex-col justify-end gap-1">
+<div class="w-full bg-primary h-[80%] rounded-t opacity-40"></div>
+<span class="text-[9px] text-center">Jul</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1">
+<div class="w-full bg-primary h-[85%] rounded-t opacity-40"></div>
+<span class="text-[9px] text-center">Aug</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1">
+<div class="w-full bg-primary h-[78%] rounded-t opacity-40"></div>
+<span class="text-[9px] text-center">Sep</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1">
+<div class="w-full bg-primary h-[92%] rounded-t opacity-40"></div>
+<span class="text-[9px] text-center">Oct</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1">
+<div class="w-full bg-primary h-[88%] rounded-t opacity-40"></div>
+<span class="text-[9px] text-center">Nov</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-1">
+<div class="w-full bg-primary h-[95%] rounded-t opacity-100"></div>
+<span class="text-[9px] text-center font-bold">Dec</span>
+</div>
+</div>
+</div>
+<div class="bg-white border border-data-border rounded shadow-sm p-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-primary">Production Efficiency Days</h3>
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 bg-status-success rounded-sm"></span>
+<span class="text-[10px] text-on-surface-variant">Target met</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<span class="text-[11px] font-bold w-32">Storage Units</span>
+<div class="flex-1 flex items-center h-4 relative">
+<div class="absolute left-0 top-0 bottom-0 w-full bg-surface-container rounded-full"></div>
+<div class="absolute left-0 top-0 bottom-0 w-[42%] bg-status-success rounded-full"></div>
+<div class="absolute left-[45%] top-0 bottom-0 w-px bg-primary z-10"></div>
+<span class="absolute right-0 text-[10px] font-mono">4.2d / 4.5d</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[11px] font-bold w-32">Workstations</span>
+<div class="flex-1 flex items-center h-4 relative">
+<div class="absolute left-0 top-0 bottom-0 w-full bg-surface-container rounded-full"></div>
+<div class="absolute left-0 top-0 bottom-0 w-[85%] bg-status-danger rounded-full"></div>
+<div class="absolute left-[60%] top-0 bottom-0 w-px bg-primary z-10"></div>
+<span class="absolute right-0 text-[10px] font-mono">8.5d / 6.0d</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[11px] font-bold w-32">Exec. Chairs</span>
+<div class="flex-1 flex items-center h-4 relative">
+<div class="absolute left-0 top-0 bottom-0 w-full bg-surface-container rounded-full"></div>
+<div class="absolute left-0 top-0 bottom-0 w-[28%] bg-status-success rounded-full"></div>
+<div class="absolute left-[35%] top-0 bottom-0 w-px bg-primary z-10"></div>
+<span class="absolute right-0 text-[10px] font-mono">2.8d / 3.5d</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions for table rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(4px)';
+                row.style.transition = 'all 0.2s ease-in-out';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Simple interactive tooltip placeholder logic
+        const cellsWithHover = document.querySelectorAll('.text-status-danger, .text-status-success');
+        cellsWithHover.forEach(cell => {
+            cell.addEventListener('mouseover', () => {
+                cell.title = "Variance: " + (Math.random() * 5).toFixed(2) + "% from last quarter";
+            });
+        });
+    </script>
+</body></html>

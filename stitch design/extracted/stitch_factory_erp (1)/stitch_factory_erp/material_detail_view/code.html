@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Material Master - MAT-PLY-001</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "status-invoice": "#7C3AED",
+                    "background": "#faf9f5",
+                    "tertiary-fixed": "#cbe6ff",
+                    "surface-bright": "#faf9f5",
+                    "on-tertiary-container": "#5889af",
+                    "inverse-primary": "#c8c6c5",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#001e30",
+                    "secondary-fixed": "#ffe08c",
+                    "secondary-container": "#fdd977",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-error-container": "#93000a",
+                    "status-financial": "#14532D",
+                    "surface-tint": "#5f5e5e",
+                    "on-surface-variant": "#444748",
+                    "on-surface": "#1b1c1a",
+                    "status-success": "#2D7D46",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#584400",
+                    "surface": "#faf9f5",
+                    "inverse-on-surface": "#f2f1ed",
+                    "on-background": "#1b1c1a",
+                    "status-pending": "#F59E0B",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#e5e2e1",
+                    "status-production": "#F97316",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "on-tertiary-fixed": "#001e30",
+                    "primary-container": "#1c1b1b",
+                    "tertiary": "#000000",
+                    "on-error": "#ffffff",
+                    "outline": "#747878",
+                    "error": "#ba1a1a",
+                    "secondary": "#745b00",
+                    "surface-variant": "#e3e2df",
+                    "surface-dim": "#dbdad6",
+                    "on-secondary-fixed": "#241a00",
+                    "on-primary-container": "#858383",
+                    "on-primary-fixed-variant": "#474746",
+                    "status-draft": "#888888",
+                    "inverse-surface": "#30312e",
+                    "surface-container-low": "#f5f4f0",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "on-primary": "#ffffff",
+                    "status-material": "#0891B2",
+                    "secondary-fixed-dim": "#e5c363",
+                    "surface-container-highest": "#e3e2df",
+                    "on-secondary": "#ffffff",
+                    "status-error": "#C0392B",
+                    "surface-container-high": "#e9e8e4",
+                    "outline-variant": "#c4c7c7",
+                    "on-primary-fixed": "#1c1b1b",
+                    "border-subtle": "#E8E8E8",
+                    "primary": "#000000",
+                    "on-secondary-container": "#775e00",
+                    "surface-container": "#efeeea",
+                    "surface-card": "#FFFFFF"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "container-max": "1440px",
+                    "xl": "32px",
+                    "sidebar-width": "260px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "status-pill": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .tab-active { border-bottom: 2px solid #745b00; color: #745b00; }
+        .sidebar-active { background-color: #745b00; color: #ffffff; border-left: 4px solid #fdd977; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="flex min-h-screen text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary flex flex-col py-lg z-50">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-extrabold tracking-tight">Canva Concepts</h1>
+<p class="text-on-primary opacity-60 text-[11px] uppercase tracking-widest mt-1">Industrial ERP</p>
+</div>
+<nav class="flex-1 space-y-1 px-sm">
+<a class="flex items-center gap-md px-md py-3 text-on-primary opacity-80 hover:opacity-100 font-title-md text-title-md transition-colors hover:bg-surface-container-highest/10 rounded" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-3 sidebar-active font-title-md text-title-md transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">manufacturing</span>
+<span>Work Orders</span>
+</a>
+<a class="flex items-center gap-md px-md py-3 text-on-primary opacity-80 hover:opacity-100 font-title-md text-title-md transition-colors hover:bg-surface-container-highest/10 rounded" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-3 text-on-primary opacity-80 hover:opacity-100 font-title-md text-title-md transition-colors hover:bg-surface-container-highest/10 rounded" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Finance</span>
+</a>
+</nav>
+<div class="mt-auto px-sm space-y-1">
+<button class="w-full flex items-center gap-md px-md py-3 text-on-primary opacity-80 hover:opacity-100 font-title-md text-title-md transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</button>
+<button class="w-full flex items-center gap-md px-md py-3 text-on-primary opacity-80 hover:opacity-100 font-title-md text-title-md transition-colors">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-[260px] flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="h-16 flex items-center justify-between px-lg bg-surface border-b border-border-subtle sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<span class="font-label-md text-label-md text-primary opacity-50">PRD-07 / Material Master</span>
+<span class="h-4 w-px bg-border-subtle"></span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">User Management</h2>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-border-subtle rounded-lg text-body-md focus:ring-1 focus:ring-secondary focus:border-secondary outline-none w-64 transition-all" placeholder="Search Master Data..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-secondary transition-all"><span class="material-symbols-outlined">notifications</span></button>
+<button class="text-on-surface-variant hover:text-secondary transition-all"><span class="material-symbols-outlined">help</span></button>
+<button class="text-on-surface-variant hover:text-secondary transition-all"><span class="material-symbols-outlined">settings</span></button>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female industrial plant manager wearing a clean white lab coat and safety glasses, looking confidently at the camera. The background is a softly blurred modern industrial control room with amber and teal LED displays. The lighting is crisp and cinematic, emphasizing authority and professional expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ77rz74B-d9sy47RN8nBzkX_ITC2emou6usynvAxAtmx-Qo_zdeGFlfBBRAj7NH8ibJ5fBjfVYHLwlo2agG6nFxnGFlZy82cu1E0ECXFwfHED4wJsgI4BJ6yMSiqIdkqlV52UCTOtQHC6UxramcqPXiTrM1-GQ-0X76pM8TZsgOx-XXhAEDW-OQwsdwLBnUDL37etGPCx4ez-QvMw9oqu_wxpEO-re5VjsiebpmFp8UOfC91DCTXjww"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-lg max-w-[1440px] w-full mx-auto space-y-lg">
+<!-- Hero Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md border-b border-border-subtle pb-lg">
+<div class="space-y-sm">
+<div class="flex items-center gap-md">
+<span class="px-2 py-1 bg-surface-container-highest text-primary font-bold text-[10px] tracking-widest rounded">SKU: MAT-PLY-001</span>
+<span class="px-2.5 py-0.5 rounded-full bg-status-success/10 text-status-success text-status-pill border border-status-success/20">ACTIVE</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Industrial Grade Plywood - 18mm</h1>
+<p class="text-body-lg text-on-surface-variant">Standard high-density structural core plywood with phenolic film surfacing for heavy-duty industrial applications.</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="px-md py-2.5 border border-primary text-primary font-label-md text-label-md rounded hover:bg-surface-container-highest transition-all flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                        Full Audit Log
+                    </button>
+<button class="px-md py-2.5 bg-secondary text-white font-label-md text-label-md rounded hover:bg-secondary/90 transition-all shadow-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                        Edit Material
+                    </button>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
+<!-- Left Column: Tabs & Details -->
+<div class="lg:col-span-8 space-y-lg">
+<!-- Tabs Navigation -->
+<div class="flex items-center gap-xl border-b border-border-subtle">
+<button class="pb-3 px-1 font-label-md text-label-md transition-all tab-active flex items-center gap-sm" id="tab-details" onclick="switchTab('details')">
+<span class="material-symbols-outlined text-[20px]">info</span> Details
+                        </button>
+<button class="pb-3 px-1 font-label-md text-label-md text-on-surface-variant transition-all hover:text-secondary flex items-center gap-sm" id="tab-price" onclick="switchTab('price')">
+<span class="material-symbols-outlined text-[20px]">payments</span> Price History
+                        </button>
+<button class="pb-3 px-1 font-label-md text-label-md text-on-surface-variant transition-all hover:text-secondary flex items-center gap-sm" id="tab-stock" onclick="switchTab('stock')">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span> Stock &amp; Reorder
+                        </button>
+<button class="pb-3 px-1 font-label-md text-label-md text-on-surface-variant transition-all hover:text-secondary flex items-center gap-sm" id="tab-usage" onclick="switchTab('usage')">
+<span class="material-symbols-outlined text-[20px]">list_alt</span> Usage History
+                        </button>
+</div>
+<!-- Content Area (Dynamic) -->
+<div class="min-h-[400px]" id="content-canvas">
+<!-- Default: Details Tab -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl" id="section-details">
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm space-y-lg">
+<h3 class="font-title-md text-title-md text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">description</span>
+                                    Core Specifications
+                                </h3>
+<div class="grid grid-cols-2 gap-y-md text-body-md">
+<div class="text-on-surface-variant">Material Class</div>
+<div class="font-semibold">Raw Material (RM)</div>
+<div class="text-on-surface-variant">HSN Code</div>
+<div class="font-semibold">44123300</div>
+<div class="text-on-surface-variant">UOM</div>
+<div class="font-semibold">Sheet (SHT)</div>
+<div class="text-on-surface-variant">Standard Dimensions</div>
+<div class="font-semibold">2440 x 1220 mm</div>
+<div class="text-on-surface-variant">Material Group</div>
+<div class="font-semibold">Timber &amp; Wood</div>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm space-y-lg">
+<h3 class="font-title-md text-title-md text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">local_shipping</span>
+                                    Procurement Info
+                                </h3>
+<div class="space-y-lg">
+<div class="p-md bg-surface-container rounded-lg flex items-center gap-md">
+<div class="w-12 h-12 bg-white border border-border-subtle flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-secondary">corporate_fare</span>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">Preferred Vendor</p>
+<p class="font-title-md text-title-md">Global Timber Solutions Ltd.</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-y-md text-body-md">
+<div class="text-on-surface-variant">Lead Time</div>
+<div class="font-semibold">7 Days</div>
+<div class="text-on-surface-variant">Minimum Order Qty</div>
+<div class="font-semibold">50 Sheets</div>
+<div class="text-on-surface-variant">Quality Grade</div>
+<div class="font-semibold">Grade A - Industrial</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Usage History Section (Hidden by default) -->
+<div class="hidden animate-in fade-in slide-in-from-bottom-2" id="section-usage">
+<div class="bg-surface-card border border-border-subtle rounded-xl shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low text-label-md text-on-surface-variant border-b border-border-subtle">
+<tr>
+<th class="px-lg py-md font-semibold">Work Order ID</th>
+<th class="px-lg py-md font-semibold">Date Used</th>
+<th class="px-lg py-md font-semibold">Quantity</th>
+<th class="px-lg py-md font-semibold">Department</th>
+<th class="px-lg py-md font-semibold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle text-body-md">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md font-semibold text-secondary">WO-2023-8902</td>
+<td class="px-lg py-md">Oct 24, 2023</td>
+<td class="px-lg py-md">12 SHT</td>
+<td class="px-lg py-md">Fabrication</td>
+<td class="px-lg py-md">
+<span class="px-2 py-0.5 rounded-full bg-status-success/10 text-status-success text-[11px] font-bold">COMPLETED</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md font-semibold text-secondary">WO-2023-8915</td>
+<td class="px-lg py-md">Oct 22, 2023</td>
+<td class="px-lg py-md">45 SHT</td>
+<td class="px-lg py-md">Assembly Line B</td>
+<td class="px-lg py-md">
+<span class="px-2 py-0.5 rounded-full bg-status-production/10 text-status-production text-[11px] font-bold">IN PROGRESS</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md font-semibold text-secondary">WO-2023-8922</td>
+<td class="px-lg py-md">Oct 18, 2023</td>
+<td class="px-lg py-md">08 SHT</td>
+<td class="px-lg py-md">Quality Testing</td>
+<td class="px-lg py-md">
+<span class="px-2 py-0.5 rounded-full bg-status-success/10 text-status-success text-[11px] font-bold">COMPLETED</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Stock Section (Hidden by default) -->
+<div class="hidden space-y-lg animate-in fade-in slide-in-from-bottom-2" id="section-stock">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm text-center">
+<p class="text-on-surface-variant text-label-md uppercase tracking-widest font-bold">Current Stock</p>
+<p class="text-[40px] font-bold text-primary mt-2">124 <span class="text-body-lg font-normal text-on-surface-variant">SHT</span></p>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm text-center">
+<p class="text-on-surface-variant text-label-md uppercase tracking-widest font-bold">Reorder Level</p>
+<p class="text-[40px] font-bold text-status-pending mt-2">80 <span class="text-body-lg font-normal text-on-surface-variant">SHT</span></p>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm text-center">
+<p class="text-on-surface-variant text-label-md uppercase tracking-widest font-bold">Safety Stock</p>
+<p class="text-[40px] font-bold text-status-error mt-2">30 <span class="text-body-lg font-normal text-on-surface-variant">SHT</span></p>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle p-xl rounded-xl shadow-sm">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-md text-title-md">Inventory Health Indicator</h3>
+<span class="text-body-md text-status-success font-semibold">Healthy Status</span>
+</div>
+<div class="h-4 w-full bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-status-error w-[15%]" title="Danger / Safety"></div>
+<div class="h-full bg-status-pending w-[25%]" title="Reorder Threshold"></div>
+<div class="h-full bg-status-success w-[22%]" title="Current Excess Over Reorder"></div>
+<div class="h-full bg-surface-container-highest w-[38%]"></div>
+</div>
+<div class="flex justify-between mt-sm text-[11px] text-on-surface-variant font-bold uppercase tracking-wider">
+<span>0</span>
+<span>30 (Safety)</span>
+<span>80 (Reorder)</span>
+<span>200 (Max Capacity)</span>
+</div>
+</div>
+</div>
+<!-- Price History Section (Hidden by default) -->
+<div class="hidden space-y-lg animate-in fade-in slide-in-from-bottom-2" id="section-price">
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm h-64 relative">
+<div class="absolute inset-x-lg top-lg flex justify-between items-start">
+<h3 class="font-title-md text-title-md">Procurement Rate Trend (12 Months)</h3>
+<div class="text-right">
+<p class="text-[10px] font-bold text-on-surface-variant">CURRENT PRICE</p>
+<p class="text-headline-sm font-bold text-primary">$1,240.00 / SHT</p>
+</div>
+</div>
+<!-- Mock Chart Visualization -->
+<div class="absolute bottom-lg inset-x-lg h-24 flex items-end gap-2">
+<div class="flex-1 bg-secondary/10 hover:bg-secondary/30 transition-all rounded-t h-[60%]"></div>
+<div class="flex-1 bg-secondary/10 hover:bg-secondary/30 transition-all rounded-t h-[55%]"></div>
+<div class="flex-1 bg-secondary/10 hover:bg-secondary/30 transition-all rounded-t h-[70%]"></div>
+<div class="flex-1 bg-secondary/10 hover:bg-secondary/30 transition-all rounded-t h-[65%]"></div>
+<div class="flex-1 bg-secondary/10 hover:bg-secondary/30 transition-all rounded-t h-[80%]"></div>
+<div class="flex-1 bg-secondary/10 hover:bg-secondary/30 transition-all rounded-t h-[85%]"></div>
+<div class="flex-1 bg-secondary/10 hover:bg-secondary/30 transition-all rounded-t h-[75%]"></div>
+<div class="flex-1 bg-secondary/10 hover:bg-secondary/30 transition-all rounded-t h-[90%]"></div>
+<div class="flex-1 bg-secondary/10 hover:bg-secondary/30 transition-all rounded-t h-[100%]"></div>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle rounded-xl shadow-sm overflow-hidden">
+<div class="px-lg py-md border-b border-border-subtle flex justify-between items-center bg-surface-container-low">
+<h4 class="font-title-md text-title-md">Recent Purchase Orders</h4>
+<button class="text-secondary font-label-md hover:underline">Download CSV</button>
+</div>
+<table class="w-full text-left">
+<thead class="text-label-md text-on-surface-variant border-b border-border-subtle">
+<tr>
+<th class="px-lg py-3">PO Number</th>
+<th class="px-lg py-3">Date</th>
+<th class="px-lg py-3">Unit Price</th>
+<th class="px-lg py-3">Qty</th>
+<th class="px-lg py-3">Total</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle text-body-md">
+<tr>
+<td class="px-lg py-3 text-secondary font-semibold">PO-4500122</td>
+<td class="px-lg py-3">Oct 12, 2023</td>
+<td class="px-lg py-3">$1,240.00</td>
+<td class="px-lg py-3">100</td>
+<td class="px-lg py-3 font-semibold">$124,000.00</td>
+</tr>
+<tr>
+<td class="px-lg py-3 text-secondary font-semibold">PO-4500098</td>
+<td class="px-lg py-3">Aug 24, 2023</td>
+<td class="px-lg py-3">$1,215.00</td>
+<td class="px-lg py-3">50</td>
+<td class="px-lg py-3 font-semibold">$60,750.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Visual & Insights -->
+<div class="lg:col-span-4 space-y-lg">
+<!-- Material Image Box -->
+<div class="bg-surface-card border border-border-subtle rounded-xl overflow-hidden shadow-sm group">
+<div class="relative h-64 bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A top-down, high-detail macro photograph of an 18mm industrial-grade plywood sheet edge. The image showcases the distinct dark and light brown layers of bonded wood fibers with a sleek, dark-grey phenolic film coating on the top surface. The lighting is bright and industrial, highlighting the texture and precision of the manufacturing process against a neutral off-white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVdfZi_fMIB7ZlD18LzGUdTJFAPADMWv-psVuKZ66SXI0AddBh8xngRwIo53DKC61XCxoEM9Jmfx5o29Re_XWiCmY4m52rhXUHrhGy2Wx8duVTY_FEt6eORlZxa_f5JIni_hgvW4hd75Wi2Fk3zW2-CdAFdREvSs4oUDN4A8KQtgfN-cKLDTJe-XNEzp1VFysVV_x1QvbrIapaF5MBnVy6y20UKoDyI4jX8M2baSEXZ7MY63Y4hPNxPA"/>
+<button class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded shadow hover:bg-white transition-all">
+<span class="material-symbols-outlined text-primary">zoom_in</span>
+</button>
+</div>
+<div class="p-lg">
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-title-md text-title-md">Quick Stats</h3>
+<span class="text-body-md text-secondary font-semibold">BOM Active</span>
+</div>
+<div class="space-y-md">
+<div class="flex justify-between items-center text-body-md">
+<span class="text-on-surface-variant">Open Orders</span>
+<span class="font-bold">2 POs</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<span class="text-on-surface-variant">Last Consumed</span>
+<span class="font-bold">2 days ago</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<span class="text-on-surface-variant">Physical Location</span>
+<span class="font-bold">WH-A, Rack 12-B</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Warehouse Allocation Map -->
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm space-y-md">
+<h3 class="font-title-md text-title-md">Warehouse Distribution</h3>
+<div class="aspect-video bg-surface-container-low rounded-lg border border-border-subtle relative overflow-hidden">
+<!-- Mock Mini Map -->
+<div class="absolute inset-4 grid grid-cols-4 grid-rows-3 gap-1">
+<div class="bg-surface-container-highest/20 rounded"></div>
+<div class="bg-secondary/40 rounded shadow-inner ring-1 ring-secondary"></div>
+<div class="bg-surface-container-highest/20 rounded"></div>
+<div class="bg-surface-container-highest/20 rounded"></div>
+<div class="bg-surface-container-highest/20 rounded"></div>
+<div class="bg-surface-container-highest/20 rounded"></div>
+<div class="bg-surface-container-highest/20 rounded"></div>
+<div class="bg-surface-container-highest/20 rounded"></div>
+<div class="bg-surface-container-highest/20 rounded"></div>
+<div class="bg-surface-container-highest/20 rounded"></div>
+<div class="bg-surface-container-highest/20 rounded"></div>
+<div class="bg-surface-container-highest/20 rounded"></div>
+</div>
+</div>
+<div class="flex items-start gap-sm p-sm bg-tertiary-fixed/30 rounded border border-tertiary-fixed text-on-tertiary-container">
+<span class="material-symbols-outlined mt-0.5">info</span>
+<p class="text-[12px] leading-tight font-medium">Primarily stored in Central Warehouse. Secondary stock located in North Bay Assembly Station for immediate usage.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function switchTab(tabId) {
+            // Sections
+            const sections = ['details', 'price', 'stock', 'usage'];
+            sections.forEach(s => {
+                const el = document.getElementById('section-' + s);
+                const btn = document.getElementById('tab-' + s);
+                if (s === tabId) {
+                    el.classList.remove('hidden');
+                    btn.classList.add('tab-active');
+                    btn.classList.remove('text-on-surface-variant');
+                } else {
+                    el.classList.add('hidden');
+                    btn.classList.remove('tab-active');
+                    btn.classList.add('text-on-surface-variant');
+                }
+            });
+        }
+
+        // Micro-interaction for hover states on list items
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(4px)';
+                row.style.transition = 'transform 0.2s ease-out';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body></html>

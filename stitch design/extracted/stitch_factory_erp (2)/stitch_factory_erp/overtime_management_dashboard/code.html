@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Industrial Authority ERP - OT Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#e5c363",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#444748",
+                    "surface-bright": "#faf9f5",
+                    "on-surface": "#1b1c1a",
+                    "inverse-primary": "#c8c6c5",
+                    "surface-variant": "#e3e2df",
+                    "primary-fixed": "#e5e2e1",
+                    "on-secondary": "#ffffff",
+                    "status-material": "#0891B2",
+                    "on-background": "#1b1c1a",
+                    "on-primary-container": "#858383",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#cbe6ff",
+                    "surface-container": "#efeeea",
+                    "secondary-fixed": "#ffe08c",
+                    "tertiary": "#000000",
+                    "surface-container-highest": "#e3e2df",
+                    "primary-container": "#1c1b1b",
+                    "surface": "#faf9f5",
+                    "secondary-container": "#fdd977",
+                    "inverse-surface": "#30312e",
+                    "outline-variant": "#c4c7c7",
+                    "background": "#faf9f5",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "primary": "#000000",
+                    "on-tertiary-fixed": "#001e30",
+                    "outline": "#747878",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-container": "#001e30",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "status-financial": "#14532D",
+                    "surface-card": "#FFFFFF",
+                    "on-tertiary-container": "#5889af",
+                    "status-pending": "#F59E0B",
+                    "inverse-on-surface": "#f2f1ed",
+                    "status-invoice": "#7C3AED",
+                    "status-production": "#F97316",
+                    "surface-tint": "#5f5e5e",
+                    "on-primary-fixed-variant": "#474746",
+                    "border-subtle": "#E8E8E8",
+                    "on-secondary-container": "#775e00",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#745b00",
+                    "status-success": "#2D7D46",
+                    "surface-container-high": "#e9e8e4",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "surface-dim": "#dbdad6",
+                    "surface-container-low": "#f5f4f0",
+                    "status-draft": "#888888",
+                    "on-primary-fixed": "#1c1b1b",
+                    "status-error": "#C0392B",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "xs": "4px",
+                    "sidebar-width": "260px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "container-max": "1440px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "status-pill": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active {
+            background-color: #fdd977; /* secondary-container */
+            color: #775e00; /* on-secondary-container */
+            border-left: 4px solid #745b00; /* secondary */
+        }
+        .zebra-table tr:nth-child(even) {
+            background-color: #f5f4f0; /* surface-container-low */
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #745b00 !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-[260px] bg-primary-container flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary">Precision Ops</h1>
+<p class="text-on-primary-container opacity-60 text-xs">Unit 04 - Heavy Mfg</p>
+</div>
+<nav class="flex-1 space-y-xs">
+<!-- Nav Items -->
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm sidebar-active active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="font-label-md text-label-md">Production</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-md text-label-md">Manufacturing</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Financials</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</nav>
+<div class="px-md mt-auto pt-lg border-t border-on-primary-fixed-variant">
+<button class="w-full bg-secondary text-on-primary py-sm rounded-lg font-label-md mb-lg hover:opacity-90 transition-opacity">
+                New Batch
+            </button>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:opacity-100 mb-xs" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary-container opacity-80 hover:opacity-100" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[260px] min-h-screen flex flex-col">
+<!-- TopNavBar Shell -->
+<header class="h-16 sticky top-0 bg-surface-container-lowest border-b border-border-subtle z-40 w-full">
+<div class="flex justify-between items-center h-full px-md w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-lg">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Industrial Authority ERP</span>
+<div class="hidden md:flex gap-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-xl pr-md py-xs bg-surface-container-low border border-border-subtle rounded-lg text-body-md w-64 focus:bg-white transition-all" placeholder="Global Search..." type="text"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md hover:opacity-90 active:scale-95 transition-all">
+                        Create Order
+                    </button>
+<div class="flex items-center gap-sm border-l border-border-subtle pl-md ml-sm text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary p-xs">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary p-xs">help</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary p-xs">settings</span>
+<div class="w-8 h-8 rounded-full ml-sm bg-surface-dim overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a senior factory operations manager wearing a clean industrial uniform against a blurred engineering workshop background. The lighting is bright and technical, reflecting a high-standard corporate manufacturing environment with warm, professional skin tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPr072GwsryIjxyOURj572ZfKivmjfIXG1sqFRPAOJ03v-y7BhNKsB3hHNbn-ToqCpqOUcC0ShVfp4xMdukC_SKd6L0McT5lEfAkR9M7t3QQDoX_zhZVKyDH3HwECGUps6U_5GtP38x15jc5RsMERREQLmJGFH2nFNLrzcrTJPFnu03223ns_-JZc2rhC8Og-QfRQjUDsLAtBmYagpmNxMsJZzI2anMZ_nat3GaDb1TYgLGHlXckCOWg"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-lg max-w-container-max w-full mx-auto space-y-xl">
+<!-- Header & Filter Row -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Overtime Management Dashboard</h2>
+<p class="text-on-surface-variant">Real-time OT tracking and factory operational control.</p>
+</div>
+<div class="flex items-center gap-sm bg-white p-sm border border-border-subtle rounded-xl">
+<label class="font-label-md text-on-surface-variant px-sm">Period:</label>
+<select class="bg-surface-container-low border-none font-label-md text-primary pr-xl py-xs rounded-lg cursor-pointer">
+<option>October 2023</option>
+<option selected="">November 2023</option>
+<option>December 2023</option>
+</select>
+</div>
+</div>
+<!-- SECTION: KPI Cards (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md">Total OT Hours</span>
+<span class="material-symbols-outlined text-secondary opacity-80">timer</span>
+</div>
+<div class="mt-md">
+<p class="text-headline-md font-bold">1,248.5</p>
+<span class="text-status-success font-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">trending_down</span> 8.2% vs last month
+                        </span>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md">Est. Cost (MTD)</span>
+<span class="material-symbols-outlined text-secondary opacity-80">payments</span>
+</div>
+<div class="mt-md">
+<p class="text-headline-md font-bold">$14,240.00</p>
+<p class="text-on-surface-variant font-body-md opacity-60">Avg. $11.40 / hr</p>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md">Pending Approvals</span>
+<span class="material-symbols-outlined text-status-pending opacity-80">pending_actions</span>
+</div>
+<div class="mt-md">
+<p class="text-headline-md font-bold">12</p>
+<p class="text-on-surface-variant font-body-md opacity-60">Needs urgent review</p>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md">Override Capacity</span>
+<span class="material-symbols-outlined text-status-production opacity-80">warning</span>
+</div>
+<div class="mt-md">
+<p class="text-headline-md font-bold">04</p>
+<p class="text-on-surface-variant font-body-md opacity-60 text-status-error font-bold">Critical Threshold</p>
+</div>
+</div>
+</div>
+<!-- SECTION 1: PENDING APPROVALS -->
+<section class="space-y-md">
+<div class="flex items-center gap-sm">
+<span class="w-1.5 h-6 bg-secondary rounded-full"></span>
+<h3 class="font-headline-sm text-headline-sm">Pending OT Requests</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- OTR Card 1 -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-md flex flex-col gap-md hover:border-secondary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="space-y-xs">
+<span class="bg-surface-container-high px-sm py-xs rounded text-xs font-bold text-on-surface-variant">OTR-26-001</span>
+<p class="font-title-md text-title-md">James Miller</p>
+<p class="text-xs text-on-surface-variant">Senior Carpenter</p>
+</div>
+<div class="text-right">
+<p class="font-headline-sm text-primary">6.5 hrs</p>
+<p class="text-xs text-status-pending font-bold">EST. $92.50</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm text-xs border-y border-border-subtle py-sm">
+<div>
+<p class="text-on-surface-variant opacity-60">WO Reference</p>
+<p class="font-bold">#WO-9942-B</p>
+</div>
+<div>
+<p class="text-on-surface-variant opacity-60">Requested On</p>
+<p class="font-bold">Nov 14, 08:30 AM</p>
+</div>
+</div>
+<div class="text-sm">
+<p class="text-on-surface-variant opacity-60 mb-xs">Reason for OT</p>
+<p class="italic leading-relaxed">"Critical delay in stage 2 finishing due to late material delivery. Need to complete batch by tomorrow shift."</p>
+</div>
+<div class="flex gap-sm pt-xs">
+<button class="flex-1 bg-primary text-on-primary py-sm rounded font-label-md hover:bg-opacity-90 active:scale-[0.98] transition-all">Approve</button>
+<button class="flex-1 border border-primary text-primary py-sm rounded font-label-md hover:bg-surface-container-low active:scale-[0.98] transition-all">Reject</button>
+</div>
+</div>
+<!-- OTR Card 2 -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-md flex flex-col gap-md hover:border-secondary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="space-y-xs">
+<span class="bg-surface-container-high px-sm py-xs rounded text-xs font-bold text-on-surface-variant">OTR-26-005</span>
+<p class="font-title-md text-title-md">Robert Chen</p>
+<p class="text-xs text-on-surface-variant">Lead Assembler</p>
+</div>
+<div class="text-right">
+<p class="font-headline-sm text-primary">4.0 hrs</p>
+<p class="text-xs text-status-pending font-bold">EST. $68.00</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm text-xs border-y border-border-subtle py-sm">
+<div>
+<p class="text-on-surface-variant opacity-60">WO Reference</p>
+<p class="font-bold">#WO-9821-C</p>
+</div>
+<div>
+<p class="text-on-surface-variant opacity-60">Requested On</p>
+<p class="font-bold">Nov 14, 10:15 AM</p>
+</div>
+</div>
+<div class="text-sm">
+<p class="text-on-surface-variant opacity-60 mb-xs">Reason for OT</p>
+<p class="italic leading-relaxed">"Emergency rework on quality non-conformance for Unit 04. Assembly line blockage risk."</p>
+</div>
+<div class="flex gap-sm pt-xs">
+<button class="flex-1 bg-primary text-on-primary py-sm rounded font-label-md hover:bg-opacity-90 active:scale-[0.98] transition-all">Approve</button>
+<button class="flex-1 border border-primary text-primary py-sm rounded font-label-md hover:bg-surface-container-low active:scale-[0.98] transition-all">Reject</button>
+</div>
+</div>
+<!-- OTR Card 3 -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-md flex flex-col gap-md hover:border-secondary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="space-y-xs">
+<span class="bg-surface-container-high px-sm py-xs rounded text-xs font-bold text-on-surface-variant">OTR-26-012</span>
+<p class="font-title-md text-title-md">Sarah Williams</p>
+<p class="text-xs text-on-surface-variant">Finishing Specialist</p>
+</div>
+<div class="text-right">
+<p class="font-headline-sm text-primary">8.0 hrs</p>
+<p class="text-xs text-status-error font-bold">EST. $124.00</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm text-xs border-y border-border-subtle py-sm">
+<div>
+<p class="text-on-surface-variant opacity-60">WO Reference</p>
+<p class="font-bold">#WO-10022</p>
+</div>
+<div>
+<p class="text-on-surface-variant opacity-60">Requested On</p>
+<p class="font-bold">Nov 14, 11:45 AM</p>
+</div>
+</div>
+<div class="text-sm">
+<p class="text-on-surface-variant opacity-60 mb-xs">Reason for OT</p>
+<p class="italic leading-relaxed">"Weekend shift request for high-priority export order batching. Unit cap override required."</p>
+</div>
+<div class="flex gap-sm pt-xs">
+<button class="flex-1 bg-primary text-on-primary py-sm rounded font-label-md hover:bg-opacity-90 active:scale-[0.98] transition-all">Approve</button>
+<button class="flex-1 border border-primary text-primary py-sm rounded font-label-md hover:bg-surface-container-low active:scale-[0.98] transition-all">Reject</button>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-lg">
+<!-- SECTION 2: CARPENTER OT STATUS -->
+<section class="xl:col-span-1 space-y-md">
+<div class="flex items-center gap-sm">
+<span class="w-1.5 h-6 bg-status-production rounded-full"></span>
+<h3 class="font-headline-sm text-headline-sm">OT Status Monitoring</h3>
+</div>
+<div class="bg-surface-card border border-border-subtle rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse zebra-table">
+<thead class="bg-surface-container-low border-b border-border-subtle">
+<tr>
+<th class="px-md py-sm font-label-md text-on-surface-variant">Carpenter</th>
+<th class="px-md py-sm font-label-md text-on-surface-variant">Hours</th>
+<th class="px-md py-sm font-label-md text-on-surface-variant text-center">Status</th>
+</tr>
+</thead>
+<tbody class="text-body-md">
+<tr>
+<td class="px-md py-md">
+<p class="font-bold">James Miller</p>
+<p class="text-xs text-on-surface-variant">ID: EMP-901</p>
+</td>
+<td class="px-md py-md">
+<p class="font-bold">22 / 26</p>
+<p class="text-xs text-on-surface-variant">4 Left</p>
+</td>
+<td class="px-md py-md text-center">
+<span class="inline-block w-3 h-3 rounded-full bg-status-pending" title="Amber: Nearing Cap"></span>
+</td>
+</tr>
+<tr>
+<td class="px-md py-md">
+<p class="font-bold">Robert Chen</p>
+<p class="text-xs text-on-surface-variant">ID: EMP-905</p>
+</td>
+<td class="px-md py-md">
+<p class="font-bold">12 / 26</p>
+<p class="text-xs text-on-surface-variant">14 Left</p>
+</td>
+<td class="px-md py-md text-center">
+<span class="inline-block w-3 h-3 rounded-full bg-status-success" title="Green: Safe Zone"></span>
+</td>
+</tr>
+<tr>
+<td class="px-md py-md">
+<p class="font-bold">Sarah Williams</p>
+<p class="text-xs text-on-surface-variant">ID: EMP-912</p>
+</td>
+<td class="px-md py-md">
+<p class="font-bold">28 / 26</p>
+<p class="text-xs text-status-error font-bold">+2 Over</p>
+</td>
+<td class="px-md py-md text-center">
+<span class="inline-block w-3 h-3 rounded-full bg-status-material" title="Blue: Approved Override"></span>
+</td>
+</tr>
+<tr>
+<td class="px-md py-md">
+<p class="font-bold">Tom Harrison</p>
+<p class="text-xs text-on-surface-variant">ID: EMP-889</p>
+</td>
+<td class="px-md py-md">
+<p class="font-bold">25.5 / 26</p>
+<p class="text-xs text-on-surface-variant">0.5 Left</p>
+</td>
+<td class="px-md py-md text-center">
+<span class="inline-block w-3 h-3 rounded-full bg-status-error animate-pulse" title="Red: Immediate Stop"></span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- SECTION 3: OT HISTORY -->
+<section class="xl:col-span-2 space-y-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="w-1.5 h-6 bg-primary rounded-full"></span>
+<h3 class="font-headline-sm text-headline-sm">Operational OT History</h3>
+</div>
+<button class="flex items-center gap-xs font-label-md text-secondary hover:underline">
+<span class="material-symbols-outlined text-sm">download</span> Export History
+                        </button>
+</div>
+<div class="bg-surface-card border border-border-subtle rounded-xl overflow-hidden shadow-sm overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[600px]">
+<thead class="bg-surface-container-low border-b border-border-subtle">
+<tr>
+<th class="px-md py-sm font-label-md text-on-surface-variant">Ref ID</th>
+<th class="px-md py-sm font-label-md text-on-surface-variant">Date</th>
+<th class="px-md py-sm font-label-md text-on-surface-variant">Staff</th>
+<th class="px-md py-sm font-label-md text-on-surface-variant">Work Order</th>
+<th class="px-md py-sm font-label-md text-on-surface-variant">Hours</th>
+<th class="px-md py-sm font-label-md text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="text-body-md">
+<tr class="border-b border-border-subtle hover:bg-surface-container transition-colors">
+<td class="px-md py-md font-mono text-xs">OTR-25-882</td>
+<td class="px-md py-md text-xs">Nov 12, 2023</td>
+<td class="px-md py-md">James Miller</td>
+<td class="px-md py-md text-xs font-bold">WO-9912</td>
+<td class="px-md py-md font-bold">4.0</td>
+<td class="px-md py-md">
+<span class="bg-status-success/10 text-status-success px-sm py-xs rounded text-[10px] font-bold uppercase tracking-wider">Approved</span>
+</td>
+</tr>
+<tr class="border-b border-border-subtle hover:bg-surface-container transition-colors">
+<td class="px-md py-md font-mono text-xs">OTR-25-880</td>
+<td class="px-md py-md text-xs">Nov 11, 2023</td>
+<td class="px-md py-md">Sarah Williams</td>
+<td class="px-md py-md text-xs font-bold">WO-9884</td>
+<td class="px-md py-md font-bold">2.5</td>
+<td class="px-md py-md">
+<span class="bg-status-success/10 text-status-success px-sm py-xs rounded text-[10px] font-bold uppercase tracking-wider">Approved</span>
+</td>
+</tr>
+<tr class="border-b border-border-subtle hover:bg-surface-container transition-colors">
+<td class="px-md py-md font-mono text-xs">OTR-25-879</td>
+<td class="px-md py-md text-xs">Nov 11, 2023</td>
+<td class="px-md py-md">Mike Peterson</td>
+<td class="px-md py-md text-xs font-bold">WO-9884</td>
+<td class="px-md py-md font-bold">3.0</td>
+<td class="px-md py-md">
+<span class="bg-status-error/10 text-status-error px-sm py-xs rounded text-[10px] font-bold uppercase tracking-wider">Rejected</span>
+</td>
+</tr>
+<tr class="border-b border-border-subtle hover:bg-surface-container transition-colors">
+<td class="px-md py-md font-mono text-xs">OTR-25-875</td>
+<td class="px-md py-md text-xs">Nov 10, 2023</td>
+<td class="px-md py-md">David Vance</td>
+<td class="px-md py-md text-xs font-bold">WO-9870</td>
+<td class="px-md py-md font-bold">6.0</td>
+<td class="px-md py-md">
+<span class="bg-status-success/10 text-status-success px-sm py-xs rounded text-[10px] font-bold uppercase tracking-wider">Approved</span>
+</td>
+</tr>
+<tr class="border-b border-border-subtle hover:bg-surface-container transition-colors">
+<td class="px-md py-md font-mono text-xs">OTR-25-872</td>
+<td class="px-md py-md text-xs">Nov 09, 2023</td>
+<td class="px-md py-md">Robert Chen</td>
+<td class="px-md py-md text-xs font-bold">WO-9852</td>
+<td class="px-md py-md font-bold">4.0</td>
+<td class="px-md py-md">
+<span class="bg-status-success/10 text-status-success px-sm py-xs rounded text-[10px] font-bold uppercase tracking-wider">Approved</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex items-center justify-between text-xs text-on-surface-variant font-label-md px-sm">
+<span>Showing 1-5 of 142 records</span>
+<div class="flex items-center gap-xs">
+<button class="p-xs bg-surface-container-high rounded opacity-50"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<span class="px-sm font-bold text-primary">Page 1</span>
+<button class="p-xs bg-surface-container-high rounded hover:bg-secondary hover:text-on-primary transition-colors"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</section>
+</div>
+</div>
+<footer class="mt-auto py-lg px-md border-t border-border-subtle bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-md text-on-surface-variant text-xs opacity-60">
+<p>© 2023 Industrial Authority ERP. All manufacturing logs secured under Enterprise Protocol 4.2.</p>
+<div class="flex gap-lg">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Audit Logs</a>
+<a class="hover:text-primary transition-colors" href="#">System Health</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Floating Action Button Contextual Check -->
+<!-- Suppressed on Dashboard to prioritize information density per design instructions -->
+<script>
+        // Micro-interaction for Approval Buttons
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText === 'Approve' || btn.innerText === 'Reject') {
+                btn.addEventListener('click', function() {
+                    const card = this.closest('.bg-surface-card');
+                    card.style.opacity = '0.5';
+                    card.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                        // Add notification logic here if needed
+                    }, 300);
+                });
+            }
+        });
+
+        // Hover animation for table rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transition = 'background-color 0.2s';
+            });
+        });
+    </script>
+</body></html>

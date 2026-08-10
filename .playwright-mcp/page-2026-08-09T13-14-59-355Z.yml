@@ -1,0 +1,171 @@
+- generic [ref=f20e3]:
+  - complementary [ref=f20e4]:
+    - generic [ref=f20e5]:
+      - heading "Canva Concepts" [level=1] [ref=f20e6]
+      - paragraph [ref=f20e7]: Industrial ERP
+    - navigation [ref=f20e8]:
+      - link "manufacturing Work Orders" [ref=f20e9] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f20e10]: manufacturing
+        - generic [ref=f20e11]: Work Orders
+      - link "precision_manufacturing Production" [ref=f20e12] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f20e13]: precision_manufacturing
+        - generic [ref=f20e14]: Production
+      - link "group Users" [ref=f20e15] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f20e16]: group
+        - generic [ref=f20e17]: Users
+      - link "payments Finance" [ref=f20e18] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f20e19]: payments
+        - generic [ref=f20e20]: Finance
+    - generic [ref=f20e21]:
+      - link "settings Settings" [ref=f20e22] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f20e23]: settings
+        - generic [ref=f20e24]: Settings
+      - link "help Support" [ref=f20e25] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f20e26]: help
+        - generic [ref=f20e27]: Support
+      - generic [ref=f20e28]:
+        - generic [ref=f20e29]:
+          - img "Robert Hudson" [ref=f20e31]
+          - generic [ref=f20e32]:
+            - paragraph [ref=f20e33]: Robert Hudson
+            - paragraph [ref=f20e34]: Factory Supervisor
+        - generic [ref=f20e35]:
+          - generic [ref=f20e36]: Toggle System Role
+          - combobox [ref=f20e37] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor" [selected]
+            - option "Site Manager"
+  - main [ref=f20e38]:
+    - generic [ref=f20e39]:
+      - generic [ref=f20e40]:
+        - heading "New Job Card" [level=2] [ref=f20e41]
+        - generic [ref=f20e42]:
+          - generic [ref=f20e43]: search
+          - textbox "Search orders, clients, items..." [ref=f20e44]
+      - generic [ref=f20e46]:
+        - button "notifications" [ref=f20e47] [cursor=pointer]
+        - button "help" [ref=f20e48] [cursor=pointer]
+        - button "settings" [ref=f20e49] [cursor=pointer]
+    - generic [ref=f20e50]:
+      - navigation [ref=f20e52]:
+        - generic [ref=f20e53] [cursor=pointer]: Production
+        - generic [ref=f20e54]: chevron_right
+        - generic [ref=f20e55]: New Job Card
+      - generic [ref=f20e56]:
+        - generic [ref=f20e57]:
+          - heading "Create New Job Card" [level=1] [ref=f20e58]
+          - paragraph [ref=f20e59]: "PRD-09 Section 4.2: Daily Morning Supervisor Allocation"
+        - generic [ref=f20e60]:
+          - generic [ref=f20e61]: calendar_today
+          - generic [ref=f20e62]:
+            - paragraph [ref=f20e63]: Allocation Date
+            - paragraph [ref=f20e64]: August 9, 2026
+      - generic [ref=f20e65]:
+        - generic [ref=f20e66]:
+          - generic [ref=f20e67]:
+            - generic [ref=f20e68]:
+              - generic [ref=f20e69]:
+                - generic [ref=f20e70]: Work Order Selection *
+                - generic [ref=f20e71]:
+                  - combobox [ref=f20e72] [cursor=pointer]:
+                    - option "Select Active Work Order" [disabled]
+                    - 'option "WO-8835-23: Modular Coworking Pods - Indigo Edition"'
+                    - 'option "WO-8841-23: Hospitality Lobby Lounge - Custom Oak" [selected]'
+                  - generic: expand_more
+              - generic [ref=f20e73]:
+                - generic [ref=f20e74]: Production Stage *
+                - generic [ref=f20e75]:
+                  - combobox [ref=f20e76] [cursor=pointer]:
+                    - option "Cutting" [selected]
+                    - option "Edge Banding"
+                    - option "Drilling"
+                    - option "Assembly"
+                    - option "Lamination"
+                    - option "Finishing"
+                    - option "Hardware Fitting"
+                    - option "Quality Control"
+                    - option "Rework"
+                  - generic: expand_more
+            - generic [ref=f20e78] [cursor=pointer]:
+              - checkbox "Is this a QC Rework Task? (Flagged rework triggers separate hour/labor tracking)" [ref=f20e79]
+              - generic [ref=f20e80]: Is this a QC Rework Task? (Flagged rework triggers separate hour/labor tracking)
+            - generic [ref=f20e81]:
+              - generic [ref=f20e82]: Task Title *
+              - textbox "e.g., Cut plywood for base unit" [ref=f20e83]
+            - generic [ref=f20e84]:
+              - generic [ref=f20e85]: Task Description
+              - textbox "Detailed technical instructions for the team..." [ref=f20e86]
+            - generic [ref=f20e87]:
+              - generic [ref=f20e88]:
+                - generic [ref=f20e89]: Quantity of Units *
+                - spinbutton [ref=f20e90]: "1"
+              - generic [ref=f20e91]:
+                - generic [ref=f20e92]: Estimated Time (Hours)
+                - generic [ref=f20e93]:
+                  - spinbutton "0.0" [ref=f20e94]
+                  - generic [ref=f20e95]: HOURS
+            - generic [ref=f20e96]:
+              - generic [ref=f20e97]: Job Priority (Inherited from Work Order)
+              - generic [ref=f20e98]:
+                - generic [ref=f20e99]: normal
+                - generic [ref=f20e100]: high
+                - generic [ref=f20e101]: critical
+            - generic [ref=f20e102]:
+              - generic [ref=f20e103]: Supervisor Notes (Internal Only)
+              - textbox "Private notes for the Glide shift manager..." [ref=f20e104]
+          - generic [ref=f20e105]:
+            - button "Cancel" [ref=f20e106] [cursor=pointer]
+            - button "post_add Create Job Card" [ref=f20e107] [cursor=pointer]:
+              - generic [ref=f20e108]: post_add
+              - text: Create Job Card
+        - generic [ref=f20e110]:
+          - generic [ref=f20e111]:
+            - heading "Resource Allocation" [level=3] [ref=f20e112]
+            - generic [ref=f20e113]: 4 PRESENT
+          - generic [ref=f20e114]:
+            - generic [ref=f20e115]: Lead Carpenter *
+            - generic [ref=f20e116]:
+              - combobox [ref=f20e117] [cursor=pointer]:
+                - option "Assign Lead" [disabled] [selected]
+                - option "Marcus Chen (Factory Manager)"
+                - option "Marcus Chen (Factory Manager)"
+                - option "Michael Santos (Senior Finisher)"
+                - option "Anil Wilson (Junior Woodworker)"
+              - generic: person
+          - generic [ref=f20e118]:
+            - generic [ref=f20e119]: Assign Support Team
+            - generic [ref=f20e120]:
+              - generic [ref=f20e121] [cursor=pointer]:
+                - generic [ref=f20e122]:
+                  - checkbox [ref=f20e123]
+                  - generic [ref=f20e124]:
+                    - paragraph [ref=f20e125]: Marcus Chen
+                    - paragraph [ref=f20e126]: Factory Manager
+                - generic [ref=f20e127]: construction
+              - generic [ref=f20e128] [cursor=pointer]:
+                - generic [ref=f20e129]:
+                  - checkbox [ref=f20e130]
+                  - generic [ref=f20e131]:
+                    - paragraph [ref=f20e132]: Marcus Chen
+                    - paragraph [ref=f20e133]: Factory Manager
+                - generic [ref=f20e134]: construction
+              - generic [ref=f20e135] [cursor=pointer]:
+                - generic [ref=f20e136]:
+                  - checkbox [ref=f20e137]
+                  - generic [ref=f20e138]:
+                    - paragraph [ref=f20e139]: Michael Santos
+                    - paragraph [ref=f20e140]: Senior Finisher
+                - generic [ref=f20e141]: construction
+              - generic [ref=f20e142] [cursor=pointer]:
+                - generic [ref=f20e143]:
+                  - checkbox [ref=f20e144]
+                  - generic [ref=f20e145]:
+                    - paragraph [ref=f20e146]: Anil Wilson
+                    - paragraph [ref=f20e147]: Junior Woodworker
+                - generic [ref=f20e148]: construction

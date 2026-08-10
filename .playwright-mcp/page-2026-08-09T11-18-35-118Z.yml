@@ -1,0 +1,134 @@
+- generic [ref=f13e3]:
+  - complementary [ref=f13e4]:
+    - generic [ref=f13e5]:
+      - heading "Canva Concepts" [level=1] [ref=f13e6]
+      - paragraph [ref=f13e7]: Industrial ERP
+    - navigation [ref=f13e8]:
+      - link "manufacturing Work Orders" [ref=f13e9] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f13e10]: manufacturing
+        - generic [ref=f13e11]: Work Orders
+      - link "precision_manufacturing Production" [ref=f13e12] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f13e13]: precision_manufacturing
+        - generic [ref=f13e14]: Production
+      - link "group Users" [ref=f13e15] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f13e16]: group
+        - generic [ref=f13e17]: Users
+      - link "payments Finance" [ref=f13e18] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f13e19]: payments
+        - generic [ref=f13e20]: Finance
+    - generic [ref=f13e21]:
+      - link "settings Settings" [ref=f13e22] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f13e23]: settings
+        - generic [ref=f13e24]: Settings
+      - link "help Support" [ref=f13e25] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f13e26]: help
+        - generic [ref=f13e27]: Support
+      - generic [ref=f13e28]:
+        - generic [ref=f13e29]:
+          - img "Robert Hudson" [ref=f13e31]
+          - generic [ref=f13e32]:
+            - paragraph [ref=f13e33]: Robert Hudson
+            - paragraph [ref=f13e34]: Factory Supervisor
+        - generic [ref=f13e35]:
+          - generic [ref=f13e36]: Toggle System Role
+          - combobox [ref=f13e37] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor" [selected]
+            - option "Site Manager"
+  - main [ref=f13e38]:
+    - generic [ref=f13e39]:
+      - generic [ref=f13e40]:
+        - heading "Work Order Detail" [level=2] [ref=f13e41]
+        - generic [ref=f13e42]:
+          - generic [ref=f13e43]: search
+          - textbox "Search orders, clients, items..." [ref=f13e44]
+      - generic [ref=f13e46]:
+        - button "notifications" [ref=f13e47] [cursor=pointer]
+        - button "help" [ref=f13e48] [cursor=pointer]
+        - button "settings" [ref=f13e49] [cursor=pointer]
+    - generic [ref=f13e50]:
+      - generic [ref=f13e51]:
+        - generic [ref=f13e52]:
+          - generic [ref=f13e53]: precision_manufacturing
+          - generic [ref=f13e55]:
+            - generic [ref=f13e56]:
+              - 'heading "WO-0005-26: Test Executive Desk" [level=2] [ref=f13e57]'
+              - generic [ref=f13e58]: DRAFT
+            - generic [ref=f13e59]:
+              - generic [ref=f13e60]:
+                - generic [ref=f13e61]: priority_high
+                - text: NORMAL PRIORITY
+              - generic [ref=f13e62]: "|"
+              - generic [ref=f13e63]: "Created: 8/9/2026"
+        - generic [ref=f13e64]:
+          - button "download Export PDF" [ref=f13e65] [cursor=pointer]:
+            - generic [ref=f13e66]: download
+            - text: Export PDF
+          - button "arrow_back Back" [ref=f13e67] [cursor=pointer]:
+            - generic [ref=f13e68]: arrow_back
+            - text: Back
+      - generic [ref=f13e69]:
+        - generic [ref=f13e70]:
+          - button "info Details" [ref=f13e71] [cursor=pointer]:
+            - generic [ref=f13e72]: info
+            - text: Details
+          - button "history Status History" [ref=f13e73] [cursor=pointer]:
+            - generic [ref=f13e74]: history
+            - text: Status History
+          - button "architecture Drawings" [ref=f13e75] [cursor=pointer]:
+            - generic [ref=f13e76]: architecture
+            - text: Drawings
+        - generic [ref=f13e78]:
+          - generic [ref=f13e79]:
+            - heading "corporate_fare Client Information" [level=3] [ref=f13e80]:
+              - generic [ref=f13e81]: corporate_fare
+              - text: Client Information
+            - generic [ref=f13e82]:
+              - generic [ref=f13e83]: Client Name
+              - paragraph [ref=f13e84]: Test Client Inc
+            - generic [ref=f13e85]:
+              - generic [ref=f13e86]: Client Type
+              - paragraph [ref=f13e87]: b2b
+            - generic [ref=f13e88]:
+              - generic [ref=f13e89]: Project Name
+              - paragraph [ref=f13e90]: Test Project
+          - generic [ref=f13e91]:
+            - heading "chair Furniture Specs" [level=3] [ref=f13e92]:
+              - generic [ref=f13e93]: chair
+              - text: Furniture Specs
+            - generic [ref=f13e94]:
+              - generic [ref=f13e95]: Type
+              - paragraph [ref=f13e96]: Table
+            - generic [ref=f13e97]:
+              - generic [ref=f13e98]:
+                - generic [ref=f13e99]: Quantity
+                - paragraph [ref=f13e100]: 1 Units
+              - generic [ref=f13e101]:
+                - generic [ref=f13e102]: Finish Type
+                - paragraph [ref=f13e103]: Natural Veneer
+            - generic [ref=f13e104]:
+              - generic [ref=f13e105]: Dimensions (L x H x D)
+              - paragraph [ref=f13e106]: 0mm x 0mm x 0mm
+          - generic [ref=f13e107]:
+            - heading "local_shipping Logistics & Committed Delivery" [level=3] [ref=f13e108]:
+              - generic [ref=f13e109]: local_shipping
+              - text: Logistics & Committed Delivery
+            - generic [ref=f13e110]:
+              - generic [ref=f13e111]:
+                - generic [ref=f13e112]:
+                  - generic [ref=f13e113]: Committed Delivery Date
+                  - paragraph [ref=f13e114]: Aug 15, 2026
+                - button "edit_calendar" [ref=f13e115] [cursor=pointer]
+              - button "Set/Update Committed Date" [ref=f13e117] [cursor=pointer]
+            - generic [ref=f13e118]:
+              - generic [ref=f13e119]: Delivery Terms
+              - paragraph [ref=f13e120]: included
+            - generic [ref=f13e121]:
+              - generic [ref=f13e122]: Delivery Address
+              - paragraph [ref=f13e123]: 123 Factory Lane

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Complaint Detail - Industrial Authority ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7F6F2;
+        }
+        .sidebar-active {
+            background-color: #FDD977; /* secondary-container matches gold vibe */
+            color: #1A1A1A;
+            border-left: 4px solid #C8A84B;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "on-tertiary-container": "#5889af",
+                "on-tertiary": "#ffffff",
+                "surface-card": "#FFFFFF",
+                "status-financial": "#14532D",
+                "surface-container": "#efeeea",
+                "background": "#faf9f5",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed": "#cbe6ff",
+                "on-tertiary-fixed": "#001e30",
+                "inverse-on-surface": "#f2f1ed",
+                "status-draft": "#888888",
+                "surface-container-highest": "#e3e2df",
+                "surface-bright": "#faf9f5",
+                "status-production": "#F97316",
+                "status-pending": "#F59E0B",
+                "tertiary-container": "#001e30",
+                "on-primary-container": "#858383",
+                "primary-container": "#1c1b1b",
+                "border-subtle": "#E8E8E8",
+                "surface-tint": "#5f5e5e",
+                "status-error": "#C0392B",
+                "error": "#ba1a1a",
+                "on-background": "#1b1c1a",
+                "surface-dim": "#dbdad6",
+                "primary-fixed-dim": "#c8c6c5",
+                "primary": "#000000",
+                "status-invoice": "#7C3AED",
+                "inverse-surface": "#30312e",
+                "secondary-fixed-dim": "#e5c363",
+                "on-secondary-container": "#775e00",
+                "on-error-container": "#93000a",
+                "on-primary-fixed": "#1c1b1b",
+                "outline-variant": "#c4c7c7",
+                "on-error": "#ffffff",
+                "inverse-primary": "#c8c6c5",
+                "status-success": "#2D7D46",
+                "on-surface-variant": "#444748",
+                "surface-variant": "#e3e2df",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed-variant": "#474746",
+                "secondary-fixed": "#ffe08c",
+                "on-surface": "#1b1c1a",
+                "on-primary": "#ffffff",
+                "surface-container-high": "#e9e8e4",
+                "secondary": "#745b00",
+                "outline": "#747878",
+                "primary-fixed": "#e5e2e1",
+                "on-secondary-fixed": "#241a00",
+                "secondary-container": "#fdd977",
+                "status-material": "#0891B2",
+                "surface": "#faf9f5",
+                "tertiary": "#000000",
+                "tertiary-fixed-dim": "#9bccf6",
+                "error-container": "#ffdad6",
+                "on-secondary-fixed-variant": "#584400",
+                "on-tertiary-fixed-variant": "#0e4b6e",
+                "surface-container-low": "#f5f4f0"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "sidebar-width": "260px",
+                "lg": "24px",
+                "container-max": "1440px",
+                "xl": "32px",
+                "md": "16px",
+                "base": "4px",
+                "xs": "4px",
+                "sm": "8px"
+              },
+              "fontFamily": {
+                "headline-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-sm": ["Inter"],
+                "title-md": ["Inter"],
+                "status-pill": ["Inter"],
+                "body-lg": ["Inter"],
+                "label-md": ["Inter"]
+              },
+              "fontSize": {
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-primary-container flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary">Precision Ops</h1>
+<p class="text-on-primary-container opacity-60 text-xs uppercase tracking-widest mt-xs">Unit 04 - Heavy Mfg</p>
+</div>
+<nav class="flex-grow space-y-base overflow-y-auto hide-scrollbar">
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container border-l-4 border-secondary flex items-center gap-md px-md py-sm active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+<span class="font-label-md text-label-md">Customer Support</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-md text-label-md">Production</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Financials</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</nav>
+<div class="px-md mt-auto pt-lg space-y-base">
+<button class="w-full bg-[#C8A84B] text-on-primary py-sm rounded-lg font-label-md text-label-md shadow-lg active:scale-95 transition-transform mb-lg">
+                New Batch
+            </button>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant transition-all" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-sidebar-width min-h-screen flex flex-col">
+<!-- Top Bar -->
+<header class="bg-surface-container-lowest sticky top-0 z-40 border-b border-border-subtle flex justify-between items-center h-16 px-md w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Industrial Authority ERP</span>
+<div class="hidden md:flex items-center gap-lg ml-xl">
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors" href="#">Operations</a>
+<a class="text-secondary font-bold border-b-2 border-secondary h-16 flex items-center" href="#">Complaints</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors" href="#">Quality Assurance</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative group">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer group-hover:text-primary transition-colors">notifications</span>
+<span class="absolute -top-1 -right-1 bg-status-error w-2 h-2 rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">help</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+<div class="h-8 w-8 rounded-full bg-surface-container overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a corporate factory manager wearing a sharp navy blazer, with soft overhead lighting and a blurred industrial control room background in neutral grays and warm golds." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk7XxYgV3OtiHUkVyp3GKB2w6F0erE2C1B3TJqwSa9jLmvn6jzmdhsWknMPC_t1BIVT4JsT9RMq8-Bn-VxYSgQT2_vIUpvTZmK5nsXqpyxOsFOjDqhTOco3TJHwafbownOiei7B5NQDy58VKQSaddV7G-dGH1iwc_ow1P22jElaScQopxSHAAg_wUWdJuDTaadr-DEZ-Z94_bdB2us5FtUYNQN8cDrFuX6lYBwl72DyxLsRp9djphLxw"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-lg max-w-container-max w-full mx-auto space-y-lg">
+<!-- Breadcrumbs & Header Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div class="space-y-sm">
+<nav class="flex items-center gap-xs text-xs font-semibold text-on-primary-container opacity-60 uppercase tracking-widest">
+<a href="#">Support Hub</a>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<a href="#">Complaints Registry</a>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-primary opacity-100">CPL-26-001</span>
+</nav>
+<div class="flex items-center gap-md">
+<h2 class="font-headline-lg text-headline-lg">Complaint CPL-26-001</h2>
+<span class="px-sm py-1 rounded bg-status-pending text-primary font-status-pill text-status-pill flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                            OPEN
+                        </span>
+</div>
+<p class="text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">precision_manufacturing</span>
+                        Linked to Work Order <a class="font-bold underline text-primary decoration-secondary" href="#">WO-CHH-26-001</a>
+</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="px-md py-sm border border-primary text-primary font-label-md text-label-md rounded hover:bg-surface-container-high transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-md">print</span>
+                        Print Report
+                    </button>
+<button class="px-md py-sm border border-primary text-primary font-label-md text-label-md rounded hover:bg-surface-container-high transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-md">share</span>
+                        Forward to QA
+                    </button>
+</div>
+</div>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Left Column: Complaint Evidence -->
+<div class="col-span-12 lg:col-span-7 space-y-lg">
+<!-- Detail Card -->
+<div class="bg-surface-card border border-border-subtle p-lg shadow-sm rounded-lg space-y-md">
+<div class="flex justify-between items-start border-b border-border-subtle pb-md">
+<h3 class="font-title-md text-title-md text-primary">Complaint Information</h3>
+<div class="text-right">
+<p class="text-xs text-on-surface-variant font-bold uppercase">Type</p>
+<p class="font-label-md text-label-md">Manufacturing Defect</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-lg py-md">
+<div>
+<p class="text-xs text-on-surface-variant font-bold uppercase mb-xs">Raised By</p>
+<div class="flex items-center gap-sm">
+<div class="h-6 w-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[10px] font-bold">AL</div>
+<span class="font-body-md text-body-md">Alistair Lynch (Client Rep)</span>
+</div>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-bold uppercase mb-xs">Time Elapsed</p>
+<div class="flex items-center gap-sm text-status-error font-bold">
+<span class="material-symbols-outlined text-md">schedule</span>
+<span class="font-body-md text-body-md">4 hours ago</span>
+</div>
+</div>
+</div>
+<div class="space-y-sm">
+<p class="text-xs text-on-surface-variant font-bold uppercase">Description</p>
+<div class="bg-surface-container-low p-md border-l-4 border-secondary text-on-surface italic">
+                                "The heavy-duty steel trusses delivered for WO-CHH-26-001 exhibit significant surface scoring and misaligned weld points on the primary load-bearing joints. This prevents safety certification and stalls the vertical assembly phase of the project. Immediate replacement or certified on-site remediation required."
+                            </div>
+</div>
+<div class="space-y-sm pt-md">
+<p class="text-xs text-on-surface-variant font-bold uppercase">Photo Evidence (2)</p>
+<div class="grid grid-cols-2 gap-md">
+<div class="relative group cursor-zoom-in rounded overflow-hidden aspect-[16/10] border border-border-subtle">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close-up macro photography of a defective industrial weld on a thick steel truss. The weld shows porous texture and uneven penetration, with some surface rust appearing near the joint. Cinematic lighting highlighting the rough metallic texture in an industrial workshop setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA88LXpQr8G7Xp-gU8gMuQVVxVmeAF1VCJloNF7lawkjngm4kYKRirNYDK8xk0thuT0V4mi8CQSone2NAbhFLcEVsdSBIUwNgh5RSVSE11D2GyJ_stmBGwjyaO5Z490FKaHt1InNtlB9OUOtFf9nZaNos-_mojni1GzsRZ1_NMmhgA_fyQG-kRSho4wmhx1j674pK4YmzuqUCAUhWqelh-356E693E0yQ6h9Z5cLVJgL8U94_Fztf72Wg"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-xl">zoom_in</span>
+</div>
+</div>
+<div class="relative group cursor-zoom-in rounded overflow-hidden aspect-[16/10] border border-border-subtle">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Wide shot of a large industrial warehouse floor where multiple large-scale steel structural components are laid out. One specific joint is circled with bright yellow industrial chalk to indicate a misalignment. High-contrast lighting with deep shadows and metallic highlights, following a professional corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOQm33iGriA2L3KjoYEiDdIMTSuVR7RNvaK_Mafb2ipRHccFuHZpii9GOpZnYZ-tM4vry2nYoNMqaGGOAxIGVJRgt1BCNItEoK8yeqUv2PL21HFY202rNpp7ZD0YouU2ywBEyZYGiWXo0ws7xJYbxh124pXA77OBoZ5Bnj-DUsxuLaDUzxL27HCgVJILN7jI1RAA5Z05GpKYir8iisdrDlJUO7oxj7074RGzip7MnOcccGiAf0g3Jl0w"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-xl">zoom_in</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Links -->
+<div class="bg-surface-card border border-border-subtle p-md shadow-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-lg">
+<a class="flex items-center gap-sm text-sm font-bold text-on-surface hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-md">assignment</span>
+                                Original QC Record #QC-992
+                            </a>
+<div class="h-4 w-px bg-border-subtle"></div>
+<a class="flex items-center gap-sm text-sm font-bold text-on-surface hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-md">history</span>
+                                Asset Maintenance Log
+                            </a>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">arrow_forward</span>
+</div>
+</div>
+<!-- Right Column: Resolution Panel -->
+<div class="col-span-12 lg:col-span-5 space-y-lg">
+<!-- SLA Tracker Card -->
+<div class="bg-primary-container p-lg rounded-lg text-on-primary shadow-lg border-b-4 border-secondary overflow-hidden relative">
+<div class="relative z-10 space-y-sm">
+<div class="flex justify-between items-center">
+<h4 class="font-label-md text-label-md uppercase tracking-widest opacity-80">Resolution SLA</h4>
+<span class="material-symbols-outlined text-secondary animate-pulse" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex items-end justify-between">
+<p class="font-headline-md text-headline-md">20h Remaining</p>
+<p class="text-xs opacity-60">Target: 24h Total</p>
+</div>
+<div class="w-full bg-on-primary-fixed-variant h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 16.6%"></div>
+</div>
+</div>
+<!-- Subtle texture/decoration -->
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">timer</span>
+</div>
+</div>
+<!-- Resolution Form -->
+<div class="bg-surface-card border border-border-subtle p-lg shadow-md rounded-lg space-y-xl">
+<h3 class="font-title-md text-title-md text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined">gavel</span>
+                            FM Resolution Determination
+                        </h3>
+<!-- Fault Determination -->
+<div class="space-y-md">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Fault Determination</label>
+<div class="grid grid-cols-2 gap-sm">
+<label class="border border-border-subtle p-sm rounded flex items-center gap-sm cursor-pointer hover:border-secondary transition-colors has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+<input class="text-secondary focus:ring-secondary" name="fault" type="radio" value="our"/>
+<span class="font-body-md text-body-md">Our Fault</span>
+</label>
+<label class="border border-border-subtle p-sm rounded flex items-center gap-sm cursor-pointer hover:border-secondary transition-colors has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+<input class="text-secondary focus:ring-secondary" name="fault" type="radio" value="transit"/>
+<span class="font-body-md text-body-md">Transit Damage</span>
+</label>
+<label class="border border-border-subtle p-sm rounded flex items-center gap-sm cursor-pointer hover:border-secondary transition-colors has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+<input class="text-secondary focus:ring-secondary" name="fault" type="radio" value="client"/>
+<span class="font-body-md text-body-md">Client Fault</span>
+</label>
+<label class="border border-border-subtle p-sm rounded flex items-center gap-sm cursor-pointer hover:border-secondary transition-colors has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+<input checked="" class="text-secondary focus:ring-secondary" name="fault" type="radio" value="undetermined"/>
+<span class="font-body-md text-body-md">Undetermined</span>
+</label>
+</div>
+</div>
+<!-- Resolution Type Dropdown -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Resolution Type</label>
+<div class="relative">
+<select class="w-full border-border-subtle h-10 px-md rounded focus:ring-1 focus:ring-secondary focus:border-secondary appearance-none bg-surface-container-lowest font-body-md">
+<option>Select Action...</option>
+<option>Repair at Site</option>
+<option>Replacement WO</option>
+<option>Credit Note</option>
+<option>No Action Needed</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- Resolution Notes -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase">Resolution Notes</label>
+<textarea class="w-full border-border-subtle rounded p-md focus:ring-1 focus:ring-secondary focus:border-secondary bg-surface-container-lowest font-body-md" placeholder="Document the remediation plan or internal findings here..." rows="4"></textarea>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary text-on-primary h-12 rounded font-bold hover:bg-on-surface-variant active:scale-95 transition-all shadow-md flex items-center justify-center gap-md">
+<span class="material-symbols-outlined">task_alt</span>
+                            Record Resolution
+                        </button>
+</div>
+<!-- History Timeline Preview -->
+<div class="bg-surface-container rounded-lg p-md space-y-md">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase flex items-center gap-sm">
+<span class="material-symbols-outlined text-md">history</span>
+                            Recent History
+                        </p>
+<div class="space-y-md border-l border-border-subtle ml-sm pl-md">
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-secondary"></div>
+<p class="text-xs font-bold">14:22 - Complaint Logged</p>
+<p class="text-[11px] text-on-surface-variant italic">System generated via Client Portal</p>
+</div>
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-border-subtle"></div>
+<p class="text-xs font-bold opacity-60">15:10 - FM Assigned</p>
+<p class="text-[11px] text-on-surface-variant">Ops Manager notified</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Nav Anchor (Visible only on mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-container-lowest border-t border-border-subtle flex items-center justify-around z-50">
+<button class="flex flex-col items-center gap-xs text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+<span class="text-[10px] font-bold">Complaints</span>
+</button>
+<button class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] font-bold">Inventory</span>
+</button>
+<button class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined">factory</span>
+<span class="text-[10px] font-bold">Production</span>
+</button>
+<button class="flex flex-col items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</nav>
+<!-- Simple Interactivity for Demo -->
+<script>
+        // Form field focus effects and placeholder button logic
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if(this.textContent.trim() === 'Record Resolution') {
+                    const confirmAction = confirm("Are you sure you want to finalize the resolution for CPL-26-001?");
+                    if(confirmAction) {
+                        this.innerHTML = `<span class="material-symbols-outlined animate-spin">sync</span> Recording...`;
+                        setTimeout(() => {
+                            this.innerHTML = `<span class="material-symbols-outlined">check_circle</span> Resolution Recorded`;
+                            this.classList.replace('bg-primary', 'bg-status-success');
+                        }, 1200);
+                    }
+                }
+            });
+        });
+    </script>
+</body></html>

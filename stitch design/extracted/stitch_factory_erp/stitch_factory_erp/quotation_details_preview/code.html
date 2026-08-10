@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quotation Detail - Canva Concepts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#e5e2e1",
+                        "surface": "#faf9f5",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-surface": "#1b1c1a",
+                        "tertiary": "#000000",
+                        "status-financial": "#14532D",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#cbe6ff",
+                        "primary": "#000000",
+                        "on-background": "#1b1c1a",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "error": "#ba1a1a",
+                        "status-material": "#0891B2",
+                        "surface-container-highest": "#e3e2df",
+                        "inverse-primary": "#c8c6c5",
+                        "background": "#faf9f5",
+                        "outline": "#747878",
+                        "secondary-container": "#fdd977",
+                        "inverse-surface": "#30312e",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c7c7",
+                        "status-production": "#F97316",
+                        "primary-container": "#1c1b1b",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "on-secondary-container": "#775e00",
+                        "status-success": "#2D7D46",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-surface-variant": "#444748",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e3e2df",
+                        "surface-container-low": "#f5f4f0",
+                        "inverse-on-surface": "#f2f1ed",
+                        "status-draft": "#888888",
+                        "surface-bright": "#faf9f5",
+                        "on-tertiary-fixed": "#001e30",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "tertiary-container": "#001e30",
+                        "on-secondary-fixed-variant": "#584400",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dbdad6",
+                        "status-invoice": "#7C3AED",
+                        "status-error": "#C0392B",
+                        "secondary": "#745b00",
+                        "border-subtle": "#E8E8E8",
+                        "surface-tint": "#5f5e5e",
+                        "surface-container-high": "#e9e8e4",
+                        "secondary-fixed-dim": "#e5c363",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-card": "#FFFFFF",
+                        "on-tertiary-container": "#5889af",
+                        "surface-container": "#efeeea",
+                        "status-pending": "#F59E0B",
+                        "secondary-fixed": "#ffe08c",
+                        "on-primary-container": "#858383",
+                        "gold-accent": "#C8A84B"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "xs": "4px",
+                        "sidebar-width": "260px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "status-pill": ["Inter"],
+                        "body-lg": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active {
+            background-color: #C8A84B;
+            border-left: 4px solid #fdd977;
+            color: #ffffff !important;
+            opacity: 1 !important;
+        }
+        .pdf-shadow {
+            box-shadow: 0 0 40px rgba(0,0,0,0.08);
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen overflow-hidden flex">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary flex flex-col py-lg z-50">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-bold tracking-tight">Canva Concepts</h1>
+<p class="text-xs text-on-primary opacity-60 uppercase tracking-widest mt-1">Industrial ERP</p>
+</div>
+<nav class="flex-1 px-sm space-y-1">
+<a class="flex items-center gap-md px-md py-sm font-title-md text-title-md text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-md py-sm font-title-md text-title-md sidebar-active transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="manufacturing">manufacturing</span>
+                Work Orders
+            </a>
+<a class="flex items-center gap-md px-md py-sm font-title-md text-title-md text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Users
+            </a>
+<a class="flex items-center gap-md px-md py-sm font-title-md text-title-md text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                Finance
+            </a>
+</nav>
+<div class="px-sm mt-auto space-y-1">
+<a class="flex items-center gap-md px-md py-sm font-title-md text-title-md text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-md px-md py-sm font-title-md text-title-md text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="flex-1 ml-[260px] flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar (Shared Component) -->
+<header class="h-16 flex justify-between items-center px-lg bg-surface border-b border-border-subtle shrink-0">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-sm text-headline-sm text-primary">Quotation Detail</h2>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-0.5 rounded text-[10px] font-bold tracking-wider uppercase">QTN-2024-0892</span>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-outline material-symbols-outlined text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded text-label-md w-64 focus:ring-1 focus:ring-gold-accent" placeholder="Search orders..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a factory operations manager in a clean, modern industrial setting. The person is wearing a dark polo shirt and smiling confidently, with soft depth-of-field blurring out a high-tech manufacturing floor in the background. Lighting is natural and bright." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpolEMSl2R_sKQdFi1746U--EmNk5KyNBUIKgOvMxlGJDZjGLoMCt_oWeeXx7z4B4ZTqDWitIpskOOPORyBQDypYFjkU18Rb3rG-LLdtWJaOt22NCDEK7GcppTNaSDs16D65tGD3I3yMl1oFaFg9c80Ueb-P1bZl-KED7m9fJn93M_7pMeuOzhq1TRFAQWWODbBozDWo502MtwfwnNjpHGMH7h7b1DRHrajJ33L9BsRceyXV_xnMRF3Q"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Sub-Header / Actions -->
+<section class="bg-surface-bright px-lg py-sm border-b border-border-subtle flex justify-between items-center shrink-0">
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-2 border border-border-subtle text-on-surface font-label-md hover:bg-surface-container transition-colors rounded">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                </button>
+<button class="flex items-center gap-xs px-md py-2 border border-border-subtle text-on-surface font-label-md hover:bg-surface-container transition-colors rounded">
+<span class="material-symbols-outlined text-sm">history</span> Create Revision
+                </button>
+<button class="flex items-center gap-xs px-md py-2 border border-border-subtle text-on-surface font-label-md hover:bg-surface-container transition-colors rounded">
+<span class="material-symbols-outlined text-sm">mark_chat_read</span> Record Response
+                </button>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-2 border border-border-subtle text-on-surface font-label-md hover:bg-surface-container transition-colors rounded">
+<span class="material-symbols-outlined text-sm">download</span> Download PDF
+                </button>
+<button class="flex items-center gap-xs px-md py-2 bg-primary text-on-primary font-label-md hover:bg-opacity-90 transition-all rounded">
+                    Approve &amp; Send
+                </button>
+<button class="flex items-center gap-xs px-md py-2 bg-gold-accent text-on-primary font-label-md hover:shadow-lg active:scale-95 transition-all rounded font-bold shadow-md">
+                    Convert to Work Order
+                </button>
+</div>
+</section>
+<!-- Split View Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- LEFT PANEL: Internal View -->
+<section class="w-[450px] bg-secondary-fixed/30 border-r border-border-subtle overflow-y-auto p-lg scroll-hide">
+<div class="mb-lg flex justify-between items-end">
+<h3 class="text-xs font-bold uppercase tracking-widest text-secondary-fixed-variant">Internal Cost Analysis</h3>
+<div class="flex items-center gap-xs text-status-success font-bold text-sm">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                        22.5% Margin
+                    </div>
+</div>
+<!-- Cost Breakdown Cards -->
+<div class="space-y-md">
+<div class="bg-surface-card p-md border border-border-subtle rounded-lg">
+<div class="flex justify-between items-center mb-sm">
+<span class="text-on-surface-variant font-label-md">Material Costs</span>
+<span class="font-title-md">$14,250.00</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-status-material w-3/4 h-full"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2">Includes raw steel, aluminum plating, and hardware kit.</p>
+</div>
+<div class="bg-surface-card p-md border border-border-subtle rounded-lg">
+<div class="flex justify-between items-center mb-sm">
+<span class="text-on-surface-variant font-label-md">Labour Costs</span>
+<span class="font-title-md">$8,400.00</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-status-production w-1/2 h-full"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2">120 man-hours estimated @ $70/hr (Grade A Tech).</p>
+</div>
+<div class="bg-surface-card p-md border border-border-subtle rounded-lg">
+<div class="flex justify-between items-center mb-sm">
+<span class="text-on-surface-variant font-label-md">Overheads</span>
+<span class="font-title-md">$3,150.00</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-outline-variant w-1/4 h-full"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2">Machine depreciation, utilities, and logistics.</p>
+</div>
+<!-- Total Summaries -->
+<div class="pt-lg border-t border-secondary-fixed/50 space-y-sm">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-md">Total Direct Cost</span>
+<span class="font-title-md">$25,800.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-md">Quoted Selling Price</span>
+<span class="font-title-md">$33,290.00</span>
+</div>
+<div class="flex justify-between items-center py-sm px-md bg-status-success/10 rounded border border-status-success/20">
+<span class="text-status-success font-bold text-sm">Target vs Actual Margin</span>
+<span class="text-status-success font-bold text-title-md">+4.5% Over Target</span>
+</div>
+</div>
+<!-- Internal Notes -->
+<div class="mt-xl">
+<h4 class="text-xs font-bold uppercase tracking-widest text-secondary-fixed-variant mb-md">Internal Notes</h4>
+<div class="bg-surface-container-low p-md rounded text-body-md text-on-surface-variant italic border border-dashed border-outline-variant">
+                            "Customer requested expedited delivery for Phase 1. Margin has been slightly buffered to account for potential weekend shifts. Ensure QC check on aluminum plating before assembly."
+                            <div class="mt-sm text-[10px] font-bold not-italic flex items-center gap-xs">
+<span class="material-symbols-outlined text-[12px]">account_circle</span>
+                                LOGGED BY HARVEY S. (PRODUCTION HEAD)
+                            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- RIGHT PANEL: Client View Preview -->
+<section class="flex-1 bg-surface-dim overflow-y-auto p-xl scroll-hide flex justify-center">
+<div class="w-[800px] bg-white pdf-shadow min-h-[1100px] flex flex-col p-[60px] text-on-surface">
+<!-- PDF Header -->
+<div class="flex justify-between items-start mb-xl">
+<div>
+<h4 class="font-extrabold text-2xl tracking-tighter text-primary">CANVA CONCEPTS</h4>
+<div class="text-[10px] text-on-surface-variant mt-1 leading-relaxed">
+                                142 Industrial Estate, Sector 4<br/>
+                                Manufacturing Hub, MH 40001<br/>
+                                contact@canvaconcepts.com
+                            </div>
+</div>
+<div class="text-right">
+<h1 class="text-4xl font-light text-primary mb-2">QUOTATION</h1>
+<div class="text-label-md text-on-surface-variant">
+<strong>Date:</strong> Oct 24, 2023<br/>
+<strong>Quotation #:</strong> QTN-2024-0892<br/>
+<strong>Valid Until:</strong> Nov 07, 2023
+                            </div>
+</div>
+</div>
+<div class="mb-xl grid grid-cols-2 gap-xl border-t border-b border-border-subtle py-lg">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline block mb-2">Customer Details</span>
+<div class="text-label-md">
+<strong class="text-primary">Apex Heavy Engineering Ltd</strong><br/>
+                                Attn: Sarah Jenkins<br/>
+                                909 Corporate Plaza, West Wing<br/>
+                                Business District, 50001
+                            </div>
+</div>
+<div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline block mb-2">Project Reference</span>
+<div class="text-label-md">
+<strong class="text-primary">Phase 2: Custom Conveyor Assembly</strong><br/>
+                                Location: North Facility Site<br/>
+                                Est. Commencement: Dec 2023
+                            </div>
+</div>
+</div>
+<!-- PDF Table -->
+<table class="w-full mb-xl">
+<thead>
+<tr class="border-b-2 border-primary text-[11px] font-bold uppercase tracking-wider text-left">
+<th class="py-md pr-md">Item Description</th>
+<th class="py-md px-md text-center">Qty</th>
+<th class="py-md pl-md text-right">Amount (USD)</th>
+</tr>
+</thead>
+<tbody class="text-label-md border-b border-border-subtle">
+<tr>
+<td class="py-lg pr-md align-top">
+<div class="font-bold text-primary mb-1">Custom Automated Sorter Module</div>
+<div class="text-on-surface-variant text-xs leading-relaxed">Standard 1500mm width, brushless motor, stainless steel rollers. Includes PLC integration and safety guarding.</div>
+</td>
+<td class="py-lg px-md text-center align-top">02</td>
+<td class="py-lg pl-md text-right align-top">$24,500.00</td>
+</tr>
+<tr>
+<td class="py-lg pr-md align-top">
+<div class="font-bold text-primary mb-1">Pneumatic Diverter Arm (Optional)</div>
+<div class="text-on-surface-variant text-xs leading-relaxed">High-speed actuation system with integrated solenoid valves and mounting kit.</div>
+</td>
+<td class="py-lg px-md text-center align-top">04</td>
+<td class="py-lg pl-md text-right align-top">$6,200.00</td>
+</tr>
+<tr>
+<td class="py-lg pr-md align-top">
+<div class="font-bold text-primary mb-1">On-Site Commissioning &amp; Training</div>
+<div class="text-on-surface-variant text-xs leading-relaxed">Technical support for setup, calibration, and staff training (3 sessions).</div>
+</td>
+<td class="py-lg px-md text-center align-top">01</td>
+<td class="py-lg pl-md text-right align-top">$2,590.00</td>
+</tr>
+</tbody>
+</table>
+<!-- PDF Totals -->
+<div class="flex justify-end mb-xl">
+<div class="w-64 space-y-sm">
+<div class="flex justify-between items-center text-label-md">
+<span class="text-on-surface-variant">Subtotal</span>
+<span>$33,290.00</span>
+</div>
+<div class="flex justify-between items-center text-label-md">
+<span class="text-on-surface-variant">GST (0%)</span>
+<span>$0.00</span>
+</div>
+<div class="flex justify-between items-center border-t-2 border-primary pt-sm">
+<span class="font-extrabold text-lg">Total</span>
+<span class="font-extrabold text-lg">$33,290.00</span>
+</div>
+</div>
+</div>
+<!-- PDF Footer Terms -->
+<div class="mt-auto pt-xl border-t border-border-subtle">
+<div class="grid grid-cols-2 gap-lg">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline block mb-2">Terms &amp; Conditions</span>
+<ul class="text-[10px] text-on-surface-variant space-y-1 list-disc pl-3">
+<li>50% Advance payment required for order confirmation.</li>
+<li>Delivery timeline: 4-6 weeks from receipt of advance.</li>
+<li>Quotes are valid for 14 days from date of issue.</li>
+<li>Warranty: 12 months on manufacturing defects.</li>
+</ul>
+</div>
+<div class="text-right flex flex-col justify-end">
+<div class="mb-8">
+<img class="ml-auto h-12 w-32 object-contain opacity-80" data-alt="A clean, professional digital signature of a corporate executive, appearing as elegant blue-ink handwriting on a white background. The signature is 'Richard Canva' with a formal title stamp underneath it." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACV37zU4Sxom_bHCa4PZpP56FEXkDDDJ8TOX5CHYA_02kewOz_VRx5Hq-NeEY1Dwh2n1eEF96vnOvc-wXEnqusDnohY3kJfovbGGziHmiUb0AwKBdU9Ab7J0pNmhsZrB7DBLFtK4WFDTFcdqg3ZoHlEVQTPcI3WosWfBwR5IwRj-XnED60tD1A6Kola-9mLFBZgp_eLOdxDb-Whr5xmSllz5AC1uLH7yoV-ov45HQ-7CWxh5sq40HptA"/>
+<div class="text-[10px] font-bold text-primary mt-2 uppercase tracking-widest">Richard Canva</div>
+<div class="text-[9px] text-on-surface-variant">Director, Canva Concepts</div>
+</div>
+<div class="text-[9px] text-outline italic">Generated via Canva ERP Industrial System</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.classList.add('scale-95');
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.classList.remove('scale-95');
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.classList.remove('scale-95');
+            });
+        });
+
+        // Toggle PDF zoom simulation (visual only)
+        let isZoomed = false;
+        const pdf = document.querySelector('.pdf-shadow');
+        pdf.addEventListener('click', () => {
+            isZoomed = !isZoomed;
+            pdf.style.transform = isZoomed ? 'scale(1.05)' : 'scale(1)';
+            pdf.style.transition = 'transform 0.3s ease';
+        });
+    </script>
+</body></html>

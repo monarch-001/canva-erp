@@ -1,0 +1,138 @@
+- generic [ref=f23e57]:
+  - complementary [ref=f23e58]:
+    - generic [ref=f23e59]:
+      - heading "Canva Concepts" [level=1] [ref=f23e60]
+      - paragraph [ref=f23e61]: Industrial ERP
+    - navigation [ref=f23e62]:
+      - link "dashboard Dashboard" [ref=f23e63] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=f23e64]: dashboard
+        - generic [ref=f23e65]: Dashboard
+      - link "manufacturing Work Orders" [ref=f23e66] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f23e67]: manufacturing
+        - generic [ref=f23e68]: Work Orders
+      - link "precision_manufacturing Production" [ref=f23e69] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f23e70]: precision_manufacturing
+        - generic [ref=f23e71]: Production
+      - link "group Users" [ref=f23e72] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f23e73]: group
+        - generic [ref=f23e74]: Users
+      - link "payments Finance" [ref=f23e75] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f23e76]: payments
+        - generic [ref=f23e77]: Finance
+    - generic [ref=f23e78]:
+      - link "settings Settings" [ref=f23e79] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f23e80]: settings
+        - generic [ref=f23e81]: Settings
+      - link "help Support" [ref=f23e82] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f23e83]: help
+        - generic [ref=f23e84]: Support
+      - generic [ref=f23e85]:
+        - generic [ref=f23e86]:
+          - img "Robert Hudson" [ref=f23e88]
+          - generic [ref=f23e89]:
+            - paragraph [ref=f23e90]: Robert Hudson
+            - paragraph [ref=f23e91]: Factory Supervisor
+        - generic [ref=f23e92]:
+          - generic [ref=f23e93]: Toggle System Role
+          - combobox [ref=f23e94] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor" [selected]
+            - option "Site Manager"
+  - main [ref=f23e95]:
+    - generic [ref=f23e96]:
+      - generic [ref=f23e97]:
+        - heading "Work Order Detail" [level=2] [ref=f23e98]
+        - generic [ref=f23e99]:
+          - generic [ref=f23e100]: search
+          - textbox "Search orders, clients, items..." [ref=f23e101]
+      - generic [ref=f23e103]:
+        - button "notifications" [ref=f23e104] [cursor=pointer]
+        - button "help" [ref=f23e105] [cursor=pointer]
+        - button "settings" [ref=f23e106] [cursor=pointer]
+    - generic [ref=f23e107]:
+      - generic [ref=f23e108]:
+        - generic [ref=f23e109]:
+          - generic [ref=f23e110]: precision_manufacturing
+          - generic [ref=f23e112]:
+            - generic [ref=f23e113]:
+              - 'heading "WO-8841-23: Hospitality Lobby Lounge - Custom Oak" [level=2] [ref=f23e114]'
+              - generic [ref=f23e115]: IN PRODUCTION
+            - generic [ref=f23e116]:
+              - generic [ref=f23e117]:
+                - generic [ref=f23e118]: priority_high
+                - text: HIGH PRIORITY
+              - generic [ref=f23e119]: "|"
+              - generic [ref=f23e120]: "Created: 8/9/2026"
+        - generic [ref=f23e121]:
+          - button "download Export PDF" [ref=f23e122] [cursor=pointer]:
+            - generic [ref=f23e123]: download
+            - text: Export PDF
+          - button "content_copy Clone Order" [ref=f23e124] [cursor=pointer]:
+            - generic [ref=f23e125]: content_copy
+            - text: Clone Order
+          - button "arrow_back Back" [ref=f23e126] [cursor=pointer]:
+            - generic [ref=f23e127]: arrow_back
+            - text: Back
+      - generic [ref=f23e128]:
+        - generic [ref=f23e129]:
+          - button "info Details" [ref=f23e130] [cursor=pointer]:
+            - generic [ref=f23e131]: info
+            - text: Details
+          - button "history Status History" [ref=f23e132] [cursor=pointer]:
+            - generic [ref=f23e133]: history
+            - text: Status History
+          - button "architecture Drawings" [ref=f23e134] [cursor=pointer]:
+            - generic [ref=f23e135]: architecture
+            - text: Drawings
+        - generic [ref=f23e137]:
+          - generic [ref=f23e138]:
+            - heading "corporate_fare Client Information" [level=3] [ref=f23e139]:
+              - generic [ref=f23e140]: corporate_fare
+              - text: Client Information
+            - generic [ref=f23e141]:
+              - generic [ref=f23e142]: Client Name
+              - paragraph [ref=f23e143]: Ritz Carlton Group
+            - generic [ref=f23e144]:
+              - generic [ref=f23e145]: Client Type
+              - paragraph [ref=f23e146]: b2b
+            - generic [ref=f23e147]:
+              - generic [ref=f23e148]: Project Name
+              - paragraph [ref=f23e149]: Lobby Lounge Custom Oak
+          - generic [ref=f23e150]:
+            - heading "chair Furniture Specs" [level=3] [ref=f23e151]:
+              - generic [ref=f23e152]: chair
+              - text: Furniture Specs
+            - generic [ref=f23e153]:
+              - generic [ref=f23e154]: Type
+              - paragraph [ref=f23e155]: Hospitality / Decor
+            - generic [ref=f23e156]:
+              - generic [ref=f23e157]:
+                - generic [ref=f23e158]: Quantity
+                - paragraph [ref=f23e159]: 8 Units
+              - generic [ref=f23e160]:
+                - generic [ref=f23e161]: Finish Type
+                - paragraph
+            - generic [ref=f23e162]:
+              - generic [ref=f23e163]: Dimensions (L x H x D)
+              - paragraph [ref=f23e164]: 3200mm x 850mm x 900mm
+          - generic [ref=f23e165]:
+            - heading "local_shipping Logistics & Committed Delivery" [level=3] [ref=f23e166]:
+              - generic [ref=f23e167]: local_shipping
+              - text: Logistics & Committed Delivery
+            - generic [ref=f23e168]:
+              - generic [ref=f23e169]:
+                - generic [ref=f23e170]:
+                  - generic [ref=f23e171]: Committed Delivery Date
+                  - paragraph [ref=f23e172]: Aug 17, 2026
+                - button "edit_calendar" [ref=f23e173] [cursor=pointer]
+              - button "Set/Update Committed Date" [ref=f23e175] [cursor=pointer]
+            - generic [ref=f23e176]:
+              - generic [ref=f23e177]: Delivery Terms
+              - paragraph [ref=f23e178]: included

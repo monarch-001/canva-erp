@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#e5c363",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#444748",
+                    "surface-bright": "#faf9f5",
+                    "on-surface": "#1b1c1a",
+                    "inverse-primary": "#c8c6c5",
+                    "surface-variant": "#e3e2df",
+                    "primary-fixed": "#e5e2e1",
+                    "on-secondary": "#ffffff",
+                    "status-material": "#0891B2",
+                    "on-background": "#1b1c1a",
+                    "on-primary-container": "#858383",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#cbe6ff",
+                    "surface-container": "#efeeea",
+                    "secondary-fixed": "#ffe08c",
+                    "tertiary": "#000000",
+                    "surface-container-highest": "#e3e2df",
+                    "primary-container": "#1c1b1b",
+                    "surface": "#faf9f5",
+                    "secondary-container": "#fdd977",
+                    "inverse-surface": "#30312e",
+                    "outline-variant": "#c4c7c7",
+                    "background": "#faf9f5",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "primary": "#000000",
+                    "on-tertiary-fixed": "#001e30",
+                    "outline": "#747878",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-container": "#001e30",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "status-financial": "#14532D",
+                    "surface-card": "#FFFFFF",
+                    "on-tertiary-container": "#5889af",
+                    "status-pending": "#F59E0B",
+                    "inverse-on-surface": "#f2f1ed",
+                    "status-invoice": "#7C3AED",
+                    "status-production": "#F97316",
+                    "surface-tint": "#5f5e5e",
+                    "on-primary-fixed-variant": "#474746",
+                    "border-subtle": "#E8E8E8",
+                    "on-secondary-container": "#775e00",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#745b00",
+                    "status-success": "#2D7D46",
+                    "surface-container-high": "#e9e8e4",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "surface-dim": "#dbdad6",
+                    "surface-container-low": "#f5f4f0",
+                    "status-draft": "#888888",
+                    "on-primary-fixed": "#1c1b1b",
+                    "status-error": "#C0392B",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "xs": "4px",
+                    "sidebar-width": "260px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "container-max": "1440px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "status-pill": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        input:focus, select:focus, textarea:focus {
+            outline: none !important;
+            border-color: #C8A84B !important;
+            box-shadow: 0 0 0 1px #C8A84B !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-primary-container text-on-primary-fixed flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">factory</span>
+<h1 class="font-headline-sm text-headline-sm text-on-primary">Precision Ops</h1>
+</div>
+<p class="font-label-md text-label-md opacity-70">Unit 04 - Heavy Mfg</p>
+</div>
+<nav class="flex-1 flex flex-col gap-xs overflow-y-auto scrollbar-hide px-xs">
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container border-l-4 border-secondary flex items-center gap-md px-md py-sm active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+<span class="font-label-md text-label-md">Production</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-md text-label-md">Blind GRN</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Financials</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</nav>
+<div class="mt-auto px-xs flex flex-col gap-xs">
+<button class="mx-md mb-lg bg-secondary text-on-primary font-label-md text-label-md py-sm rounded active:scale-95 transition-all">
+                New Batch
+            </button>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-sidebar-width min-h-screen flex flex-col relative overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest sticky top-0 z-40 border-b border-border-subtle h-16 w-full">
+<div class="flex justify-between items-center h-full px-md max-w-container-max mx-auto">
+<div class="flex items-center gap-lg flex-1">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Industrial Authority ERP</span>
+<div class="relative w-64">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded px-md py-xs pl-10 text-body-md focus:border-secondary transition-all" placeholder="Search orders..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm">
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-status-error rounded-full"></span>
+</button>
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">help</span>
+</button>
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-border-subtle mx-xs"></div>
+<div class="flex items-center gap-sm cursor-pointer group">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior plant supervisor, middle-aged with short hair, wearing a clean industrial uniform against a blurred factory office background. High-key lighting, corporate minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmxN_SXqMeVb05qDXhwk5mUSOxmzGdi3y-a8eAAyWVuM0ZHYdBhucn1JMounpxTzONDPtGd16HM5fbd35n5H-zNGd1YtPGJeR9dAYxKLHgaqAM_KTTdKz0Q7jv47DGfBsIHbf_0UX5ktKosIABVzXDH9SafeOdMxSpoa1-27GiHq83G3kbLpEMm52Gl2x67WY7XBOi5E0JU50ikGB5iTXMiYlKxs23d-cOh3kJSjtFZmZWvXE8ODOCkg"/>
+</div>
+<span class="font-title-md text-title-md group-hover:text-secondary transition-colors">Supervisor Panel</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 p-lg max-w-container-max mx-auto w-full">
+<div class="flex items-center justify-between mb-lg">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-xs">Overtime Authorization Request</h2>
+<p class="text-on-surface-variant font-body-md">Submit overtime requirements for supervisor approval and payroll processing.</p>
+</div>
+<div class="flex gap-md">
+<button class="px-lg py-sm border border-primary text-primary font-label-md text-label-md rounded hover:bg-surface-container-high transition-all">Cancel</button>
+<button class="px-lg py-sm bg-secondary text-on-primary font-label-md text-label-md rounded shadow-sm hover:opacity-90 active:scale-95 transition-all" onclick="submitForm()">Submit Request</button>
+</div>
+</div>
+<!-- Main Form Grid -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Left Column: Primary Details -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-lg">
+<div class="bg-surface-card border border-border-subtle rounded p-lg shadow-sm">
+<h3 class="font-title-md text-title-md text-primary mb-lg border-b border-border-subtle pb-sm">Request Core Information</h3>
+<div class="grid grid-cols-2 gap-lg">
+<!-- Request Type -->
+<div class="col-span-2 md:col-span-1 flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Request Type</label>
+<select class="h-10 border border-border-subtle rounded px-md text-body-md bg-surface-container-lowest" id="requestType" onchange="toggleNotice()">
+<option value="daily">Daily OT</option>
+<option value="holiday">Holiday Work</option>
+<option value="weekend">Weekend Work</option>
+</select>
+</div>
+<!-- Carpenter Selection -->
+<div class="col-span-2 md:col-span-1 flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Assign Carpenter</label>
+<select class="h-10 border border-border-subtle rounded px-md text-body-md bg-surface-container-lowest" id="carpenterSelect" onchange="checkCap()">
+<option value="">Select Resource...</option>
+<option data-cap="26" data-hours="18" value="j-doe">James Doe (18/26 hrs used)</option>
+<option data-cap="26" data-hours="24" value="m-smith">Mark Smith (24/26 hrs used)</option>
+<option data-cap="26" data-hours="28" value="a-jones">Alan Jones (28/26 hrs used) - CAP EXCEEDED</option>
+<option data-cap="26" data-hours="10" value="r-white">Robert White (10/26 hrs used)</option>
+</select>
+</div>
+<!-- Linked Work Order -->
+<div class="col-span-2 flex flex-col gap-xs relative">
+<label class="font-label-md text-label-md text-on-surface-variant">Linked Work Order (WO)</label>
+<div class="relative">
+<input class="w-full h-10 border border-border-subtle rounded px-md pl-10 text-body-md" placeholder="Search by WO# or Machine ID..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+</div>
+</div>
+<!-- Reason for OT -->
+<div class="col-span-2 flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Reason for Request</label>
+<textarea class="w-full border border-border-subtle rounded p-md text-body-md min-h-[100px]" placeholder="Provide justification for additional hours..."></textarea>
+</div>
+<!-- Work Description -->
+<div class="col-span-2 flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Detailed Work Description</label>
+<textarea class="w-full border border-border-subtle rounded p-md text-body-md min-h-[120px]" placeholder="Enumerate specific tasks to be completed..."></textarea>
+</div>
+</div>
+</div>
+<!-- Warning Message (Hidden by default) -->
+<div class="hidden bg-[#FFF5F5] border border-status-error rounded p-md flex items-start gap-md animate-pulse" id="capWarning">
+<span class="material-symbols-outlined text-status-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<h4 class="text-status-error font-title-md text-title-md">Monthly cap exceeded. FM override required.</h4>
+<p class="text-status-error opacity-80 text-body-md">This carpenter has reached their maximum allowed OT hours for the current month. Submission requires secondary Director-level authorization.</p>
+</div>
+</div>
+<!-- Notice Confirmation (Hidden by default) -->
+<div class="hidden bg-secondary-container bg-opacity-20 border border-secondary rounded p-md" id="noticeNotice">
+<label class="flex items-center gap-md cursor-pointer">
+<input class="w-5 h-5 border-2 border-secondary rounded text-secondary focus:ring-0" type="checkbox"/>
+<span class="text-on-secondary-container font-label-md text-label-md">I confirm that 24-hour advance notice has been provided for this Holiday/Weekend request.</span>
+</label>
+</div>
+</div>
+<!-- Right Column: Scheduling & Stats -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-lg">
+<!-- Time Management Card -->
+<div class="bg-surface-card border border-border-subtle rounded p-lg shadow-sm">
+<h3 class="font-title-md text-title-md text-primary mb-lg border-b border-border-subtle pb-sm">Schedule & Calculation</h3>
+<div class="flex flex-col gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Date</label>
+<div class="relative">
+<input class="w-full h-10 border border-border-subtle rounded px-md text-body-md" type="date"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">calendar_today</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Start Time</label>
+<input class="h-10 border border-border-subtle rounded px-md text-body-md" id="startTime" onchange="calculateHours()" type="time" value="17:00"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">End Time</label>
+<input class="h-10 border border-border-subtle rounded px-md text-body-md" id="endTime" onchange="calculateHours()" type="time" value="20:00"/>
+</div>
+</div>
+<div class="mt-lg pt-lg border-t border-border-subtle flex flex-col items-center justify-center py-md bg-surface-container-low rounded">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Hours Requested</span>
+<div class="flex items-baseline gap-xs">
+<span class="text-[48px] font-bold text-primary" id="calcDisplay">3.0</span>
+<span class="text-headline-sm font-semibold text-on-surface-variant">HRS</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Unit Insights Card -->
+<div class="bg-primary-container text-on-primary rounded p-lg shadow-md relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-title-md text-title-md mb-md">Unit OT Utilization</h4>
+<div class="space-y-md">
+<div>
+<div class="flex justify-between text-label-md mb-xs opacity-80">
+<span>Current Shift Burn</span>
+<span>72%</span>
+</div>
+<div class="w-full h-1.5 bg-on-primary-fixed-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[72%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-label-md mb-xs opacity-80">
+<span>Monthly Budget Remaining</span>
+<span>$4,200</span>
+</div>
+<div class="w-full h-1.5 bg-on-primary-fixed-variant rounded-full overflow-hidden">
+<div class="h-full bg-status-success w-[45%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-on-primary-fixed-variant opacity-60 text-body-md">
+<p>System forecast: No labor conflicts detected for selected date.</p>
+</div>
+</div>
+<!-- Subtle decorative element -->
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-[120px] opacity-10 pointer-events-none group-hover:scale-110 transition-transform duration-700">query_stats</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function toggleNotice() {
+            const type = document.getElementById('requestType').value;
+            const noticeBox = document.getElementById('noticeNotice');
+            if (type === 'holiday' || type === 'weekend') {
+                noticeBox.classList.remove('hidden');
+                noticeBox.classList.add('animate-in', 'fade-in', 'duration-300');
+            } else {
+                noticeBox.classList.add('hidden');
+            }
+        }
+
+        function checkCap() {
+            const select = document.getElementById('carpenterSelect');
+            const selectedOption = select.options[select.selectedIndex];
+            const warning = document.getElementById('capWarning');
+            
+            if (selectedOption.value === 'a-jones') {
+                warning.classList.remove('hidden');
+            } else {
+                warning.classList.add('hidden');
+            }
+        }
+
+        function calculateHours() {
+            const start = document.getElementById('startTime').value;
+            const end = document.getElementById('endTime').value;
+            const display = document.getElementById('calcDisplay');
+
+            if (start && end) {
+                const s = start.split(':');
+                const e = end.split(':');
+                
+                let startMinutes = parseInt(s[0]) * 60 + parseInt(s[1]);
+                let endMinutes = parseInt(e[0]) * 60 + parseInt(e[1]);
+                
+                if (endMinutes < startMinutes) endMinutes += 24 * 60; // Over midnight
+
+                const diff = (endMinutes - startMinutes) / 60;
+                display.innerText = diff.toFixed(1);
+                
+                // Add a little pop animation
+                display.classList.add('scale-110', 'text-secondary');
+                setTimeout(() => {
+                    display.classList.remove('scale-110', 'text-secondary');
+                }, 200);
+            }
+        }
+
+        function submitForm() {
+            const btn = event.currentTarget;
+            const originalText = btn.innerText;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">sync</span> Processing';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.classList.replace('bg-secondary', 'bg-status-success');
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Submitted';
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.replace('bg-status-success', 'bg-secondary');
+                    btn.disabled = false;
+                }, 2000);
+            }, 1500);
+        }
+
+        // Initialize state
+        window.onload = () => {
+            calculateHours();
+            toggleNotice();
+        }
+    </script>
+</body></html>

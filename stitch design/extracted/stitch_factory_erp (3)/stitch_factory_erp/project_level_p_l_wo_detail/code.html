@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Industrial MIS - WO P&amp;L</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-primary-fixed": "#161c27",
+                "surface-container-high": "#e6e8ea",
+                "status-warning": "#F59E0B",
+                "on-surface": "#191c1e",
+                "outline-variant": "#c6c6cc",
+                "inverse-primary": "#c1c6d7",
+                "tertiary-fixed": "#f5dfc4",
+                "secondary-fixed": "#d8e3fa",
+                "on-primary-fixed-variant": "#414754",
+                "on-secondary-container": "#586377",
+                "on-secondary": "#ffffff",
+                "on-tertiary-container": "#96856d",
+                "primary-container": "#1a202c",
+                "surface": "#f7f9fb",
+                "surface-tint": "#585e6c",
+                "surface-variant": "#e0e3e5",
+                "trend-up-neg": "#DC2626",
+                "surface-dim": "#d8dadc",
+                "secondary": "#545f72",
+                "primary": "#030813",
+                "on-error-container": "#93000a",
+                "on-primary-container": "#828796",
+                "status-danger": "#EF4444",
+                "inverse-surface": "#2d3133",
+                "status-success": "#10B981",
+                "trend-up-pos": "#059669",
+                "on-tertiary": "#ffffff",
+                "error-container": "#ffdad6",
+                "tertiary-fixed-dim": "#d8c3a9",
+                "inverse-on-surface": "#eff1f3",
+                "primary-fixed-dim": "#c1c6d7",
+                "surface-bright": "#f7f9fb",
+                "on-surface-variant": "#45474c",
+                "on-primary": "#ffffff",
+                "surface-container-highest": "#e0e3e5",
+                "outline": "#76777c",
+                "data-border": "#E2E8F0",
+                "on-tertiary-fixed-variant": "#524531",
+                "on-background": "#191c1e",
+                "secondary-fixed-dim": "#bcc7dd",
+                "secondary-container": "#d5e0f7",
+                "on-secondary-fixed-variant": "#3c475a",
+                "on-error": "#ffffff",
+                "tertiary-container": "#291e0d",
+                "primary-fixed": "#dde2f3",
+                "surface-container-low": "#f2f4f6",
+                "on-tertiary-fixed": "#241a09",
+                "error": "#ba1a1a",
+                "tertiary": "#0e0700",
+                "surface-container": "#eceef0",
+                "background": "#f7f9fb",
+                "on-secondary-fixed": "#111c2c",
+                "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "filter-bar-height": "56px",
+                "margin-page": "24px",
+                "gutter": "16px",
+                "unit": "4px",
+                "table-row-height": "32px"
+            },
+            "fontFamily": {
+                "kpi-value": ["IBM Plex Sans"],
+                "headline-md": ["IBM Plex Sans"],
+                "status-tag": ["IBM Plex Sans"],
+                "headline-lg": ["IBM Plex Sans"],
+                "label-caps": ["IBM Plex Sans"],
+                "body-fixed": ["JetBrains Mono"],
+                "table-cell": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                "kpi-value": ["28px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                "status-tag": ["10px", {"lineHeight": "12px", "fontWeight": "800"}],
+                "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                "body-fixed": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "table-cell": ["13px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+        .variance-pos { color: var(--tw-trend-up-pos); }
+        .variance-neg { color: var(--tw-trend-up-neg); }
+        
+        /* High Density Table Styling */
+        .dense-table th {
+            @apply bg-surface-container-low text-label-caps font-label-caps py-2 px-3 text-left border-b border-outline-variant;
+        }
+        .dense-table td {
+            @apply py-2 px-3 text-table-cell font-table-cell border-b border-data-border;
+        }
+        .dense-table tr:hover {
+            @apply bg-primary/5 cursor-pointer transition-colors;
+        }
+        
+        /* Detail Panel Transition */
+        #detail-panel {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #detail-panel.hidden-panel {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-fixed overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full h-[56px] flex justify-between items-center px-margin-page z-50 bg-surface dark:bg-primary-container border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">MIS &amp; Reporting</span>
+<div class="h-6 w-[1px] bg-outline-variant mx-2"></div>
+<span class="font-headline-md text-headline-md text-on-surface-variant">Work Order P&amp;L</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-body-fixed focus:outline-none focus:ring-1 focus:ring-primary w-64" placeholder="Search Work Order..." type="text"/>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-high p-2 rounded-full transition-colors">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-high p-2 rounded-full transition-colors">settings</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Corporate headshot of a financial analyst in a professional setting. The image is crisp, with soft-key studio lighting that emphasizes clarity and authority. The background is a blurred office environment in shades of grey and deep slate, maintaining a high-end corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdZJ8kZAr2MAP7ybNxgYfjusYdYoDdBbuJcccnRHSgVMDse06GBAmmKDbdg-YSBqO0YSsy_ie3jemkUZ4bSwsII1elf9Jur9UKU1_uiv2JbrRFGqZZdwMaxHhhxoWS6KaT7Mi2-bihV9a6f80mBu0ExDFM2SwveVtVhFk-WxJgGT3Qil9hWls0XGDGyxqG32qRBDBhvb5OC_FTyrqMUqcWvRybgwbS9oMGeDST7S0cxMT209heut5U4w"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Side Navigation -->
+<nav class="fixed left-0 top-[56px] h-[calc(100vh-56px)] w-64 flex flex-col z-40 bg-surface-container-low dark:bg-primary-container border-r border-outline-variant dark:border-outline">
+<div class="p-6 border-b border-outline-variant">
+<p class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant">Industrial MIS</p>
+<p class="text-[10px] text-on-surface-variant/70">Precision Analytics</p>
+</div>
+<div class="flex-1 overflow-y-auto py-4">
+<!-- Navigation Items -->
+<a class="flex items-center gap-3 px-6 py-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary font-bold transition-all duration-150" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-fixed text-body-fixed">WO P&amp;L</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-fixed text-body-fixed">Client Profitability</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">chair</span>
+<span class="font-body-fixed text-body-fixed">Furniture Type</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-fixed text-body-fixed">Material Variance</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-fixed text-body-fixed">P&amp;L Report</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-body-fixed text-body-fixed">Profitability Drivers</span>
+</a>
+</div>
+<div class="p-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 px-6 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-fixed text-body-fixed">Help</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-2 text-error hover:bg-error-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-fixed text-body-fixed">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 mt-[56px] h-[calc(100vh-56px)] overflow-hidden flex flex-col">
+<!-- Global Filter Bar (Feature 1) -->
+<section class="h-[56px] border-b border-outline-variant bg-surface px-6 flex items-center gap-6">
+<div class="flex flex-col">
+<label class="text-[9px] font-bold uppercase text-on-surface-variant mb-1">Work Order #</label>
+<select class="text-table-cell font-table-cell bg-transparent border-none p-0 focus:ring-0">
+<option>WO-77291 (Starbucks Noida)</option>
+<option>WO-77292 (Starbucks GGN)</option>
+<option>WO-77305 (Blue Tokai)</option>
+</select>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant"></div>
+<div class="flex flex-col">
+<label class="text-[9px] font-bold uppercase text-on-surface-variant mb-1">Client</label>
+<select class="text-table-cell font-table-cell bg-transparent border-none p-0 focus:ring-0">
+<option>Tata Starbucks Ltd</option>
+<option>Blue Tokai Coffee</option>
+</select>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant"></div>
+<div class="flex flex-col">
+<label class="text-[9px] font-bold uppercase text-on-surface-variant mb-1">Stream</label>
+<select class="text-table-cell font-table-cell bg-transparent border-none p-0 focus:ring-0">
+<option>Retail Interiors</option>
+<option>Loose Furniture</option>
+</select>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant"></div>
+<div class="flex flex-col">
+<label class="text-[9px] font-bold uppercase text-on-surface-variant mb-1">Status</label>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-success"></span>
+<span class="text-table-cell font-table-cell">Closed</span>
+</div>
+</div>
+<div class="ml-auto flex gap-2">
+<button class="px-4 py-1.5 border border-outline-variant rounded-lg font-label-caps text-label-caps hover:bg-surface-container-low transition-colors">Export CSV</button>
+<button class="px-4 py-1.5 bg-primary text-on-primary rounded-lg font-label-caps text-label-caps hover:opacity-90 transition-opacity">Update Report</button>
+</div>
+</section>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- Summary Table (Feature 2) -->
+<div class="flex-1 overflow-auto p-6">
+<div class="mb-6 grid grid-cols-4 gap-4">
+<!-- KPI Cards -->
+<div class="bg-surface-container-lowest border border-data-border p-4 rounded-lg">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-2">Total Revenue</p>
+<p class="text-kpi-value font-kpi-value text-primary">₹1,845,000</p>
+<div class="mt-2 flex items-center gap-1 text-trend-up-pos">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-[11px] font-bold">12.4% vs Budget</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-data-border p-4 rounded-lg">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-2">Total Costs</p>
+<p class="text-kpi-value font-kpi-value text-primary">₹1,328,400</p>
+<div class="mt-2 flex items-center gap-1 text-trend-up-neg">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-[11px] font-bold">4.2% Overrun</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-data-border p-4 rounded-lg">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-2">Gross Margin</p>
+<p class="text-kpi-value font-kpi-value text-primary">₹516,600</p>
+<div class="mt-2">
+<span class="bg-status-success text-white px-2 py-0.5 rounded text-status-tag font-status-tag">OPTIMAL</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-data-border p-4 rounded-lg border-l-4 border-l-status-success">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-2">Margin %</p>
+<p class="text-kpi-value font-kpi-value text-status-success">28.0%</p>
+<div class="mt-2 text-[11px] font-bold text-on-surface-variant">Benchmark: 25.0%</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-data-border rounded-lg overflow-hidden">
+<table class="w-full dense-table border-collapse">
+<thead>
+<tr>
+<th>Category</th>
+<th>Budgeted (₹)</th>
+<th>Actual (₹)</th>
+<th>Variance (₹)</th>
+<th>Variance %</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr onclick="toggleDetailPanel()">
+<td>Direct Material</td>
+<td>820,000</td>
+<td>854,200</td>
+<td class="text-trend-up-neg">(34,200)</td>
+<td class="text-trend-up-neg">4.1% ↑</td>
+<td><span class="bg-error-container text-on-error-container px-2 py-0.5 rounded text-[10px] font-bold">OVERRUN</span></td>
+</tr>
+<tr onclick="toggleDetailPanel()">
+<td>Direct Labour</td>
+<td>240,000</td>
+<td>218,500</td>
+<td class="text-trend-up-pos">21,500</td>
+<td class="text-trend-up-pos">8.9% ↓</td>
+<td><span class="bg-status-success/20 text-status-success px-2 py-0.5 rounded text-[10px] font-bold">SAVING</span></td>
+</tr>
+<tr onclick="toggleDetailPanel()">
+<td>Manufacturing OH</td>
+<td>185,000</td>
+<td>191,200</td>
+<td class="text-trend-up-neg">(6,200)</td>
+<td class="text-trend-up-neg">3.3% ↑</td>
+<td><span class="bg-status-warning/20 text-status-warning px-2 py-0.5 rounded text-[10px] font-bold">WARNING</span></td>
+</tr>
+<tr onclick="toggleDetailPanel()">
+<td>Sub-Contracting</td>
+<td>65,000</td>
+<td>64,500</td>
+<td class="text-trend-up-pos">500</td>
+<td class="text-trend-up-pos">0.7% ↓</td>
+<td><span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded text-[10px] font-bold">ON-TRACK</span></td>
+</tr>
+<tr class="bg-surface-container-low font-bold">
+<td>Total Direct Costs</td>
+<td>1,310,000</td>
+<td>1,328,400</td>
+<td class="text-trend-up-neg">(18,400)</td>
+<td class="text-trend-up-neg">1.4% ↑</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Benchmarking Visualization -->
+<div class="mt-6 p-4 bg-surface-container-low rounded-lg border border-data-border">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-headline-md text-headline-md">Margin Distribution History</h4>
+<span class="text-label-caps font-label-caps text-on-surface-variant">Past 12 Months</span>
+</div>
+<div class="h-24 flex items-end gap-1 px-2">
+<!-- Simulated sparkline/chart -->
+<div class="flex-1 bg-status-success opacity-40 h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-status-success opacity-60 h-[75%] rounded-t-sm"></div>
+<div class="flex-1 bg-status-warning opacity-60 h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-status-success opacity-80 h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-status-danger opacity-60 h-[20%] rounded-t-sm"></div>
+<div class="flex-1 bg-status-success opacity-40 h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-status-success opacity-90 h-[95%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[80%] rounded-t-sm border-2 border-primary"></div>
+</div>
+<div class="mt-2 flex justify-between text-[10px] font-bold text-on-surface-variant uppercase">
+<span>Jan '23</span>
+<span>Current (Dec '23)</span>
+</div>
+</div>
+</div>
+<!-- Detail View Panel (Feature 3) -->
+<aside class="hidden-panel fixed right-0 top-[56px] bottom-0 w-[420px] bg-white border-l border-outline-variant z-30 shadow-2xl overflow-y-auto" id="detail-panel">
+<div class="p-6">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">WO-77291 Detailed Drill-down</h3>
+<p class="text-body-fixed text-on-surface-variant mt-1">Starbucks Noida | Retail Interiors</p>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors" onclick="toggleDetailPanel()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Quoted vs Billed -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="p-4 bg-surface rounded-lg border border-data-border">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-1">Quoted Value</p>
+<p class="text-headline-md font-bold">₹1,750,000</p>
+</div>
+<div class="p-4 bg-surface rounded-lg border border-data-border">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase mb-1">Billed Value</p>
+<p class="text-headline-md font-bold">₹1,845,000</p>
+<span class="text-trend-up-pos text-[10px] font-bold">+₹95,000 (Scope Change)</span>
+</div>
+</div>
+<!-- 3-Column Cost Analysis -->
+<div class="mb-8">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-4 tracking-widest border-b border-data-border pb-2">Direct Cost Analysis</h4>
+<div class="space-y-4">
+<!-- Item row -->
+<div class="grid grid-cols-3 gap-2">
+<div class="col-span-3 text-table-cell font-bold text-primary">Raw Material - Plywood (Grade A)</div>
+<div class="p-2 bg-surface-container-low rounded">
+<p class="text-[9px] text-on-surface-variant uppercase">Estimated</p>
+<p class="text-table-cell">₹312,000</p>
+</div>
+<div class="p-2 bg-surface-container-low rounded">
+<p class="text-[9px] text-on-surface-variant uppercase">Committed</p>
+<p class="text-table-cell">₹345,000</p>
+</div>
+<div class="p-2 bg-secondary-container/30 rounded border-l-2 border-secondary">
+<p class="text-[9px] text-on-surface-variant uppercase">Actual</p>
+<p class="text-table-cell font-bold">₹348,200</p>
+</div>
+<div class="col-span-3 flex justify-between items-center bg-error-container/20 px-2 py-1 rounded text-error">
+<span class="text-[10px] font-bold">Variance: (₹36,200)</span>
+<span class="text-status-tag font-status-tag">OVERRUN</span>
+</div>
+</div>
+<!-- Item row -->
+<div class="grid grid-cols-3 gap-2">
+<div class="col-span-3 text-table-cell font-bold text-primary">Specialized Finishing Labour</div>
+<div class="p-2 bg-surface-container-low rounded">
+<p class="text-[9px] text-on-surface-variant uppercase">Estimated</p>
+<p class="text-table-cell">₹145,000</p>
+</div>
+<div class="p-2 bg-surface-container-low rounded">
+<p class="text-[9px] text-on-surface-variant uppercase">Committed</p>
+<p class="text-table-cell">₹120,000</p>
+</div>
+<div class="p-2 bg-secondary-container/30 rounded border-l-2 border-secondary">
+<p class="text-[9px] text-on-surface-variant uppercase">Actual</p>
+<p class="text-table-cell font-bold">₹118,500</p>
+</div>
+<div class="col-span-3 flex justify-between items-center bg-status-success/10 px-2 py-1 rounded text-status-success">
+<span class="text-[10px] font-bold">Variance: ₹26,500</span>
+<span class="text-status-tag font-status-tag">SAVING</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Performance Stats -->
+<div class="p-4 bg-primary-container text-on-primary rounded-lg">
+<h4 class="font-label-caps text-label-caps text-on-primary-container uppercase mb-4">Operational Efficiency</h4>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-primary-container">schedule</span>
+<span class="text-table-cell">Days to Collect (DSO)</span>
+</div>
+<span class="text-headline-md font-bold text-status-warning">42 Days</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-primary-container">verified</span>
+<span class="text-table-cell">QC Performance</span>
+</div>
+<span class="bg-status-success text-white px-3 py-1 rounded text-status-tag font-status-tag uppercase">98.2% Pass</span>
+</div>
+</div>
+<!-- Variance Insight -->
+<div class="mt-8 p-4 bg-secondary-container/20 border border-secondary/30 rounded-lg">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary">info</span>
+<div>
+<p class="text-table-cell font-bold text-on-secondary-container">Root Cause: Material Overrun</p>
+<p class="text-[12px] text-on-surface-variant mt-1 leading-relaxed">
+                                    5% price hike in commercial plywood combined with 2% wastage at the cutting station due to complex beveling requirements for the Starbucks counter assembly.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        function toggleDetailPanel() {
+            const panel = document.getElementById('detail-panel');
+            panel.classList.toggle('hidden-panel');
+        }
+
+        // Auto-highlight active nav logic
+        window.addEventListener('DOMContentLoaded', () => {
+            // Simulated table interactivity
+            const rows = document.querySelectorAll('.dense-table tbody tr');
+            rows.forEach(row => {
+                row.addEventListener('click', () => {
+                    // Remove highlight from other rows
+                    rows.forEach(r => r.classList.remove('bg-secondary-container/20'));
+                    // Add highlight to current row
+                    row.classList.add('bg-secondary-container/20');
+                });
+            });
+        });
+    </script>
+</body></html>

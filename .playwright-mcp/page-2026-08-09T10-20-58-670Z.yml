@@ -1,0 +1,214 @@
+- generic [ref=f3e3]:
+  - complementary [ref=f3e4]:
+    - generic [ref=f3e5]:
+      - heading "Canva Concepts" [level=1] [ref=f3e6]
+      - paragraph [ref=f3e7]: Industrial ERP
+    - navigation [ref=f3e8]:
+      - link "dashboard Dashboard" [ref=f3e9] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=f3e10]: dashboard
+        - generic [ref=f3e11]: Dashboard
+      - link "manufacturing Work Orders" [ref=f3e12] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f3e13]: manufacturing
+        - generic [ref=f3e14]: Work Orders
+      - link "precision_manufacturing Production" [ref=f3e15] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f3e16]: precision_manufacturing
+        - generic [ref=f3e17]: Production
+      - link "group Users" [ref=f3e18] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f3e19]: group
+        - generic [ref=f3e20]: Users
+      - link "payments Finance" [ref=f3e21] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f3e22]: payments
+        - generic [ref=f3e23]: Finance
+    - generic [ref=f3e24]:
+      - link "settings Settings" [ref=f3e25] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f3e26]: settings
+        - generic [ref=f3e27]: Settings
+      - link "help Support" [ref=f3e28] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f3e29]: help
+        - generic [ref=f3e30]: Support
+      - generic [ref=f3e32]:
+        - img "Marcus Chen" [ref=f3e34]
+        - generic [ref=f3e35]:
+          - paragraph [ref=f3e36]: Marcus Chen
+          - paragraph [ref=f3e37]: Factory Manager
+  - main [ref=f3e38]:
+    - generic [ref=f3e39]:
+      - generic [ref=f3e40]:
+        - heading "Daily Attendance" [level=2] [ref=f3e41]
+        - generic [ref=f3e42]:
+          - generic [ref=f3e43]: search
+          - textbox "Search orders, clients, items..." [ref=f3e44]
+      - generic [ref=f3e46]:
+        - button "notifications" [ref=f3e47] [cursor=pointer]
+        - button "help" [ref=f3e48] [cursor=pointer]
+        - button "settings" [ref=f3e49] [cursor=pointer]
+    - generic [ref=f3e51]:
+      - generic [ref=f3e52]:
+        - generic [ref=f3e53]:
+          - heading "Attendance - August 9, 2026" [level=2] [ref=f3e54]
+          - paragraph [ref=f3e55]: Daily manpower tracking for Plant Floor A1.
+        - generic [ref=f3e56]:
+          - generic [ref=f3e57]:
+            - generic [ref=f3e58]: calendar_today
+            - textbox [ref=f3e59]: 2026-08-09
+          - button "done_all Mark All Present" [ref=f3e60] [cursor=pointer]:
+            - generic [ref=f3e61]: done_all
+            - text: Mark All Present
+      - generic [ref=f3e62]:
+        - generic [ref=f3e63]:
+          - generic [ref=f3e64]: groups
+          - generic [ref=f3e66]:
+            - paragraph [ref=f3e67]: Total Staff
+            - paragraph [ref=f3e68]: "5"
+        - generic [ref=f3e69]:
+          - generic [ref=f3e70]: check_circle
+          - generic [ref=f3e72]:
+            - paragraph [ref=f3e73]: Total Present
+            - paragraph [ref=f3e74]: "4"
+        - generic [ref=f3e75]:
+          - generic [ref=f3e76]: cancel
+          - generic [ref=f3e78]:
+            - paragraph [ref=f3e79]: Absent
+            - paragraph [ref=f3e80]: "1"
+        - generic [ref=f3e81]:
+          - generic [ref=f3e82]: event_busy
+          - generic [ref=f3e84]:
+            - paragraph [ref=f3e85]: On Leave / Half
+            - paragraph [ref=f3e86]: "0"
+      - generic [ref=f3e87]:
+        - heading "Staff Roster" [level=3] [ref=f3e90]
+        - table [ref=f3e93]:
+          - rowgroup [ref=f3e94]:
+            - row [ref=f3e95]:
+              - columnheader "Name" [ref=f3e96]
+              - columnheader "Employee ID" [ref=f3e97]
+              - columnheader "Status" [ref=f3e98]
+              - columnheader "Check-In" [ref=f3e99]
+              - columnheader "Check-Out" [ref=f3e100]
+              - columnheader "OT Hours" [ref=f3e101]
+              - columnheader "Notes" [ref=f3e102]
+          - rowgroup [ref=f3e103]:
+            - row [ref=f3e104]:
+              - cell "MC Marcus Chen Factory Manager" [ref=f3e105]:
+                - generic [ref=f3e106]:
+                  - generic [ref=f3e107]: MC
+                  - generic [ref=f3e108]:
+                    - paragraph [ref=f3e109]: Marcus Chen
+                    - paragraph [ref=f3e110]: Factory Manager
+              - cell "F96FBADE" [ref=f3e111]
+              - cell [ref=f3e112]:
+                - generic [ref=f3e113]:
+                  - button "PRESENT" [ref=f3e114] [cursor=pointer]
+                  - button "ABSENT" [ref=f3e115] [cursor=pointer]
+                  - button "HALF" [ref=f3e116] [cursor=pointer]
+                  - button "LEAVE" [ref=f3e117] [cursor=pointer]
+              - cell [ref=f3e118]:
+                - textbox [ref=f3e119]: 08:00:00
+              - cell [ref=f3e120]:
+                - textbox [ref=f3e121]: 17:30:00
+              - cell [ref=f3e122]:
+                - spinbutton [ref=f3e123]: "0"
+              - cell [ref=f3e124]:
+                - textbox "Add note..." [ref=f3e125]
+            - row [ref=f3e126]:
+              - cell "MC Marcus Chen Factory Manager" [ref=f3e127]:
+                - generic [ref=f3e128]:
+                  - generic [ref=f3e129]: MC
+                  - generic [ref=f3e130]:
+                    - paragraph [ref=f3e131]: Marcus Chen
+                    - paragraph [ref=f3e132]: Factory Manager
+              - cell "0E51EFCB" [ref=f3e133]
+              - cell [ref=f3e134]:
+                - generic [ref=f3e135]:
+                  - button "PRESENT" [ref=f3e136] [cursor=pointer]
+                  - button "ABSENT" [ref=f3e137] [cursor=pointer]
+                  - button "HALF" [ref=f3e138] [cursor=pointer]
+                  - button "LEAVE" [ref=f3e139] [cursor=pointer]
+              - cell [ref=f3e140]:
+                - textbox [ref=f3e141]: 08:00:00
+              - cell [ref=f3e142]:
+                - textbox [ref=f3e143]: 17:30:00
+              - cell [ref=f3e144]:
+                - spinbutton [ref=f3e145]: "0"
+              - cell [ref=f3e146]:
+                - textbox "Add note..." [ref=f3e147]
+            - row [ref=f3e148]:
+              - cell "RH Robert Hudson Lead Carpenter" [ref=f3e149]:
+                - generic [ref=f3e150]:
+                  - generic [ref=f3e151]: RH
+                  - generic [ref=f3e152]:
+                    - paragraph [ref=f3e153]: Robert Hudson
+                    - paragraph [ref=f3e154]: Lead Carpenter
+              - cell "3753BA10" [ref=f3e155]
+              - cell [ref=f3e156]:
+                - generic [ref=f3e157]:
+                  - button "PRESENT" [ref=f3e158] [cursor=pointer]
+                  - button "ABSENT" [active] [ref=f3e159] [cursor=pointer]
+                  - button "HALF" [ref=f3e160] [cursor=pointer]
+                  - button "LEAVE" [ref=f3e161] [cursor=pointer]
+              - cell [ref=f3e162]:
+                - textbox [disabled] [ref=f3e163]: "--"
+              - cell [ref=f3e164]:
+                - textbox [disabled] [ref=f3e165]: "--"
+              - cell [ref=f3e166]:
+                - spinbutton [disabled] [ref=f3e167]: "0"
+              - cell [ref=f3e168]:
+                - textbox "Add note..." [ref=f3e169]
+            - row [ref=f3e170]:
+              - cell "MS Michael Santos Senior Finisher" [ref=f3e171]:
+                - generic [ref=f3e172]:
+                  - generic [ref=f3e173]: MS
+                  - generic [ref=f3e174]:
+                    - paragraph [ref=f3e175]: Michael Santos
+                    - paragraph [ref=f3e176]: Senior Finisher
+              - cell "0D6D1B69" [ref=f3e177]
+              - cell [ref=f3e178]:
+                - generic [ref=f3e179]:
+                  - button "PRESENT" [ref=f3e180] [cursor=pointer]
+                  - button "ABSENT" [ref=f3e181] [cursor=pointer]
+                  - button "HALF" [ref=f3e182] [cursor=pointer]
+                  - button "LEAVE" [ref=f3e183] [cursor=pointer]
+              - cell [ref=f3e184]:
+                - textbox [ref=f3e185]: 08:00:00
+              - cell [ref=f3e186]:
+                - textbox [ref=f3e187]: 17:30:00
+              - cell [ref=f3e188]:
+                - spinbutton [ref=f3e189]: "0"
+              - cell [ref=f3e190]:
+                - textbox "Add note..." [ref=f3e191]
+            - row [ref=f3e192]:
+              - cell "AW Anil Wilson Junior Woodworker" [ref=f3e193]:
+                - generic [ref=f3e194]:
+                  - generic [ref=f3e195]: AW
+                  - generic [ref=f3e196]:
+                    - paragraph [ref=f3e197]: Anil Wilson
+                    - paragraph [ref=f3e198]: Junior Woodworker
+              - cell "8BB856E5" [ref=f3e199]
+              - cell [ref=f3e200]:
+                - generic [ref=f3e201]:
+                  - button "PRESENT" [ref=f3e202] [cursor=pointer]
+                  - button "ABSENT" [ref=f3e203] [cursor=pointer]
+                  - button "HALF" [ref=f3e204] [cursor=pointer]
+                  - button "LEAVE" [ref=f3e205] [cursor=pointer]
+              - cell [ref=f3e206]:
+                - textbox [ref=f3e207]: 08:00:00
+              - cell [ref=f3e208]:
+                - textbox [ref=f3e209]: 17:30:00
+              - cell [ref=f3e210]:
+                - spinbutton [ref=f3e211]: "0"
+              - cell [ref=f3e212]:
+                - textbox "Add note..." [ref=f3e213]
+    - generic [ref=f3e214]:
+      - generic [ref=f3e215]:
+        - generic [ref=f3e216]: Changes Pending
+        - generic [ref=f3e217]: 5 staff updates ready
+      - generic [ref=f3e218]:
+        - button "Cancel" [ref=f3e219] [cursor=pointer]
+        - button "SUBMIT DAILY ATTENDANCE" [ref=f3e220] [cursor=pointer]

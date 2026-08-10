@@ -1,0 +1,111 @@
+- generic [ref=f18e3]:
+  - complementary [ref=f18e4]:
+    - generic [ref=f18e5]:
+      - heading "Canva Concepts" [level=1] [ref=f18e6]
+      - paragraph [ref=f18e7]: Industrial ERP
+    - navigation [ref=f18e8]:
+      - link "manufacturing Work Orders" [ref=f18e9] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f18e10]: manufacturing
+        - generic [ref=f18e11]: Work Orders
+      - link "precision_manufacturing Production" [ref=f18e12] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f18e13]: precision_manufacturing
+        - generic [ref=f18e14]: Production
+      - link "group Users" [ref=f18e15] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f18e16]: group
+        - generic [ref=f18e17]: Users
+      - link "payments Finance" [ref=f18e18] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f18e19]: payments
+        - generic [ref=f18e20]: Finance
+    - generic [ref=f18e21]:
+      - link "settings Settings" [ref=f18e22] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f18e23]: settings
+        - generic [ref=f18e24]: Settings
+      - link "help Support" [ref=f18e25] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f18e26]: help
+        - generic [ref=f18e27]: Support
+      - generic [ref=f18e28]:
+        - generic [ref=f18e29]:
+          - img "Robert Hudson" [ref=f18e31]
+          - generic [ref=f18e32]:
+            - paragraph [ref=f18e33]: Robert Hudson
+            - paragraph [ref=f18e34]: Factory Supervisor
+        - generic [ref=f18e35]:
+          - generic [ref=f18e36]: Toggle System Role
+          - combobox [ref=f18e37] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor" [selected]
+            - option "Site Manager"
+  - main [ref=f18e38]:
+    - generic [ref=f18e39]:
+      - generic [ref=f18e40]:
+        - heading "Work Orders" [level=2] [ref=f18e41]
+        - generic [ref=f18e42]:
+          - generic [ref=f18e43]: search
+          - textbox "Search orders, clients, items..." [ref=f18e44]
+      - generic [ref=f18e45]:
+        - button "add New Work Order" [ref=f18e46] [cursor=pointer]:
+          - generic [ref=f18e47]: add
+          - text: New Work Order
+        - generic [ref=f18e48]:
+          - button "notifications" [ref=f18e49] [cursor=pointer]
+          - button "help" [ref=f18e50] [cursor=pointer]
+          - button "settings" [ref=f18e51] [cursor=pointer]
+    - generic [ref=f18e52]:
+      - generic [ref=f18e53]:
+        - generic [ref=f18e54]:
+          - generic [ref=f18e55]: Status
+          - combobox [ref=f18e56]:
+            - option "All Statuses" [selected]
+            - option "Draft"
+            - option "In Production"
+            - option "Material Prep"
+            - option "Quality Check"
+            - option "Cancelled"
+        - generic [ref=f18e57]:
+          - generic [ref=f18e58]: Client Type
+          - combobox [ref=f18e59]:
+            - option "All Clients" [selected]
+            - option "Chhabee"
+            - option "External B2B"
+            - option "D2C"
+        - generic [ref=f18e60]:
+          - generic [ref=f18e61]: Priority
+          - combobox [ref=f18e62]:
+            - option "Any Priority" [selected]
+            - option "Critical"
+            - option "High"
+            - option "Normal"
+        - generic [ref=f18e63]:
+          - generic [ref=f18e64]: Search
+          - generic [ref=f18e65]:
+            - generic [ref=f18e66]: search
+            - textbox "Search orders, clients..." [ref=f18e67]
+        - button "Apply Filters" [ref=f18e68] [cursor=pointer]
+      - generic [ref=f18e69]:
+        - generic [ref=f18e70]:
+          - generic [ref=f18e71]: precision_manufacturing
+          - generic [ref=f18e73]:
+            - paragraph [ref=f18e74]: Active Orders
+            - heading "0" [level=3] [ref=f18e75]
+        - generic [ref=f18e76]:
+          - generic [ref=f18e77]: schedule
+          - generic [ref=f18e79]:
+            - paragraph [ref=f18e80]: Pending QC
+            - heading "0" [level=3] [ref=f18e81]
+        - generic [ref=f18e82]:
+          - generic [ref=f18e83]: warning
+          - generic [ref=f18e85]:
+            - paragraph [ref=f18e86]: Critical Delay
+            - heading "0" [level=3] [ref=f18e87]
+        - generic [ref=f18e88]:
+          - generic [ref=f18e89]: check_circle
+          - generic [ref=f18e91]:
+            - paragraph [ref=f18e92]: Total Orders
+            - heading "0" [level=3] [ref=f18e93]
+    - generic [ref=f18e96]: "System Role: Factory Manager"

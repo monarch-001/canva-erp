@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Material Master | Canva Concepts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "status-invoice": "#7C3AED",
+                    "background": "#faf9f5",
+                    "tertiary-fixed": "#cbe6ff",
+                    "surface-bright": "#faf9f5",
+                    "on-tertiary-container": "#5889af",
+                    "inverse-primary": "#c8c6c5",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#001e30",
+                    "secondary-fixed": "#ffe08c",
+                    "secondary-container": "#fdd977",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-error-container": "#93000a",
+                    "status-financial": "#14532D",
+                    "surface-tint": "#5f5e5e",
+                    "on-surface-variant": "#444748",
+                    "on-surface": "#1b1c1a",
+                    "status-success": "#2D7D46",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#584400",
+                    "surface": "#faf9f5",
+                    "inverse-on-surface": "#f2f1ed",
+                    "on-background": "#1b1c1a",
+                    "status-pending": "#F59E0B",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#e5e2e1",
+                    "status-production": "#F97316",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "on-tertiary-fixed": "#001e30",
+                    "primary-container": "#1c1b1b",
+                    "tertiary": "#000000",
+                    "on-error": "#ffffff",
+                    "outline": "#747878",
+                    "error": "#ba1a1a",
+                    "secondary": "#745b00",
+                    "surface-variant": "#e3e2df",
+                    "surface-dim": "#dbdad6",
+                    "on-secondary-fixed": "#241a00",
+                    "on-primary-container": "#858383",
+                    "on-primary-fixed-variant": "#474746",
+                    "status-draft": "#888888",
+                    "inverse-surface": "#30312e",
+                    "surface-container-low": "#f5f4f0",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "on-primary": "#ffffff",
+                    "status-material": "#0891B2",
+                    "secondary-fixed-dim": "#e5c363",
+                    "surface-container-highest": "#e3e2df",
+                    "on-secondary": "#ffffff",
+                    "status-error": "#C0392B",
+                    "surface-container-high": "#e9e8e4",
+                    "outline-variant": "#c4c7c7",
+                    "on-primary-fixed": "#1c1b1b",
+                    "border-subtle": "#E8E8E8",
+                    "primary": "#000000",
+                    "on-secondary-container": "#775e00",
+                    "surface-container": "#efeeea",
+                    "surface-card": "#FFFFFF"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "container-max": "1440px",
+                    "xl": "32px",
+                    "sidebar-width": "260px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "status-pill": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        .sidebar-active { background-color: #745b00; color: #ffffff !important; border-left: 4px solid #fdd977; opacity: 1 !important; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-[260px] bg-primary flex flex-col py-lg z-50">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-bold">Canva Concepts</h1>
+<p class="font-label-md text-label-md text-on-primary-container opacity-70">Industrial ERP</p>
+</div>
+<nav class="flex-1 px-sm space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded transition-colors text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-title-md text-title-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded transition-colors sidebar-active" href="#">
+<span class="material-symbols-outlined" data-icon="manufacturing">manufacturing</span>
+<span class="font-title-md text-title-md">Work Orders</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded transition-colors text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-title-md text-title-md">Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded transition-colors text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-title-md text-title-md">Finance</span>
+</a>
+</nav>
+<div class="px-sm space-y-xs border-t border-on-primary/10 pt-lg">
+<a class="flex items-center gap-md px-md py-sm rounded transition-colors text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-title-md text-title-md">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded transition-colors text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-title-md text-title-md">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-[260px] min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="h-16 flex items-center justify-between px-lg bg-surface border-b border-border-subtle sticky top-0 z-40">
+<div class="flex items-center gap-xl">
+<h2 class="font-headline-sm text-headline-sm text-primary">Material Master</h2>
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-body-md" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded py-2 pl-10 pr-4 text-body-md focus:ring-1 focus:ring-secondary" placeholder="Search materials by code or name..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-secondary text-on-primary px-lg py-2 rounded flex items-center gap-xs font-label-md text-label-md active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                    Add Material
+                </button>
+<div class="h-8 w-px bg-border-subtle mx-2"></div>
+<button class="text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional factory manager profile photo in a high-key lighting environment with industrial architectural elements in a soft-focus background, conveying authority and precision engineering values." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL56xa0BWCLW-4fleTbK2dual0xFQtiOrez9AW3aga-YDZ8WiEOSJBoAe3KA6uxPhpj5Ip-OHeiVEPkODdYx4QSWmiaAkbI250UxofTR3vj8l_E35_ylx8Apv7Pu-8GMzAKywI-Zwngq64Ghbw4MA01ZPW5uSpANbzDVCDEFv4whOG8VVFI6xjBwWq64YnP_zgw4lghKf6a-HC6twDpwEEk6Wpb-R3eCSdC0jgUaLZEwbVXC27S8S0BA"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-lg max-w-[1440px] w-full mx-auto">
+<!-- Summary Stats (PRD-07 Requirement) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
+<div class="bg-surface-card border border-border-subtle p-lg rounded-lg shadow-sm">
+<div class="flex justify-between items-start mb-md">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Active</span>
+<span class="material-symbols-outlined text-secondary" data-icon="inventory_2">inventory_2</span>
+</div>
+<p class="font-headline-md text-headline-md text-primary">1,248</p>
+<p class="text-[12px] text-status-success mt-2 font-bold">+12 this month</p>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-lg shadow-sm border-l-4 border-l-status-pending">
+<div class="flex justify-between items-start mb-md">
+<span class="font-label-md text-label-md text-on-surface-variant">Below Reorder Level</span>
+<span class="material-symbols-outlined text-status-pending" data-icon="warning">warning</span>
+</div>
+<p class="font-headline-md text-headline-md text-primary">24</p>
+<p class="text-[12px] text-on-surface-variant mt-2 font-body-md">Requires immediate attention</p>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-lg shadow-sm">
+<div class="flex justify-between items-start mb-md">
+<span class="font-label-md text-label-md text-on-surface-variant">Discontinued</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="block">block</span>
+</div>
+<p class="font-headline-md text-headline-md text-primary">82</p>
+<p class="text-[12px] text-on-surface-variant mt-2 font-body-md">Last archived: Oct 12, 2023</p>
+</div>
+</div>
+<!-- Filters & Actions -->
+<div class="bg-surface-card border border-border-subtle rounded-lg shadow-sm overflow-hidden">
+<div class="p-md bg-surface-container-low border-b border-border-subtle flex flex-wrap gap-lg items-center">
+<div class="flex items-center gap-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Category:</label>
+<select class="border border-border-subtle rounded bg-surface py-1 px-md font-body-md focus:ring-secondary text-on-surface">
+<option>All Categories</option>
+<option>Raw Material</option>
+<option>Consumables</option>
+<option>Spare Parts</option>
+<option>Packaging</option>
+</select>
+</div>
+<div class="flex items-center gap-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Status:</label>
+<select class="border border-border-subtle rounded bg-surface py-1 px-md font-body-md focus:ring-secondary text-on-surface">
+<option>Active</option>
+<option>Below Reorder</option>
+<option>Discontinued</option>
+</select>
+</div>
+<button class="ml-auto text-on-surface-variant hover:text-primary flex items-center gap-xs font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                        Clear Filters
+                    </button>
+<button class="text-on-surface-variant hover:text-primary flex items-center gap-xs font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                        Export CSV
+                    </button>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto no-scrollbar">
+<table class="w-full text-left border-collapse min-w-[1200px]">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-md text-label-md border-b border-border-subtle">
+<th class="px-md py-4 font-semibold sticky left-0 bg-surface-container z-10">Material Code</th>
+<th class="px-md py-4 font-semibold">Name</th>
+<th class="px-md py-4 font-semibold">Category</th>
+<th class="px-md py-4 font-semibold">HSN</th>
+<th class="px-md py-4 font-semibold">Primary UOM</th>
+<th class="px-md py-4 font-semibold">Standard Rate</th>
+<th class="px-md py-4 font-semibold">Last Purchase Rate</th>
+<th class="px-md py-4 font-semibold">Reorder Level</th>
+<th class="px-md py-4 font-semibold">Status</th>
+<th class="px-md py-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y divide-border-subtle">
+<!-- Amber Highlight Row (Below Reorder Level) -->
+<tr class="hover:bg-surface-container-low transition-colors bg-[#FFFBEB]">
+<td class="px-md py-4 font-bold text-primary sticky left-0 bg-[#FFFBEB]">MAT-FE-001</td>
+<td class="px-md py-4">High-Grade Carbon Steel Plate</td>
+<td class="px-md py-4">Raw Material</td>
+<td class="px-md py-4 text-on-surface-variant">7208 51 10</td>
+<td class="px-md py-4">SQM</td>
+<td class="px-md py-4">₹4,250.00</td>
+<td class="px-md py-4">₹4,180.00</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-xs text-status-pending font-bold">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_downward">arrow_downward</span>
+                                        500
+                                    </div>
+</td>
+<td class="px-md py-4">
+<span class="bg-status-pending/10 text-status-pending px-sm py-xs rounded font-status-pill text-status-pill inline-block uppercase">Below Reorder</span>
+</td>
+<td class="px-md py-4 text-right">
+<div class="flex justify-end gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="visibility">visibility</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="edit">edit</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-status-error" data-icon="block">block</button>
+</div>
+</td>
+</tr>
+<!-- Standard Row -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-4 font-bold text-primary sticky left-0 bg-surface-card">MAT-AL-042</td>
+<td class="px-md py-4">Aluminum Alloy Extrusion Profile 6061</td>
+<td class="px-md py-4">Raw Material</td>
+<td class="px-md py-4 text-on-surface-variant">7604 21 00</td>
+<td class="px-md py-4">KG</td>
+<td class="px-md py-4">₹310.00</td>
+<td class="px-md py-4">₹308.50</td>
+<td class="px-md py-4">1,200</td>
+<td class="px-md py-4">
+<span class="bg-status-success/10 text-status-success px-sm py-xs rounded font-status-pill text-status-pill inline-block uppercase">Active</span>
+</td>
+<td class="px-md py-4 text-right">
+<div class="flex justify-end gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="visibility">visibility</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="edit">edit</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-status-error" data-icon="block">block</button>
+</div>
+</td>
+</tr>
+<!-- Discontinued Row -->
+<tr class="hover:bg-surface-container-low transition-colors opacity-60">
+<td class="px-md py-4 font-bold text-primary sticky left-0 bg-surface-card">MAT-CH-009</td>
+<td class="px-md py-4">Industrial Grade Epoxy Resin - Type B</td>
+<td class="px-md py-4">Consumables</td>
+<td class="px-md py-4 text-on-surface-variant">3907 30 10</td>
+<td class="px-md py-4">Ltr</td>
+<td class="px-md py-4">₹1,850.00</td>
+<td class="px-md py-4">₹1,850.00</td>
+<td class="px-md py-4">50</td>
+<td class="px-md py-4">
+<span class="bg-on-surface-variant/10 text-on-surface-variant px-sm py-xs rounded font-status-pill text-status-pill inline-block uppercase">Discontinued</span>
+</td>
+<td class="px-md py-4 text-right">
+<div class="flex justify-end gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="visibility">visibility</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="edit">edit</button>
+<button class="material-symbols-outlined text-secondary opacity-40 cursor-not-allowed" data-icon="settings_backup_restore">settings_backup_restore</button>
+</div>
+</td>
+</tr>
+<!-- Another Below Reorder -->
+<tr class="hover:bg-surface-container-low transition-colors bg-[#FFFBEB]">
+<td class="px-md py-4 font-bold text-primary sticky left-0 bg-[#FFFBEB]">MAT-SP-112</td>
+<td class="px-md py-4">Precision Ball Bearing - ID 25mm</td>
+<td class="px-md py-4">Spare Parts</td>
+<td class="px-md py-4 text-on-surface-variant">8482 10 11</td>
+<td class="px-md py-4">PCS</td>
+<td class="px-md py-4">₹420.00</td>
+<td class="px-md py-4">₹455.00</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-xs text-status-pending font-bold">
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_downward">arrow_downward</span>
+                                        100
+                                    </div>
+</td>
+<td class="px-md py-4">
+<span class="bg-status-pending/10 text-status-pending px-sm py-xs rounded font-status-pill text-status-pill inline-block uppercase">Below Reorder</span>
+</td>
+<td class="px-md py-4 text-right">
+<div class="flex justify-end gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="visibility">visibility</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="edit">edit</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-status-error" data-icon="block">block</button>
+</div>
+</td>
+</tr>
+<!-- More Rows -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-4 font-bold text-primary sticky left-0 bg-surface-card">MAT-PA-004</td>
+<td class="px-md py-4">Heavy Duty Corrugated Box (L)</td>
+<td class="px-md py-4">Packaging</td>
+<td class="px-md py-4 text-on-surface-variant">4819 10 10</td>
+<td class="px-md py-4">PCS</td>
+<td class="px-md py-4">₹85.00</td>
+<td class="px-md py-4">₹82.20</td>
+<td class="px-md py-4">2,000</td>
+<td class="px-md py-4">
+<span class="bg-status-success/10 text-status-success px-sm py-xs rounded font-status-pill text-status-pill inline-block uppercase">Active</span>
+</td>
+<td class="px-md py-4 text-right">
+<div class="flex justify-end gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="visibility">visibility</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="edit">edit</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-status-error" data-icon="block">block</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-md bg-surface border-t border-border-subtle flex justify-between items-center">
+<span class="font-body-md text-on-surface-variant">Showing 1 to 5 of 1,248 entries</span>
+<div class="flex items-center gap-xs">
+<button class="p-2 border border-border-subtle rounded hover:bg-surface-container-low disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="px-3 py-1 bg-secondary text-on-primary rounded font-label-md">1</button>
+<button class="px-3 py-1 hover:bg-surface-container-low rounded font-label-md">2</button>
+<button class="px-3 py-1 hover:bg-surface-container-low rounded font-label-md">3</button>
+<span class="px-1 text-on-surface-variant">...</span>
+<button class="px-3 py-1 hover:bg-surface-container-low rounded font-label-md">250</button>
+<button class="p-2 border border-border-subtle rounded hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto py-lg px-lg border-t border-border-subtle flex justify-between items-center text-on-surface-variant">
+<p class="font-label-md text-label-md">© 2023 Canva Concepts Industrial ERP. All Rights Reserved.</p>
+<div class="flex gap-lg font-label-md text-label-md">
+<a class="hover:text-secondary" href="#">Privacy Policy</a>
+<a class="hover:text-secondary" href="#">System Status</a>
+<a class="hover:text-secondary" href="#">v4.2.0-stable</a>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interaction: Active ripple simulation on click
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', function() {
+                this.classList.add('scale-[0.98]');
+            });
+            el.addEventListener('mouseup', function() {
+                this.classList.remove('scale-[0.98]');
+            });
+            el.addEventListener('mouseleave', function() {
+                this.classList.remove('scale-[0.98]');
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-1', 'ring-secondary');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-1', 'ring-secondary');
+        });
+    </script>
+</body></html>

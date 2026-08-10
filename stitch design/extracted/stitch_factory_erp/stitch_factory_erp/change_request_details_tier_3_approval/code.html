@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tier 3 Change Request - Canva Concepts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .approval-line::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 24px;
+            bottom: -8px;
+            width: 2px;
+            background-color: #E8E8E8;
+        }
+        .approval-line-last::before {
+            display: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#745b00",
+                      "on-primary-fixed-variant": "#474746",
+                      "surface-container-highest": "#e3e2df",
+                      "status-material": "#0891B2",
+                      "tertiary-fixed-dim": "#9bccf6",
+                      "primary-container": "#1c1b1b",
+                      "secondary-fixed-dim": "#e5c363",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "status-pending": "#F59E0B",
+                      "status-error": "#C0392B",
+                      "outline": "#747878",
+                      "surface-tint": "#5f5e5e",
+                      "secondary-container": "#fdd977",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#444748",
+                      "status-production": "#F97316",
+                      "background": "#faf9f5",
+                      "tertiary-container": "#001e30",
+                      "surface-variant": "#e3e2df",
+                      "on-error": "#ffffff",
+                      "on-background": "#1b1c1a",
+                      "surface": "#faf9f5",
+                      "status-financial": "#14532D",
+                      "border-subtle": "#E8E8E8",
+                      "status-invoice": "#7C3AED",
+                      "on-primary-fixed": "#1c1b1b",
+                      "tertiary": "#000000",
+                      "on-tertiary-fixed": "#001e30",
+                      "surface-container-low": "#f5f4f0",
+                      "surface-container-high": "#e9e8e4",
+                      "on-secondary-container": "#775e00",
+                      "on-secondary-fixed-variant": "#584400",
+                      "primary": "#000000",
+                      "inverse-surface": "#30312e",
+                      "outline-variant": "#c4c7c7",
+                      "status-success": "#2D7D46",
+                      "surface-container": "#efeeea",
+                      "on-surface": "#1b1c1a",
+                      "on-primary-container": "#858383",
+                      "on-tertiary-container": "#5889af",
+                      "inverse-primary": "#c8c6c5",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-bright": "#faf9f5",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#cbe6ff",
+                      "status-draft": "#888888",
+                      "secondary-fixed": "#ffe08c",
+                      "surface-dim": "#dbdad6",
+                      "on-tertiary-fixed-variant": "#0e4b6e",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#241a00",
+                      "surface-card": "#FFFFFF",
+                      "primary-fixed": "#e5e2e1",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#f2f1ed"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "container-max": "1440px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "sidebar-width": "260px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "status-pill": ["Inter"],
+                      "title-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                      "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-primary flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-bold">Canva Concepts</h1>
+<p class="text-[11px] text-on-primary opacity-60 uppercase tracking-widest mt-1">Industrial ERP</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 font-title-md text-title-md hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined mr-md">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center px-lg py-md bg-secondary text-on-primary border-l-4 border-secondary-container font-title-md text-title-md active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mr-md">manufacturing</span> Work Orders
+            </a>
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 font-title-md text-title-md hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined mr-md">group</span> Users
+            </a>
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 font-title-md text-title-md hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined mr-md">payments</span> Finance
+            </a>
+</nav>
+<div class="mt-auto px-md space-y-1">
+<a class="flex items-center px-lg py-sm text-on-primary opacity-80 hover:opacity-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-md" style="font-size: 20px;">settings</span> Settings
+            </a>
+<a class="flex items-center px-lg py-sm text-on-primary opacity-80 hover:opacity-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-md" style="font-size: 20px;">help</span> Support
+            </a>
+</div>
+</aside>
+<!-- Top Bar -->
+<header class="fixed top-0 left-sidebar-width right-0 h-16 bg-surface-bright border-b border-border-subtle flex justify-between items-center px-lg z-40">
+<div class="flex items-center space-x-md">
+<button class="p-2 hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">arrow_back</span>
+</button>
+<h2 class="font-headline-sm text-headline-sm text-primary">Change Request Detail</h2>
+</div>
+<div class="flex items-center space-x-lg">
+<div class="hidden md:flex items-center bg-surface-container-low px-md py-sm rounded-lg border border-border-subtle w-64">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full p-0" placeholder="Search orders..." type="text"/>
+</div>
+<div class="flex items-center space-x-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-all">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-all">help</span>
+<div class="h-8 w-8 bg-surface-container-highest rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged factory administrator with graying hair, wearing a clean charcoal polo shirt. The lighting is soft and directional, typical of a modern corporate environment. The background is a slightly blurred industrial office setting with high-quality engineering blueprints visible. The aesthetic is sharp, focused, and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6J0-ucazjba2AstxUrucFBJnO8IrO2iqR6KDOwKH0Z91jf74CgEQ7NR1I0vKhU6nTMUqHS5BnIC0QFhROm3O9Cp4M3t-88mOqgf6f0s4G5rPHCfK_j_-Gr87EPoW6IiljTw4Ealc2p7Tais1GMUFzDExRe6gnfkTG44wnIE9-sZCjZcsleP6BU9CXu3pPpEBuzcQYfGK9YrlV8se4xgVezw61efVRBLEjE1RGKAwaWIH_UUZSVGz0vg"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-sidebar-width mt-16 p-lg max-w-container-max mx-auto">
+<!-- Header / Breadcrumb & Core Info -->
+<div class="bg-surface-card border border-border-subtle p-lg mb-lg flex flex-wrap justify-between items-start">
+<div class="space-y-base">
+<div class="flex items-center space-x-sm">
+<span class="font-label-md text-label-md text-secondary">CR #8842-X</span>
+<span class="text-on-surface-variant">/</span>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary flex items-center transition-all underline decoration-border-subtle" href="#">
+<span class="material-symbols-outlined text-[14px] mr-1">link</span> WO-2024-0012
+                    </a>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">Structural Reinforcement Modification</h3>
+<div class="flex items-center space-x-md mt-md">
+<span class="bg-status-pending bg-opacity-10 text-status-pending font-status-pill text-status-pill px-md py-1 rounded-full border border-status-pending border-opacity-20 flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">pending_actions</span> FM Approved, Awaiting Super Admin
+                    </span>
+<span class="bg-status-error text-on-error font-status-pill text-status-pill px-md py-1 rounded-full shadow-sm">
+                        TIER 3 CHANGE
+                    </span>
+</div>
+</div>
+<div class="mt-lg md:mt-0 flex flex-col items-end">
+<p class="font-label-md text-label-md text-on-surface-variant">Creation Date</p>
+<p class="font-title-md text-title-md">Oct 24, 2024 | 09:14 AM</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Change Details -->
+<div class="lg:col-span-8 space-y-lg">
+<section class="bg-surface-card border border-border-subtle p-lg">
+<div class="flex items-center justify-between mb-lg">
+<h4 class="font-title-md text-title-md text-primary flex items-center">
+<span class="material-symbols-outlined mr-md text-secondary">info</span> Change Specifications
+                        </h4>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+<div class="space-y-md">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Change Type</label>
+<p class="font-body-md text-body-md text-primary">Structural Integrity / Material Swap</p>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-1">Reason for Change</label>
+<p class="font-body-md text-body-md text-primary leading-relaxed">Unforeseen soil density variance detected during primary foundation prep. Standard beam specifications (IS-202) are insufficient for current torque loads on Section C-4.</p>
+</div>
+</div>
+<div class="space-y-md">
+<div class="p-md bg-surface-container-low border border-border-subtle rounded">
+<div class="flex justify-between items-center mb-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Delivery Impact</label>
+<span class="text-status-error font-bold font-label-md text-label-md">YES</span>
+</div>
+<p class="font-title-md text-title-md text-primary">5 Days Delay</p>
+<p class="text-xs text-on-surface-variant mt-1">Impacts Milestone: Secondary Frame Assembly</p>
+</div>
+<div class="p-md bg-surface-container-low border border-border-subtle rounded">
+<div class="flex justify-between items-center mb-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Cost Impact</label>
+<span class="text-status-error font-bold font-label-md text-label-md">INCREASE</span>
+</div>
+<p class="font-title-md text-title-md text-primary">₹15,000.00</p>
+<p class="text-xs text-on-surface-variant mt-1">Material procurement &amp; expedited freight costs</p>
+</div>
+</div>
+</div>
+<div class="mt-xl pt-lg border-t border-border-subtle">
+<label class="font-label-md text-label-md text-on-surface-variant block mb-md">Change Description</label>
+<p class="font-body-md text-body-md text-primary leading-relaxed">
+                            Upgrade of foundation support beams from Grade A1 (Standard) to Grade S4 (Reinforced Industrial) for the main assembly floor area. This includes an additional 4 reinforcing plates per pier and the use of high-tensile fasteners. The modification is critical to ensure the long-term stability of the heavy-duty machinery destined for this zone. Failure to implement this change will result in a 12% increase in vibration-induced maintenance requirements over a 5-year period.
+                        </p>
+</div>
+</section>
+<!-- Attachments -->
+<section class="bg-surface-card border border-border-subtle p-lg">
+<h4 class="font-title-md text-title-md text-primary flex items-center mb-lg">
+<span class="material-symbols-outlined mr-md text-secondary">attachment</span> Documentation
+                    </h4>
+<div class="flex flex-wrap gap-md">
+<div class="flex items-center bg-surface-container border border-border-subtle p-md rounded-lg group cursor-pointer hover:border-secondary transition-all">
+<div class="bg-red-100 p-sm rounded mr-md">
+<span class="material-symbols-outlined text-red-600">description</span>
+</div>
+<div class="mr-xl">
+<p class="font-label-md text-label-md text-primary">Revised Drawing v1.1</p>
+<p class="text-xs text-on-surface-variant">PDF • 4.2 MB</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary">download</span>
+</div>
+<div class="flex items-center bg-surface-container border border-border-subtle p-md rounded-lg group cursor-pointer hover:border-secondary transition-all">
+<div class="bg-blue-100 p-sm rounded mr-md">
+<span class="material-symbols-outlined text-blue-600">image</span>
+</div>
+<div class="mr-xl">
+<p class="font-label-md text-label-md text-primary">Site Photo_Foundation_C4</p>
+<p class="text-xs text-on-surface-variant">JPG • 1.8 MB</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary">download</span>
+</div>
+</div>
+</section>
+<!-- Action Section (Super Admin) -->
+<section class="bg-primary text-on-primary p-lg rounded-xl shadow-xl">
+<div class="flex items-center mb-lg">
+<span class="material-symbols-outlined mr-md text-secondary-fixed">gavel</span>
+<h4 class="font-headline-sm text-headline-sm">Super Admin Final Review</h4>
+</div>
+<div class="space-y-md">
+<div>
+<label class="font-label-md text-label-md text-on-primary opacity-80 block mb-sm">Decision Notes</label>
+<textarea class="w-full bg-primary-container border border-outline border-opacity-30 rounded-lg p-md text-on-primary placeholder:opacity-40 focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" placeholder="Enter reason for approval or rejection..." rows="4"></textarea>
+</div>
+<div class="flex justify-end space-x-md pt-md">
+<button class="px-xl py-md border border-on-primary text-on-primary font-title-md text-title-md rounded-lg hover:bg-on-primary hover:text-primary active:scale-95 transition-all">
+                                Reject Change
+                            </button>
+<button class="px-xl py-md bg-secondary-fixed text-on-secondary-fixed font-title-md text-title-md rounded-lg hover:bg-secondary-container active:scale-95 transition-all shadow-lg">
+                                Approve Change
+                            </button>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Approval Trail -->
+<div class="lg:col-span-4 space-y-lg">
+<section class="bg-surface-card border border-border-subtle p-lg sticky top-[88px]">
+<h4 class="font-title-md text-title-md text-primary flex items-center mb-xl">
+<span class="material-symbols-outlined mr-md text-secondary">assignment_turned_in</span> Approval Workflow
+                    </h4>
+<div class="space-y-xl">
+<!-- Step 1: Raised -->
+<div class="relative pl-xl approval-line">
+<div class="absolute left-0 top-0 h-6 w-6 bg-status-success rounded-full flex items-center justify-center z-10 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-white" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="bg-surface-container-low p-md border-l-2 border-status-success">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-base">Step 1: Initiation</p>
+<p class="font-title-md text-title-md text-primary">CR Raised by Site Manager</p>
+<p class="text-xs text-on-surface-variant mt-1">Oct 24, 2024 • 09:14 AM</p>
+<div class="mt-md p-sm bg-white border border-border-subtle text-sm italic text-on-surface-variant">
+                                    "Critical path delay if beams are not upgraded immediately."
+                                </div>
+</div>
+</div>
+<!-- Step 2: FM Review -->
+<div class="relative pl-xl approval-line">
+<div class="absolute left-0 top-0 h-6 w-6 bg-status-success rounded-full flex items-center justify-center z-10 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-white" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="bg-surface-container-low p-md border-l-2 border-status-success">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-base">Step 2: FM Review</p>
+<p class="font-title-md text-title-md text-primary">Approved by Factory Manager</p>
+<p class="text-xs text-on-surface-variant mt-1">Oct 25, 2024 • 11:30 AM</p>
+<div class="mt-md p-sm bg-white border border-border-subtle text-sm italic text-on-surface-variant">
+                                    "Budget variance within FM tolerance. Approved for structural safety compliance. Forwarding to Super Admin for final Tier 3 sign-off."
+                                </div>
+</div>
+</div>
+<!-- Step 3: Super Admin Review -->
+<div class="relative pl-xl approval-line-last">
+<div class="absolute left-0 top-0 h-6 w-6 bg-status-pending rounded-full flex items-center justify-center z-10 shadow-lg ring-4 ring-status-pending ring-opacity-20">
+<span class="material-symbols-outlined text-[14px] text-white animate-pulse">radio_button_checked</span>
+</div>
+<div class="bg-secondary-container bg-opacity-10 p-md border-l-2 border-status-pending border-opacity-50">
+<p class="font-label-md text-label-md text-status-pending uppercase tracking-wider mb-base font-bold">Step 3: Final Sign-off</p>
+<p class="font-title-md text-title-md text-primary">Super Admin Review</p>
+<p class="text-sm font-semibold text-status-pending mt-2">PENDING ACTION</p>
+<p class="text-xs text-on-surface-variant mt-1">Awaiting decision from Head Office.</p>
+</div>
+</div>
+</div>
+<div class="mt-xl p-lg bg-surface-container-highest border-t border-border-subtle">
+<h5 class="font-label-md text-label-md text-primary mb-md">Reference Project</h5>
+<div class="flex items-center space-x-md">
+<div class="w-12 h-12 rounded bg-white flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-secondary">precision_manufacturing</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-primary">Pune Giga-Plant Ext.</p>
+<p class="text-xs text-on-surface-variant">Phase 2 Construction</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer Space -->
+<footer class="ml-sidebar-width py-xl px-lg text-center opacity-40">
+<p class="font-label-md text-label-md">© 2024 Canva Concepts Industrial ERP • Confidential Property</p>
+</footer>
+<script>
+        // Micro-interaction: Update text on decision buttons
+        const approveBtn = document.querySelectorAll('button').item(document.querySelectorAll('button').length - 1);
+        const rejectBtn = document.querySelectorAll('button').item(document.querySelectorAll('button').length - 2);
+
+        approveBtn.addEventListener('click', () => {
+            if(confirm('Are you sure you want to approve this Tier 3 Change?')) {
+                approveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin mr-2">sync</span> Processing...';
+                setTimeout(() => {
+                    alert('CR Approved Successfully');
+                    location.reload();
+                }, 1500);
+            }
+        });
+
+        rejectBtn.addEventListener('click', () => {
+            const reason = prompt('Please provide a reason for rejection:');
+            if(reason) {
+                alert('CR Rejected and returned to FM.');
+            }
+        });
+    </script>
+</body></html>

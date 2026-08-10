@@ -1,0 +1,54 @@
+- generic [ref=f20e3]:
+  - complementary [ref=f20e4]:
+    - generic [ref=f20e5]:
+      - heading "Canva Concepts" [level=1] [ref=f20e6]
+      - paragraph [ref=f20e7]: Industrial ERP
+    - navigation [ref=f20e8]:
+      - link "manufacturing Work Orders" [ref=f20e9] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f20e10]: manufacturing
+        - generic [ref=f20e11]: Work Orders
+      - link "precision_manufacturing Production" [ref=f20e12] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f20e13]: precision_manufacturing
+        - generic [ref=f20e14]: Production
+      - link "group Users" [ref=f20e15] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f20e16]: group
+        - generic [ref=f20e17]: Users
+      - link "payments Finance" [ref=f20e18] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f20e19]: payments
+        - generic [ref=f20e20]: Finance
+    - generic [ref=f20e21]:
+      - link "settings Settings" [ref=f20e22] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f20e23]: settings
+        - generic [ref=f20e24]: Settings
+      - link "help Support" [ref=f20e25] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f20e26]: help
+        - generic [ref=f20e27]: Support
+      - generic [ref=f20e28]:
+        - generic [ref=f20e29]:
+          - img "Robert Hudson" [ref=f20e31]
+          - generic [ref=f20e32]:
+            - paragraph [ref=f20e33]: Robert Hudson
+            - paragraph [ref=f20e34]: Factory Supervisor
+        - generic [ref=f20e35]:
+          - generic [ref=f20e36]: Toggle System Role
+          - combobox [ref=f20e37] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor" [selected]
+            - option "Site Manager"
+  - main [ref=f20e38]:
+    - generic [ref=f20e39]:
+      - generic [ref=f20e40]:
+        - heading "New Job Card" [level=2] [ref=f20e41]
+        - generic [ref=f20e42]:
+          - generic [ref=f20e43]: search
+          - textbox "Search orders, clients, items..." [ref=f20e44]
+      - generic [ref=f20e46]:
+        - button "notifications" [ref=f20e47] [cursor=pointer]
+        - button "help" [ref=f20e48] [cursor=pointer]
+        - button "settings" [ref=f20e49] [cursor=pointer]

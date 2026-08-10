@@ -1,0 +1,92 @@
+- generic [ref=f23e179]:
+  - complementary [ref=f23e180]:
+    - generic [ref=f23e181]:
+      - heading "Canva Concepts" [level=1] [ref=f23e182]
+      - paragraph [ref=f23e183]: Industrial ERP
+    - navigation [ref=f23e184]:
+      - link "dashboard Dashboard" [ref=f23e185] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=f23e186]: dashboard
+        - generic [ref=f23e187]: Dashboard
+      - link "manufacturing Work Orders" [ref=f23e188] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f23e189]: manufacturing
+        - generic [ref=f23e190]: Work Orders
+      - link "precision_manufacturing Production" [ref=f23e191] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f23e192]: precision_manufacturing
+        - generic [ref=f23e193]: Production
+      - link "group Users" [ref=f23e194] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f23e195]: group
+        - generic [ref=f23e196]: Users
+      - link "payments Finance" [ref=f23e197] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f23e198]: payments
+        - generic [ref=f23e199]: Finance
+    - generic [ref=f23e200]:
+      - link "settings Settings" [ref=f23e201] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f23e202]: settings
+        - generic [ref=f23e203]: Settings
+      - link "help Support" [ref=f23e204] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f23e205]: help
+        - generic [ref=f23e206]: Support
+      - generic [ref=f23e207]:
+        - generic [ref=f23e208]:
+          - img "Robert Hudson" [ref=f23e210]
+          - generic [ref=f23e211]:
+            - paragraph [ref=f23e212]: Robert Hudson
+            - paragraph [ref=f23e213]: Factory Supervisor
+        - generic [ref=f23e214]:
+          - generic [ref=f23e215]: Toggle System Role
+          - combobox [ref=f23e216] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor" [selected]
+            - option "Site Manager"
+  - main [ref=f23e217]:
+    - generic [ref=f23e218]:
+      - generic [ref=f23e219]:
+        - heading "Dashboard Overview" [level=2] [ref=f23e220]
+        - generic [ref=f23e221]:
+          - generic [ref=f23e222]: search
+          - textbox "Search orders, clients, items..." [ref=f23e223]
+      - generic [ref=f23e225]:
+        - button "notifications" [ref=f23e226] [cursor=pointer]
+        - button "help" [ref=f23e227] [cursor=pointer]
+        - button "settings" [ref=f23e228] [cursor=pointer]
+    - generic [ref=f23e229]:
+      - generic [ref=f23e230]:
+        - heading "Welcome back, Robert Hudson" [level=2] [ref=f23e231]
+        - paragraph [ref=f23e232]: Here is your operational snapshot for August 9, 2026.
+      - generic [ref=f23e233]:
+        - generic [ref=f23e234]:
+          - heading "list_alt Supervisor Action Log" [level=3] [ref=f23e235]:
+            - generic [ref=f23e236]: list_alt
+            - text: Supervisor Action Log
+          - generic [ref=f23e237]:
+            - generic [ref=f23e238]:
+              - generic [ref=f23e239]:
+                - paragraph [ref=f23e240]: "BOM Review Required: WO-8835-23"
+                - text: 2 hours ago
+              - button "Action" [ref=f23e241] [cursor=pointer]
+            - generic [ref=f23e242]:
+              - generic [ref=f23e243]:
+                - paragraph [ref=f23e244]: "Approve Overtime Request: Anil Wilson (2.5 hrs)"
+                - text: 4 hours ago
+              - button "Action" [ref=f23e245] [cursor=pointer]
+            - generic [ref=f23e246]:
+              - generic [ref=f23e247]:
+                - paragraph [ref=f23e248]: EOD Production Update Verification (5 tasks)
+                - text: Yesterday
+              - button "Action" [ref=f23e249] [cursor=pointer]
+        - generic [ref=f23e251]:
+          - heading "Quick Allocation" [level=3] [ref=f23e252]
+          - generic [ref=f23e253]:
+            - button "add Create Job Card" [ref=f23e254] [cursor=pointer]:
+              - generic [ref=f23e255]: add
+              - text: Create Job Card
+            - button "event_available Mark Floor Attendance" [ref=f23e256] [cursor=pointer]:
+              - generic [ref=f23e257]: event_available
+              - text: Mark Floor Attendance

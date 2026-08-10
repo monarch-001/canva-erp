@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quality Control | Industrial Authority ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-container": "#5889af",
+                "on-tertiary": "#ffffff",
+                "surface-card": "#FFFFFF",
+                "status-financial": "#14532D",
+                "surface-container": "#efeeea",
+                "background": "#faf9f5",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed": "#cbe6ff",
+                "on-tertiary-fixed": "#001e30",
+                "inverse-on-surface": "#f2f1ed",
+                "status-draft": "#888888",
+                "surface-container-highest": "#e3e2df",
+                "surface-bright": "#faf9f5",
+                "status-production": "#F97316",
+                "status-pending": "#F59E0B",
+                "tertiary-container": "#001e30",
+                "on-primary-container": "#858383",
+                "primary-container": "#1c1b1b",
+                "border-subtle": "#E8E8E8",
+                "surface-tint": "#5f5e5e",
+                "status-error": "#C0392B",
+                "error": "#ba1a1a",
+                "on-background": "#1b1c1a",
+                "surface-dim": "#dbdad6",
+                "primary-fixed-dim": "#c8c6c5",
+                "primary": "#000000",
+                "status-invoice": "#7C3AED",
+                "inverse-surface": "#30312e",
+                "secondary-fixed-dim": "#e5c363",
+                "on-secondary-container": "#775e00",
+                "on-error-container": "#93000a",
+                "on-primary-fixed": "#1c1b1b",
+                "outline-variant": "#c4c7c7",
+                "on-error": "#ffffff",
+                "inverse-primary": "#c8c6c5",
+                "status-success": "#2D7D46",
+                "on-surface-variant": "#444748",
+                "surface-variant": "#e3e2df",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed-variant": "#474746",
+                "secondary-fixed": "#ffe08c",
+                "on-surface": "#1b1c1a",
+                "on-primary": "#ffffff",
+                "surface-container-high": "#e9e8e4",
+                "secondary": "#745b00",
+                "outline": "#747878",
+                "primary-fixed": "#e5e2e1",
+                "on-secondary-fixed": "#241a00",
+                "secondary-container": "#fdd977",
+                "status-material": "#0891B2",
+                "surface": "#faf9f5",
+                "tertiary": "#000000",
+                "tertiary-fixed-dim": "#9bccf6",
+                "error-container": "#ffdad6",
+                "on-secondary-fixed-variant": "#584400",
+                "on-tertiary-fixed-variant": "#0e4b6e",
+                "surface-container-low": "#f5f4f0"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "sidebar-width": "260px",
+                "lg": "24px",
+                "container-max": "1440px",
+                "xl": "32px",
+                "md": "16px",
+                "base": "4px",
+                "xs": "4px",
+                "sm": "8px"
+            },
+            "fontFamily": {
+                "headline-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-sm": ["Inter"],
+                "title-md": ["Inter"],
+                "status-pill": ["Inter"],
+                "body-lg": ["Inter"],
+                "label-md": ["Inter"]
+            },
+            "fontSize": {
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: #fdd977; color: #775e00; border-left: 4px solid #745b00; }
+        .tab-active { color: #745b00; border-bottom: 2px solid #745b00; font-weight: 700; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .table-sticky-col { position: sticky; left: 0; background-color: inherit; z-index: 10; }
+        .status-badge { padding: 4px 12px; border-radius: 2px; text-transform: uppercase; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest border-b border-border-subtle sticky top-0 z-50 w-full">
+<div class="flex justify-between items-center h-16 px-md w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-xl">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Industrial Authority ERP</span>
+<div class="hidden md:flex items-center gap-lg">
+<button class="text-secondary font-bold border-b-2 border-secondary font-title-md text-title-md py-4">Dashboard</button>
+<button class="text-on-surface-variant font-medium hover:text-secondary transition-colors font-title-md text-title-md py-4">Analytics</button>
+<button class="text-on-surface-variant font-medium hover:text-secondary transition-colors font-title-md text-title-md py-4">Audit Logs</button>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border-none rounded px-lg py-sm pl-xl text-body-md w-64 focus:ring-1 focus:ring-secondary" placeholder="Search orders..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm hover:bg-surface-container-high rounded transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-sm hover:bg-surface-container-high rounded transition-colors"><span class="material-symbols-outlined">help</span></button>
+<button class="p-sm hover:bg-surface-container-high rounded transition-colors"><span class="material-symbols-outlined">settings</span></button>
+</div>
+<div class="h-8 w-px bg-border-subtle mx-sm"></div>
+<button class="bg-primary text-on-primary px-md py-sm rounded font-label-md text-label-md flex items-center gap-xs active:opacity-80">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Create Order
+                </button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional quality control manager in a modern industrial setting, focused and wearing a clean charcoal uniform with subtle gold branding. Soft studio lighting highlights the textures of the high-end furniture manufacturing environment behind him." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRDsB3ZxslgP6yxAIEExq3uKrDdpXwGFhzJu9wGuXF1wbRz5-tV1QQTIH5awMR4e73kVgDhqDTm_KyPCeJaDrSJZLSIdpAd-vQEBaRVdb3_Vzldw8obYlaDsZ0ijLEoBAy86TMlP3GVFZL547T3jcJJPS8vaGqaaj5KgLqFyFcArafgs4_2t-TNOzBbkRiErxkUEtcVYh2hUMENrZrh6kNvqEFu41Ltn9C4fEpMMQYDMUaGMhNqiDgpw"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar-width bg-primary-container text-on-primary-fixed flex flex-col py-lg z-40">
+<div class="px-md mb-xl">
+<div class="flex items-center gap-md mb-xs">
+<div class="w-10 h-10 bg-secondary flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-on-secondary" style="font-variation-settings: 'FILL' 1;">factory</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-[16px] leading-tight text-white">Precision Ops</h3>
+<p class="text-[11px] opacity-60">Unit 04 - Heavy Mfg</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-base overflow-y-auto hide-scroll">
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                </a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">inventory_2</span> Inventory
+                </a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">fact_check</span> Blind GRN
+                </a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">factory</span> Production
+                </a>
+<!-- Active Tab -->
+<a class="bg-secondary-container text-on-secondary-container border-l-4 border-secondary flex items-center gap-md px-md py-sm font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">verified</span> Quality Control
+                </a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span> Financials
+                </a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">analytics</span> Reports
+                </a>
+</nav>
+<div class="mt-auto px-md space-y-sm pt-md border-t border-on-primary-fixed-variant/20">
+<button class="w-full bg-secondary text-on-secondary py-sm rounded font-label-md text-label-md flex items-center justify-center gap-sm active:scale-95 duration-150">
+<span class="material-symbols-outlined text-sm">add_circle</span> New Batch
+                </button>
+<div class="pt-md">
+<a class="text-on-primary-container opacity-80 flex items-center gap-md py-sm hover:opacity-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">support_agent</span> Support
+                    </a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md py-sm hover:opacity-100 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span> Sign Out
+                    </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width flex-1 min-h-screen px-xl py-lg">
+<header class="flex justify-between items-end mb-xl">
+<div>
+<nav class="flex items-center gap-xs text-[12px] text-on-surface-variant mb-base uppercase tracking-wider font-bold">
+<span>Production</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary">QC Management</span>
+</nav>
+<h1 class="font-headline-lg text-headline-lg text-primary">Quality Control</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-white border border-border-subtle px-md py-sm rounded font-label-md text-label-md flex items-center gap-sm hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Global Export
+                    </button>
+</div>
+</header>
+<!-- FM-Only Metrics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md mb-xl">
+<div class="bg-white p-lg border border-border-subtle rounded flex flex-col relative overflow-hidden group">
+<div class="flex justify-between items-start mb-md">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase">First-time Pass Rate</span>
+<span class="material-symbols-outlined text-status-success">trending_up</span>
+</div>
+<div class="text-headline-md font-headline-md text-primary">92%</div>
+<div class="text-[12px] text-status-success font-bold mt-xs">+2.4% vs last month</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[80px]">task_alt</span>
+</div>
+</div>
+<div class="bg-white p-lg border border-border-subtle rounded flex flex-col relative overflow-hidden group">
+<div class="flex justify-between items-start mb-md">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase">Rework Rate</span>
+<span class="material-symbols-outlined text-status-error">trending_down</span>
+</div>
+<div class="text-headline-md font-headline-md text-primary">8%</div>
+<div class="text-[12px] text-status-error font-bold mt-xs">-0.8% target deviation</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[80px]">build_circle</span>
+</div>
+</div>
+<div class="bg-white p-lg border border-border-subtle rounded flex flex-col relative overflow-hidden group">
+<div class="flex justify-between items-start mb-md">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase">Avg. Resolution</span>
+<span class="material-symbols-outlined text-status-pending">schedule</span>
+</div>
+<div class="text-headline-md font-headline-md text-primary">1.4 Days</div>
+<div class="text-[12px] text-on-surface-variant font-medium mt-xs">SLA: 2.0 Days</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[80px]">timer</span>
+</div>
+</div>
+<div class="bg-white p-lg border border-border-subtle rounded flex flex-col relative overflow-hidden group">
+<div class="flex justify-between items-start mb-md">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase">Open Complaints</span>
+<span class="material-symbols-outlined text-status-draft">forum</span>
+</div>
+<div class="text-headline-md font-headline-md text-primary">5</div>
+<div class="text-[12px] text-status-pending font-bold mt-xs">2 urgent issues</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[80px]">warning</span>
+</div>
+</div>
+</section>
+<!-- Tabs Navigation -->
+<div class="mb-lg border-b border-border-subtle flex items-center gap-xl">
+<button class="tab-active py-md px-base text-body-md transition-all" id="tab-pending" onclick="switchTab('pending')">Pending QC</button>
+<button class="text-on-surface-variant font-medium py-md px-base text-body-md hover:text-secondary transition-all" id="tab-records" onclick="switchTab('records')">QC Records</button>
+<button class="text-on-surface-variant font-medium py-md px-base text-body-md hover:text-secondary transition-all" id="tab-rework" onclick="switchTab('rework')">Rework Tracker</button>
+<button class="text-on-surface-variant font-medium py-md px-base text-body-md hover:text-secondary transition-all" id="tab-complaints" onclick="switchTab('complaints')">Complaints</button>
+</div>
+<!-- Content Area -->
+<div class="tab-content" id="content-pending">
+<div class="bg-white border border-border-subtle rounded overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-[12px] uppercase tracking-wider">
+<th class="px-lg py-md border-b border-border-subtle">WO Number</th>
+<th class="px-lg py-md border-b border-border-subtle">Order Title</th>
+<th class="px-lg py-md border-b border-border-subtle">Furniture Type</th>
+<th class="px-lg py-md border-b border-border-subtle">Delivery Date</th>
+<th class="px-lg py-md border-b border-border-subtle">Days Remaining</th>
+<th class="px-lg py-md border-b border-border-subtle text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-body-md divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md font-bold text-primary">#WO-2024-0891</td>
+<td class="px-lg py-md">Executive Wing Desks (Batch A)</td>
+<td class="px-lg py-md">
+<span class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-sm">chair</span> Office
+                                        </span>
+</td>
+<td class="px-lg py-md">Nov 28, 2023</td>
+<td class="px-lg py-md text-status-error font-bold">2 Days</td>
+<td class="px-lg py-md text-right">
+<button class="bg-primary text-on-primary px-lg py-xs rounded font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-all">Inspect</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md font-bold text-primary">#WO-2024-0895</td>
+<td class="px-lg py-md">Custom Walnut Boardroom Table</td>
+<td class="px-lg py-md">
+<span class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-sm">table_restaurant</span> Bespoke
+                                        </span>
+</td>
+<td class="px-lg py-md">Dec 05, 2023</td>
+<td class="px-lg py-md">9 Days</td>
+<td class="px-lg py-md text-right">
+<button class="bg-primary text-on-primary px-lg py-xs rounded font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-all">Inspect</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md font-bold text-primary">#WO-2024-0902</td>
+<td class="px-lg py-md">Acoustic Panel Partition Set</td>
+<td class="px-lg py-md">
+<span class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-sm">door_sliding</span> Industrial
+                                        </span>
+</td>
+<td class="px-lg py-md">Dec 12, 2023</td>
+<td class="px-lg py-md">16 Days</td>
+<td class="px-lg py-md text-right">
+<button class="bg-primary text-on-primary px-lg py-xs rounded font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-all">Inspect</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="tab-content hidden" id="content-records">
+<div class="flex flex-wrap gap-md mb-lg">
+<select class="bg-white border border-border-subtle px-md py-sm rounded text-body-md font-medium">
+<option>All Results</option>
+<option>Pass</option>
+<option>Fail</option>
+<option>Conditional</option>
+</select>
+<select class="bg-white border border-border-subtle px-md py-sm rounded text-body-md font-medium">
+<option>All Dates</option>
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+<select class="bg-white border border-border-subtle px-md py-sm rounded text-body-md font-medium">
+<option>Furniture Type</option>
+<option>Office</option>
+<option>Bespoke</option>
+</select>
+</div>
+<div class="bg-white border border-border-subtle rounded overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-[12px] uppercase tracking-wider">
+<th class="px-lg py-md border-b border-border-subtle">Date</th>
+<th class="px-lg py-md border-b border-border-subtle">WO Record</th>
+<th class="px-lg py-md border-b border-border-subtle">Inspector</th>
+<th class="px-lg py-md border-b border-border-subtle">Result</th>
+<th class="px-lg py-md border-b border-border-subtle">Defects Found</th>
+<th class="px-lg py-md border-b border-border-subtle text-right">Details</th>
+</tr>
+</thead>
+<tbody class="text-body-md divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md">Nov 24, 2023</td>
+<td class="px-lg py-md font-bold text-primary">#WO-2024-0812</td>
+<td class="px-lg py-md">Michael Chen</td>
+<td class="px-lg py-md">
+<span class="status-badge bg-status-success/10 text-status-success"><span class="material-symbols-outlined text-[14px]">check_circle</span> PASS</span>
+</td>
+<td class="px-lg py-md">0</td>
+<td class="px-lg py-md text-right"><span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary">visibility</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md">Nov 23, 2023</td>
+<td class="px-lg py-md font-bold text-primary">#WO-2024-0805</td>
+<td class="px-lg py-md">Sarah Jenkins</td>
+<td class="px-lg py-md">
+<span class="status-badge bg-status-error/10 text-status-error"><span class="material-symbols-outlined text-[14px]">cancel</span> FAIL</span>
+</td>
+<td class="px-lg py-md text-status-error">Surface Scratch (Grade 3)</td>
+<td class="px-lg py-md text-right"><span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary">visibility</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md">Nov 22, 2023</td>
+<td class="px-lg py-md font-bold text-primary">#WO-2024-0792</td>
+<td class="px-lg py-md">Michael Chen</td>
+<td class="px-lg py-md">
+<span class="status-badge bg-status-pending/10 text-status-pending"><span class="material-symbols-outlined text-[14px]">warning</span> CONDITIONAL</span>
+</td>
+<td class="px-lg py-md text-status-pending">Packaging Incomplete</td>
+<td class="px-lg py-md text-right"><span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary">visibility</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tab-content hidden" id="content-rework">
+<div class="bg-white border border-border-subtle rounded overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-[12px] uppercase tracking-wider">
+<th class="px-lg py-md border-b border-border-subtle">Rework ID</th>
+<th class="px-lg py-md border-b border-border-subtle">Original WO</th>
+<th class="px-lg py-md border-b border-border-subtle">Reason</th>
+<th class="px-lg py-md border-b border-border-subtle">Department</th>
+<th class="px-lg py-md border-b border-border-subtle">Status</th>
+<th class="px-lg py-md border-b border-border-subtle text-right">Priority</th>
+</tr>
+</thead>
+<tbody class="text-body-md divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md font-bold text-primary">#RWK-24-004</td>
+<td class="px-lg py-md">#WO-2024-0805</td>
+<td class="px-lg py-md">Sanding misalignment on base edge</td>
+<td class="px-lg py-md">Carpentry</td>
+<td class="px-lg py-md">
+<span class="px-sm py-xs bg-status-production/10 text-status-production rounded text-[11px] font-bold">IN PROGRESS</span>
+</td>
+<td class="px-lg py-md text-right">
+<span class="px-sm py-xs bg-status-error text-white rounded text-[11px] font-bold">CRITICAL</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md font-bold text-primary">#RWK-24-003</td>
+<td class="px-lg py-md">#WO-2024-0771</td>
+<td class="px-lg py-md">Incorrect fabric batch used (Mismatch)</td>
+<td class="px-lg py-md">Upholstery</td>
+<td class="px-lg py-md">
+<span class="px-sm py-xs bg-status-pending/10 text-status-pending rounded text-[11px] font-bold">STAGED</span>
+</td>
+<td class="px-lg py-md text-right">
+<span class="px-sm py-xs bg-status-pending text-black rounded text-[11px] font-bold">HIGH</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tab-content hidden" id="content-complaints">
+<div class="bg-white border border-border-subtle rounded overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-[12px] uppercase tracking-wider">
+<th class="px-lg py-md border-b border-border-subtle">CPL Number</th>
+<th class="px-lg py-md border-b border-border-subtle">Linked WO</th>
+<th class="px-lg py-md border-b border-border-subtle">Complaint Type</th>
+<th class="px-lg py-md border-b border-border-subtle">Status</th>
+<th class="px-lg py-md border-b border-border-subtle">Age</th>
+<th class="px-lg py-md border-b border-border-subtle text-right">Manage</th>
+</tr>
+</thead>
+<tbody class="text-body-md divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md font-bold text-primary">#CPL-4022</td>
+<td class="px-lg py-md">#WO-2023-1102</td>
+<td class="px-lg py-md">Structural Damage (Transit)</td>
+<td class="px-lg py-md">
+<span class="px-sm py-xs bg-status-error/10 text-status-error rounded text-[11px] font-bold">OPEN - INVESTIGATING</span>
+</td>
+<td class="px-lg py-md text-status-error font-bold">3 Days</td>
+<td class="px-lg py-md text-right"><button class="text-secondary hover:underline font-bold">Review</button></td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md font-bold text-primary">#CPL-4019</td>
+<td class="px-lg py-md">#WO-2023-1088</td>
+<td class="px-lg py-md">Finish Inconsistency</td>
+<td class="px-lg py-md">
+<span class="px-sm py-xs bg-status-pending/10 text-status-pending rounded text-[11px] font-bold">REWORK ISSUED</span>
+</td>
+<td class="px-lg py-md">8 Days</td>
+<td class="px-lg py-md text-right"><button class="text-secondary hover:underline font-bold">Review</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Visualization Section -->
+<section class="mt-xl grid grid-cols-1 lg:grid-cols-2 gap-xl">
+<div class="bg-white border border-border-subtle rounded p-lg">
+<h3 class="font-headline-sm text-[18px] mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+                        Defect Categories (Last 30 Days)
+                    </h3>
+<div class="space-y-md">
+<div>
+<div class="flex justify-between text-body-md mb-xs">
+<span>Surface Finish</span>
+<span class="font-bold">42%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 42%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-md mb-xs">
+<span>Structural Integrity</span>
+<span class="font-bold">28%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 28%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-md mb-xs">
+<span>Upholstery Faults</span>
+<span class="font-bold">15%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-status-pending" style="width: 15%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-md mb-xs">
+<span>Others</span>
+<span class="font-bold">15%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-on-surface-variant/40" style="width: 15%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary p-lg rounded relative overflow-hidden flex flex-col justify-center">
+
+<div class="relative z-10 text-white">
+<h3 class="font-headline-sm text-headline-sm mb-sm">AI Defect Detection</h3>
+<p class="text-white/70 text-body-md mb-lg">Our vision systems are scanning Batch #A-202 in real-time. Accuracy confidence at 99.4%.</p>
+<button class="border border-white/30 bg-white/10 backdrop-blur-md px-lg py-sm rounded text-white font-bold hover:bg-white/20 transition-all">Launch Inspection Hub</button>
+</div>
+<div class="absolute right-[-20px] bottom-[-20px] z-0 opacity-20">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">scan</span>
+</div>
+</div>
+</section>
+</main>
+</div>
+<script>
+        function switchTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Remove active styles from all buttons
+            document.querySelectorAll('[id^="tab-"]').forEach(el => {
+                el.classList.remove('tab-active');
+                el.classList.add('text-on-surface-variant', 'font-medium');
+            });
+
+            // Show selected content
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            // Add active styles to clicked button
+            const activeBtn = document.getElementById('tab-' + tabId);
+            activeBtn.classList.add('tab-active');
+            activeBtn.classList.remove('text-on-surface-variant', 'font-medium');
+        }
+
+        // Initialize micro-interactions
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => button.classList.add('scale-[0.98]'));
+            button.addEventListener('mouseup', () => button.classList.remove('scale-[0.98]'));
+            button.addEventListener('mouseleave', () => button.classList.remove('scale-[0.98]'));
+        });
+    </script>
+</body></html>

@@ -1,0 +1,137 @@
+- generic [ref=f18e405]:
+  - complementary [ref=f18e406]:
+    - generic [ref=f18e407]:
+      - heading "Canva Concepts" [level=1] [ref=f18e408]
+      - paragraph [ref=f18e409]: Industrial ERP
+    - navigation [ref=f18e410]:
+      - link "manufacturing Work Orders" [ref=f18e411] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f18e412]: manufacturing
+        - generic [ref=f18e413]: Work Orders
+      - link "precision_manufacturing Production" [ref=f18e414] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f18e415]: precision_manufacturing
+        - generic [ref=f18e416]: Production
+      - link "group Users" [ref=f18e417] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f18e418]: group
+        - generic [ref=f18e419]: Users
+      - link "payments Finance" [ref=f18e420] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f18e421]: payments
+        - generic [ref=f18e422]: Finance
+    - generic [ref=f18e423]:
+      - link "settings Settings" [ref=f18e424] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f18e425]: settings
+        - generic [ref=f18e426]: Settings
+      - link "help Support" [ref=f18e427] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f18e428]: help
+        - generic [ref=f18e429]: Support
+      - generic [ref=f18e430]:
+        - generic [ref=f18e431]:
+          - img "Robert Hudson" [ref=f18e433]
+          - generic [ref=f18e434]:
+            - paragraph [ref=f18e435]: Robert Hudson
+            - paragraph [ref=f18e436]: Factory Supervisor
+        - generic [ref=f18e437]:
+          - generic [ref=f18e438]: Toggle System Role
+          - combobox [ref=f18e439] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor" [selected]
+            - option "Site Manager"
+  - main [ref=f18e440]:
+    - generic [ref=f18e441]:
+      - generic [ref=f18e442]:
+        - heading "Work Order Detail" [level=2] [ref=f18e443]
+        - generic [ref=f18e444]:
+          - generic [ref=f18e445]: search
+          - textbox "Search orders, clients, items..." [ref=f18e446]
+      - generic [ref=f18e448]:
+        - button "notifications" [ref=f18e449] [cursor=pointer]
+        - button "help" [ref=f18e450] [cursor=pointer]
+        - button "settings" [ref=f18e451] [cursor=pointer]
+    - generic [ref=f18e452]:
+      - generic [ref=f18e453]:
+        - generic [ref=f18e454]:
+          - generic [ref=f18e455]: precision_manufacturing
+          - generic [ref=f18e457]:
+            - generic [ref=f18e458]:
+              - 'heading "WO-0005-26: Test Executive Desk" [level=2] [ref=f18e459]'
+              - generic [ref=f18e460]: QC PENDING
+            - generic [ref=f18e461]:
+              - generic [ref=f18e462]:
+                - generic [ref=f18e463]: priority_high
+                - text: NORMAL PRIORITY
+              - generic [ref=f18e464]: "|"
+              - generic [ref=f18e465]: "Created: 8/9/2026"
+        - generic [ref=f18e466]:
+          - button "download Export PDF" [ref=f18e467] [cursor=pointer]:
+            - generic [ref=f18e468]: download
+            - text: Export PDF
+          - button "content_copy Clone Order" [ref=f18e469] [cursor=pointer]:
+            - generic [ref=f18e470]: content_copy
+            - text: Clone Order
+          - button "arrow_back Back" [ref=f18e471] [cursor=pointer]:
+            - generic [ref=f18e472]: arrow_back
+            - text: Back
+      - generic [ref=f18e473]:
+        - generic [ref=f18e474]:
+          - button "info Details" [ref=f18e475] [cursor=pointer]:
+            - generic [ref=f18e476]: info
+            - text: Details
+          - button "history Status History" [ref=f18e477] [cursor=pointer]:
+            - generic [ref=f18e478]: history
+            - text: Status History
+          - button "architecture Drawings" [ref=f18e479] [cursor=pointer]:
+            - generic [ref=f18e480]: architecture
+            - text: Drawings
+        - generic [ref=f18e482]:
+          - generic [ref=f18e483]:
+            - heading "corporate_fare Client Information" [level=3] [ref=f18e484]:
+              - generic [ref=f18e485]: corporate_fare
+              - text: Client Information
+            - generic [ref=f18e486]:
+              - generic [ref=f18e487]: Client Name
+              - paragraph [ref=f18e488]: Test Client Inc
+            - generic [ref=f18e489]:
+              - generic [ref=f18e490]: Client Type
+              - paragraph [ref=f18e491]: b2b
+            - generic [ref=f18e492]:
+              - generic [ref=f18e493]: Project Name
+              - paragraph [ref=f18e494]: Test Project
+          - generic [ref=f18e495]:
+            - heading "chair Furniture Specs" [level=3] [ref=f18e496]:
+              - generic [ref=f18e497]: chair
+              - text: Furniture Specs
+            - generic [ref=f18e498]:
+              - generic [ref=f18e499]: Type
+              - paragraph [ref=f18e500]: Table
+            - generic [ref=f18e501]:
+              - generic [ref=f18e502]:
+                - generic [ref=f18e503]: Quantity
+                - paragraph [ref=f18e504]: 1 Units
+              - generic [ref=f18e505]:
+                - generic [ref=f18e506]: Finish Type
+                - paragraph [ref=f18e507]: Natural Veneer
+            - generic [ref=f18e508]:
+              - generic [ref=f18e509]: Dimensions (L x H x D)
+              - paragraph [ref=f18e510]: 0mm x 0mm x 0mm
+          - generic [ref=f18e511]:
+            - heading "local_shipping Logistics & Committed Delivery" [level=3] [ref=f18e512]:
+              - generic [ref=f18e513]: local_shipping
+              - text: Logistics & Committed Delivery
+            - generic [ref=f18e514]:
+              - generic [ref=f18e515]:
+                - generic [ref=f18e516]:
+                  - generic [ref=f18e517]: Committed Delivery Date
+                  - paragraph [ref=f18e518]: Aug 15, 2026
+                - button "edit_calendar" [ref=f18e519] [cursor=pointer]
+              - button "Set/Update Committed Date" [ref=f18e521] [cursor=pointer]
+            - generic [ref=f18e522]:
+              - generic [ref=f18e523]: Delivery Terms
+              - paragraph [ref=f18e524]: included
+            - generic [ref=f18e525]:
+              - generic [ref=f18e526]: Delivery Address
+              - paragraph [ref=f18e527]: 123 Factory Lane

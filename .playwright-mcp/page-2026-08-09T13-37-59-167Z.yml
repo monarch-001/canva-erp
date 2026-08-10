@@ -1,0 +1,309 @@
+- generic [ref=f22e3]:
+  - complementary [ref=f22e4]:
+    - generic [ref=f22e5]:
+      - heading "Canva Concepts" [level=1] [ref=f22e6]
+      - paragraph [ref=f22e7]: Industrial ERP
+    - navigation [ref=f22e8]:
+      - link "manufacturing Work Orders" [ref=f22e9] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f22e10]: manufacturing
+        - generic [ref=f22e11]: Work Orders
+      - link "precision_manufacturing Production" [ref=f22e12] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f22e13]: precision_manufacturing
+        - generic [ref=f22e14]: Production
+      - link "group Users" [ref=f22e15] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f22e16]: group
+        - generic [ref=f22e17]: Users
+      - link "payments Finance" [ref=f22e18] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f22e19]: payments
+        - generic [ref=f22e20]: Finance
+    - generic [ref=f22e21]:
+      - link "settings Settings" [ref=f22e22] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f22e23]: settings
+        - generic [ref=f22e24]: Settings
+      - link "help Support" [ref=f22e25] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f22e26]: help
+        - generic [ref=f22e27]: Support
+      - generic [ref=f22e28]:
+        - generic [ref=f22e29]:
+          - img "Robert Hudson" [ref=f22e31]
+          - generic [ref=f22e32]:
+            - paragraph [ref=f22e33]: Robert Hudson
+            - paragraph [ref=f22e34]: Factory Supervisor
+        - generic [ref=f22e35]:
+          - generic [ref=f22e36]: Toggle System Role
+          - combobox [ref=f22e37] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor" [selected]
+            - option "Site Manager"
+  - main [ref=f22e38]:
+    - generic [ref=f22e39]:
+      - generic [ref=f22e40]:
+        - heading "Work Orders" [level=2] [ref=f22e41]
+        - generic [ref=f22e42]:
+          - generic [ref=f22e43]: search
+          - textbox "Search orders, clients, items..." [ref=f22e44]
+      - generic [ref=f22e45]:
+        - button "add New Work Order" [ref=f22e46] [cursor=pointer]:
+          - generic [ref=f22e47]: add
+          - text: New Work Order
+        - generic [ref=f22e48]:
+          - button "notifications" [ref=f22e49] [cursor=pointer]
+          - button "help" [ref=f22e50] [cursor=pointer]
+          - button "settings" [ref=f22e51] [cursor=pointer]
+    - generic [ref=f22e52]:
+      - generic [ref=f22e53]:
+        - generic [ref=f22e54]:
+          - generic [ref=f22e55]: Status
+          - combobox [ref=f22e56]:
+            - option "All Statuses" [selected]
+            - option "Draft"
+            - option "In Production"
+            - option "Material Prep"
+            - option "Quality Check"
+            - option "Cancelled"
+        - generic [ref=f22e57]:
+          - generic [ref=f22e58]: Client Type
+          - combobox [ref=f22e59]:
+            - option "All Clients" [selected]
+            - option "Chhabee"
+            - option "External B2B"
+            - option "D2C"
+        - generic [ref=f22e60]:
+          - generic [ref=f22e61]: Priority
+          - combobox [ref=f22e62]:
+            - option "Any Priority" [selected]
+            - option "Critical"
+            - option "High"
+            - option "Normal"
+        - generic [ref=f22e63]:
+          - generic [ref=f22e64]: Search
+          - generic [ref=f22e65]:
+            - generic [ref=f22e66]: search
+            - textbox "Search orders, clients..." [ref=f22e67]
+        - button "Apply Filters" [ref=f22e68] [cursor=pointer]
+      - generic [ref=f22e69]:
+        - generic [ref=f22e70]:
+          - generic [ref=f22e71]: precision_manufacturing
+          - generic [ref=f22e73]:
+            - paragraph [ref=f22e74]: Active Orders
+            - heading "6" [level=3] [ref=f22e99]
+        - generic [ref=f22e76]:
+          - generic [ref=f22e77]: schedule
+          - generic [ref=f22e79]:
+            - paragraph [ref=f22e80]: Pending QC
+            - heading "2" [level=3] [ref=f22e100]
+        - generic [ref=f22e82]:
+          - generic [ref=f22e83]: warning
+          - generic [ref=f22e85]:
+            - paragraph [ref=f22e86]: Critical Delay
+            - heading "1" [level=3] [ref=f22e101]
+        - generic [ref=f22e88]:
+          - generic [ref=f22e89]: check_circle
+          - generic [ref=f22e91]:
+            - paragraph [ref=f22e92]: Total Orders
+            - heading "6" [level=3] [ref=f22e102]
+      - generic [ref=f22e94]:
+        - generic [ref=f22e103] [cursor=pointer]:
+          - generic [ref=f22e104]:
+            - generic [ref=f22e105]:
+              - checkbox [ref=f22e106]
+              - generic [ref=f22e107]:
+                - text: WO-0006-26
+                - heading "Test Executive Desk (Copy)" [level=4] [ref=f22e108]
+            - generic [ref=f22e109]:
+              - generic [ref=f22e110]: NORMAL
+              - generic [ref=f22e111]: DRAFT
+          - generic [ref=f22e112]:
+            - generic [ref=f22e113]:
+              - paragraph [ref=f22e114]: Client
+              - paragraph [ref=f22e115]: Test Client Inc
+            - generic [ref=f22e116]:
+              - paragraph [ref=f22e117]: Furniture Type
+              - paragraph [ref=f22e118]: Table
+            - generic [ref=f22e119]:
+              - paragraph [ref=f22e120]: Quantity
+              - paragraph [ref=f22e121]: 1 Units
+            - generic [ref=f22e122]:
+              - paragraph [ref=f22e123]: Delivery Target
+              - generic [ref=f22e124]: Not Set
+          - generic [ref=f22e126]:
+            - button "Manage Order" [ref=f22e127]
+            - button "more_horiz" [ref=f22e128]
+        - generic [ref=f22e130] [cursor=pointer]:
+          - generic [ref=f22e131]:
+            - generic [ref=f22e132]:
+              - checkbox [ref=f22e133]
+              - generic [ref=f22e134]:
+                - text: WO-0005-26
+                - heading "Test Executive Desk" [level=4] [ref=f22e135]
+            - generic [ref=f22e136]:
+              - generic [ref=f22e137]: NORMAL
+              - generic [ref=f22e138]: QC PENDING
+          - generic [ref=f22e139]:
+            - generic [ref=f22e140]:
+              - paragraph [ref=f22e141]: Client
+              - paragraph [ref=f22e142]: Test Client Inc
+            - generic [ref=f22e143]:
+              - paragraph [ref=f22e144]: Furniture Type
+              - paragraph [ref=f22e145]: Table
+            - generic [ref=f22e146]:
+              - paragraph [ref=f22e147]: Quantity
+              - paragraph [ref=f22e148]: 1 Units
+            - generic [ref=f22e149]:
+              - paragraph [ref=f22e150]: Delivery Target
+              - generic [ref=f22e151]:
+                - generic [ref=f22e152]: Aug 15, 2026
+                - generic [ref=f22e153]:
+                  - generic [ref=f22e154]: schedule
+                  - text: 6 Days Left
+          - generic [ref=f22e155]:
+            - button "Manage Order" [ref=f22e156]
+            - button "more_horiz" [ref=f22e157]
+        - generic [ref=f22e159] [cursor=pointer]:
+          - generic [ref=f22e160]:
+            - generic [ref=f22e161]:
+              - checkbox [checked] [active] [ref=f22e162]
+              - generic [ref=f22e163]:
+                - text: WO-8835-23
+                - heading "Modular Coworking Pods - Indigo Edition" [level=4] [ref=f22e164]
+            - generic [ref=f22e165]:
+              - generic [ref=f22e166]: NORMAL
+              - generic [ref=f22e167]: BOM APPROVED PENDING MATERIAL
+          - generic [ref=f22e168]:
+            - generic [ref=f22e169]:
+              - paragraph [ref=f22e170]: Client
+              - paragraph [ref=f22e171]: Studio North Architecture
+            - generic [ref=f22e172]:
+              - paragraph [ref=f22e173]: Furniture Type
+              - paragraph [ref=f22e174]: Modular Systems
+            - generic [ref=f22e175]:
+              - paragraph [ref=f22e176]: Quantity
+              - paragraph [ref=f22e177]: 45 Units
+            - generic [ref=f22e178]:
+              - paragraph [ref=f22e179]: Delivery Target
+              - generic [ref=f22e180]:
+                - generic [ref=f22e181]: Sep 2, 2026
+                - generic [ref=f22e182]:
+                  - generic [ref=f22e183]: schedule
+                  - text: 24 Days Left
+          - generic [ref=f22e184]:
+            - button "Manage Order" [ref=f22e185]
+            - button "more_horiz" [ref=f22e186]
+        - generic [ref=f22e188] [cursor=pointer]:
+          - generic [ref=f22e189]:
+            - generic [ref=f22e190]:
+              - checkbox [ref=f22e191]
+              - generic [ref=f22e192]:
+                - text: WO-8841-23
+                - heading "Hospitality Lobby Lounge - Custom Oak" [level=4] [ref=f22e193]
+            - generic [ref=f22e194]:
+              - generic [ref=f22e195]: HIGH
+              - generic [ref=f22e196]: IN PRODUCTION
+          - generic [ref=f22e197]:
+            - generic [ref=f22e198]:
+              - paragraph [ref=f22e199]: Client
+              - paragraph [ref=f22e200]: Ritz Carlton Group
+            - generic [ref=f22e201]:
+              - paragraph [ref=f22e202]: Furniture Type
+              - paragraph [ref=f22e203]: Hospitality / Decor
+            - generic [ref=f22e204]:
+              - paragraph [ref=f22e205]: Quantity
+              - paragraph [ref=f22e206]: 8 Units
+            - generic [ref=f22e207]:
+              - paragraph [ref=f22e208]: Delivery Target
+              - generic [ref=f22e209]:
+                - generic [ref=f22e210]: Aug 17, 2026
+                - generic [ref=f22e211]:
+                  - generic [ref=f22e212]: schedule
+                  - text: 8 Days Left
+          - generic [ref=f22e213]:
+            - button "Manage Order" [ref=f22e214]
+            - button "more_horiz" [ref=f22e215]
+        - generic [ref=f22e217] [cursor=pointer]:
+          - generic [ref=f22e218]:
+            - generic [ref=f22e219]:
+              - checkbox [ref=f22e220]
+              - generic [ref=f22e221]:
+                - text: WO-8850-23
+                - heading "Retail Display Unit - Matte Black" [level=4] [ref=f22e222]
+            - generic [ref=f22e223]:
+              - generic [ref=f22e224]: NORMAL
+              - generic [ref=f22e225]: DRAFT
+          - generic [ref=f22e226]:
+            - generic [ref=f22e227]:
+              - paragraph [ref=f22e228]: Client
+              - paragraph [ref=f22e229]: Urban Outfitters HQ
+            - generic [ref=f22e230]:
+              - paragraph [ref=f22e231]: Furniture Type
+              - paragraph [ref=f22e232]: Retail Fixtures
+            - generic [ref=f22e233]:
+              - paragraph [ref=f22e234]: Quantity
+              - paragraph [ref=f22e235]: 110 Units
+            - generic [ref=f22e236]:
+              - paragraph [ref=f22e237]: Delivery Target
+              - generic [ref=f22e238]:
+                - generic [ref=f22e239]: Sep 23, 2026
+                - generic [ref=f22e240]:
+                  - generic [ref=f22e241]: schedule
+                  - text: 45 Days Left
+          - generic [ref=f22e242]:
+            - button "Manage Order" [ref=f22e243]
+            - button "more_horiz" [ref=f22e244]
+        - generic [ref=f22e246] [cursor=pointer]:
+          - generic: URGENT
+          - generic [ref=f22e247]:
+            - generic [ref=f22e248]:
+              - checkbox [ref=f22e249]
+              - generic [ref=f22e250]:
+                - text: WO-8829-23
+                - heading "Executive Boardroom Suite - Walnut Series" [level=4] [ref=f22e251]
+            - generic [ref=f22e252]:
+              - generic [ref=f22e253]: CRITICAL
+              - generic [ref=f22e254]: QC PENDING
+          - generic [ref=f22e255]:
+            - generic [ref=f22e256]:
+              - paragraph [ref=f22e257]: Client
+              - paragraph [ref=f22e258]: Global Tech Holdings
+            - generic [ref=f22e259]:
+              - paragraph [ref=f22e260]: Furniture Type
+              - paragraph [ref=f22e261]: Premium Office / Seating
+            - generic [ref=f22e262]:
+              - paragraph [ref=f22e263]: Quantity
+              - paragraph [ref=f22e264]: 12 Units
+            - generic [ref=f22e265]:
+              - paragraph [ref=f22e266]: Delivery Target
+              - generic [ref=f22e267]:
+                - generic [ref=f22e268]: Aug 11, 2026
+                - generic [ref=f22e269]:
+                  - generic [ref=f22e270]: schedule
+                  - text: 2 Days Left
+          - generic [ref=f22e271]:
+            - button "Manage Order" [ref=f22e272]
+            - button "more_horiz" [ref=f22e273]
+    - generic [ref=f22e275]:
+      - generic [ref=f22e276]:
+        - generic [ref=f22e277]: layers
+        - generic [ref=f22e278]: 1 Selected
+      - generic [ref=f22e279]:
+        - combobox [ref=f22e281]:
+          - option "Pending Review"
+          - option "Supervisor Approved"
+          - option "BOM Approved Pending Material"
+          - option "Material Ready"
+          - option "In Production"
+          - option "Production Complete"
+          - option "QC Pending"
+          - option "QC Passed"
+          - option "Ready For Dispatch" [selected]
+          - option "Delivered Confirmed"
+        - textbox "Bulk update note/reason (optional)..." [ref=f22e283]
+        - generic [ref=f22e284]:
+          - button "Cancel" [ref=f22e285] [cursor=pointer]
+          - button "Update Status" [ref=f22e286] [cursor=pointer]
+    - generic [ref=f22e96]: "System Role: Factory Manager"

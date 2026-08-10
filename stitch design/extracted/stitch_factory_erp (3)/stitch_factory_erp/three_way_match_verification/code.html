@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FurniERP | Three-Way Match Verification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c8c6c5;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #747878;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "status-success": "#2D7D46",
+                        "secondary-fixed-dim": "#e5c363",
+                        "border-subtle": "#E8E8E8",
+                        "on-tertiary-fixed": "#001e30",
+                        "surface-variant": "#e3e2df",
+                        "secondary-container": "#fdd977",
+                        "status-invoice": "#7C3AED",
+                        "error": "#ba1a1a",
+                        "on-surface": "#1b1c1a",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "outline": "#747878",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#efeeea",
+                        "on-primary-container": "#858383",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#584400",
+                        "status-material": "#0891B2",
+                        "tertiary-container": "#001e30",
+                        "on-tertiary": "#ffffff",
+                        "status-draft": "#888888",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "surface-bright": "#faf9f5",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#cbe6ff",
+                        "surface": "#faf9f5",
+                        "on-primary-fixed-variant": "#474746",
+                        "surface-card": "#FFFFFF",
+                        "primary-fixed": "#e5e2e1",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#444748",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "status-pending": "#F59E0B",
+                        "primary-container": "#1c1b1b",
+                        "secondary-fixed": "#ffe08c",
+                        "surface-tint": "#5f5e5e",
+                        "status-financial": "#14532D",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-container-highest": "#e3e2df",
+                        "status-error": "#C0392B",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "status-production": "#F97316",
+                        "inverse-on-surface": "#f2f1ed",
+                        "surface-dim": "#dbdad6",
+                        "surface-container-low": "#f5f4f0",
+                        "inverse-surface": "#30312e",
+                        "outline-variant": "#c4c7c7",
+                        "background": "#faf9f5",
+                        "surface-container-high": "#e9e8e4",
+                        "on-secondary-fixed": "#241a00",
+                        "on-secondary-container": "#775e00",
+                        "on-background": "#1b1c1a",
+                        "inverse-primary": "#c8c6c5",
+                        "secondary": "#745b00",
+                        "on-tertiary-container": "#5889af",
+                        "on-error-container": "#93000a",
+                        "brand-gold": "#C8A84B",
+                        "brand-dark": "#1A1A1A"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-max": "1440px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sidebar-width": "260px"
+                    },
+                    "fontFamily": {
+                        "status-pill": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background font-body-md text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-surface border-b border-border-subtle sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-lg h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">FurniERP Billing</span>
+<div class="hidden md:flex ml-lg gap-md items-center">
+<span class="font-label-md text-label-md text-secondary border-b-2 border-secondary h-16 flex items-center cursor-pointer">Verification Hub</span>
+<span class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors h-16 flex items-center px-4 cursor-pointer">Vendor Registry</span>
+<span class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors h-16 flex items-center px-4 cursor-pointer">Compliance</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg focus:outline-none focus:border-brand-gold text-sm w-64" placeholder="Search Invoices..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full cursor-pointer active:scale-95 transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full cursor-pointer active:scale-95 transition-all">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Close up professional portrait of a senior factory accounting head wearing glasses and a formal business shirt, looking directly into the camera with a neutral, authoritative expression. The lighting is studio-quality, soft and directional, against a minimalist corporate office background with hints of wood furniture. The aesthetic is clean, professional, and trustworthy, matching a high-fidelity ERP interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu57R2MDaaH5MG4u7LCqWXz-Uj0iE_N7kcGLXudRLnWueaY97Gee-9YMbck7FBNi0yTSkltj49JBote1PivxpEIDrVnEXLvRkQVwIdJv71h2JwToKTu55XfLdZjXFK24F5WAPPCeV2f8ZMFXg-OVd6mqeLVjL3Gj1O1Em2e0QoLZ4zl4-TSwgHdqZPCnymdEZajytCv4t8-N6Szc79rqlKsXteVmyGF-OUIqxn76d6d-TrJwTAtlCTag"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-sidebar-width h-screen bg-inverse-surface hidden md:flex flex-col py-md shrink-0">
+<div class="px-lg mb-lg">
+<div class="flex items-center gap-md mb-2">
+<div class="w-10 h-10 bg-secondary-fixed rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed font-bold">factory</span>
+</div>
+<div>
+<p class="font-headline-sm text-[16px] font-bold text-secondary-fixed leading-tight">Billing &amp; Collections</p>
+<p class="text-[10px] text-surface-variant opacity-70 uppercase tracking-widest">Unit: Chhabee / B2B</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="px-md group">
+<a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Receivables Dashboard</span>
+</a>
+</div>
+<div class="px-md group">
+<a class="flex items-center gap-md px-md py-3 bg-secondary-fixed-dim text-on-secondary-fixed font-bold border-l-4 border-secondary rounded-r-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span>Three-Way Match</span>
+</a>
+</div>
+<div class="px-md group">
+<a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Invoicing</span>
+</a>
+</div>
+<div class="px-md group">
+<a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Receipts &amp; TDS</span>
+</a>
+</div>
+<div class="px-md group">
+<a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span>Tally Export</span>
+</a>
+</div>
+<div class="px-md group">
+<a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Customer Ledger</span>
+</a>
+</div>
+</nav>
+<div class="mt-auto px-md space-y-1">
+<a class="flex items-center gap-md px-md py-3 text-surface-variant opacity-80 hover:bg-surface-variant/10 hover:opacity-100 rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span>User Profile</span>
+</a>
+<a class="flex items-center gap-md px-md py-3 text-error/80 hover:bg-error/10 hover:text-error rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- Breadcrumbs & Header -->
+<div class="p-lg bg-surface flex flex-wrap items-center justify-between gap-md">
+<div>
+<div class="flex items-center gap-xs text-[12px] text-on-surface-variant mb-1">
+<span class="hover:underline cursor-pointer">Purchasing</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="hover:underline cursor-pointer">Accounts Payable</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Invoice Verification</span>
+</div>
+<div class="flex items-center gap-md">
+<h1 class="font-headline-lg text-headline-lg text-primary">Verification: Regal Timber Corp</h1>
+<span class="px-3 py-1 bg-status-pending/10 text-status-pending border border-status-pending/20 rounded-full font-status-pill text-status-pill">Pending Approval</span>
+</div>
+<div class="flex gap-lg mt-2 text-on-surface-variant font-body-md text-body-md">
+<p><span class="font-bold">Invoice:</span> #RT-2024-0811</p>
+<p><span class="font-bold">PO Ref:</span> PO-99812-F</p>
+<p><span class="font-bold">GRN Ref:</span> GRN-6772-24</p>
+</div>
+</div>
+<div class="flex gap-md">
+<button class="px-md py-2 border border-brand-dark text-brand-dark rounded-lg hover:bg-surface-container-low transition-all font-label-md text-label-md">Download PDF Bundle</button>
+<button class="px-md py-2 bg-brand-gold text-white rounded-lg hover:brightness-110 shadow-sm transition-all font-label-md text-label-md">Approve Payment</button>
+</div>
+</div>
+<div class="flex-1 flex overflow-hidden">
+<!-- Data Canvas -->
+<div class="flex-1 overflow-y-auto p-lg custom-scrollbar">
+<!-- Tolerance Info Banner -->
+<div class="mb-lg p-md bg-surface-container rounded-xl border border-border-subtle flex items-center justify-between">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-status-material">info</span>
+<div>
+<p class="font-title-md text-title-md text-primary">Matching Tolerance Policy Applied</p>
+<p class="text-body-md text-on-surface-variant">Quantity Tolerance: <span class="font-bold text-status-material">± 2%</span> | Unit Rate Tolerance: <span class="font-bold text-status-material">± 1%</span></p>
+</div>
+</div>
+<button class="text-brand-gold font-bold text-sm hover:underline uppercase tracking-wider">Edit Policy</button>
+</div>
+<!-- Comparison Table -->
+<div class="bg-surface-card rounded-xl border border-border-subtle overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[900px]">
+<thead>
+<tr class="bg-surface-container-low border-b border-border-subtle">
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Item Details</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">PO (Ordered)</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">GRN (Received)</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Invoice (Billed)</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody>
+<!-- Row 1: Matched -->
+<tr class="border-b border-border-subtle hover:bg-surface-container-lowest transition-colors">
+<td class="p-md">
+<p class="font-title-md text-title-md">Premium Teakwood Planks</p>
+<p class="text-xs text-on-surface-variant">SKU: TW-0092-B</p>
+</td>
+<td class="p-md">
+<p class="text-body-md">500 Units</p>
+<p class="text-xs font-bold">Rate: ₹1,200</p>
+</td>
+<td class="p-md">
+<p class="text-body-md">500 Units</p>
+<p class="text-xs text-status-success">Qty Verified</p>
+</td>
+<td class="p-md">
+<p class="text-body-md">500 Units</p>
+<p class="text-xs font-bold">Rate: ₹1,200</p>
+</td>
+<td class="p-md">
+<span class="flex items-center gap-xs px-2 py-1 bg-status-success/10 text-status-success rounded-lg font-status-pill text-status-pill w-fit">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                                MATCHED
+                                            </span>
+</td>
+</tr>
+<!-- Row 2: Qty Mismatch -->
+<tr class="border-b border-border-subtle hover:bg-surface-container-lowest transition-colors bg-status-error/5">
+<td class="p-md">
+<p class="font-title-md text-title-md">Industrial Grade Adhesive</p>
+<p class="text-xs text-on-surface-variant">SKU: ADH-K81</p>
+</td>
+<td class="p-md">
+<p class="text-body-md">200 Kgs</p>
+<p class="text-xs font-bold">Rate: ₹450</p>
+</td>
+<td class="p-md">
+<p class="text-body-md font-bold text-status-error">180 Kgs</p>
+<p class="text-xs text-status-error">Shortage Detected</p>
+</td>
+<td class="p-md">
+<p class="text-body-md">200 Kgs</p>
+<p class="text-xs font-bold">Rate: ₹450</p>
+</td>
+<td class="p-md">
+<span class="flex items-center gap-xs px-2 py-1 bg-status-error/10 text-status-error rounded-lg font-status-pill text-status-pill w-fit">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                                                QTY MISMATCH
+                                            </span>
+<p class="text-[10px] mt-1 text-on-error-container">Debit Note Required</p>
+</td>
+</tr>
+<!-- Row 3: Rate Mismatch -->
+<tr class="border-b border-border-subtle hover:bg-surface-container-lowest transition-colors bg-status-pending/5">
+<td class="p-md">
+<p class="font-title-md text-title-md">Brushed Metal Handles</p>
+<p class="text-xs text-on-surface-variant">SKU: HNDL-S-01</p>
+</td>
+<td class="p-md">
+<p class="text-body-md">1,200 Units</p>
+<p class="text-xs font-bold">Rate: ₹85</p>
+</td>
+<td class="p-md">
+<p class="text-body-md">1,200 Units</p>
+<p class="text-xs text-status-success">Qty Verified</p>
+</td>
+<td class="p-md">
+<p class="text-body-md">1,200 Units</p>
+<p class="text-xs font-bold text-status-error">Rate: ₹92</p>
+</td>
+<td class="p-md">
+<span class="flex items-center gap-xs px-2 py-1 bg-status-pending/10 text-status-pending rounded-lg font-status-pill text-status-pill w-fit">
+<span class="material-symbols-outlined text-[14px]">payments</span>
+                                                RATE MISMATCH
+                                            </span>
+<p class="text-[10px] mt-1 text-on-secondary-container">Payment Held</p>
+</td>
+</tr>
+<!-- Row 4: Within Tolerance -->
+<tr class="border-b border-border-subtle hover:bg-surface-container-lowest transition-colors">
+<td class="p-md">
+<p class="font-title-md text-title-md">Varnish Glossy Finish</p>
+<p class="text-xs text-on-surface-variant">SKU: VRN-GL-10</p>
+</td>
+<td class="p-md">
+<p class="text-body-md">50 Ltrs</p>
+<p class="text-xs font-bold">Rate: ₹300</p>
+</td>
+<td class="p-md">
+<p class="text-body-md">49.5 Ltrs</p>
+<p class="text-xs text-status-success">Qty Verified (-1%)</p>
+</td>
+<td class="p-md">
+<p class="text-body-md">50 Ltrs</p>
+<p class="text-xs font-bold">Rate: ₹300</p>
+</td>
+<td class="p-md">
+<span class="flex items-center gap-xs px-2 py-1 bg-status-success/10 text-status-success rounded-lg font-status-pill text-status-pill w-fit">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                                                AUTO-MATCHED
+                                            </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Totals Summary -->
+<div class="mt-lg grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface-container-low p-lg rounded-xl border border-border-subtle">
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">EXPECTED (PO)</p>
+<p class="font-headline-md text-headline-md font-bold">₹7,07,000.00</p>
+</div>
+<div class="bg-surface-container-low p-lg rounded-xl border border-border-subtle">
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">INVOICED AMOUNT</p>
+<p class="font-headline-md text-headline-md font-bold">₹7,15,400.00</p>
+</div>
+<div class="bg-error-container p-lg rounded-xl border border-error/20">
+<p class="font-label-md text-label-md text-on-error-container mb-2">VARIANCE (NET)</p>
+<p class="font-headline-md text-headline-md font-bold text-error">+ ₹8,400.00</p>
+</div>
+</div>
+</div>
+<!-- Dispute Resolution Sidebar -->
+<aside class="w-80 border-l border-border-subtle bg-surface-container-low flex flex-col p-lg">
+<h2 class="font-headline-sm text-headline-sm mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-brand-gold">assignment_late</span>
+                        Dispute Resolution
+                    </h2>
+<div class="space-y-lg flex-1 overflow-y-auto custom-scrollbar pr-2">
+<!-- Flagged Action 1 -->
+<div class="p-md bg-surface-card rounded-lg border border-status-error/20 shadow-sm">
+<p class="text-xs font-bold text-status-error mb-2">ADH-K81: Qty Mismatch</p>
+<label class="font-label-md text-[11px] text-on-surface-variant block mb-1">Select Action</label>
+<select class="w-full text-sm border-border-subtle rounded-lg mb-md">
+<option>Issue Debit Note</option>
+<option>Request Balance Receipt</option>
+<option>Accept Variance (Force Match)</option>
+</select>
+<textarea class="w-full text-sm border-border-subtle rounded-lg h-16 mb-2" placeholder="Reason for action..."></textarea>
+<button class="w-full py-1 text-xs bg-brand-dark text-white rounded font-bold hover:bg-black">Save Resolution</button>
+</div>
+<!-- Flagged Action 2 -->
+<div class="p-md bg-surface-card rounded-lg border border-status-pending/20 shadow-sm">
+<p class="text-xs font-bold text-status-pending mb-2">HNDL-S-01: Rate Mismatch</p>
+<label class="font-label-md text-[11px] text-on-surface-variant block mb-1">Select Action</label>
+<select class="w-full text-sm border-border-subtle rounded-lg mb-md">
+<option>Request Revised Bill</option>
+<option>Accept at PO Rate Only</option>
+<option>Hold for Vendor Discussion</option>
+</select>
+<textarea class="w-full text-sm border-border-subtle rounded-lg h-16 mb-2" placeholder="Internal comments..."></textarea>
+<button class="w-full py-1 text-xs bg-brand-dark text-white rounded font-bold hover:bg-black">Save Resolution</button>
+</div>
+<!-- Activity Log -->
+<div class="mt-xl">
+<p class="font-label-md text-label-md mb-md border-b border-border-subtle pb-1">Activity Log</p>
+<div class="space-y-md">
+<div class="flex gap-sm">
+<div class="w-6 h-6 rounded-full bg-status-material flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-[12px]">person</span>
+</div>
+<div>
+<p class="text-xs font-bold">Ravi K. (Inventory)</p>
+<p class="text-[10px] text-on-surface-variant">Verified GRN-6772-24. Reported leakage in adhesive batch.</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<div class="w-6 h-6 rounded-full bg-brand-gold flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-[12px]">bolt</span>
+</div>
+<div>
+<p class="text-xs font-bold">System Auto-Check</p>
+<p class="text-[10px] text-on-surface-variant">Rate variance for Metal Handles exceeds 1% limit.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-lg pt-lg border-t border-border-subtle">
+<button class="w-full py-3 bg-secondary-fixed text-on-secondary-fixed font-bold rounded-lg border border-secondary shadow-sm hover:brightness-95 active:scale-[0.98] transition-all">Submit for Review</button>
+</div>
+</aside>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container-highest flex justify-around items-center px-4 py-2 pb-safe border-t border-border-subtle shadow-lg">
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-[10px]">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-fixed text-on-secondary-fixed rounded-xl px-3 py-1">
+<span class="material-symbols-outlined">receipt</span>
+<span class="font-label-md text-[10px]">Verify</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined">add_card</span>
+<span class="font-label-md text-[10px]">Receipts</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-[10px]">Reports</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for table rows and buttons
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('click', () => {
+                // Potential logic to highlight the relevant dispute sidebar section
+                console.log('Row clicked for detailed view');
+            });
+        });
+
+        // Toggle dark mode function (for demonstration if button added later)
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body></html>

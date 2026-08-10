@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QR Pairing | WhatsApp Automation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "status-success": "#2D7D46",
+                        "tertiary-fixed": "#cbe6ff",
+                        "secondary-container": "#fdd977",
+                        "status-error": "#C0392B",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "status-production": "#F97316",
+                        "status-financial": "#14532D",
+                        "on-secondary-fixed-variant": "#584400",
+                        "surface-card": "#FFFFFF",
+                        "error": "#ba1a1a",
+                        "secondary": "#745b00",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#c8c6c5",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-container": "#efeeea",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "on-secondary-container": "#775e00",
+                        "outline-variant": "#c4c7c7",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#1c1b1b",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "surface-bright": "#faf9f5",
+                        "outline": "#747878",
+                        "primary-container": "#1c1b1b",
+                        "tertiary-container": "#001e30",
+                        "status-pending": "#F59E0B",
+                        "status-invoice": "#7C3AED",
+                        "secondary-fixed-dim": "#e5c363",
+                        "surface": "#faf9f5",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e3e2df",
+                        "border-subtle": "#E8E8E8",
+                        "on-primary-container": "#858383",
+                        "surface-container-low": "#f5f4f0",
+                        "surface-dim": "#dbdad6",
+                        "secondary-fixed": "#ffe08c",
+                        "status-material": "#0891B2",
+                        "inverse-surface": "#30312e",
+                        "on-surface-variant": "#444748",
+                        "primary": "#000000",
+                        "surface-tint": "#5f5e5e",
+                        "on-surface": "#1b1c1a",
+                        "inverse-on-surface": "#f2f1ed",
+                        "surface-container-high": "#e9e8e4",
+                        "surface-container-highest": "#e3e2df",
+                        "on-tertiary-fixed": "#001e30",
+                        "background": "#faf9f5",
+                        "on-tertiary-container": "#5889af",
+                        "status-draft": "#888888",
+                        "on-background": "#1b1c1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "container-max": "1440px",
+                        "xs": "4px",
+                        "sidebar-width": "260px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "status-pill": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .qr-scanner-line {
+            height: 2px;
+            background: #C8A84B;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 3s linear infinite;
+            box-shadow: 0 0 15px #C8A84B;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            50% { top: 100%; }
+            100% { top: 0; }
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-fixed">
+<!-- Sidebar Navigation (Fixed) -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-primary-container flex flex-col py-md px-sm transition-all duration-300 ease-in-out z-50">
+<div class="mb-xl px-md">
+<h1 class="font-headline-md text-headline-md text-secondary-fixed">Factory ERP</h1>
+<p class="text-on-primary-container/60 font-label-md">V2.4.0</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-primary-container/80 hover:bg-primary/20 transition-all font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+                Connection Status
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-secondary-fixed text-on-secondary-fixed border-l-4 border-secondary-fixed-dim font-bold transition-all font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+                QR Pairing
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-primary-container/80 hover:bg-primary/20 transition-all font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+                Usage Stats
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-primary-container/80 hover:bg-primary/20 transition-all font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="schedule_send">schedule_send</span>
+                Message Queue
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-primary-container/80 hover:bg-primary/20 transition-all font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto space-y-1">
+<button class="w-full bg-secondary-fixed text-on-secondary-fixed py-md rounded-lg font-title-md hover:brightness-110 active:scale-95 transition-all mb-lg">
+                New Broadcast
+            </button>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-primary-container/80 hover:bg-primary/20 transition-all font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+                Support
+            </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-primary-container/80 hover:bg-primary/20 transition-all font-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Top AppBar -->
+<header class="fixed top-0 right-0 left-sidebar-width h-16 bg-surface border-b border-border-subtle flex justify-between items-center px-lg z-40 ml-[260px]">
+<div class="flex items-center gap-md">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">WhatsApp Automation</span>
+<div class="h-6 w-[1px] bg-border-subtle mx-md"></div>
+<span class="text-on-surface-variant font-label-md">Session Manager</span>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant p-xs rounded-full hover:bg-surface-container transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant p-xs rounded-full hover:bg-surface-container transition-colors" data-icon="help_outline">help_outline</button>
+</div>
+<div class="flex items-center gap-sm">
+<div class="text-right">
+<p class="font-label-md leading-none">Admin Manager</p>
+<p class="text-[11px] text-on-surface-variant">Shift A</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-border-subtle object-cover" data-alt="A professional headshot of a factory manager in their late 40s wearing a high-visibility industrial vest over a crisp white shirt. The background is a slightly blurred high-tech manufacturing facility with soft industrial lighting. The overall style is corporate and authoritative, matching the professional utility of the factory management software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSm_Wy3y3cBNRCXrF96vxHEqizIsbyRbNT8g-6-Mk80zbpqARRjnEZPWIXV-1RUgbccA6WMUUPQFaYSrhpWI8ixSgi1QHY7yAii4D95_kcRKArAW1glDJl5NFLTfRu6-Pe6SlQYqHwP_73MG_omqJKkUANAa9Xt4juHd-lmnKXCyR5EsstSHRJq5z-ZnXtwZZHJiCdkylYeyDDMrmhfODODRhN-26-x7C9O6d0eqqEtNYfLYEADVO0Fg"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 pl-[260px] pr-lg pb-xl min-h-screen">
+<div class="max-w-container-max mx-auto">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-xs text-on-surface-variant font-label-md mb-lg">
+<a class="hover:text-primary" href="#">Dashboard</a>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+<a class="hover:text-primary" href="#">WhatsApp Settings</a>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">QR Pairing</span>
+</nav>
+<!-- Pairing Hero Section (Bento Style) -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Instructions Panel -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-lg">
+<div class="bg-surface-card border border-border-subtle p-xl rounded-xl">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-10 h-10 rounded bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm">Instructions</h2>
+</div>
+<ul class="space-y-lg mt-xl">
+<li class="flex gap-md">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-surface-container text-primary flex items-center justify-center text-[12px] font-bold">01</span>
+<p class="text-body-md text-on-surface-variant">Open the <b>Dedicated Factory Phone</b> and launch WhatsApp.</p>
+</li>
+<li class="flex gap-md">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-surface-container text-primary flex items-center justify-center text-[12px] font-bold">02</span>
+<p class="text-body-md text-on-surface-variant">Navigate to <b>Settings</b> > <b>Linked Devices</b>.</p>
+</li>
+<li class="flex gap-md">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-surface-container text-primary flex items-center justify-center text-[12px] font-bold">03</span>
+<p class="text-body-md text-on-surface-variant">Tap on <b>Link a Device</b> and point the camera at the screen.</p>
+</li>
+</ul>
+</div>
+<div class="bg-secondary-fixed/10 border border-secondary-fixed p-xl rounded-xl">
+<h3 class="font-title-md text-on-secondary-fixed-variant mb-sm">Device Security</h3>
+<p class="text-body-md text-on-secondary-fixed-variant/80">Only pair devices that are registered in the factory asset log. Unauthorized pairing may trigger a security lockdown.</p>
+</div>
+</div>
+<!-- QR Pairing Core -->
+<div class="col-span-12 lg:col-span-8">
+<div class="bg-surface-card border border-border-subtle rounded-xl overflow-hidden shadow-sm relative">
+<!-- Top Action Bar -->
+<div class="border-b border-border-subtle p-lg flex justify-between items-center bg-surface-bright">
+<div class="flex items-center gap-md">
+<div class="bg-status-pending/20 text-status-pending px-md py-xs rounded-full font-status-pill text-status-pill flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-status-pending animate-pulse"></span>
+                                    QR PENDING - SCAN TO CONNECT
+                                </div>
+<span class="text-on-surface-variant text-[12px] font-label-md">Session expires in: <span class="font-bold text-primary" id="timer">02:45</span></span>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-sm border border-border-subtle rounded-lg font-label-md text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95" onclick="location.reload()">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+                                    Refresh QR
+                                </button>
+<button class="flex items-center gap-xs px-md py-sm border border-border-subtle rounded-lg font-label-md text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+                                    Back to Settings
+                                </button>
+</div>
+</div>
+<!-- Main QR Canvas -->
+<div class="p-xl lg:p-32 flex flex-col items-center justify-center bg-white relative">
+<!-- Visual Decoration -->
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;"></div>
+<!-- QR Container -->
+<div class="relative p-md border-4 border-surface-container rounded-xl shadow-2xl z-10 bg-white">
+<div class="relative w-64 h-64 lg:w-80 lg:h-80 bg-white overflow-hidden rounded-lg border border-border-subtle">
+<img class="w-full h-full object-contain p-xs" data-alt="A large, sharp, high-contrast QR code centered on a clean white background. The QR code features modern blocky patterns with subtle corporate aesthetic touches. The image is crisp, designed for a technical interface, evoking precision engineering and digital connectivity. The lighting is neutral and clear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADQ_bG885veaHmc9DPDOBa5flPKXpS5Eww3WeAMpCRfEmnekZuQ8fx2swfOKWsd7q2lz5e9TRTPqtY-Y6mRUhgcWw7zCiLStGzKXxQQkivUOQndRHAX6jCfD7U7AjhvNCEMBXE0Vcpm4ch5_d6847H29voFZKvQ-i_DgGBDM4ueTuC2oaib6xhbrpl03YbiqnDmKL90Z1Kgyf4BpYWXR0p70KDaQ86xkmy2Sko7j-I5Bcfv5P_1r9awQ"/>
+<!-- Animated Scanner Line -->
+<div class="qr-scanner-line"></div>
+</div>
+<!-- Decorative Corners -->
+<div class="absolute -top-1 -left-1 w-8 h-8 border-t-4 border-l-4 border-secondary-fixed rounded-tl-lg"></div>
+<div class="absolute -top-1 -right-1 w-8 h-8 border-t-4 border-r-4 border-secondary-fixed rounded-tr-lg"></div>
+<div class="absolute -bottom-1 -left-1 w-8 h-8 border-b-4 border-l-4 border-secondary-fixed rounded-bl-lg"></div>
+<div class="absolute -bottom-1 -right-1 w-8 h-8 border-b-4 border-r-4 border-secondary-fixed rounded-br-lg"></div>
+</div>
+<!-- QR Meta -->
+<div class="mt-xl text-center z-10">
+<h3 class="font-headline-sm text-headline-sm mb-xs">Instance ID: WHATS-APP-FAC-01</h3>
+<p class="text-on-surface-variant text-body-md max-w-sm mx-auto">Refresh the page if the QR code fails to load or if the session has expired.</p>
+</div>
+</div>
+<!-- System Log Footer -->
+<div class="border-t border-border-subtle bg-surface-container-low p-md">
+<div class="flex items-center gap-md font-label-md text-[11px] text-on-surface-variant uppercase tracking-wider">
+<span class="flex items-center gap-xs"><span class="w-1.5 h-1.5 bg-status-success rounded-full"></span> SERVER ONLINE</span>
+<span class="flex items-center gap-xs"><span class="w-1.5 h-1.5 bg-status-pending rounded-full"></span> HANDSHAKE INITIALIZED</span>
+<span class="ml-auto">LOG: ATTEMPTING_WS_CONNECTION_RETRY_3</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg mt-xl">
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-md uppercase">CPU Usage</p>
+<p class="font-headline-sm text-headline-sm">12.4%</p>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="lan">lan</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-md uppercase">Connection</p>
+<p class="font-headline-sm text-headline-sm">Stable</p>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-md uppercase">Last Link</p>
+<p class="font-headline-sm text-headline-sm">2h ago</p>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle p-lg rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-md uppercase">Latency</p>
+<p class="font-headline-sm text-headline-sm">48ms</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Navigation (Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface border-t border-border-subtle shadow-lg flex justify-around items-center h-16 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+<span class="font-status-pill text-status-pill">Connection</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary-fixed bg-primary-container rounded-xl py-xs px-md active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="qr_code">qr_code</span>
+<span class="font-status-pill text-status-pill">Pairing</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-status-pill text-status-pill">Stats</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-status-pill text-status-pill">Queue</span>
+</button>
+</nav>
+<script>
+        // Simple countdown timer for QR expiration
+        let timeLeft = 165; // 2 minutes 45 seconds
+        const timerElement = document.getElementById('timer');
+
+        const updateTimer = () => {
+            const minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            timerElement.innerText = `${minutes}:${seconds}`;
+            if (timeLeft > 0) {
+                timeLeft--;
+            } else {
+                timerElement.innerText = "EXPIRED";
+                timerElement.classList.add('text-status-error');
+            }
+        };
+
+        setInterval(updateTimer, 1000);
+    </script>
+</body></html>

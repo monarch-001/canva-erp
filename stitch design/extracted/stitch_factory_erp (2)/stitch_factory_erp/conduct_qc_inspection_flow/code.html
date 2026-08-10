@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Conduct QC Inspection | Industrial Authority ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#5889af",
+                    "on-tertiary": "#ffffff",
+                    "surface-card": "#FFFFFF",
+                    "status-financial": "#14532D",
+                    "surface-container": "#efeeea",
+                    "background": "#faf9f5",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#cbe6ff",
+                    "on-tertiary-fixed": "#001e30",
+                    "inverse-on-surface": "#f2f1ed",
+                    "status-draft": "#888888",
+                    "surface-container-highest": "#e3e2df",
+                    "surface-bright": "#faf9f5",
+                    "status-production": "#F97316",
+                    "status-pending": "#F59E0B",
+                    "tertiary-container": "#001e30",
+                    "on-primary-container": "#858383",
+                    "primary-container": "#1c1b1b",
+                    "border-subtle": "#E8E8E8",
+                    "surface-tint": "#5f5e5e",
+                    "status-error": "#C0392B",
+                    "error": "#ba1a1a",
+                    "on-background": "#1b1c1a",
+                    "surface-dim": "#dbdad6",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "primary": "#000000",
+                    "status-invoice": "#7C3AED",
+                    "inverse-surface": "#30312e",
+                    "secondary-fixed-dim": "#e5c363",
+                    "on-secondary-container": "#775e00",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#1c1b1b",
+                    "outline-variant": "#c4c7c7",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#c8c6c5",
+                    "status-success": "#2D7D46",
+                    "on-surface-variant": "#444748",
+                    "surface-variant": "#e3e2df",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#474746",
+                    "secondary-fixed": "#ffe08c",
+                    "on-surface": "#1b1c1a",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e9e8e4",
+                    "secondary": "#745b00",
+                    "outline": "#747878",
+                    "primary-fixed": "#e5e2e1",
+                    "on-secondary-fixed": "#241a00",
+                    "secondary-container": "#fdd977",
+                    "status-material": "#0891B2",
+                    "surface": "#faf9f5",
+                    "tertiary": "#000000",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "surface-container-low": "#f5f4f0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sidebar-width": "260px",
+                    "lg": "24px",
+                    "container-max": "1440px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "title-md": ["Inter"],
+                    "status-pill": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .status-badge { @apply px-sm py-xs rounded text-status-pill font-status-pill uppercase tracking-wider; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-primary-container text-on-primary-fixed flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<div class="flex items-center gap-sm mb-base">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">factory</span>
+<span class="font-headline-sm text-headline-sm text-on-primary">Precision Ops</span>
+</div>
+<p class="text-on-primary-container opacity-60 font-label-md text-[11px] uppercase tracking-widest">Unit 04 - Heavy Mfg</p>
+</div>
+<nav class="flex-1 space-y-base overflow-y-auto px-sm scrollbar-hide">
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer active:scale-95 duration-150 rounded">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer active:scale-95 duration-150 rounded">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</div>
+<div class="bg-secondary-container text-on-secondary-container border-l-4 border-secondary flex items-center gap-md px-md py-sm rounded-r cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+<span class="font-label-md text-label-md">Production</span>
+</div>
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer active:scale-95 duration-150 rounded">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-md text-label-md">Blind GRN</span>
+</div>
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer active:scale-95 duration-150 rounded">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Financials</span>
+</div>
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer active:scale-95 duration-150 rounded">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</div>
+</nav>
+<div class="mt-auto px-sm border-t border-on-primary-fixed-variant pt-lg">
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer rounded mb-sm">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</div>
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer rounded">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-sidebar-width min-h-screen pb-24">
+<!-- Top Nav Bar -->
+<header class="sticky top-0 z-40 w-full bg-surface-container-lowest border-b border-border-subtle h-16">
+<div class="flex justify-between items-center h-full px-lg max-w-container-max mx-auto">
+<div class="flex items-center gap-lg">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Industrial Authority ERP</span>
+<div class="h-6 w-px bg-border-subtle"></div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">architecture</span>
+<span class="font-title-md text-title-md">QC Inspection Console</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm mr-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">help</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">settings</span>
+</div>
+<div class="flex items-center gap-sm bg-surface-container px-sm py-xs rounded-full border border-border-subtle">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a factory quality control manager wearing a crisp white shirt and a company badge. The background is a clean, modern industrial laboratory with soft neutral lighting and high-tech testing equipment in soft focus. The style is professional and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXDnSga7_6XZ3L_volIuTsEzRLkXELf4qVaSzLlgI9orHRaqK4rPMAoIN8hnzXT9wvE-G-hLg4PsljcpeGxE1MiWhBmQwoW_LSC0vLFfIm9hBw3N_0UEu0sERrQTXUhaEhml5c08lGKTztOqw8ppuEAJBHyby6qIZRbeU1b4qYp-TBZ_rt-J43ZUhZJxyfjUE4F6YYAppYBWQiJHmq2IefUVbwPBkkqXZtbGNArbWzclQJ0jNF_E1tQg"/>
+</div>
+<span class="font-label-md text-label-md pr-sm">Inspector Chen</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="max-w-container-max mx-auto px-lg py-xl">
+<!-- 1. Header Section -->
+<div class="mb-xl flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<nav class="flex items-center gap-xs text-on-primary-container text-[12px] font-medium uppercase mb-xs">
+<span>Quality</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Inspection</span>
+</nav>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-xs">QC Inspection: Reception Counter</h1>
+<div class="flex items-center gap-md">
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs font-bold text-[12px] rounded">WO-CHH-26-001</span>
+<span class="bg-primary text-on-primary px-sm py-xs font-bold text-[12px] rounded">QC-26-001</span>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-body-md font-body-md">Oct 24, 2023</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="px-md py-sm border border-primary text-primary font-label-md text-label-md flex items-center gap-xs hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[18px]">description</span>
+                        View Drawings
+                    </button>
+<button class="px-md py-sm bg-secondary text-on-secondary font-label-md text-label-md flex items-center gap-xs hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">print</span>
+                        Print Label
+                    </button>
+</div>
+</div>
+<!-- Bento Layout Content -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Left Column: Steps & Checklist -->
+<div class="col-span-12 lg:col-span-8 space-y-lg">
+<!-- Step 1: Checklist Selection -->
+<section class="bg-surface-card border border-border-subtle p-lg shadow-sm">
+<div class="flex items-center gap-sm mb-md">
+<span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-body-md">1</span>
+<h2 class="font-headline-sm text-headline-sm">Select Checklist</h2>
+</div>
+<div class="flex flex-col md:flex-row gap-md items-end">
+<div class="flex-1">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Operational Category</label>
+<select class="w-full h-10 px-sm border border-border-subtle rounded focus:border-secondary focus:ring-0 text-body-md">
+<option>Counter/Cabinet</option>
+<option>Workstation</option>
+<option>Seating &amp; Upholstery</option>
+<option>Hardware/Metalwork</option>
+</select>
+</div>
+<button class="bg-secondary text-white px-xl h-10 font-label-md text-label-md hover:opacity-90 transition-opacity">Confirm Checklist</button>
+</div>
+</section>
+<!-- Step 2: Inspection Checklist -->
+<section class="bg-surface-card border border-border-subtle p-lg shadow-sm">
+<div class="flex items-center justify-between mb-lg">
+<div class="flex items-center gap-sm">
+<span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-body-md">2</span>
+<h2 class="font-headline-sm text-headline-sm">Inspection Points</h2>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-on-surface-variant mb-xs text-right">Progress: 5/12 Checkpoints Completed</div>
+<div class="w-48 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[41.6%]"></div>
+</div>
+</div>
+</div>
+<div class="space-y-md">
+<!-- Checklist Card 1: Pass -->
+<div class="border border-border-subtle p-md flex flex-col md:flex-row gap-md hover:bg-background transition-colors">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-xs">
+<h3 class="font-title-md text-title-md">Dimensions match drawing</h3>
+<span class="text-status-error text-[10px] font-bold">* MANDATORY</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-md">Verify all external dimensions against approved fabrication shop drawing #DWG-RC-001 Rev B.</p>
+<div class="flex gap-md">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input checked="" class="w-4 h-4 text-secondary focus:ring-0 border-border-subtle" name="check_1" type="radio"/>
+<span class="font-label-md text-label-md group-hover:text-secondary">PASS</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-4 h-4 text-status-error focus:ring-0 border-border-subtle" name="check_1" type="radio"/>
+<span class="font-label-md text-label-md group-hover:text-status-error">FAIL</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-4 h-4 text-on-surface-variant focus:ring-0 border-border-subtle" name="check_1" type="radio"/>
+<span class="font-label-md text-label-md group-hover:text-on-surface">N/A</span>
+</label>
+</div>
+</div>
+<div class="md:w-64 space-y-sm">
+<input class="w-full text-body-md border-border-subtle rounded focus:border-secondary focus:ring-0 px-sm h-10" placeholder="Internal notes..." type="text"/>
+<button class="w-full flex items-center justify-center gap-sm h-10 border border-border-subtle text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+                                        Add Photo
+                                    </button>
+</div>
+</div>
+<!-- Checklist Card 2: Fail State -->
+<div class="border-2 border-status-error p-md flex flex-col md:flex-row gap-md bg-status-error/5">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-xs">
+<h3 class="font-title-md text-title-md">All joints flush &amp; filled</h3>
+<span class="text-status-error text-[10px] font-bold">* MANDATORY</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-md">Check for light gaps or uneven surfaces at laminate joins. Must be &lt; 0.5mm deviation.</p>
+<div class="flex gap-md">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-4 h-4 text-secondary focus:ring-0 border-border-subtle" name="check_2" type="radio"/>
+<span class="font-label-md text-label-md">PASS</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input checked="" class="w-4 h-4 text-status-error focus:ring-0 border-border-subtle" name="check_2" type="radio"/>
+<span class="font-label-md text-label-md text-status-error">FAIL</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-4 h-4 text-on-surface-variant focus:ring-0 border-border-subtle" name="check_2" type="radio"/>
+<span class="font-label-md text-label-md">N/A</span>
+</label>
+</div>
+</div>
+<div class="md:w-64 space-y-sm">
+<input class="w-full text-body-md border-status-error rounded focus:border-status-error focus:ring-0 px-sm h-10" type="text" value="Slight gap on rear corner"/>
+<button class="w-full flex items-center justify-center gap-sm h-10 bg-status-error text-on-error font-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]">error</span>
+                                        Photo Mandatory
+                                    </button>
+</div>
+</div>
+<!-- Checklist Card 3: Pending -->
+<div class="border border-border-subtle p-md flex flex-col md:flex-row gap-md hover:bg-background transition-colors">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-xs">
+<h3 class="font-title-md text-title-md">Laminate properly bonded</h3>
+</div>
+<p class="text-body-md text-on-surface-variant mb-md">No air bubbles, delamination, or visible glue lines at the edges.</p>
+<div class="flex gap-md">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-4 h-4 text-secondary focus:ring-0 border-border-subtle" name="check_3" type="radio"/>
+<span class="font-label-md text-label-md">PASS</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-4 h-4 text-status-error focus:ring-0 border-border-subtle" name="check_3" type="radio"/>
+<span class="font-label-md text-label-md">FAIL</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-4 h-4 text-on-surface-variant focus:ring-0 border-border-subtle" name="check_3" type="radio"/>
+<span class="font-label-md text-label-md">N/A</span>
+</label>
+</div>
+</div>
+<div class="md:w-64 space-y-sm">
+<input class="w-full text-body-md border-border-subtle rounded focus:border-secondary focus:ring-0 px-sm h-10" placeholder="Internal notes..." type="text"/>
+<button class="w-full flex items-center justify-center gap-sm h-10 border border-border-subtle text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+                                        Add Photo
+                                    </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Evidence & Summary -->
+<div class="col-span-12 lg:col-span-4 space-y-lg">
+<!-- Mandatory Photo Section -->
+<section class="bg-surface-card border border-border-subtle p-lg shadow-sm h-fit">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-title-md text-title-md">Inspection Evidence</h2>
+<span class="text-on-surface-variant font-label-md text-[11px] bg-surface-container px-sm py-base rounded">3 Required</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-lg">Upload at least 3 photos of the finished product from various angles.</p>
+<div class="grid grid-cols-2 gap-sm">
+<!-- Photo Previews -->
+<div class="relative aspect-square border border-border-subtle group">
+<img class="w-full h-full object-cover" data-alt="A close-up high-resolution photograph of a finished wood laminate counter edge, showing a perfectly seamless and flush joint. The lighting is bright and industrial, highlighting the smooth texture and precision craftsmanship. The color palette is composed of natural wood tones and crisp neutral backgrounds, emphasizing quality control excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN6gSeUbuLHBgeAtLvsgPPRn9-sKl_CzJhH7HH-DO6QI2n1RApR6F0ROGi3Tf9B-2jbwTL9btpBsiQ9smCjYR5RS8PUoXwbZ0p4on5oKcNSr4eWfnbzDNuVUHOfnj-DIpBQvBkRuMzDmTmFC2JQabNuY0spvhz8tx8PxvwDBPGwf2eD7gjZd5Yr4LV__6h3ML_V8e9KLoQT7wlxV5-HfbpjgZ6qyO-aKM9VuOqRSTkjzS-mz7TMZl_Kw"/>
+<button class="absolute top-sm right-sm bg-status-error text-white w-6 h-6 flex items-center justify-center rounded shadow opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<div class="relative aspect-square border border-border-subtle group">
+<img class="w-full h-full object-cover" data-alt="A medium shot of a large reception counter in a clean factory setting, showing the entire structure from a 45-degree angle. The counter features modern lines and a high-quality finish. The lighting is soft and even, highlighting the architectural precision of the industrial design. The overall aesthetic is professional, minimalist, and focused on manufacturing quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMsr1uyWitcyFn50NeFh07bij2Rf7MTgRr_O9IfP6fZhbVxCz9DrbPjKNdF98XwhbI3w0IfC91K6P8v_vYb7kT8NBYMePG9DXJZY2_FCdIBy8eGqXqGo6PkrVnpoLpKPAhl9gOAbXvBfOOkNwzS_F6DpMQqDiT3l94Vcn5l3cys3rmjMv-ydrv5x0HiHIGQ4XRhZf1tZVF-C3LnbnEPziMzJCn9z6Ujr3loJ0rtw0IUCxlj5VgCyke1A"/>
+<button class="absolute top-sm right-sm bg-status-error text-white w-6 h-6 flex items-center justify-center rounded shadow opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Upload Trigger -->
+<div class="aspect-square border-2 border-dashed border-border-subtle flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-secondary text-[32px] mb-xs">add_a_photo</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Add Photo</span>
+</div>
+<div class="aspect-square bg-surface-container-low border border-border-subtle flex flex-col items-center justify-center opacity-40">
+<span class="material-symbols-outlined text-[32px]">image</span>
+</div>
+</div>
+<div class="mt-lg p-md bg-secondary/5 border-l-4 border-secondary">
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">info</span>
+<p class="text-body-md text-on-surface-variant"><strong class="text-on-surface">Compliance Tip:</strong> Ensure that the serial number tag is clearly visible in at least one photo.</p>
+</div>
+</div>
+</section>
+<!-- Quick Reference Card -->
+<section class="bg-primary-container p-lg text-on-primary shadow-sm rounded">
+<h2 class="font-title-md text-title-md mb-md text-on-primary">Reference Dwgs</h2>
+<div class="space-y-sm">
+<div class="flex items-center justify-between p-sm border border-on-primary-fixed-variant hover:bg-on-primary-fixed-variant cursor-pointer transition-all">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">picture_as_pdf</span>
+<span class="font-label-md text-label-md">Assembly_Guide_V2.pdf</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">download</span>
+</div>
+<div class="flex items-center justify-between p-sm border border-on-primary-fixed-variant hover:bg-on-primary-fixed-variant cursor-pointer transition-all">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">image</span>
+<span class="font-label-md text-label-md">Finish_Sample_A3.jpg</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Summary Bar -->
+<footer class="fixed bottom-0 left-sidebar-width right-0 bg-surface-container-lowest border-t border-border-subtle px-lg py-md shadow-[0_-4px_10px_rgba(0,0,0,0.03)] z-40">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-md">
+<div class="flex items-center gap-xl">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-status-error/10 flex items-center justify-center text-status-error">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">cancel</span>
+</div>
+<div>
+<p class="font-label-md text-[11px] text-on-surface-variant uppercase tracking-wider">Overall Determination</p>
+<p class="font-headline-sm text-headline-sm text-status-error">FAILED</p>
+</div>
+</div>
+<div class="hidden md:block h-10 w-px bg-border-subtle"></div>
+<div class="hidden md:flex flex-col">
+<p class="font-label-md text-[11px] text-on-surface-variant uppercase tracking-wider">Mandatory Violations</p>
+<p class="font-title-md text-title-md text-on-surface">1 Point Flagged</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-xl h-12 border border-primary text-primary font-label-md text-label-md hover:bg-surface-container transition-all">
+                        Save Draft
+                    </button>
+<button class="px-xl h-12 bg-secondary text-on-secondary font-label-md text-label-md flex items-center gap-sm shadow-lg hover:shadow-xl active:scale-95 transition-all opacity-90 cursor-not-allowed" title="Mandatory fields must be cleared before submission">
+<span class="material-symbols-outlined">send</span>
+                        Submit QC Record
+                    </button>
+</div>
+</div>
+</footer>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hover sound effect or subtle scale transitions already handled by Tailwind
+            const submitBtn = document.querySelector('button:contains("Submit QC Record")');
+            if(submitBtn) {
+                submitBtn.addEventListener('click', (e) => {
+                    if(submitBtn.classList.contains('cursor-not-allowed')) {
+                        e.preventDefault();
+                        alert('Please resolve all mandatory FAIL points and upload required photos before submission.');
+                    }
+                });
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,88 @@
+- generic [ref=f17e3]:
+  - complementary [ref=f17e4]:
+    - generic [ref=f17e5]:
+      - heading "Canva Concepts" [level=1] [ref=f17e6]
+      - paragraph [ref=f17e7]: Industrial ERP
+    - navigation [ref=f17e8]:
+      - link "manufacturing Work Orders" [ref=f17e9] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f17e10]: manufacturing
+        - generic [ref=f17e11]: Work Orders
+      - link "precision_manufacturing Production" [ref=f17e12] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f17e13]: precision_manufacturing
+        - generic [ref=f17e14]: Production
+      - link "group Users" [ref=f17e15] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f17e16]: group
+        - generic [ref=f17e17]: Users
+      - link "payments Finance" [ref=f17e18] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f17e19]: payments
+        - generic [ref=f17e20]: Finance
+    - generic [ref=f17e21]:
+      - link "settings Settings" [ref=f17e22] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f17e23]: settings
+        - generic [ref=f17e24]: Settings
+      - link "help Support" [ref=f17e25] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f17e26]: help
+        - generic [ref=f17e27]: Support
+      - generic [ref=f17e28]:
+        - generic [ref=f17e29]:
+          - img "Robert Hudson" [ref=f17e31]
+          - generic [ref=f17e32]:
+            - paragraph [ref=f17e33]: Robert Hudson
+            - paragraph [ref=f17e34]: Factory Supervisor
+        - generic [ref=f17e35]:
+          - generic [ref=f17e36]: Toggle System Role
+          - combobox [ref=f17e37] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor" [selected]
+            - option "Site Manager"
+  - main [ref=f17e38]:
+    - generic [ref=f17e39]:
+      - generic [ref=f17e40]:
+        - heading "Dashboard Overview" [level=2] [ref=f17e41]
+        - generic [ref=f17e42]:
+          - generic [ref=f17e43]: search
+          - textbox "Search orders, clients, items..." [ref=f17e44]
+      - generic [ref=f17e46]:
+        - button "notifications" [ref=f17e47] [cursor=pointer]
+        - button "help" [ref=f17e48] [cursor=pointer]
+        - button "settings" [ref=f17e49] [cursor=pointer]
+    - generic [ref=f17e50]:
+      - generic [ref=f17e51]:
+        - heading "Welcome back, Robert Hudson" [level=2] [ref=f17e52]
+        - paragraph [ref=f17e53]: Here is your operational snapshot for August 9, 2026.
+      - generic [ref=f17e54]:
+        - generic [ref=f17e55]:
+          - heading "list_alt Supervisor Action Log" [level=3] [ref=f17e56]:
+            - generic [ref=f17e57]: list_alt
+            - text: Supervisor Action Log
+          - generic [ref=f17e58]:
+            - generic [ref=f17e59]:
+              - generic [ref=f17e60]:
+                - paragraph [ref=f17e61]: "BOM Review Required: WO-8835-23"
+                - text: 2 hours ago
+              - button "Action" [ref=f17e62] [cursor=pointer]
+            - generic [ref=f17e63]:
+              - generic [ref=f17e64]:
+                - paragraph [ref=f17e65]: "Approve Overtime Request: Anil Wilson (2.5 hrs)"
+                - text: 4 hours ago
+              - button "Action" [ref=f17e66] [cursor=pointer]
+            - generic [ref=f17e67]:
+              - generic [ref=f17e68]:
+                - paragraph [ref=f17e69]: EOD Production Update Verification (5 tasks)
+                - text: Yesterday
+              - button "Action" [ref=f17e70] [cursor=pointer]
+        - generic [ref=f17e72]:
+          - heading "Quick Allocation" [level=3] [ref=f17e73]
+          - generic [ref=f17e74]:
+            - button "add Create Job Card" [ref=f17e75] [cursor=pointer]:
+              - generic [ref=f17e76]: add
+              - text: Create Job Card
+            - button "event_available Mark Floor Attendance" [ref=f17e77] [cursor=pointer]:
+              - generic [ref=f17e78]: event_available
+              - text: Mark Floor Attendance

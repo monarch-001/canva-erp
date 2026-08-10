@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Change Requests | Canva Concepts Industrial ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Scrollbar for Industrial density */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c8c6c5; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #5f5e5e; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E8E8E8;
+        }
+        
+        .sidebar-active {
+            background-color: #745b00; /* secondary */
+            color: #ffffff; /* on-primary */
+            border-left: 4px solid #fdd977; /* secondary-container */
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#745b00",
+                      "on-primary-fixed-variant": "#474746",
+                      "surface-container-highest": "#e3e2df",
+                      "status-material": "#0891B2",
+                      "tertiary-fixed-dim": "#9bccf6",
+                      "primary-container": "#1c1b1b",
+                      "secondary-fixed-dim": "#e5c363",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "status-pending": "#F59E0B",
+                      "status-error": "#C0392B",
+                      "outline": "#747878",
+                      "surface-tint": "#5f5e5e",
+                      "secondary-container": "#fdd977",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#444748",
+                      "status-production": "#F97316",
+                      "background": "#faf9f5",
+                      "tertiary-container": "#001e30",
+                      "surface-variant": "#e3e2df",
+                      "on-error": "#ffffff",
+                      "on-background": "#1b1c1a",
+                      "surface": "#faf9f5",
+                      "status-financial": "#14532D",
+                      "border-subtle": "#E8E8E8",
+                      "status-invoice": "#7C3AED",
+                      "on-primary-fixed": "#1c1b1b",
+                      "tertiary": "#000000",
+                      "on-tertiary-fixed": "#001e30",
+                      "surface-container-low": "#f5f4f0",
+                      "surface-container-high": "#e9e8e4",
+                      "on-secondary-container": "#775e00",
+                      "on-secondary-fixed-variant": "#584400",
+                      "primary": "#000000",
+                      "inverse-surface": "#30312e",
+                      "outline-variant": "#c4c7c7",
+                      "status-success": "#2D7D46",
+                      "surface-container": "#efeeea",
+                      "on-surface": "#1b1c1a",
+                      "on-primary-container": "#858383",
+                      "on-tertiary-container": "#5889af",
+                      "inverse-primary": "#c8c6c5",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-bright": "#faf9f5",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#cbe6ff",
+                      "status-draft": "#888888",
+                      "secondary-fixed": "#ffe08c",
+                      "surface-dim": "#dbdad6",
+                      "on-tertiary-fixed-variant": "#0e4b6e",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#241a00",
+                      "surface-card": "#FFFFFF",
+                      "primary-fixed": "#e5e2e1",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#f2f1ed"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "container-max": "1440px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "sidebar-width": "260px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "status-pill": ["Inter"],
+                      "title-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                      "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-primary text-on-primary flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-bold">Canva Concepts</h1>
+<p class="text-on-primary-container text-xs opacity-60">Industrial ERP</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard Tab -->
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mr-md">dashboard</span>
+<span class="font-title-md text-title-md">Dashboard</span>
+</a>
+<!-- Work Orders Tab (Active for Change Requests Context) -->
+<a class="flex items-center px-lg py-md bg-secondary text-on-primary border-l-4 border-secondary-container transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mr-md">manufacturing</span>
+<span class="font-title-md text-title-md">Work Orders</span>
+</a>
+<!-- Users Tab -->
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mr-md">group</span>
+<span class="font-title-md text-title-md">Users</span>
+</a>
+<!-- Finance Tab -->
+<a class="flex items-center px-lg py-md text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mr-md">payments</span>
+<span class="font-title-md text-title-md">Finance</span>
+</a>
+</nav>
+<div class="mt-auto px-lg py-md border-t border-white/10 space-y-2">
+<a class="flex items-center py-sm text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined mr-md">settings</span>
+<span class="font-title-md text-title-md text-sm">Settings</span>
+</a>
+<a class="flex items-center py-sm text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined mr-md">help</span>
+<span class="font-title-md text-title-md text-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-sidebar-width min-h-screen flex flex-col">
+<!-- Top Nav Bar -->
+<header class="flex justify-between items-center w-full px-lg h-16 bg-surface border-b border-border-subtle sticky top-0 z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-border-subtle rounded-lg py-2 pl-10 pr-4 font-body-md text-on-surface focus:outline-none focus:border-secondary transition-all" placeholder="Search by WO Number, Client, or CR ID..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-lg ml-lg">
+<div class="flex space-x-md text-on-surface-variant">
+<button class="hover:text-secondary transition-all duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:text-secondary transition-all duration-200">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="hover:text-secondary transition-all duration-200">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="h-8 w-px bg-border-subtle"></div>
+<div class="flex items-center space-x-md">
+<div class="text-right">
+<p class="font-label-md text-label-md text-primary">Marcus Sterling</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Factory Manager</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged factory manager wearing a light blue oxford shirt, looking confident and focused. The background is a blurred industrial office environment with soft morning light. The overall aesthetic is clean, professional, and authoritative, matching a high-end corporate ERP visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9EK_TpDdTVvvCaildzehH99J6_DRSkYP7TeRaAxYuMqtiI_T8nCBSXnTCnhhWxQrFvfB3SPsh3zE7_DKAU-zSWvblzznyTCXiqQEWZylreBzYLAANljAIZQKoNd9lyAXzwM-LklJq72xCUXZJVE7CUev0rZIzOylOgfsl3XzD6m90wXTJ2u0Pi7wYIYhmBYYwk7xywgHS_oR8REGQmsRVC2mWFfqQkHercLFxs_ZY4AA9kJHaLwAbMQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas Area -->
+<div class="flex-1 p-lg max-w-container-max mx-auto w-full space-y-lg">
+<!-- Page Title & Header Actions -->
+<div class="flex justify-between items-end">
+<div>
+<nav class="flex items-center text-xs text-on-surface-variant mb-2 space-x-2">
+<span>Work Orders</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-secondary font-bold">Change Requests</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Change Requests</h2>
+</div>
+<button class="bg-primary text-on-primary px-lg py-2 rounded shadow-sm hover:bg-secondary transition-colors flex items-center font-title-md">
+<span class="material-symbols-outlined mr-2">add_circle</span>
+                    New CR Entry
+                </button>
+</div>
+<!-- Stats Overview - Bento Layout -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-md">
+<div class="glass-card p-lg rounded-xl flex flex-col justify-between h-32 hover:border-secondary-container transition-all">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-xs uppercase tracking-widest">Total Pending</span>
+<span class="material-symbols-outlined text-status-pending">pending_actions</span>
+</div>
+<div>
+<p class="text-3xl font-extrabold text-primary">24</p>
+<p class="text-xs text-status-pending">+3 raised today</p>
+</div>
+</div>
+<div class="glass-card p-lg rounded-xl border-l-4 border-status-error flex flex-col justify-between h-32 hover:border-secondary-container transition-all">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-xs uppercase tracking-widest">Tier 3 Critical</span>
+<span class="material-symbols-outlined text-status-error">priority_high</span>
+</div>
+<div>
+<p class="text-3xl font-extrabold text-primary">06</p>
+<p class="text-xs text-status-error">Requires immediate sign-off</p>
+</div>
+</div>
+<div class="glass-card p-lg rounded-xl flex flex-col justify-between h-32 hover:border-secondary-container transition-all">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-xs uppercase tracking-widest">Awaiting Implementation</span>
+<span class="material-symbols-outlined text-status-production">engineering</span>
+</div>
+<div>
+<p class="text-3xl font-extrabold text-primary">12</p>
+<p class="text-xs text-on-surface-variant">Approved & queued</p>
+</div>
+</div>
+<div class="bg-primary text-on-primary p-lg rounded-xl flex flex-col justify-between h-32 shadow-xl">
+<div class="flex justify-between items-start">
+<span class="text-on-primary-container font-label-md text-xs uppercase tracking-widest">SLA Compliance</span>
+<span class="material-symbols-outlined text-secondary-fixed">verified</span>
+</div>
+<div>
+<p class="text-3xl font-extrabold">94.2%</p>
+<p class="text-xs text-secondary-fixed">Above target (90%)</p>
+</div>
+</div>
+</div>
+<!-- Table Filters Container -->
+<div class="bg-surface-card border border-border-subtle rounded-xl shadow-sm">
+<div class="p-md border-b border-border-subtle flex flex-wrap gap-md items-center justify-between">
+<div class="flex flex-wrap gap-md">
+<div class="space-y-1">
+<label class="font-label-md text-[11px] uppercase text-on-surface-variant ml-1">Status</label>
+<select class="block w-40 bg-surface-container-low border-border-subtle rounded text-sm focus:border-secondary focus:ring-0">
+<option>All Statuses</option>
+<option>Pending Approval</option>
+<option>Approved</option>
+<option>Rejected</option>
+<option>Implemented</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-[11px] uppercase text-on-surface-variant ml-1">Tier</label>
+<select class="block w-32 bg-surface-container-low border-border-subtle rounded text-sm focus:border-secondary focus:ring-0">
+<option>All Tiers</option>
+<option>Tier 1 (Low)</option>
+<option>Tier 2 (Med)</option>
+<option>Tier 3 (High)</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-[11px] uppercase text-on-surface-variant ml-1">Raised Date</label>
+<input class="block w-40 bg-surface-container-low border-border-subtle rounded text-sm focus:border-secondary focus:ring-0" type="date"/>
+</div>
+</div>
+<div class="flex space-x-md items-end">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[1000px]">
+<thead>
+<tr class="bg-surface-container-low border-b border-border-subtle">
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">CR Number</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">WO Link</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Change Type</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-center">Tier</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Raised By</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Pending From</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-md font-bold text-primary">CR-WO-CHH-26-001-01</td>
+<td class="px-lg py-md">
+<a class="text-secondary font-semibold hover:underline flex items-center" href="#">
+                                        WO-4921 <span class="material-symbols-outlined text-[14px] ml-1">open_in_new</span>
+</a>
+</td>
+<td class="px-lg py-md text-on-surface-variant">Dimension Change</td>
+<td class="px-lg py-md text-center">
+<span class="inline-block px-3 py-1 rounded bg-status-error/10 text-status-error font-status-pill text-status-pill">Tier 3</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center">
+<span class="w-2 h-2 rounded-full bg-status-pending mr-2"></span>
+<span class="font-status-pill text-status-pill text-on-surface">AWAITING APPROVAL</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 rounded-full bg-primary-fixed-dim flex items-center justify-center text-[10px] text-primary">JD</div>
+<span class="text-sm">John Doe</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="text-sm font-medium text-primary">Factory Manager</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="bg-surface-container border border-border-subtle hover:bg-primary hover:text-on-primary px-3 py-1.5 rounded transition-all font-label-md text-xs">View Details</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-md font-bold text-primary">CR-WO-ABD-12-882-04</td>
+<td class="px-lg py-md">
+<a class="text-secondary font-semibold hover:underline flex items-center" href="#">
+                                        WO-5102 <span class="material-symbols-outlined text-[14px] ml-1">open_in_new</span>
+</a>
+</td>
+<td class="px-lg py-md text-on-surface-variant">Additional Item</td>
+<td class="px-lg py-md text-center">
+<span class="inline-block px-3 py-1 rounded bg-status-pending/10 text-status-pending font-status-pill text-status-pill">Tier 2</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center">
+<span class="w-2 h-2 rounded-full bg-status-success mr-2"></span>
+<span class="font-status-pill text-status-pill text-on-surface">APPROVED</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center text-[10px] text-on-secondary-fixed">SK</div>
+<span class="text-sm">Sarah Khan</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="text-sm italic text-on-surface-variant">—</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="bg-surface-container border border-border-subtle hover:bg-primary hover:text-on-primary px-3 py-1.5 rounded transition-all font-label-md text-xs">View Details</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-md font-bold text-primary">CR-WO-CHH-26-092-02</td>
+<td class="px-lg py-md">
+<a class="text-secondary font-semibold hover:underline flex items-center" href="#">
+                                        WO-4921 <span class="material-symbols-outlined text-[14px] ml-1">open_in_new</span>
+</a>
+</td>
+<td class="px-lg py-md text-on-surface-variant">Material Substitution</td>
+<td class="px-lg py-md text-center">
+<span class="inline-block px-3 py-1 rounded bg-on-primary-fixed-variant/10 text-on-primary-fixed-variant font-status-pill text-status-pill">Tier 1</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center">
+<span class="w-2 h-2 rounded-full bg-status-production mr-2"></span>
+<span class="font-status-pill text-status-pill text-on-surface">IMPLEMENTED</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 rounded-full bg-tertiary-fixed-dim flex items-center justify-center text-[10px] text-tertiary">RB</div>
+<span class="text-sm">Ray Bradley</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="text-sm italic text-on-surface-variant">—</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="bg-surface-container border border-border-subtle hover:bg-primary hover:text-on-primary px-3 py-1.5 rounded transition-all font-label-md text-xs">View Details</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-md font-bold text-primary">CR-WO-XYZ-90-111-05</td>
+<td class="px-lg py-md">
+<a class="text-secondary font-semibold hover:underline flex items-center" href="#">
+                                        WO-6022 <span class="material-symbols-outlined text-[14px] ml-1">open_in_new</span>
+</a>
+</td>
+<td class="px-lg py-md text-on-surface-variant">Design Rework</td>
+<td class="px-lg py-md text-center">
+<span class="inline-block px-3 py-1 rounded bg-status-error/10 text-status-error font-status-pill text-status-pill">Tier 3</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center">
+<span class="w-2 h-2 rounded-full bg-error mr-2"></span>
+<span class="font-status-pill text-status-pill text-on-surface">REJECTED</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-[10px] text-on-primary">ML</div>
+<span class="text-sm">Mike Lowrey</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="text-sm italic text-on-surface-variant">—</span>
+</td>
+<td class="px-lg py-md text-right">
+<button class="bg-surface-container border border-border-subtle hover:bg-primary hover:text-on-primary px-3 py-1.5 rounded transition-all font-label-md text-xs">View Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Record Count -->
+<div class="px-lg py-md bg-surface-container-low flex justify-between items-center rounded-b-xl border-t border-border-subtle">
+<span class="text-xs text-on-surface-variant font-medium">Showing 1 to 10 of 42 records</span>
+<div class="flex items-center space-x-sm">
+<button class="p-1 rounded hover:bg-surface-container-highest transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary font-bold text-xs">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-highest transition-colors font-bold text-xs">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-highest transition-colors font-bold text-xs">3</button>
+<button class="p-1 rounded hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Contextual Help / Status Legend (Minimalist Footer) -->
+<div class="flex flex-wrap gap-xl pt-lg border-t border-border-subtle opacity-60">
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded bg-status-error"></span>
+<span class="text-[11px] uppercase font-label-md">Tier 3: Executive/Safety Impact</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded bg-status-pending"></span>
+<span class="text-[11px] uppercase font-label-md">Tier 2: Major Cost/Timeline Change</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded bg-on-primary-fixed-variant"></span>
+<span class="text-[11px] uppercase font-label-md">Tier 1: Minor Operational Adjustment</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Client-side micro-interactions -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Highlight row on click
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                row.addEventListener('click', (e) => {
+                    if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
+                        rows.forEach(r => r.classList.remove('bg-secondary-container/10'));
+                        row.classList.add('bg-secondary-container/10');
+                    }
+                });
+            });
+
+            // Tab switching effect (Simulated)
+            const navItems = document.querySelectorAll('aside nav a');
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    // Logic for switching tabs would go here
+                    // Keeping simple for prototype
+                });
+            });
+        });
+    </script>
+</body></html>

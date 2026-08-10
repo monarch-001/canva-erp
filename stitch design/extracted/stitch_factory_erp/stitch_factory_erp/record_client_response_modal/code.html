@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Canva Concepts - Record Client Response</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#e5e2e1",
+                    "surface": "#faf9f5",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#474746",
+                    "on-surface": "#1b1c1a",
+                    "tertiary": "#000000",
+                    "status-financial": "#14532D",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#cbe6ff",
+                    "primary": "#000000",
+                    "on-background": "#1b1c1a",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "error": "#ba1a1a",
+                    "status-material": "#0891B2",
+                    "surface-container-highest": "#e3e2df",
+                    "inverse-primary": "#c8c6c5",
+                    "background": "#faf9f5",
+                    "outline": "#747878",
+                    "secondary-container": "#fdd977",
+                    "inverse-surface": "#30312e",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c4c7c7",
+                    "status-production": "#F97316",
+                    "primary-container": "#1c1b1b",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "on-secondary-container": "#775e00",
+                    "status-success": "#2D7D46",
+                    "on-primary-fixed": "#1c1b1b",
+                    "on-surface-variant": "#444748",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e3e2df",
+                    "surface-container-low": "#f5f4f0",
+                    "inverse-on-surface": "#f2f1ed",
+                    "status-draft": "#888888",
+                    "surface-bright": "#faf9f5",
+                    "on-tertiary-fixed": "#001e30",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "tertiary-container": "#001e30",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#dbdad6",
+                    "status-invoice": "#7C3AED",
+                    "status-error": "#C0392B",
+                    "secondary": "#745b00",
+                    "border-subtle": "#E8E8E8",
+                    "surface-tint": "#5f5e5e",
+                    "surface-container-high": "#e9e8e4",
+                    "secondary-fixed-dim": "#e5c363",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-card": "#FFFFFF",
+                    "on-tertiary-container": "#5889af",
+                    "surface-container": "#efeeea",
+                    "status-pending": "#F59E0B",
+                    "secondary-fixed": "#ffe08c",
+                    "on-primary-container": "#858383"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "xs": "4px",
+                    "sidebar-width": "260px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "title-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "status-pill": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .modal-overlay { background-color: rgba(27, 28, 26, 0.4); backdrop-filter: blur(4px); }
+        input[type="radio"]:checked {
+            background-color: #745b00; /* secondary */
+            border-color: #745b00;
+        }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #745b00;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #745b00;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SIDEBAR -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-primary py-lg flex flex-col z-40">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary font-bold">Canva Concepts</h1>
+<p class="text-on-primary opacity-60 text-xs tracking-wider">INDUSTRIAL ERP</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-lg py-3 text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center px-lg py-3 bg-secondary text-on-primary border-l-4 border-secondary-container font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-3">manufacturing</span>
+                Work Orders
+            </a>
+<a class="flex items-center px-lg py-3 text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+                Users
+            </a>
+<a class="flex items-center px-lg py-3 text-on-primary opacity-80 hover:opacity-100 hover:bg-surface-container-highest transition-colors font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-3">payments</span>
+                Finance
+            </a>
+</nav>
+<div class="mt-auto px-lg space-y-1">
+<a class="flex items-center py-2 text-on-primary opacity-80 hover:opacity-100 font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+                Settings
+            </a>
+<a class="flex items-center py-2 text-on-primary opacity-80 hover:opacity-100 font-title-md text-title-md" href="#">
+<span class="material-symbols-outlined mr-3">help</span>
+                Support
+            </a>
+</div>
+</aside>
+<!-- MAIN CONTENT AREA (Underlay) -->
+<main class="flex-1 ml-sidebar-width">
+<!-- Top Nav -->
+<header class="bg-surface border-b border-border-subtle h-16 flex justify-between items-center px-lg w-full">
+<h2 class="font-headline-sm text-headline-sm text-primary">Work Order Management</h2>
+<div class="flex items-center gap-md">
+<div class="relative group">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-outline">
+<span class="material-symbols-outlined text-md">search</span>
+</span>
+<input class="pl-10 h-10 w-64 bg-surface-container-low border-border-subtle rounded text-body-md focus:ring-1 focus:ring-secondary-fixed outline-none" placeholder="Search Work Orders..." type="text"/>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-all">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a factory floor manager in a high-tech manufacturing facility. The manager is wearing a dark navy corporate polo and looking confidently toward the camera. Soft industrial lighting illuminates the background, which features blurred modern machinery and digital screens. Professional and authoritative atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjWqKq_4QQGIy8y9leOMmLwCVYxaBKE7OM_xCKhA5ISrdZ9yMaFQKEJGU_H0lAij8_sHJRSf_gwiUAhLnGcUbP81C0oQsrEj_HxrqUrsy8PVKiD9ZwSGo_i2DcVUmQhcV062yarkllk9nXhQ47vv023xs-CTQ5qoqzpFU90IihlQHCOIb85M1JHX1ZqeZ9e6J5YqwWAKNWXBowQQSPCRaB2TJSVei0-wKpkT-121HmucwpE6RBv1-Arw"/>
+</div>
+</div>
+</header>
+<!-- Dummy Background Dashboard Content -->
+<div class="p-lg max-w-container-max mx-auto space-y-lg opacity-50">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface-card p-lg border border-border-subtle">
+<div class="text-on-surface-variant font-label-md text-label-md">Pending Response</div>
+<div class="font-headline-md text-headline-md mt-sm">24 Quotes</div>
+</div>
+<div class="bg-surface-card p-lg border border-border-subtle">
+<div class="text-on-surface-variant font-label-md text-label-md">Active Production</div>
+<div class="font-headline-md text-headline-md mt-sm">112 Items</div>
+</div>
+<div class="bg-surface-card p-lg border border-border-subtle">
+<div class="text-on-surface-variant font-label-md text-label-md">Finance Approval</div>
+<div class="font-headline-md text-headline-md mt-sm">$452.8k</div>
+</div>
+</div>
+<div class="bg-surface-card border border-border-subtle overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container border-b border-border-subtle">
+<tr>
+<th class="px-md py-3 font-title-md text-title-md">Quote ID</th>
+<th class="px-md py-3 font-title-md text-title-md">Client</th>
+<th class="px-md py-3 font-title-md text-title-md">Value</th>
+<th class="px-md py-3 font-title-md text-title-md">Status</th>
+<th class="px-md py-3 font-title-md text-title-md">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-4 font-body-md text-body-md">QT-2024-882</td>
+<td class="px-md py-4 font-body-md text-body-md">Precision Dynamics Ltd.</td>
+<td class="px-md py-4 font-body-md text-body-md">$12,450</td>
+<td class="px-md py-4">
+<span class="bg-[#F59E0B15] text-[#F59E0B] px-2 py-0.5 rounded-full font-status-pill text-status-pill">PENDING</span>
+</td>
+<td class="px-md py-4">
+<button class="text-secondary font-title-md text-title-md hover:underline">Record Response</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-4 font-body-md text-body-md">QT-2024-883</td>
+<td class="px-md py-4 font-body-md text-body-md">Industrial Flow Systems</td>
+<td class="px-md py-4 font-body-md text-body-md">$8,900</td>
+<td class="px-md py-4">
+<span class="bg-[#F59E0B15] text-[#F59E0B] px-2 py-0.5 rounded-full font-status-pill text-status-pill">PENDING</span>
+</td>
+<td class="px-md py-4">
+<button class="text-secondary font-title-md text-title-md hover:underline">Record Response</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- MODAL COMPONENT: Record Client Response -->
+<div class="fixed inset-0 z-50 flex items-center justify-center modal-overlay" id="responseModal">
+<div class="bg-surface-card w-full max-w-lg border border-border-subtle shadow-2xl relative overflow-hidden transition-all duration-300 transform scale-100">
+<!-- Modal Header -->
+<div class="px-lg py-md border-b border-border-subtle flex justify-between items-center bg-surface-container">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Record Client Response</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">QT-2024-882 | Precision Dynamics Ltd.</p>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1" onclick="closeModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Content -->
+<div class="p-lg space-y-lg">
+<!-- Radio Options Section -->
+<div>
+<label class="font-label-md text-label-md block mb-sm text-on-surface-variant">RESPONSE STATUS</label>
+<div class="grid grid-cols-3 gap-md">
+<label class="flex flex-col items-center justify-center p-md border border-border-subtle cursor-pointer hover:border-secondary transition-all rounded-lg group">
+<input class="sr-only" name="response" onchange="toggleFields('accepted')" type="radio" value="accepted"/>
+<span class="material-symbols-outlined text-status-success mb-2 text-2xl">check_circle</span>
+<span class="font-title-md text-title-md text-on-surface group-hover:text-secondary">Accepted</span>
+</label>
+<label class="flex flex-col items-center justify-center p-md border border-border-subtle cursor-pointer hover:border-secondary transition-all rounded-lg group">
+<input class="sr-only" name="response" onchange="toggleFields('negotiating')" type="radio" value="negotiating"/>
+<span class="material-symbols-outlined text-status-pending mb-2 text-2xl">sync_alt</span>
+<span class="font-title-md text-title-md text-on-surface group-hover:text-secondary">Negotiating</span>
+</label>
+<label class="flex flex-col items-center justify-center p-md border border-border-subtle cursor-pointer hover:border-secondary transition-all rounded-lg group">
+<input class="sr-only" name="response" onchange="toggleFields('rejected')" type="radio" value="rejected"/>
+<span class="material-symbols-outlined text-status-error mb-2 text-2xl">cancel</span>
+<span class="font-title-md text-title-md text-on-surface group-hover:text-secondary">Rejected</span>
+</label>
+</div>
+</div>
+<!-- Conditional Fields: ACCEPTED -->
+<div class="hidden space-y-md animate-in fade-in duration-300" id="acceptedFields">
+<div class="flex items-center justify-between p-md bg-status-success/5 border border-status-success/20 rounded-lg">
+<div>
+<p class="font-title-md text-title-md text-status-success">Next Step: Conversion</p>
+<p class="text-body-md text-on-surface-variant">Approved quotes can be immediately converted to Work Orders.</p>
+</div>
+</div>
+<div class="flex items-center gap-md py-sm">
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="advance_payment" name="advance_payment" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-highest cursor-pointer" for="advance_payment"></label>
+</div>
+<label class="font-body-md text-body-md" for="advance_payment">Advance payment confirmed</label>
+</div>
+</div>
+<!-- Conditional Fields: NEGOTIATING -->
+<div class="hidden space-y-md animate-in fade-in duration-300" id="negotiatingFields">
+<div>
+<label class="font-label-md text-label-md block mb-sm">CLIENT COMMENTS</label>
+<textarea class="w-full border border-border-subtle p-md font-body-md text-body-md focus:border-secondary outline-none rounded-lg bg-surface-container-lowest transition-all" placeholder="Enter details of client request or points of friction..." rows="3"></textarea>
+</div>
+<div class="flex items-center gap-md py-sm">
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="revised_quote" name="revised_quote" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-highest cursor-pointer" for="revised_quote"></label>
+</div>
+<label class="font-body-md text-body-md" for="revised_quote">Create Revised Quote draft?</label>
+</div>
+</div>
+<!-- Conditional Fields: REJECTED -->
+<div class="hidden space-y-md animate-in fade-in duration-300" id="rejectedFields">
+<div>
+<label class="font-label-md text-label-md block mb-sm">REJECTION REASON</label>
+<select class="w-full border border-border-subtle h-10 px-md font-body-md text-body-md focus:border-secondary outline-none rounded-lg bg-surface-container-lowest transition-all">
+<option value="">Select Reason...</option>
+<option value="price">Price too high</option>
+<option value="competitor">Competitor selected</option>
+<option value="timeline">Lead time too long</option>
+<option value="scope">Project cancelled/postponed</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div>
+<label class="font-label-md text-label-md block mb-sm">ADDITIONAL NOTES</label>
+<textarea class="w-full border border-border-subtle p-md font-body-md text-body-md focus:border-secondary outline-none rounded-lg bg-surface-container-lowest transition-all" placeholder="Internal notes regarding rejection..." rows="2"></textarea>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-lg py-md border-t border-border-subtle flex justify-end gap-md bg-surface">
+<button class="px-lg py-2 border border-primary font-title-md text-title-md hover:bg-surface-container-highest transition-colors" onclick="closeModal()">
+                    Cancel
+                </button>
+<button class="px-lg py-2 bg-secondary text-on-primary font-title-md text-title-md hover:opacity-90 active:scale-95 transition-all" onclick="saveResponse()">
+                    Save Response
+                </button>
+</div>
+</div>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        function toggleFields(status) {
+            // Hide all
+            document.getElementById('acceptedFields').classList.add('hidden');
+            document.getElementById('negotiatingFields').classList.add('hidden');
+            document.getElementById('rejectedFields').classList.add('hidden');
+
+            // Reset borders of labels
+            const labels = document.querySelectorAll('input[name="response"]');
+            labels.forEach(input => {
+                input.parentElement.classList.remove('bg-secondary-container', 'border-secondary');
+                input.parentElement.classList.add('border-border-subtle');
+            });
+
+            // Show selected & highlight
+            const activeInput = document.querySelector(`input[value="${status}"]`);
+            activeInput.parentElement.classList.add('bg-secondary-container', 'border-secondary');
+            activeInput.parentElement.classList.remove('border-border-subtle');
+
+            if (status === 'accepted') {
+                document.getElementById('acceptedFields').classList.remove('hidden');
+            } else if (status === 'negotiating') {
+                document.getElementById('negotiatingFields').classList.remove('hidden');
+            } else if (status === 'rejected') {
+                document.getElementById('rejectedFields').classList.remove('hidden');
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('responseModal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        function saveResponse() {
+            const selectedStatus = document.querySelector('input[name="response"]:checked')?.value;
+            if(!selectedStatus) {
+                alert('Please select a response status.');
+                return;
+            }
+            
+            // Simple success simulation
+            const btn = event.currentTarget;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Saving...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                alert('Response recorded successfully.');
+                closeModal();
+                btn.innerHTML = 'Save Response';
+                btn.disabled = false;
+            }, 1000);
+        }
+
+        // Initialize state
+        window.onload = () => {
+            // Initial call if needed
+        }
+    </script>
+</body></html>

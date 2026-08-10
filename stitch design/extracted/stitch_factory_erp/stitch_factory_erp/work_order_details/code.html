@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Work Order Detail | Canva Concepts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .active-tab {
+            border-bottom: 2px solid #C8A84B;
+            color: #745b00;
+        }
+        /* Custom scrollbar for data density */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #efeeea;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c8c6c5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C8A84B;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "status-financial": "#14532D",
+                        "on-primary-container": "#858383",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "inverse-surface": "#30312e",
+                        "on-primary-fixed": "#1c1b1b",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f2f1ed",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#001e30",
+                        "border-subtle": "#E8E8E8",
+                        "on-surface": "#1b1c1a",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-container-high": "#e9e8e4",
+                        "secondary-container": "#fdd977",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-variant": "#e3e2df",
+                        "primary-container": "#1c1b1b",
+                        "on-error": "#ffffff",
+                        "outline": "#747878",
+                        "surface-container": "#efeeea",
+                        "status-production": "#F97316",
+                        "primary-fixed": "#e5e2e1",
+                        "surface": "#faf9f5",
+                        "secondary": "#745b00",
+                        "surface-dim": "#dbdad6",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#ffe08c",
+                        "tertiary-fixed": "#cbe6ff",
+                        "surface-bright": "#faf9f5",
+                        "on-background": "#1b1c1a",
+                        "surface-card": "#FFFFFF",
+                        "status-invoice": "#7C3AED",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#775e00",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#474746",
+                        "status-material": "#0891B2",
+                        "outline-variant": "#c4c7c7",
+                        "tertiary-container": "#001e30",
+                        "surface-container-low": "#f5f4f0",
+                        "status-error": "#C0392B",
+                        "status-draft": "#888888",
+                        "secondary-fixed-dim": "#e5c363",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#000000",
+                        "primary": "#000000",
+                        "background": "#faf9f5",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "status-success": "#2D7D46",
+                        "on-secondary-fixed-variant": "#584400",
+                        "surface-tint": "#5f5e5e",
+                        "status-pending": "#F59E0B",
+                        "on-tertiary-container": "#5889af",
+                        "inverse-primary": "#c8c6c5",
+                        "surface-container-highest": "#e3e2df",
+                        "on-surface-variant": "#444748"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "sidebar-width": "260px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Inter"],
+                        "status-pill": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-primary text-on-primary flex flex-col py-lg z-50">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-sm text-headline-sm font-bold text-on-primary">Canva Concepts</h1>
+<p class="text-xs opacity-60 uppercase tracking-widest">Industrial ERP</p>
+</div>
+<nav class="flex-1 px-sm space-y-base">
+<a class="flex items-center gap-md px-md py-sm text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-title-md text-title-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary text-on-primary border-l-4 border-secondary-container transition-colors" href="#">
+<span class="material-symbols-outlined">manufacturing</span>
+<span class="font-title-md text-title-md">Work Orders</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-title-md text-title-md">Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary opacity-80 hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-title-md text-title-md">Finance</span>
+</a>
+</nav>
+<div class="mt-auto px-sm pt-lg border-t border-white/10">
+<a class="flex items-center gap-md px-md py-sm text-on-primary opacity-80 hover:opacity-100" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-title-md text-title-md">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-primary opacity-80 hover:opacity-100" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-title-md text-title-md">Support</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-sidebar-width right-0 h-16 bg-surface border-b border-border-subtle flex items-center justify-between px-lg z-40">
+<div class="flex items-center gap-md">
+<span class="font-headline-sm text-headline-sm text-primary">Work Order Detail</span>
+<div class="h-6 w-[1px] bg-outline-variant mx-sm"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">WO-7721-B</span>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-xl pr-md py-xs bg-surface-container-low border border-border-subtle rounded text-sm focus:outline-none focus:border-secondary w-64" placeholder="Search orders..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-all">help</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior manufacturing project manager in a clean industrial office environment. He has a focused expression, wearing a tailored navy blazer and a light blue shirt. The background shows soft-focus blueprints and architectural models, illuminated by warm, high-end natural office lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUrFDAWua3zNHQyK0LEvjYYF5kz2BaKLyLNql0QPQdblw8bp8KbI5yXZgS2GH2xupdnvoGh6trSMSwaEAxdtbiRp6f7bGMdVVKv50y9LfiaM6vh7FyaTEruMHZAsI4C93JYgfM5Y1tqDXg70LMlFhbAsDcegmK5m0F4gCiKATU5R76YwyAeRgwlkDfC9qxJhCZp0tsM1sDORyrXnGMy4mmTPMIKuUk8c0rj2-GkejLr4UvkAext2tNaQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-sidebar-width pt-16 p-lg max-w-container-max mx-auto">
+<!-- Header Actions Section -->
+<div class="bg-surface-card border border-border-subtle p-lg rounded-lg mb-lg flex flex-col md:flex-row md:items-center justify-between gap-lg">
+<div class="flex items-start gap-lg">
+<div class="w-16 h-16 bg-surface-container-highest flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-3xl text-secondary">precision_manufacturing</span>
+</div>
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<h2 class="font-headline-md text-headline-md">WO-7721-B: Executive Series Seating</h2>
+<span class="px-sm py-[2px] bg-secondary-container text-on-secondary-container font-status-pill text-status-pill rounded">IN PRODUCTION</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant font-label-md text-label-md">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-status-error text-base" style="font-variation-settings: 'FILL' 1;">priority_high</span> CRITICAL PRIORITY</span>
+<span class="opacity-30">|</span>
+<span>Created: Oct 24, 2023</span>
+<span class="opacity-30">|</span>
+<span>Owner: Marcus V.</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="px-md py-sm bg-status-success text-on-primary font-label-md text-label-md rounded flex items-center gap-xs hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">check_circle</span> Approve
+                </button>
+<button class="px-md py-sm bg-white border border-primary text-primary font-label-md text-label-md rounded flex items-center gap-xs hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">edit</span> Edit
+                </button>
+<button class="px-md py-sm bg-white border border-error text-error font-label-md text-label-md rounded flex items-center gap-xs hover:bg-error-container transition-all">
+<span class="material-symbols-outlined">cancel</span> Cancel
+                </button>
+</div>
+</div>
+<!-- Tabbed Interface -->
+<div class="bg-surface-card border border-border-subtle rounded-lg overflow-hidden">
+<div class="flex border-b border-border-subtle bg-surface-container-low">
+<button class="px-lg py-md font-title-md text-title-md active-tab flex items-center gap-sm" id="tab-details" onclick="switchTab('details')">
+<span class="material-symbols-outlined">info</span> Details
+                </button>
+<button class="px-lg py-md font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors flex items-center gap-sm" id="tab-status" onclick="switchTab('status')">
+<span class="material-symbols-outlined">history</span> Status History
+                </button>
+<button class="px-lg py-md font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors flex items-center gap-sm" id="tab-drawings" onclick="switchTab('drawings')">
+<span class="material-symbols-outlined">architecture</span> Drawings
+                </button>
+</div>
+<!-- Tab Content: Details -->
+<div class="p-lg" id="content-details">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
+<!-- Client Info -->
+<div class="space-y-md">
+<h3 class="font-title-md text-title-md border-b border-border-subtle pb-sm mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">corporate_fare</span> Client Information
+                        </h3>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Client Name</label>
+<p class="font-body-lg text-body-lg font-semibold">Global Financial Plaza</p>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Project ID</label>
+<p class="font-body-lg text-body-lg">PRJ-2023-991</p>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Contact Person</label>
+<p class="font-body-lg text-body-lg">Sarah Jenkins</p>
+</div>
+</div>
+<!-- Furniture Specs -->
+<div class="space-y-md">
+<h3 class="font-title-md text-title-md border-b border-border-subtle pb-sm mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">chair</span> Furniture Specs
+                        </h3>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Product Line</label>
+<p class="font-body-lg text-body-lg">Executive V-Series Seating</p>
+</div>
+<div class="flex gap-xl">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Quantity</label>
+<p class="font-body-lg text-body-lg">45 Units</p>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Finish</label>
+<p class="font-body-lg text-body-lg">Ebony Walnut / Full Grain</p>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Upholstery</label>
+<p class="font-body-lg text-body-lg">Midnight Charcoal Leather (Class A)</p>
+</div>
+</div>
+<!-- Delivery & Assignment -->
+<div class="space-y-md">
+<h3 class="font-title-md text-title-md border-b border-border-subtle pb-sm mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">local_shipping</span> Delivery & Assignment
+                        </h3>
+<div class="bg-surface-container-low p-md rounded border border-border-subtle">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Committed Date</label>
+<p class="font-body-lg text-body-lg font-bold text-status-error">Nov 12, 2023</p>
+</div>
+<button class="p-xs text-secondary hover:bg-white rounded transition-colors">
+<span class="material-symbols-outlined">calendar_month</span>
+</button>
+</div>
+<button class="w-full py-xs border border-secondary text-secondary font-label-md text-label-md rounded hover:bg-secondary hover:text-white transition-all">
+                                Edit Committed Date
+                            </button>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Assigned Team</label>
+<div class="flex items-center gap-sm">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-status-material flex items-center justify-center text-[10px] text-white">MK</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-status-production flex items-center justify-center text-[10px] text-white">JS</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-status-invoice flex items-center justify-center text-[10px] text-white">LV</div>
+</div>
+<span class="font-body-md text-body-md">Production Team B</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab Content: Status History -->
+<div class="p-lg hidden" id="content-status">
+<div class="max-w-3xl mx-auto space-y-0">
+<!-- Timeline Item -->
+<div class="flex gap-lg group">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-status-success text-on-primary flex items-center justify-center z-10 shrink-0">
+<span class="material-symbols-outlined">done</span>
+</div>
+<div class="w-[2px] flex-1 bg-status-success/30 group-last:hidden"></div>
+</div>
+<div class="pb-lg">
+<h4 class="font-title-md text-title-md">Order Created</h4>
+<p class="text-on-surface-variant font-label-md text-label-md mb-xs">Oct 24, 2023 at 09:12 AM</p>
+<p class="font-body-md text-body-md bg-surface-container p-sm rounded border border-border-subtle">Work order initiated by automated sales sync. Source: Salesforce ID #SF-2201.</p>
+</div>
+</div>
+<!-- Timeline Item -->
+<div class="flex gap-lg group">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-status-success text-on-primary flex items-center justify-center z-10 shrink-0">
+<span class="material-symbols-outlined">check</span>
+</div>
+<div class="w-[2px] flex-1 bg-status-success/30 group-last:hidden"></div>
+</div>
+<div class="pb-lg">
+<h4 class="font-title-md text-title-md">Materials Procured</h4>
+<p class="text-on-surface-variant font-label-md text-label-md mb-xs">Oct 26, 2023 at 02:45 PM</p>
+<p class="font-body-md text-body-md bg-surface-container p-sm rounded border border-border-subtle">Midnight Charcoal Leather stock confirmed and allocated from warehouse A-04.</p>
+</div>
+</div>
+<!-- Timeline Item -->
+<div class="flex gap-lg group">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-status-production text-on-primary flex items-center justify-center z-10 shrink-0">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+</div>
+<div class="w-[2px] flex-1 bg-border-subtle group-last:hidden"></div>
+</div>
+<div class="pb-lg">
+<h4 class="font-title-md text-title-md">Production Started</h4>
+<p class="text-on-surface-variant font-label-md text-label-md mb-xs">Oct 28, 2023 at 08:00 AM</p>
+<p class="font-body-md text-body-md bg-secondary-container/10 p-sm rounded border border-secondary/20">Cutting phase initiated. Estimated completion for cutting: Oct 30.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab Content: Drawings -->
+<div class="p-lg hidden" id="content-drawings">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-title-md text-title-md">Technical Documentation</h3>
+<button class="bg-primary text-on-primary px-md py-sm font-label-md text-label-md rounded flex items-center gap-sm hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">upload</span> Upload New Version
+                    </button>
+</div>
+<div class="space-y-md">
+<!-- Current Version -->
+<div class="border border-secondary/30 bg-secondary-container/5 rounded-lg p-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-status-error/10 text-status-error flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-3xl">picture_as_pdf</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md">Executive_Seating_Final_v3.pdf</h4>
+<p class="text-on-surface-variant text-xs">Uploaded Oct 28, 2023 • 14.2 MB • <span class="text-secondary font-bold">CURRENT VERSION</span></p>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="px-sm py-xs border border-border-subtle rounded hover:bg-surface-container transition-colors text-sm font-semibold flex items-center gap-xs">
+<span class="material-symbols-outlined text-base">visibility</span> View
+                                </button>
+<button class="px-sm py-xs bg-secondary text-on-primary rounded hover:opacity-90 transition-colors text-sm font-semibold flex items-center gap-xs">
+<span class="material-symbols-outlined text-base">download</span> Download
+                                </button>
+</div>
+</div>
+</div>
+<!-- Previous Version List -->
+<div class="mt-lg">
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-sm uppercase tracking-wide">Previous Revisions</h4>
+<div class="border border-border-subtle rounded overflow-hidden">
+<table class="w-full text-left font-body-md text-body-md">
+<thead class="bg-surface-container-low border-b border-border-subtle">
+<tr>
+<th class="px-md py-sm font-title-md">Filename</th>
+<th class="px-md py-sm font-title-md">Date</th>
+<th class="px-md py-sm font-title-md">Uploaded By</th>
+<th class="px-md py-sm font-title-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<tr>
+<td class="px-md py-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-base">description</span>
+                                            Executive_Seating_v2.pdf
+                                        </td>
+<td class="px-md py-sm text-on-surface-variant">Oct 25, 2023</td>
+<td class="px-md py-sm">Marcus V.</td>
+<td class="px-md py-sm text-right">
+<button class="text-secondary font-semibold hover:underline">Download</button>
+</td>
+</tr>
+<tr class="bg-surface-container-lowest">
+<td class="px-md py-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-base">description</span>
+                                            Draft_Specs_v1.pdf
+                                        </td>
+<td class="px-md py-sm text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-md py-sm">System Sync</td>
+<td class="px-md py-sm text-right">
+<button class="text-secondary font-semibold hover:underline">Download</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Helper -->
+<div class="mt-lg grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="bg-surface-container-low p-lg border border-border-subtle rounded flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary">lightbulb</span>
+<div>
+<h4 class="font-title-md text-title-md mb-xs">Production Note</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Upholstery must be inspected for grain consistency before assembly. Critical client requirement.</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-lg border border-border-subtle rounded flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary">inventory_2</span>
+<div>
+<h4 class="font-title-md text-title-md mb-xs">Component Status</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Base frames (45) received and staged in Bay 12. Hardware kits pending QC.</p>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function switchTab(tabId) {
+            // Hide all contents
+            document.getElementById('content-details').classList.add('hidden');
+            document.getElementById('content-status').classList.add('hidden');
+            document.getElementById('content-drawings').classList.add('hidden');
+            
+            // Remove active style from all tabs
+            document.getElementById('tab-details').classList.remove('active-tab', 'text-secondary');
+            document.getElementById('tab-status').classList.remove('active-tab', 'text-secondary');
+            document.getElementById('tab-drawings').classList.remove('active-tab', 'text-secondary');
+            
+            // Set inactive colors
+            document.getElementById('tab-details').classList.add('text-on-surface-variant');
+            document.getElementById('tab-status').classList.add('text-on-surface-variant');
+            document.getElementById('tab-drawings').classList.add('text-on-surface-variant');
+
+            // Show selected content
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            
+            // Set active tab style
+            const activeTab = document.getElementById('tab-' + tabId);
+            activeTab.classList.add('active-tab');
+            activeTab.classList.remove('text-on-surface-variant');
+        }
+
+        // Simple animation logic for the tabs
+        document.querySelectorAll('button[onclick^="switchTab"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.add('scale-95');
+                setTimeout(() => btn.classList.remove('scale-95'), 100);
+            });
+        });
+    </script>
+</body></html>

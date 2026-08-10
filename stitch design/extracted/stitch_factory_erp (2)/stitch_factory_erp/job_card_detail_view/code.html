@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Titan ERP - Job Card Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e9e8e4",
+                    "surface-bright": "#faf9f5",
+                    "secondary-fixed-dim": "#e5c363",
+                    "border-subtle": "#E8E8E8",
+                    "on-secondary-fixed-variant": "#584400",
+                    "surface-container-low": "#f5f4f0",
+                    "status-draft": "#888888",
+                    "outline": "#747878",
+                    "status-production": "#F97316",
+                    "secondary-fixed": "#ffe08c",
+                    "inverse-primary": "#c8c6c5",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary": "#000000",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#5889af",
+                    "status-material": "#0891B2",
+                    "surface-variant": "#e3e2df",
+                    "on-surface": "#1b1c1a",
+                    "status-financial": "#14532D",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#444748",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "surface-container-highest": "#e3e2df",
+                    "outline-variant": "#c4c7c7",
+                    "on-primary-fixed": "#1c1b1b",
+                    "on-background": "#1b1c1a",
+                    "status-error": "#C0392B",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#858383",
+                    "tertiary-container": "#001e30",
+                    "status-invoice": "#7C3AED",
+                    "on-tertiary-fixed": "#001e30",
+                    "surface-container": "#efeeea",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "on-primary-fixed-variant": "#474746",
+                    "inverse-surface": "#30312e",
+                    "surface-dim": "#dbdad6",
+                    "primary-fixed": "#e5e2e1",
+                    "primary-container": "#1c1b1b",
+                    "tertiary-fixed": "#cbe6ff",
+                    "secondary": "#745b00",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "status-pending": "#F59E0B",
+                    "surface-card": "#FFFFFF",
+                    "background": "#faf9f5",
+                    "on-secondary-container": "#775e00",
+                    "on-primary": "#ffffff",
+                    "surface": "#faf9f5",
+                    "primary": "#000000",
+                    "inverse-on-surface": "#f2f1ed",
+                    "surface-tint": "#5f5e5e",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#fdd977",
+                    "status-success": "#2D7D46"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sidebar-width": "260px",
+                    "container-max": "1440px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "status-pill": ["Inter"],
+                    "title-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f5; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: #e5c363 !important; color: #241a00 !important; border-left: 4px solid #745b00; }
+        .status-badge { padding: 4px 12px; border-radius: 2px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+        .card-outline { border: 1px solid #E8E8E8; background-color: #FFFFFF; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e3e2df; border-radius: 10px; }
+    </style>
+</head>
+<body class="overflow-hidden">
+<!-- Side Navigation Bar -->
+<aside class="flex flex-col h-screen w-sidebar-width fixed left-0 z-50 py-lg bg-inverse-surface">
+<div class="px-md mb-xl">
+<h1 class="font-headline-md text-headline-md text-surface-lowest mb-1">Titan ERP</h1>
+<div class="flex items-center gap-sm opacity-80">
+<span class="w-2 h-2 rounded-full bg-status-success"></span>
+<span class="font-label-md text-label-md text-surface-variant">Plant Floor A1</span>
+</div>
+</div>
+<nav class="flex-grow flex flex-col">
+<a class="text-surface-variant opacity-80 p-md flex items-center gap-md hover:bg-surface-variant/10 hover:opacity-100 transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="bg-secondary-fixed-dim text-on-secondary-fixed border-l-4 border-secondary-fixed p-md flex items-center gap-md" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-md text-label-md">Work Orders</span>
+</a>
+<a class="text-surface-variant opacity-80 p-md flex items-center gap-md hover:bg-surface-variant/10 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="text-surface-variant opacity-80 p-md flex items-center gap-md hover:bg-surface-variant/10 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span class="font-label-md text-label-md">Production</span>
+</a>
+<a class="text-surface-variant opacity-80 p-md flex items-center gap-md hover:bg-surface-variant/10 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Finance</span>
+</a>
+<a class="text-surface-variant opacity-80 p-md flex items-center gap-md hover:bg-surface-variant/10 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Users</span>
+</a>
+</nav>
+<div class="mt-auto px-md pt-md border-t border-surface-variant/10">
+<div class="bg-surface-variant/5 p-sm rounded-lg mb-md">
+<p class="font-label-md text-label-md text-secondary-fixed mb-1">System Status: Online</p>
+<p class="text-[10px] text-surface-variant opacity-50 uppercase tracking-widest">Uptime 99.98%</p>
+</div>
+<a class="text-surface-variant opacity-80 p-sm flex items-center gap-md hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+<a class="text-surface-variant opacity-80 p-sm flex items-center gap-md hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="ml-sidebar-width h-screen overflow-y-auto custom-scrollbar bg-surface-container-low">
+<!-- Top Navigation Bar -->
+<header class="bg-surface sticky top-0 z-40 border-b border-border-subtle flex justify-between items-center px-lg h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="arrow_back">arrow_back</span>
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant">Production Unit / Job Cards</span>
+<h2 class="font-title-md text-title-md text-primary">JC-230826-001</h2>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative group">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-status-error rounded-full border-2 border-surface"></span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="settings">settings</span>
+<button class="bg-primary text-white font-label-md text-label-md px-md py-sm rounded transition-all active:opacity-80">Create Order</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a senior factory floor supervisor wearing a subtle gold-trimmed uniform, minimalist high-key studio lighting with a neutral gray background, modern and professional corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSZuKwXFi-hSqKQGqXN31euu1Xup0lX7n-p-qzP31CZF7CCZBaglPkwWETSrWzvEK5S5jy9TxUChBB8DUAjHzQWH5BoImdFPH8tDV03wvuOUnkYOOe6WgILYDkujJOGLeXgt_aQkloaJxGyBtm6yRBVy9kei3UKJQ_Zm0FrXG5ZnYbr3OBmdJtMvdBGaOSkwYHAs0OB1irBglTeTwTsNyCie2AhNa5l8Lj3G7HyqSrrFi3_FxuacwPwA"/>
+</div>
+</div>
+</header>
+<div class="max-w-container-max mx-auto p-lg">
+<!-- Rework Banner (Conditional Visibility) -->
+<div class="mb-lg bg-status-error/10 border-l-4 border-status-error p-md flex items-center gap-md">
+<span class="material-symbols-outlined text-status-error" data-icon="warning">warning</span>
+<div>
+<h3 class="font-title-md text-title-md text-status-error">⚠️ REWORK JOB CARD</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Reason: QC checkpoint failed - Surface finish inconsistencies on Unit 04 &amp; 07.</p>
+</div>
+</div>
+<!-- Job Header Info -->
+<div class="card-outline p-lg mb-lg flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm">
+<span class="font-headline-sm text-headline-sm text-primary">JC-230826-001</span>
+<span class="text-on-surface-variant opacity-40">|</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Aug 26, 2023</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-tighter">WO Number:</span>
+<a class="font-label-md text-label-md text-status-material hover:underline decoration-2" href="#">WO-9942-B</a>
+</div>
+</div>
+<div class="flex flex-wrap gap-sm">
+<div class="bg-status-production/10 text-status-production status-badge">Section 4.3</div>
+<div class="bg-status-pending/10 text-status-pending status-badge">In Progress</div>
+<div class="bg-status-error text-white status-badge">CRITICAL</div>
+</div>
+</div>
+<!-- Main Content Bento Grid -->
+<div class="bento-grid">
+<!-- Left Column: Details & Progress -->
+<div class="col-span-12 lg:col-span-8 space-y-lg">
+<!-- Task Details -->
+<div class="card-outline p-lg">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-title-md text-title-md text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="description">description</span>
+                                Task Details
+                            </h3>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container-low px-sm py-xs">PRD-09 Component Assembly</span>
+</div>
+<div class="space-y-md">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                Precision assembly of 12 mahogany structural frames for the premium yacht interior project. Requires meticulous joinery and grain matching according to Section 4.3 specification. Ensure all joints are sealed with marine-grade adhesive.
+                            </p>
+<div class="grid grid-cols-3 gap-md pt-md border-t border-border-subtle">
+<div>
+<p class="text-[11px] text-on-surface-variant uppercase font-bold tracking-widest mb-1">Target Quantity</p>
+<p class="font-headline-sm text-headline-sm text-primary">12 <span class="text-label-md font-normal">Units</span></p>
+</div>
+<div>
+<p class="text-[11px] text-on-surface-variant uppercase font-bold tracking-widest mb-1">Estimated Hours</p>
+<p class="font-headline-sm text-headline-sm text-primary">48.0 <span class="text-label-md font-normal">Hrs</span></p>
+</div>
+<div>
+<p class="text-[11px] text-on-surface-variant uppercase font-bold tracking-widest mb-1">Stage</p>
+<p class="font-headline-sm text-headline-sm text-primary">Finishing</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Real-time Progress -->
+<div class="card-outline p-lg">
+<h3 class="font-title-md text-title-md text-primary flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="analytics">analytics</span>
+                            Production Progress
+                        </h3>
+<div class="space-y-xl">
+<!-- Progress Bar -->
+<div>
+<div class="flex justify-between items-end mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Unit Completion (8/12)</span>
+<span class="font-title-md text-title-md text-primary">66.7%</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim" style="width: 66.7%"></div>
+</div>
+</div>
+<!-- Hours Comparison -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="bg-surface-container-low p-md rounded-lg">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant">Actual Hours Logged</span>
+<span class="material-symbols-outlined text-status-material text-sm" data-icon="timer">timer</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<p class="font-headline-md text-headline-md text-primary">34.5</p>
+<p class="font-label-md text-label-md text-on-surface-variant">/ 48.0</p>
+</div>
+<div class="mt-md w-full h-1 bg-border-subtle rounded-full overflow-hidden">
+<div class="h-full bg-status-material" style="width: 72%"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant">Efficiency Rate</span>
+<span class="material-symbols-outlined text-status-success text-sm" data-icon="trending_up">trending_up</span>
+</div>
+<p class="font-headline-md text-headline-md text-status-success">92.4%</p>
+<p class="text-[10px] text-on-surface-variant font-medium mt-1">EXCEEDING PERFORMANCE TARGETS</p>
+</div>
+</div>
+<!-- Timeline -->
+<div class="pt-md border-t border-border-subtle">
+<p class="text-[11px] text-on-surface-variant uppercase font-bold tracking-widest mb-md">Status Timeline</p>
+<div class="relative flex justify-between items-start">
+<div class="absolute top-[18px] left-0 w-full h-[2px] bg-border-subtle -z-0"></div>
+<!-- Milestone 1 -->
+<div class="flex flex-col items-center gap-xs z-10 bg-surface-container-low px-sm">
+<div class="w-10 h-10 rounded-full bg-status-success text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="text-[10px] font-bold text-center">QUEUED</span>
+</div>
+<!-- Milestone 2 -->
+<div class="flex flex-col items-center gap-xs z-10 bg-surface-container-low px-sm">
+<div class="w-10 h-10 rounded-full bg-status-success text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="text-[10px] font-bold text-center">IN PROGRESS</span>
+</div>
+<!-- Milestone 3 -->
+<div class="flex flex-col items-center gap-xs z-10 bg-surface-container-low px-sm">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-sm" data-icon="settings" style="font-variation-settings: 'wght' 700;">settings</span>
+</div>
+<span class="text-[10px] font-bold text-center text-primary">ASSEMBLY</span>
+</div>
+<!-- Milestone 4 -->
+<div class="flex flex-col items-center gap-xs z-10 bg-surface-container-low px-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-border-subtle text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm opacity-40" data-icon="search">search</span>
+</div>
+<span class="text-[10px] font-bold text-center opacity-40">QC CHECK</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- EOD Updates History -->
+<div class="card-outline p-lg">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-title-md text-title-md text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="history_edu">history_edu</span>
+                                Daily Update History
+                            </h3>
+<button class="text-status-material font-label-md text-label-md hover:underline flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span> Log Daily Report
+                            </button>
+</div>
+<div class="space-y-md">
+<!-- Update Item -->
+<div class="p-md rounded-lg border border-border-subtle bg-surface hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-sm">
+<img class="w-8 h-8 rounded-full border border-border-subtle" data-alt="Close-up of a rugged carpenter with a short beard and sawdust on his apron, soft natural workshop lighting casting gentle shadows, high detail, professional corporate portraiture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVWFWLV7oUra11jGzLBgNWSOBCMQa_BxACJUWgNufwZakF5n_Y9BOps0qfTMGQAIXENYXaE2EBQMDxUseEUfhgyLL9LbE8N0T0bVhM7pd5vjryPdwOQKcnKyEfFNf6jIazRT39tkx__Ey0hh64qTW-ChF-EZG2I2wG7BpI2KDKe42Mqc-2NXJUst0AnQfaPuob2bysLfRM8zpBcGS68dHOsOYomCUnDYz4zXs-9A2cVqvWuEp1ZZNvRg"/>
+<div>
+<p class="font-label-md text-label-md text-primary">Marcus Thorne <span class="text-[10px] font-bold bg-secondary-fixed-dim/20 text-on-secondary-fixed-variant px-1 rounded ml-1">LEAD</span></p>
+<p class="text-[10px] text-on-surface-variant">Aug 28, 2023 · 17:30</p>
+</div>
+</div>
+<span class="text-xs text-status-success font-bold">+8.0 Hrs</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-10">Completed structural assembly for Units 05-08. Mahogany joints clamped and left for drying. Inventory check: Wood glue running low, requested restock.</p>
+</div>
+<!-- Update Item -->
+<div class="p-md rounded-lg border border-border-subtle bg-surface hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-sm">
+<img class="w-8 h-8 rounded-full border border-border-subtle" data-alt="Portrait of a young female carpenter apprentice wearing safety goggles around her neck, brightly lit modern industrial workshop setting, cinematic soft-focus background, professional photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0-_0Au8Sxdy2nKmFrs78S1J6_TF2oDbnJ4Ia8JLe43BqOUxeJQ9SS5fbyd63imUKLqXCARDddYHBZ-6zIfl1QDqtjfTUsIy-FMQUE1ANHbzzHFwFTdVWsvetVCSIPC_D4UxnVVzmiyNpS0Pnc-H3X8k7KUzvBs0kmoIS8JVlD_0ecCyPxdnUqnpskn9QTt1Md500Pw3Y93CxpWdSzxCuWUVLXH136D5awNqNoFYtzMgnWv_lH0MjfVA"/>
+<div>
+<p class="font-label-md text-label-md text-primary">Elena Rodriguez</p>
+<p class="text-[10px] text-on-surface-variant">Aug 27, 2023 · 17:15</p>
+</div>
+</div>
+<span class="text-xs text-status-success font-bold">+7.5 Hrs</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-10">Assisted in sanding and surface preparation for initial 4 units. No defects found during manual surface check.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar Panels -->
+<div class="col-span-12 lg:col-span-4 space-y-lg">
+<!-- Assigned Team -->
+<div class="card-outline p-lg">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-title-md text-title-md text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="groups">groups</span>
+                                Assigned Carpenters
+                            </h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="edit_square">edit_square</span>
+</div>
+<div class="space-y-md">
+<div class="flex items-center gap-md p-sm bg-surface-container-low rounded-lg relative border border-secondary-fixed">
+<img class="w-10 h-10 rounded object-cover" data-alt="Detailed portrait of a senior master carpenter with experienced hands, wearing a denim work shirt in a sun-drenched wood shop, high-key lighting, modern clean corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8oWO1LnmUS87YzJw-3BoDZc4IT-HC7108pXA0Q51EJfgv4Q5kTfcYagFrTgaQs0zv4zknOLd5ozClCkNAOAs7bmZRJTVO4DV5OSn2IVCNFHbqEAEHFLXzdxO1Hqdim46rng1LKy2_0DKXSCOHG8Cc02TXdWRe9BtHbrruv40cNlpEfXl-XHpwuUwLyPExBc2uWcxQ0lRnjnBvJk_5qDxDga6tKYxBxBKBVYX3aldmrCwZ8IJ1InVYNQ"/>
+<div>
+<p class="font-label-md text-label-md text-primary">Marcus Thorne</p>
+<p class="text-[11px] text-on-surface-variant uppercase font-bold">Master Carpenter</p>
+</div>
+<div class="absolute right-3 top-3 bg-secondary-fixed-dim text-on-secondary-fixed-variant px-2 py-0.5 rounded text-[10px] font-bold">LEAD</div>
+</div>
+<div class="flex items-center gap-md p-sm hover:bg-surface-container-low transition-colors rounded-lg border border-transparent">
+<img class="w-10 h-10 rounded object-cover" data-alt="Portrait of a young male carpenter smiling, professional industrial studio lighting with cold and warm light contrast, blurred workshop machinery in background, sharp focus, corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzTec3HtnlWJGYRhs8aCUrP_63qX9jUjbdTsuFH4K3LPz3ditjQj7RooD8i1rT6UGWHu1B9NV7Ygge374qJcjYyyJTMl8MQfjiwPqVCnTzkBNAm_G105jyJVbCjKTV-eOQaQ2PckFudw9HeZFDRXczmICty_YBfatjJa3L6agjT7PpOQkJ3z9OH-bH-_-XqxaD0dTorvvHA2gXZ_ESffCzQhEm58pNsXEr3P9eWD6gT-bxMLokvcxJEQ"/>
+<div>
+<p class="font-label-md text-label-md text-primary">David Chen</p>
+<p class="text-[11px] text-on-surface-variant uppercase font-bold">Senior Carpenter</p>
+</div>
+</div>
+<div class="flex items-center gap-md p-sm hover:bg-surface-container-low transition-colors rounded-lg border border-transparent">
+<img class="w-10 h-10 rounded object-cover" data-alt="Portrait of a female carpenter in her thirties, confident expression, industrial warehouse background with professional high-key lighting, minimalist modern corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALO5qd-GVgTP3SXxwYkkKdJeqMgeXSKDdCty2NaAC4CdC6Ao9uKAg7KdP6jG__R3UwsWfg9_tNbM1vYEiCuxNWv-584zffnGAYRf0X4YlWRT7Vm6-leaWmTEIX_JeYUKCFtPccNVdKkQXSIfYcIPhEho-OtWFv2uYWfBI4-ZbtzyjRr1k4dexFr9hqoX4dH1skULw9sN7RsA8l6N9tRpPHQMUJfoXk8ZMPMT9YQ7JxtVfxRe0k1dL_1g"/>
+<div>
+<p class="font-label-md text-label-md text-primary">Elena Rodriguez</p>
+<p class="text-[11px] text-on-surface-variant uppercase font-bold">Apprentice</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-lg py-sm border-2 border-dashed border-border-subtle text-on-surface-variant font-label-md text-label-md hover:border-secondary-fixed hover:text-secondary-fixed-dim transition-all">
+                            + Add Team Member
+                        </button>
+</div>
+<!-- Supervisor Actions Panel -->
+<div class="card-outline overflow-hidden sticky top-24">
+<div class="bg-inverse-surface p-md">
+<h3 class="font-label-md text-label-md text-white flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-sm" data-icon="bolt">bolt</span>
+                                SUPERVISOR ACTIONS
+                            </h3>
+</div>
+<div class="p-md space-y-md">
+<button class="w-full flex items-center justify-between p-md bg-secondary text-on-secondary font-label-md text-label-md rounded hover:bg-secondary/90 transition-all active:scale-[0.98]">
+<span class="flex items-center gap-md">
+<span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span>
+                                    Mark In Progress
+                                </span>
+<span class="material-symbols-outlined opacity-50" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-md bg-surface-container-low border border-border-subtle text-primary font-label-md text-label-md rounded hover:bg-status-success/10 hover:border-status-success transition-all group">
+<span class="flex items-center gap-md">
+<span class="material-symbols-outlined text-status-success" data-icon="check_circle">check_circle</span>
+                                    Mark Complete
+                                </span>
+</button>
+<button class="w-full flex items-center justify-between p-md bg-surface-container-low border border-border-subtle text-primary font-label-md text-label-md rounded hover:bg-status-pending/10 hover:border-status-pending transition-all">
+<span class="flex items-center gap-md">
+<span class="material-symbols-outlined text-status-pending" data-icon="pause">pause</span>
+                                    Pause Job
+                                </span>
+</button>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex items-center justify-center gap-sm py-md bg-white border border-border-subtle text-on-surface-variant font-label-md text-label-md rounded hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+                                    Edit
+                                </button>
+<button class="flex items-center justify-center gap-sm py-md bg-white border border-border-subtle text-on-surface-variant font-label-md text-label-md rounded hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+                                    Reassign
+                                </button>
+</div>
+<div class="pt-md mt-md border-t border-border-subtle flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="print">print</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="share">share</span>
+<span class="material-symbols-outlined text-status-error text-sm ml-auto cursor-pointer" data-icon="delete">delete</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Progress Summary (Mini) -->
+<div class="sticky bottom-0 w-full bg-surface-container-highest border-t border-border-subtle py-sm px-lg flex items-center justify-between z-40">
+<div class="flex items-center gap-xl">
+<div class="flex items-center gap-sm">
+<span class="w-3 h-3 rounded-full bg-secondary-fixed-dim animate-pulse"></span>
+<span class="font-label-md text-label-md text-primary">Live Tracking: JC-230826-001</span>
+</div>
+<div class="hidden md:flex items-center gap-md">
+<p class="font-body-md text-body-md text-on-surface-variant">Active Laborers: <span class="font-bold text-primary">3</span></p>
+<p class="font-body-md text-body-md text-on-surface-variant">Last Pulse: <span class="font-bold text-primary">2m ago</span></p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<p class="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest hidden sm:block">Current Stage: ASSEMBLY</p>
+<div class="h-8 w-[1px] bg-border-subtle"></div>
+<button class="bg-primary text-white p-2 rounded-full hover:bg-primary/80 transition-all flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+</button>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.97)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = 'scale(1)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simulating some real-time data update visuals
+        setInterval(() => {
+            const efficiency = document.querySelector('.text-status-success');
+            if(efficiency && efficiency.innerText.includes('%')) {
+                const base = 92.4;
+                const jitter = (Math.random() * 0.2 - 0.1).toFixed(1);
+                efficiency.innerText = (parseFloat(base) + parseFloat(jitter)).toFixed(1) + '%';
+            }
+        }, 5000);
+    </script>
+</body></html>

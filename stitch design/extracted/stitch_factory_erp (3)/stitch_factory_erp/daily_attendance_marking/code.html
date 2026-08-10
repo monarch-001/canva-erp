@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Industrial Authority ERP - Daily Attendance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "status-draft": "#888888",
+                    "on-surface": "#1b1c1a",
+                    "background": "#faf9f5",
+                    "on-primary-container": "#858383",
+                    "on-tertiary-fixed": "#001e30",
+                    "inverse-on-surface": "#f2f1ed",
+                    "surface-container-low": "#f5f4f0",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#e5c363",
+                    "secondary-fixed": "#ffe08c",
+                    "surface-variant": "#e3e2df",
+                    "inverse-primary": "#c8c6c5",
+                    "tertiary-fixed-dim": "#9bccf6",
+                    "status-pending": "#F59E0B",
+                    "on-tertiary-container": "#5889af",
+                    "status-success": "#2D7D46",
+                    "on-secondary-fixed-variant": "#584400",
+                    "surface-card": "#FFFFFF",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#faf9f5",
+                    "on-primary-fixed-variant": "#474746",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dbdad6",
+                    "on-primary-fixed": "#1c1b1b",
+                    "outline": "#747878",
+                    "status-material": "#0891B2",
+                    "surface-container-highest": "#e3e2df",
+                    "on-tertiary-fixed-variant": "#0e4b6e",
+                    "status-production": "#F97316",
+                    "surface-bright": "#faf9f5",
+                    "primary": "#000000",
+                    "inverse-surface": "#30312e",
+                    "outline-variant": "#c4c7c7",
+                    "on-surface-variant": "#444748",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#e5e2e1",
+                    "tertiary": "#000000",
+                    "status-invoice": "#7C3AED",
+                    "surface-container-high": "#e9e8e4",
+                    "surface-tint": "#5f5e5e",
+                    "on-background": "#1b1c1a",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#efeeea",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#001e30",
+                    "border-subtle": "#E8E8E8",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "status-error": "#C0392B",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#241a00",
+                    "secondary-container": "#fdd977",
+                    "secondary": "#745b00",
+                    "primary-container": "#1c1b1b",
+                    "status-financial": "#14532D",
+                    "tertiary-fixed": "#cbe6ff",
+                    "on-secondary-container": "#775e00",
+                    "brand-gold": "#C8A84B"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sidebar-width": "260px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "container-max": "1440px",
+                    "xs": "4px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "status-pill": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                    "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .transition-all { transition: all 0.2s ease-in-out; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest dark:bg-surface-container-lowest border-b border-border-subtle full-width top-0 sticky z-50">
+<div class="flex justify-between items-center h-16 px-md w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-xl">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Industrial Authority ERP</span>
+<div class="hidden md:flex gap-md">
+<span class="font-title-md text-title-md text-secondary font-bold border-b-2 border-secondary cursor-pointer active:opacity-80 transition-colors">Daily Operations</span>
+<span class="font-title-md text-title-md text-on-surface-variant font-medium hover:text-secondary transition-colors cursor-pointer active:opacity-80">Workforce</span>
+<span class="font-title-md text-title-md text-on-surface-variant font-medium hover:text-secondary transition-colors cursor-pointer active:opacity-80">Compliance</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border border-outline-variant h-10 pl-10 pr-md text-body-md focus:border-brand-gold focus:ring-0 w-64" placeholder="Search resources..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-xs hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-xs hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">help</span></button>
+<button class="p-xs hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">settings</span></button>
+</div>
+<div class="h-8 w-8 bg-primary rounded-full overflow-hidden border border-border-subtle">
+<img class="h-full w-full object-cover" data-alt="A professional headshot of a senior factory supervisor in a modern manufacturing facility, wearing a dark branded uniform with gold accents. The lighting is bright and industrial with a soft bokeh background of precision machinery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFbq3i62BTQX106Gf7k7VAURELXdu69i3jWiYLnLudfo79Jf76Ygo3VMyvEDtR92ICZLX1y-sAMxQUnMhEVhNjXjfgF1bvnBpWTl2KCbmeKD_peVxIjKWppxnwZGbyeXpHQroWPMVsQg_LTjCzKdXiKf9fFdKx4DL5XADJVWgG7FMZ6oNRdMiG3nmaxqODKcgnsPtaJW0Awb56UB4UlcIXiZefQOT_vhnL9Ei_oZjCVMoqEdxxdpZmNQ"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-64px)] overflow-hidden">
+<!-- Side Navigation Bar -->
+<aside class="hidden md:flex flex-col h-full py-lg fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar-width bg-primary-container dark:bg-primary-container z-40">
+<div class="px-md mb-lg">
+<div class="flex items-center gap-md mb-sm">
+<div class="w-10 h-10 bg-brand-gold flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary">factory</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-primary">Precision Ops</h2>
+<p class="text-xs text-on-primary-container opacity-70">Unit 04 - Heavy Mfg</p>
+</div>
+</div>
+<button class="w-full bg-brand-gold text-on-primary py-sm font-label-md text-label-md active:scale-95 duration-150 transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'opsz' 20;">add</span>
+                    New Batch
+                </button>
+</div>
+<nav class="flex-1 overflow-y-auto space-y-1">
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container border-l-4 border-secondary flex items-center gap-md px-md py-sm active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="font-label-md text-label-md">Attendance</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-md text-label-md">Production</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Financials</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</nav>
+<div class="px-md border-t border-on-primary-container/20 pt-md space-y-1">
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 md:ml-sidebar-width overflow-y-auto bg-background p-md lg:p-lg">
+<div class="max-w-container-max mx-auto space-y-lg pb-24">
+<!-- Page Header & Quick Action -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<div class="flex items-center gap-xs text-on-surface-variant mb-xs">
+<span class="material-symbols-outlined" style="font-size: 16px;">calendar_today</span>
+<span class="font-label-md text-label-md">Monday, October 23, 2023 | Shift A</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Morning Attendance</h1>
+<p class="text-body-md text-on-surface-variant max-w-2xl">Mark attendance for Unit 04 permanent staff. Changes must be finalized before 10:00 AM.</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="border border-primary text-primary px-lg py-sm font-label-md text-label-md hover:bg-surface-container-high transition-all flex items-center gap-xs active:scale-95" onclick="markAllPresent()">
+<span class="material-symbols-outlined" style="font-size: 20px;">done_all</span>
+                            Mark All Present
+                        </button>
+<button class="bg-brand-gold text-on-primary px-lg py-sm font-label-md text-label-md hover:opacity-90 transition-all flex items-center gap-xs active:scale-95 shadow-sm">
+<span class="material-symbols-outlined" style="font-size: 20px;">save</span>
+                            Save Attendance
+                        </button>
+</div>
+</div>
+<!-- Workforce Attendance Table -->
+<div class="bg-surface-card border border-border-subtle overflow-hidden">
+<div class="overflow-x-auto scrollbar-hide">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead class="bg-surface-container text-on-surface-variant">
+<tr>
+<th class="px-md py-sm font-label-md text-label-md border-r border-border-subtle sticky left-0 bg-surface-container z-10 w-24">Emp ID</th>
+<th class="px-md py-sm font-label-md text-label-md border-r border-border-subtle sticky left-24 bg-surface-container z-10">Employee Name</th>
+<th class="px-md py-sm font-label-md text-label-md">Designation</th>
+<th class="px-md py-sm font-label-md text-label-md text-center">Status Selection</th>
+<th class="px-md py-sm font-label-md text-label-md w-48">Details / Leave Type</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle" id="attendance-table-body">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md font-label-md text-label-md border-r border-border-subtle sticky left-0 bg-white group-hover:bg-surface-container-low z-10">P-1024</td>
+<td class="px-md py-md sticky left-24 bg-white group-hover:bg-surface-container-low z-10 border-r border-border-subtle">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male factory worker in a navy blue jumpsuit, smiling slightly, standing against a neutral grey wall in an industrial setting. High quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGWSjKQ4BeqKv7L9nPDqwd1CLuC2k51RvzBbnJKrMp4-T5VMA8fsoWm9mZKOpNCGaLYtiEoadgJAWHr7yn7F6yy992I6q6ET1QBQlweg1323TJdR0o5ejNPNSrXYaGZ6y9CimDrKOt8OEl1zc9jYCv6_9bPMPmmr8pKkBuBJiWiuPQs0i4-1uxbcUFpj3dHT3FDX-DO6ddqRRQPs4qlBFvAbloJYLoITua31P7Q0rxpw-zYL6rT7jq3Q"/>
+</div>
+<div class="font-title-md text-title-md">Amir Sharma</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant font-status-pill text-status-pill rounded-full">Senior Carpenter</span>
+</td>
+<td class="px-md py-md">
+<div class="flex justify-center items-center gap-xl">
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input checked="" class="w-4 h-4 text-brand-gold border-outline focus:ring-0" name="att-P-1024" type="radio" value="present"/>
+<span class="font-label-md text-label-md group-hover/radio:text-brand-gold">Present</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-status-error border-outline focus:ring-0" name="att-P-1024" type="radio" value="absent"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-error">Absent</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-status-pending border-outline focus:ring-0" name="att-P-1024" type="radio" value="halfday"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-pending">Half Day</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-status-material border-outline focus:ring-0" name="att-P-1024" onchange="toggleLeave(this, 'leave-P-1024')" type="radio" value="leave"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-material">Leave</span>
+</label>
+</div>
+</td>
+<td class="px-md py-md">
+<select class="w-full h-9 bg-surface-container-low border border-outline-variant text-body-md opacity-50 cursor-not-allowed focus:border-brand-gold focus:ring-0" disabled="" id="leave-P-1024">
+<option value="">Select Type</option>
+<option value="casual">Casual</option>
+<option value="sick">Sick</option>
+<option value="festival">Festival</option>
+<option value="unpaid">Unpaid</option>
+</select>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md font-label-md text-label-md border-r border-border-subtle sticky left-0 bg-white group-hover:bg-surface-container-low z-10">P-1088</td>
+<td class="px-md py-md sticky left-24 bg-white group-hover:bg-surface-container-low z-10 border-r border-border-subtle">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up of a middle-aged female security guard in a crisp khaki uniform with badge details, neutral expression, professional studio industrial lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgPg_scqQpWxg6rvkV4H3p6tZb6lI1VsYnB_kPpUs0ebkPboTr1Wd-tgll-PUDI53Fey249WSwNi_BJ8DXDHhEZU299U4ktwjAzDEocy78fWdoNC_tkHW0I-1lQRO4FWn8gA3tsNorUK996KgLOfWxVFVWAmruwch_TEoVWHFjb2x2oqjzTNJTOqSrvoR8Kh8yTOHiuI7fICUjcDsbhDnTvOSe8_u3rOgVYQD9aXQTZel5EOsPlgX-yg"/>
+</div>
+<div class="font-title-md text-title-md">Sunita Devi</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant font-status-pill text-status-pill rounded-full">Gate Guard</span>
+</td>
+<td class="px-md py-md">
+<div class="flex justify-center items-center gap-xl">
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-brand-gold border-outline focus:ring-0" name="att-P-1088" type="radio" value="present"/>
+<span class="font-label-md text-label-md group-hover/radio:text-brand-gold">Present</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input checked="" class="w-4 h-4 text-status-error border-outline focus:ring-0" name="att-P-1088" type="radio" value="absent"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-error">Absent</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-status-pending border-outline focus:ring-0" name="att-P-1088" type="radio" value="halfday"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-pending">Half Day</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-status-material border-outline focus:ring-0" name="att-P-1088" onchange="toggleLeave(this, 'leave-P-1088')" type="radio" value="leave"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-material">Leave</span>
+</label>
+</div>
+</td>
+<td class="px-md py-md">
+<select class="w-full h-9 bg-surface-container-low border border-outline-variant text-body-md opacity-50 cursor-not-allowed focus:border-brand-gold focus:ring-0" disabled="" id="leave-P-1088">
+<option value="">Select Type</option>
+<option value="casual">Casual</option>
+<option value="sick">Sick</option>
+<option value="festival">Festival</option>
+<option value="unpaid">Unpaid</option>
+</select>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md font-label-md text-label-md border-r border-border-subtle sticky left-0 bg-white group-hover:bg-surface-container-low z-10">P-1102</td>
+<td class="px-md py-md sticky left-24 bg-white group-hover:bg-surface-container-low z-10 border-r border-border-subtle">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of a young male helper in a clean grey work shirt, neutral professional expression, soft warehouse lighting, shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwthHGwtRsP8nfFmD5BFfP_SxWcY6YIvsrv0UV9I0g3DfemJ_WRsd3HzWaPYwQlNUF06p3e3XQMMP7fFIbQ4YnL1_vyKhgRB6wPN6y6vB1Sap5KPyLEXAiFkwDnnD5d0dgJyULe8cPV9xzyOmBC4Fm9z7Ch8BE91ErTg_4gnHGgD6nxrSKqMX0nMepxPUsd8GhqacHoF3FNTd0gSl2oO9itemiAEoFKvnd4uFpK7UKgw7RYZ6JK5lHYg"/>
+</div>
+<div class="font-title-md text-title-md">Vikram Raj</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant font-status-pill text-status-pill rounded-full">Unit Helper</span>
+</td>
+<td class="px-md py-md">
+<div class="flex justify-center items-center gap-xl">
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-brand-gold border-outline focus:ring-0" name="att-P-1102" type="radio" value="present"/>
+<span class="font-label-md text-label-md group-hover/radio:text-brand-gold">Present</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-status-error border-outline focus:ring-0" name="att-P-1102" type="radio" value="absent"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-error">Absent</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-status-pending border-outline focus:ring-0" name="att-P-1102" type="radio" value="halfday"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-pending">Half Day</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input checked="" class="w-4 h-4 text-status-material border-outline focus:ring-0" name="att-P-1102" onchange="toggleLeave(this, 'leave-P-1102')" type="radio" value="leave"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-material">Leave</span>
+</label>
+</div>
+</td>
+<td class="px-md py-md">
+<select class="w-full h-9 bg-surface-container-low border border-outline-variant text-body-md focus:border-brand-gold focus:ring-0" id="leave-P-1102">
+<option value="">Select Type</option>
+<option selected="" value="casual">Casual</option>
+<option value="sick">Sick</option>
+<option value="festival">Festival</option>
+<option value="unpaid">Unpaid</option>
+</select>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md font-label-md text-label-md border-r border-border-subtle sticky left-0 bg-white group-hover:bg-surface-container-low z-10">P-0955</td>
+<td class="px-md py-md sticky left-24 bg-white group-hover:bg-surface-container-low z-10 border-r border-border-subtle">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Senior male supervisor with a confident posture, wearing a high-visibility vest over a dark polo, in a modern factory setting with warm overhead industrial lighting. High detail portrait." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO4CJFxV3T9T0uD5bVbJ3OadzZohE-a2B0Xqga9f5bQau8nc-9WXEqvyWvMI_qqxiwiNf378shk7zHL1ipup3bWosrj-dzEPeAhlnRHP75eMvuV3z-29nA8tDVjsol0toR2qMt1855RnFix_0SbaJkGCDdKTSMc22icsk9bQGFTHbWn9vfKFO6J2KK93AmzGvTZP6scOod824vdwqKr-KDm6knvrZAgTNAfiCEHGHuRhTGeldHO4LR2Q"/>
+</div>
+<div class="font-title-md text-title-md">Rajesh Khanna</div>
+</div>
+</td>
+<td class="px-md py-md">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant font-status-pill text-status-pill rounded-full">Unit Supervisor</span>
+</td>
+<td class="px-md py-md">
+<div class="flex justify-center items-center gap-xl">
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input checked="" class="w-4 h-4 text-brand-gold border-outline focus:ring-0" name="att-P-0955" type="radio" value="present"/>
+<span class="font-label-md text-label-md group-hover/radio:text-brand-gold">Present</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-status-error border-outline focus:ring-0" name="att-P-0955" type="radio" value="absent"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-error">Absent</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-status-pending border-outline focus:ring-0" name="att-P-0955" type="radio" value="halfday"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-pending">Half Day</span>
+</label>
+<label class="flex items-center gap-xs cursor-pointer group/radio">
+<input class="w-4 h-4 text-status-material border-outline focus:ring-0" name="att-P-0955" onchange="toggleLeave(this, 'leave-P-0955')" type="radio" value="leave"/>
+<span class="font-label-md text-label-md group-hover/radio:text-status-material">Leave</span>
+</label>
+</div>
+</td>
+<td class="px-md py-md">
+<select class="w-full h-9 bg-surface-container-low border border-outline-variant text-body-md opacity-50 cursor-not-allowed focus:border-brand-gold focus:ring-0" disabled="" id="leave-P-0955">
+<option value="">Select Type</option>
+<option value="casual">Casual</option>
+<option value="sick">Sick</option>
+<option value="festival">Festival</option>
+<option value="unpaid">Unpaid</option>
+</select>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Guidance Note -->
+<div class="flex items-start gap-md p-md bg-surface-container-low border border-border-subtle rounded">
+<span class="material-symbols-outlined text-status-pending">info</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Compliance Note</p>
+<p class="text-body-md text-on-surface-variant">Permanent employees must submit medical certificates for 'Sick' leave exceeding 48 hours. Half-day attendance is calculated as 4 hours of the current 8-hour shift.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Summary Bar -->
+<footer class="fixed bottom-0 left-0 right-0 bg-primary-container text-on-primary py-sm px-xl z-50 border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-md">
+<div class="flex items-center divide-x divide-white/20 h-10">
+<div class="pr-lg flex items-center gap-sm">
+<span class="text-xs uppercase tracking-widest opacity-60">Total Staff</span>
+<span class="font-headline-sm text-headline-sm">42</span>
+</div>
+<div class="px-lg flex items-center gap-sm">
+<span class="text-xs uppercase tracking-widest opacity-60">Present</span>
+<span class="font-headline-sm text-headline-sm text-brand-gold" id="stat-present">34</span>
+</div>
+<div class="px-lg flex items-center gap-sm">
+<span class="text-xs uppercase tracking-widest opacity-60">Absent</span>
+<span class="font-headline-sm text-headline-sm text-status-error" id="stat-absent">04</span>
+</div>
+<div class="px-lg flex items-center gap-sm">
+<span class="text-xs uppercase tracking-widest opacity-60">Half Day</span>
+<span class="font-headline-sm text-headline-sm text-status-pending" id="stat-halfday">02</span>
+</div>
+<div class="pl-lg flex items-center gap-sm">
+<span class="text-xs uppercase tracking-widest opacity-60">Leave</span>
+<span class="font-headline-sm text-headline-sm" id="stat-leave">02</span>
+</div>
+</div>
+<div class="flex items-center gap-xl">
+<div class="flex flex-col items-end">
+<span class="text-[10px] uppercase tracking-[0.2em] opacity-60">Attendance Rate</span>
+<div class="flex items-center gap-sm">
+<div class="w-32 h-1.5 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-brand-gold w-[82%]" id="attendance-progress"></div>
+</div>
+<span class="font-headline-sm text-headline-sm" id="stat-percentage">82%</span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        function toggleLeave(radio, selectId) {
+            const select = document.getElementById(selectId);
+            const allRadiosInRow = radio.closest('tr').querySelectorAll('input[type="radio"]');
+            
+            allRadiosInRow.forEach(r => {
+                if(r.value === 'leave' && r.checked) {
+                    select.disabled = false;
+                    select.classList.remove('opacity-50', 'cursor-not-allowed');
+                } else if(r.checked) {
+                    select.disabled = true;
+                    select.classList.add('opacity-50', 'cursor-not-allowed');
+                    select.value = '';
+                }
+            });
+            updateStats();
+        }
+
+        // Initialize state listeners for all radios
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const row = e.target.closest('tr');
+                const select = row.querySelector('select');
+                if (e.target.value !== 'leave') {
+                    select.disabled = true;
+                    select.classList.add('opacity-50', 'cursor-not-allowed');
+                    select.value = '';
+                } else {
+                    select.disabled = false;
+                    select.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+                updateStats();
+            });
+        });
+
+        function markAllPresent() {
+            document.querySelectorAll('input[type="radio"][value="present"]').forEach(radio => {
+                radio.checked = true;
+                const row = radio.closest('tr');
+                const select = row.querySelector('select');
+                select.disabled = true;
+                select.classList.add('opacity-50', 'cursor-not-allowed');
+                select.value = '';
+            });
+            updateStats();
+        }
+
+        function updateStats() {
+            const present = document.querySelectorAll('input[type="radio"][value="present"]:checked').length;
+            const absent = document.querySelectorAll('input[type="radio"][value="absent"]:checked').length;
+            const halfday = document.querySelectorAll('input[type="radio"][value="halfday"]:checked').length;
+            const leave = document.querySelectorAll('input[type="radio"][value="leave"]:checked').length;
+            const total = present + absent + halfday + leave;
+
+            // Since we only have 4 rows in the mock table but stats show 42 staff, 
+            // we apply the ratio logic to the static summary numbers for a realistic look.
+            // In a real app, these would reflect the actual dataset.
+            
+            document.getElementById('stat-present').innerText = present.toString().padStart(2, '0');
+            document.getElementById('stat-absent').innerText = absent.toString().padStart(2, '0');
+            document.getElementById('stat-halfday').innerText = halfday.toString().padStart(2, '0');
+            document.getElementById('stat-leave').innerText = leave.toString().padStart(2, '0');
+            
+            if(total > 0) {
+                const percentage = Math.round((present / total) * 100);
+                document.getElementById('stat-percentage').innerText = percentage + '%';
+                document.getElementById('attendance-progress').style.width = percentage + '%';
+            }
+        }
+    </script>
+</body></html>

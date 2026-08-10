@@ -1,0 +1,51 @@
+- generic [ref=f7e3]:
+  - complementary [ref=f7e4]:
+    - generic [ref=f7e5]:
+      - heading "Canva Concepts" [level=1] [ref=f7e6]
+      - paragraph [ref=f7e7]: Industrial ERP
+    - navigation [ref=f7e8]:
+      - link "dashboard Dashboard" [ref=f7e9] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=f7e10]: dashboard
+        - generic [ref=f7e11]: Dashboard
+      - link "manufacturing Work Orders" [ref=f7e12] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f7e13]: manufacturing
+        - generic [ref=f7e14]: Work Orders
+      - link "precision_manufacturing Production" [ref=f7e15] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f7e16]: precision_manufacturing
+        - generic [ref=f7e17]: Production
+      - link "group Users" [ref=f7e18] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f7e19]: group
+        - generic [ref=f7e20]: Users
+      - link "payments Finance" [ref=f7e21] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f7e22]: payments
+        - generic [ref=f7e23]: Finance
+    - generic [ref=f7e24]:
+      - link "settings Settings" [ref=f7e25] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f7e26]: settings
+        - generic [ref=f7e27]: Settings
+      - link "help Support" [ref=f7e28] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f7e29]: help
+        - generic [ref=f7e30]: Support
+      - generic [ref=f7e32]:
+        - img "Marcus Chen" [ref=f7e34]
+        - generic [ref=f7e35]:
+          - paragraph [ref=f7e36]: Marcus Chen
+          - paragraph [ref=f7e37]: Factory Manager
+  - main [ref=f7e38]:
+    - generic [ref=f7e39]:
+      - generic [ref=f7e40]:
+        - heading "New Job Card" [level=2] [ref=f7e41]
+        - generic [ref=f7e42]:
+          - generic [ref=f7e43]: search
+          - textbox "Search orders, clients, items..." [ref=f7e44]
+      - generic [ref=f7e46]:
+        - button "notifications" [ref=f7e47] [cursor=pointer]
+        - button "help" [ref=f7e48] [cursor=pointer]
+        - button "settings" [ref=f7e49] [cursor=pointer]

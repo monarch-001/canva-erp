@@ -1,0 +1,54 @@
+- generic [ref=f12e3]:
+  - complementary [ref=f12e4]:
+    - generic [ref=f12e5]:
+      - heading "Canva Concepts" [level=1] [ref=f12e6]
+      - paragraph [ref=f12e7]: Industrial ERP
+    - navigation [ref=f12e8]:
+      - link "manufacturing Work Orders" [ref=f12e9] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f12e10]: manufacturing
+        - generic [ref=f12e11]: Work Orders
+      - link "precision_manufacturing Production" [ref=f12e12] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f12e13]: precision_manufacturing
+        - generic [ref=f12e14]: Production
+      - link "group Users" [ref=f12e15] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f12e16]: group
+        - generic [ref=f12e17]: Users
+      - link "payments Finance" [ref=f12e18] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f12e19]: payments
+        - generic [ref=f12e20]: Finance
+    - generic [ref=f12e21]:
+      - link "settings Settings" [ref=f12e22] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f12e23]: settings
+        - generic [ref=f12e24]: Settings
+      - link "help Support" [ref=f12e25] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f12e26]: help
+        - generic [ref=f12e27]: Support
+      - generic [ref=f12e28]:
+        - generic [ref=f12e29]:
+          - img "Marcus Chen" [ref=f12e31]
+          - generic [ref=f12e32]:
+            - paragraph [ref=f12e33]: Marcus Chen
+            - paragraph [ref=f12e34]: Factory Manager
+        - generic [ref=f12e35]:
+          - generic [ref=f12e36]: Toggle System Role
+          - combobox [ref=f12e37] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f12e38]:
+    - generic [ref=f12e39]:
+      - generic [ref=f12e40]:
+        - heading "Work Order Detail" [level=2] [ref=f12e41]
+        - generic [ref=f12e42]:
+          - generic [ref=f12e43]: search
+          - textbox "Search orders, clients, items..." [ref=f12e44]
+      - generic [ref=f12e46]:
+        - button "notifications" [ref=f12e47] [cursor=pointer]
+        - button "help" [ref=f12e48] [cursor=pointer]
+        - button "settings" [ref=f12e49] [cursor=pointer]

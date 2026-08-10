@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OTR Approval - Industrial Authority ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#e5c363",
+                        "on-secondary-fixed-variant": "#584400",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#444748",
+                        "surface-bright": "#faf9f5",
+                        "on-surface": "#1b1c1a",
+                        "inverse-primary": "#c8c6c5",
+                        "surface-variant": "#e3e2df",
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary": "#ffffff",
+                        "status-material": "#0891B2",
+                        "on-background": "#1b1c1a",
+                        "on-primary-container": "#858383",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#cbe6ff",
+                        "surface-container": "#efeeea",
+                        "secondary-fixed": "#ffe08c",
+                        "tertiary": "#000000",
+                        "surface-container-highest": "#e3e2df",
+                        "primary-container": "#1c1b1b",
+                        "surface": "#faf9f5",
+                        "secondary-container": "#fdd977",
+                        "inverse-surface": "#30312e",
+                        "outline-variant": "#c4c7c7",
+                        "background": "#faf9f5",
+                        "on-tertiary-fixed-variant": "#0e4b6e",
+                        "primary": "#000000",
+                        "on-tertiary-fixed": "#001e30",
+                        "outline": "#747878",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary-container": "#001e30",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "status-financial": "#14532D",
+                        "surface-card": "#FFFFFF",
+                        "on-tertiary-container": "#5889af",
+                        "status-pending": "#F59E0B",
+                        "inverse-on-surface": "#f2f1ed",
+                        "status-invoice": "#7C3AED",
+                        "status-production": "#F97316",
+                        "surface-tint": "#5f5e5e",
+                        "on-primary-fixed-variant": "#474746",
+                        "border-subtle": "#E8E8E8",
+                        "on-secondary-container": "#775e00",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#745b00",
+                        "status-success": "#2D7D46",
+                        "surface-container-high": "#e9e8e4",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-dim": "#dbdad6",
+                        "surface-container-low": "#f5f4f0",
+                        "status-draft": "#888888",
+                        "on-primary-fixed": "#1c1b1b",
+                        "status-error": "#C0392B",
+                        "tertiary-fixed-dim": "#9bccf6",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xs": "4px",
+                        "sidebar-width": "260px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "container-max": "1440px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "status-pill": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "status-pill": ["12px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "700"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-active { border-left-width: 4px; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest border-b border-border-subtle fixed top-0 left-0 w-full z-50">
+<div class="flex justify-between items-center h-16 px-md w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">Industrial Authority ERP</span>
+<div class="hidden md:flex gap-md ml-lg">
+<button class="text-on-surface-variant font-medium hover:text-secondary transition-colors cursor-pointer active:opacity-80">Dashboard</button>
+<button class="text-secondary font-bold border-b-2 border-secondary cursor-pointer active:opacity-80">Operations</button>
+<button class="text-on-surface-variant font-medium hover:text-secondary transition-colors cursor-pointer active:opacity-80">Resources</button>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex gap-sm mr-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary">help</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary">settings</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a factory manager in their late 40s wearing a high-visibility vest and a clean white shirt, standing in a brightly lit industrial office with windows looking out onto a modern assembly line. The lighting is crisp and even, mirroring a professional corporate ERP aesthetic with warm gold and charcoal tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP7ywMw9L4ndBlXzXbWMzsr7el6uCdeIp-LHkFCcCB3vQlZNXOEg4VMwV3n8isctzxKg5LoBQz9tBKZ9orGJfjYZ2YdhMGNqoN4dG88s7rFkp_h9jzIpbyYUt0wiiDtsClVrqQCtokb-iZdY9l2RLiWdOqFTKNkLsWhU16t9y3rqrB9ojlmePX7aEOOjrAilpv3BkRmkHKwvN0pzvmhte8IVJZYrqlzahwXJMBzWxNuVv-drH6OaoTsA"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar-width bg-primary-container text-on-primary-fixed flex flex-col py-lg hidden md:flex">
+<div class="px-md mb-lg">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-on-secondary-fixed">precision_manufacturing</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-primary leading-tight">Precision Ops</div>
+<div class="text-[10px] uppercase tracking-wider opacity-60">Unit 04 - Heavy Mfg</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-xs">
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</div>
+<div class="bg-secondary-container text-on-secondary-container border-l-4 border-secondary flex items-center gap-md px-md py-sm cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined">schedule</span>
+<span class="font-label-md text-label-md">OT Requests</span>
+</div>
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-md text-label-md">Production</span>
+</div>
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Financials</span>
+</div>
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</div>
+</nav>
+<div class="px-md mt-auto pt-lg border-t border-on-primary-fixed/10">
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer mb-sm">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</div>
+<div class="text-on-primary-container opacity-80 flex items-center gap-md px-md py-sm hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all cursor-pointer">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="pt-24 pb-12 px-lg md:ml-sidebar-width min-h-screen">
+<div class="max-w-container-max mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md mb-lg">
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-border-subtle hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary">OTR-2024-0892</h1>
+<p class="font-body-md text-on-surface-variant">Overtime Request Details & FM Approval</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<span class="bg-status-pending/10 text-status-pending px-md py-xs rounded-full font-status-pill text-status-pill uppercase tracking-wider">Pending FM Review</span>
+<div class="h-8 w-px bg-border-subtle mx-sm"></div>
+<button class="flex items-center gap-sm text-on-surface-variant font-label-md hover:text-primary">
+<span class="material-symbols-outlined">print</span>
+                        Print Summary
+                    </button>
+</div>
+</div>
+<!-- Dashboard Layout (Bento-style) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
+<!-- Left Panel: Request Details -->
+<div class="lg:col-span-7 flex flex-col gap-lg">
+<!-- Basic Info Card -->
+<section class="bg-surface-card border border-border-subtle p-lg rounded-lg shadow-sm">
+<div class="flex items-center gap-sm mb-lg border-b border-border-subtle pb-md">
+<span class="material-symbols-outlined text-secondary">info</span>
+<h2 class="font-title-md text-title-md">Primary Information</h2>
+</div>
+<div class="grid grid-cols-2 gap-xl">
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-xs">Carpenter Status</label>
+<div class="font-body-lg text-body-lg flex items-center gap-xs">
+<span class="material-symbols-outlined text-status-success text-[18px]">verified</span>
+                                    Senior Carpenter (Level III)
+                                </div>
+</div>
+<div>
+<label class="font-label-md text-label-md text-on-surface-variant block mb-xs">Work Order (WO)</label>
+<div class="font-body-lg text-body-lg font-bold">#WO-99102-M</div>
+</div>
+<div class="col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant block mb-xs">Reason for OT</label>
+<div class="font-body-lg text-body-lg">Critical deadline for Project Zenith - Finishing phase requires specialized craftsmanship available only after-hours to avoid assembly line vibration interference.</div>
+</div>
+</div>
+</section>
+<!-- Workload & Context -->
+<section class="bg-surface-card border border-border-subtle p-lg rounded-lg shadow-sm">
+<div class="flex items-center gap-sm mb-lg border-b border-border-subtle pb-md">
+<span class="material-symbols-outlined text-secondary">description</span>
+<h2 class="font-title-md text-title-md">Scope & Description</h2>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant mb-lg leading-relaxed">
+                            Complete detailed sanding and final polish on the mahogany console units for the executive lounge suite. The task involves precision routing and hand-finishing that cannot be performed during standard shifts due to dust mitigation protocols and acoustic sensitivity in nearby testing labs.
+                        </div>
+<div class="grid grid-cols-3 gap-md">
+<div class="bg-surface-container-low p-md rounded border border-border-subtle">
+<span class="block text-[11px] font-bold text-on-surface-variant uppercase mb-xs">Requested Hours</span>
+<span class="text-headline-sm font-bold text-primary">6.5 hrs</span>
+</div>
+<div class="bg-surface-container-low p-md rounded border border-border-subtle">
+<span class="block text-[11px] font-bold text-on-surface-variant uppercase mb-xs">Estimated Cost</span>
+<span class="text-headline-sm font-bold text-primary">$422.50</span>
+</div>
+<div class="bg-surface-container-low p-md rounded border border-border-subtle">
+<span class="block text-[11px] font-bold text-on-surface-variant uppercase mb-xs">Current Utilization</span>
+<span class="text-headline-sm font-bold text-status-pending">84%</span>
+</div>
+</div>
+</section>
+<!-- Staff Overview -->
+<section class="bg-surface-card border border-border-subtle rounded-lg shadow-sm overflow-hidden">
+<div class="p-lg border-b border-border-subtle">
+<h2 class="font-title-md text-title-md">Assigned Staff</h2>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Employee Name</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Shift</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Base Rate</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">OT Rate (1.5x)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<tr>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-[10px] font-bold">JD</div>
+<span class="font-body-md font-bold">Johnathan Doe</span>
+</div>
+</td>
+<td class="px-lg py-md font-body-md">Morning (06:00 - 14:00)</td>
+<td class="px-lg py-md font-body-md">$43.33/hr</td>
+<td class="px-lg py-md font-body-md">$65.00/hr</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Right Panel: Approval Actions -->
+<div class="lg:col-span-5 flex flex-col gap-lg sticky top-24">
+<!-- Action Card -->
+<div class="bg-primary-container text-on-primary p-lg rounded-lg shadow-xl">
+<h2 class="font-headline-sm text-headline-sm text-white mb-md">FM Approval Workflow</h2>
+<p class="text-on-primary-container mb-lg">Please review the request details and financial impact before making a determination.</p>
+<div class="space-y-lg">
+<!-- Approve Section -->
+<div class="bg-white/5 p-lg rounded-lg border border-white/10">
+<div class="flex items-center gap-sm mb-md text-secondary-fixed">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-title-md">Approve Request</span>
+</div>
+<div class="flex flex-col gap-md">
+<div>
+<label class="font-label-md text-label-md text-white/80 block mb-xs">Hours to approve</label>
+<input class="w-full h-10 px-md bg-white/10 border border-white/20 rounded focus:border-secondary-fixed focus:ring-1 focus:ring-secondary-fixed text-white placeholder-white/30" placeholder="0.0" step="0.5" type="number" value="6.5"/>
+</div>
+<button class="w-full py-md bg-secondary text-white font-bold rounded-lg hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all active:scale-95">
+                                        Confirm Approval
+                                    </button>
+</div>
+</div>
+<!-- Reject Section -->
+<div class="bg-white/5 p-lg rounded-lg border border-white/10">
+<div class="flex items-center gap-sm mb-md text-error">
+<span class="material-symbols-outlined">cancel</span>
+<span class="font-title-md">Reject Request</span>
+</div>
+<div class="flex flex-col gap-md">
+<div>
+<label class="font-label-md text-label-md text-white/80 block mb-xs">Rejection Reason <span class="text-error">*</span></label>
+<textarea class="w-full p-md bg-white/10 border border-white/20 rounded focus:border-error focus:ring-1 focus:ring-error text-white placeholder-white/30 min-h-[80px]" placeholder="Explain why this request is being rejected..."></textarea>
+</div>
+<button class="w-full py-md border border-error text-error font-bold rounded-lg hover:bg-error hover:text-white transition-all active:scale-95">
+                                        Reject OTR
+                                    </button>
+</div>
+</div>
+<!-- Override Alert Section -->
+<div class="bg-error-container/20 p-lg rounded-lg border border-error/30 animate-pulse-slow" id="override-section">
+<div class="flex items-start gap-sm mb-md">
+<span class="material-symbols-outlined text-error mt-0.5">warning</span>
+<div>
+<h3 class="font-title-md text-error-container font-bold">Monthly Cap Exceeded</h3>
+<p class="text-error-container/80 text-body-md mt-1 italic">This will exceed the monthly cap of 26 hours.</p>
+</div>
+</div>
+<div class="mt-lg pt-lg border-t border-error/20">
+<div class="mb-md">
+<label class="font-label-md text-label-md text-white/80 block mb-xs">Override Reason <span class="text-error">*</span></label>
+<textarea class="w-full p-md bg-white/10 border border-white/20 rounded focus:border-secondary-fixed focus:ring-1 focus:ring-secondary-fixed text-white placeholder-white/30 min-h-[80px]" placeholder="Required justification for exceeding monthly cap limits..."></textarea>
+</div>
+<button class="w-full py-md bg-error text-white font-bold rounded-lg hover:opacity-90 transition-all shadow-lg flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">gavel</span>
+                                        Approve with Override
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Usage Statistics Card -->
+<div class="bg-surface-card border border-border-subtle p-lg rounded-lg shadow-sm">
+<h2 class="font-title-md text-title-md mb-lg">Cap Status Overview</h2>
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<span class="text-body-md text-on-surface-variant">Monthly Used</span>
+<span class="font-bold">24.5 / 26 hrs</span>
+</div>
+<div class="w-full bg-surface-container h-3 rounded-full overflow-hidden">
+<div class="bg-status-pending h-full transition-all duration-1000" style="width: 94%;"></div>
+</div>
+<div class="flex justify-between items-center pt-sm">
+<span class="text-body-md text-on-surface-variant">This Request</span>
+<span class="font-bold text-error">+ 6.5 hrs</span>
+</div>
+<div class="p-sm bg-error/10 border border-error/20 rounded flex items-center gap-sm">
+<span class="material-symbols-outlined text-error text-[18px]">trending_up</span>
+<span class="text-error font-bold text-body-md">Projected: 31.0 hrs</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Interactivity for the Page -->
+<script>
+        // Smooth entry animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('section, .sticky > div');
+            elements.forEach((el, idx) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.4s ease-out';
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100 * idx);
+            });
+        });
+    </script>
+</body></html>
