@@ -1,0 +1,97 @@
+- generic [ref=f15e3]:
+  - complementary [ref=f15e4]:
+    - generic [ref=f15e7]:
+      - paragraph [ref=f15e8]: Canva Concepts
+      - paragraph [ref=f15e9]: Factory ERP
+    - navigation [ref=f15e10]:
+      - link "Dashboard" [ref=f15e11] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Work Orders" [ref=f15e13] [cursor=pointer]:
+        - /url: /work-orders
+      - link "Quotations" [ref=f15e15] [cursor=pointer]:
+        - /url: /quotations
+      - link "Change Requests" [ref=f15e17] [cursor=pointer]:
+        - /url: /change-requests
+      - link "BOM & Materials" [ref=f15e19] [cursor=pointer]:
+        - /url: /bom/templates
+      - link "Purchase Requisitions" [ref=f15e21] [cursor=pointer]:
+        - /url: /purchase-requisitions
+      - link "Purchase Orders" [ref=f15e23] [cursor=pointer]:
+        - /url: /purchase-orders
+      - link "Production" [ref=f15e25] [cursor=pointer]:
+        - /url: /production
+      - link "Overtime" [ref=f15e27] [cursor=pointer]:
+        - /url: /production/overtime
+      - link "Quality Control" [ref=f15e29] [cursor=pointer]:
+        - /url: /quality-control
+      - link "Dispatch & Delivery" [ref=f15e31] [cursor=pointer]:
+        - /url: /dispatch
+      - link "Invoices" [ref=f15e33] [cursor=pointer]:
+        - /url: /invoices
+      - link "Reports" [ref=f15e35] [cursor=pointer]:
+        - /url: /reports
+    - generic [ref=f15e37]:
+      - link "Settings" [ref=f15e38] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f15e40]:
+        - generic [ref=f15e41]:
+          - img "Marcus Chen" [ref=f15e43]
+          - generic [ref=f15e44]:
+            - paragraph [ref=f15e45]: Marcus Chen
+            - paragraph [ref=f15e46]: Factory Manager
+        - generic [ref=f15e47]:
+          - generic [ref=f15e48]: Toggle Role
+          - combobox [ref=f15e49] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f15e50]:
+    - generic [ref=f15e51]:
+      - button "arrow_back Back to Work Orders" [ref=f15e127] [cursor=pointer]:
+        - generic [ref=f15e128]: arrow_back
+        - text: Back to Work Orders
+      - generic [ref=f15e130]:
+        - generic [ref=f15e131]:
+          - generic [ref=f15e132]:
+            - generic [ref=f15e133]: WO-8829-23
+            - generic [ref=f15e134]: in production
+            - generic [ref=f15e135]: ⚠ CRITICAL
+          - generic [ref=f15e136]:
+            - button "Edit Details" [ref=f15e137] [cursor=pointer]
+            - button "Duplicate WO" [ref=f15e138] [cursor=pointer]
+            - button "print Print / Export" [ref=f15e139] [cursor=pointer]:
+              - generic [ref=f15e140]: print
+              - text: Print / Export
+            - button "Cancel WO" [ref=f15e141] [cursor=pointer]
+        - heading "Executive Boardroom Suite - Walnut Series" [level=1] [ref=f15e142]
+        - generic [ref=f15e143]:
+          - paragraph [ref=f15e144]: "Client: Global Tech Holdings — Global Tech Headquarters"
+          - paragraph [ref=f15e145]: "Furniture: Premium Office Desk × 10"
+          - paragraph [ref=f15e146]: Created by System on 15 Aug 2026
+        - generic [ref=f15e147]:
+          - button "Details" [ref=f15e148] [cursor=pointer]
+          - button "Status History" [ref=f15e149] [cursor=pointer]
+          - button "Drawings" [ref=f15e150] [cursor=pointer]
+          - button "Change Requests" [ref=f15e151] [cursor=pointer]
+          - button "BOM" [ref=f15e153] [cursor=pointer]
+      - generic [ref=f15e154]:
+        - generic [ref=f15e155]:
+          - heading "Change Requests (2)" [level=3] [ref=f15e156]
+          - button "+ Raise Change Request" [ref=f15e157] [cursor=pointer]
+        - generic [ref=f15e158]:
+          - generic [ref=f15e159]:
+            - generic [ref=f15e160]:
+              - generic [ref=f15e161]: CR-WO-2-119
+              - generic [ref=f15e163]: Pending
+            - paragraph [ref=f15e164]: "Dimension Change: Client requested wider tabletop."
+            - generic [ref=f15e165]:
+              - paragraph [ref=f15e166]: Raised by Marcus Chen on 2026-08-15T19:26:29.718Z
+              - button "View Details" [ref=f15e167] [cursor=pointer]
+          - generic [ref=f15e168]:
+            - generic [ref=f15e169]:
+              - generic [ref=f15e170]: CR-8829-01
+              - generic [ref=f15e172]: Implemented
+            - paragraph [ref=f15e173]: Increase walnut tabletop width by 200mm per client update
+            - generic [ref=f15e174]:
+              - paragraph [ref=f15e175]: Raised by Sarah Jenkins on 2026-08-15T08:53:04.205Z
+              - button "View Details" [ref=f15e176] [cursor=pointer]

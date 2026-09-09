@@ -1,0 +1,135 @@
+- generic [ref=f33e3]:
+  - complementary [ref=f33e4]:
+    - generic [ref=f33e7]:
+      - paragraph [ref=f33e8]: Canva Concepts
+      - paragraph [ref=f33e9]: Factory ERP
+    - navigation [ref=f33e10]:
+      - generic [ref=f33e11]:
+        - paragraph [ref=f33e12]: Overview
+        - generic [ref=f33e13]:
+          - link "Dashboard" [ref=f33e14] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Work Orders" [ref=f33e16] [cursor=pointer]:
+            - /url: /work-orders
+          - link "Quotations" [ref=f33e18] [cursor=pointer]:
+            - /url: /quotations
+      - generic [ref=f33e20]:
+        - paragraph [ref=f33e21]: Operations
+        - generic [ref=f33e22]:
+          - link "Change Requests" [ref=f33e23] [cursor=pointer]:
+            - /url: /change-requests
+          - link "BOM & Materials" [ref=f33e25] [cursor=pointer]:
+            - /url: /bom/templates
+          - link "Production" [ref=f33e27] [cursor=pointer]:
+            - /url: /production
+          - link "Overtime" [ref=f33e29] [cursor=pointer]:
+            - /url: /production/overtime
+          - link "Quality Control" [ref=f33e31] [cursor=pointer]:
+            - /url: /quality-control
+          - link "Dispatch & Delivery" [ref=f33e33] [cursor=pointer]:
+            - /url: /dispatch
+      - generic [ref=f33e35]:
+        - paragraph [ref=f33e36]: Procurement
+        - generic [ref=f33e37]:
+          - link "Purchase Requisitions" [ref=f33e38] [cursor=pointer]:
+            - /url: /purchase-requisitions
+          - link "Purchase Orders" [ref=f33e40] [cursor=pointer]:
+            - /url: /purchase-orders
+      - generic [ref=f33e42]:
+        - paragraph [ref=f33e43]: Finance
+        - generic [ref=f33e44]:
+          - link "Invoices" [ref=f33e45] [cursor=pointer]:
+            - /url: /invoices
+          - link "Reports" [ref=f33e47] [cursor=pointer]:
+            - /url: /reports
+    - generic [ref=f33e49]:
+      - link "Settings" [ref=f33e50] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f33e52]:
+        - generic [ref=f33e53]:
+          - img "Marcus Chen" [ref=f33e55]
+          - generic [ref=f33e56]:
+            - paragraph [ref=f33e57]: Marcus Chen
+            - paragraph [ref=f33e58]: Factory Manager
+        - generic [ref=f33e59]:
+          - generic [ref=f33e60]: Toggle Role
+          - combobox [ref=f33e61] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - generic [ref=f33e63]:
+    - heading "Stock Check Complete" [level=1] [ref=f33e64]
+    - paragraph [ref=f33e65]: BOM-WO-CHH-26-001 approved — automatic stock check ran within seconds
+    - generic [ref=f33e66]:
+      - generic [ref=f33e67]: ▲
+      - generic [ref=f33e68]:
+        - paragraph [ref=f33e69]: Outcome B — Some items short
+        - paragraph [ref=f33e70]: 4 of 6 items available and reserved. 2 items short — Purchase Requisitions auto-drafted. WO status updated to Bom Approved · Pending Material.
+    - generic [ref=f33e71]:
+      - heading "Item-by-Item Stock Status" [level=2] [ref=f33e72]
+      - table [ref=f33e73]:
+        - rowgroup [ref=f33e74]:
+          - row [ref=f33e75]:
+            - columnheader "Material" [ref=f33e76]
+            - columnheader "Qty Required" [ref=f33e77]
+            - columnheader "Available" [ref=f33e78]
+            - columnheader "Status" [ref=f33e79]
+            - columnheader "Action Taken" [ref=f33e80]
+        - rowgroup [ref=f33e81]:
+          - row [ref=f33e82]:
+            - cell "Plywood 18mm BWR" [ref=f33e83]
+            - cell "12 sheets" [ref=f33e84]
+            - cell "18 sheets" [ref=f33e85]
+            - cell "Available" [ref=f33e86]
+            - cell "Reserved — 12 sheets" [ref=f33e87]
+          - row [ref=f33e88]:
+            - cell "Laminate — Merino Charcoal" [ref=f33e89]
+            - cell "480 sqft" [ref=f33e90]
+            - cell "220 sqft" [ref=f33e91]
+            - cell "Partial" [ref=f33e92]
+            - cell "PR-26-014 drafted — 260 sqft" [ref=f33e93]
+          - row [ref=f33e94]:
+            - cell "Hardware + Polish" [ref=f33e95]
+            - cell "96 sqft" [ref=f33e96]
+            - cell "96 sqft" [ref=f33e97]
+            - cell "Available" [ref=f33e98]
+            - cell "Reserved — 96 sqft" [ref=f33e99]
+          - row [ref=f33e100]:
+            - cell "Edge Tape 2mm" [ref=f33e101]
+            - cell "40 metres" [ref=f33e102]
+            - cell "40 metres" [ref=f33e103]
+            - cell "Available" [ref=f33e104]
+            - cell "Reserved — 40 metres" [ref=f33e105]
+          - row [ref=f33e106]:
+            - cell "Fevicol SR 998" [ref=f33e107]
+            - cell "4 kg" [ref=f33e108]
+            - cell "0 kg" [ref=f33e109]
+            - cell "Unavailable" [ref=f33e110]
+            - cell "PR-26-015 drafted — 4 kg" [ref=f33e111]
+          - row [ref=f33e112]:
+            - cell "SS Hinges — Heavy Duty" [ref=f33e113]
+            - cell "6 pcs" [ref=f33e114]
+            - cell "20 pcs" [ref=f33e115]
+            - cell "Available" [ref=f33e116]
+            - cell "Reserved — 6 pcs" [ref=f33e117]
+    - generic [ref=f33e118]:
+      - heading "Auto-Drafted Purchase Requisitions" [level=2] [ref=f33e119]
+      - generic [ref=f33e120]:
+        - generic [ref=f33e121]:
+          - generic [ref=f33e122]:
+            - generic [ref=f33e123]: PR-26-014
+            - paragraph [ref=f33e125]: Laminate — Merino Charcoal — 260 sqft
+          - generic [ref=f33e126]:
+            - paragraph [ref=f33e127]: "Vendor: Greenlam Laminates"
+            - paragraph [ref=f33e128]: "Required by: 18-Aug-2026"
+        - generic [ref=f33e129]:
+          - generic [ref=f33e130]:
+            - generic [ref=f33e131]:
+              - generic [ref=f33e132]: PR-26-015
+              - generic [ref=f33e133]: URGENT
+            - paragraph [ref=f33e134]: Fevicol SR 998 — 4 kg
+          - generic [ref=f33e135]:
+            - paragraph [ref=f33e136]: "Vendor: Ramesh Hardware"
+            - paragraph [ref=f33e137]: "Required by: 15-Aug-2026"
+      - button "View Purchase Requisitions" [ref=f33e138] [cursor=pointer]
+    - button "Back to Work Order" [ref=f33e139] [cursor=pointer]

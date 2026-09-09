@@ -1,0 +1,179 @@
+- generic [ref=f8e3]:
+  - complementary [ref=f8e4]:
+    - generic [ref=f8e7]:
+      - paragraph [ref=f8e8]: Canva Concepts
+      - paragraph [ref=f8e9]: Factory ERP
+    - navigation [ref=f8e10]:
+      - link "Dashboard" [ref=f8e11] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Work Orders" [ref=f8e13] [cursor=pointer]:
+        - /url: /work-orders
+      - link "Quotations" [ref=f8e15] [cursor=pointer]:
+        - /url: /quotations
+      - link "Change Requests" [ref=f8e17] [cursor=pointer]:
+        - /url: /change-requests
+      - link "BOM & Materials" [ref=f8e19] [cursor=pointer]:
+        - /url: /bom/templates
+      - link "Purchase Requisitions" [ref=f8e21] [cursor=pointer]:
+        - /url: /purchase-requisitions
+      - link "Purchase Orders" [ref=f8e23] [cursor=pointer]:
+        - /url: /purchase-orders
+      - link "Production" [ref=f8e25] [cursor=pointer]:
+        - /url: /production
+      - link "Overtime" [ref=f8e27] [cursor=pointer]:
+        - /url: /production/overtime
+      - link "Quality Control" [ref=f8e29] [cursor=pointer]:
+        - /url: /quality-control
+      - link "Dispatch & Delivery" [ref=f8e31] [cursor=pointer]:
+        - /url: /dispatch
+      - link "Invoices" [ref=f8e33] [cursor=pointer]:
+        - /url: /invoices
+      - link "Reports" [ref=f8e35] [cursor=pointer]:
+        - /url: /reports
+    - generic [ref=f8e37]:
+      - link "Settings" [ref=f8e38] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f8e40]:
+        - generic [ref=f8e41]:
+          - img "Marcus Chen" [ref=f8e43]
+          - generic [ref=f8e44]:
+            - paragraph [ref=f8e45]: Marcus Chen
+            - paragraph [ref=f8e46]: Factory Manager
+        - generic [ref=f8e47]:
+          - generic [ref=f8e48]: Toggle Role
+          - combobox [ref=f8e49] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - generic [ref=f8e50]:
+    - generic [ref=f8e51]:
+      - generic [ref=f8e52]:
+        - heading "Quotations" [level=1] [ref=f8e53]
+        - paragraph [ref=f8e54]: B2B and D2C quotes — Chhabee work is billed Cost+5%, not quoted
+      - button "+ New Quotation" [ref=f8e55] [cursor=pointer]
+    - generic [ref=f8e56]:
+      - generic [ref=f8e57]:
+        - paragraph [ref=f8e58]: "3"
+        - paragraph [ref=f8e59]: Total Open
+      - generic [ref=f8e60]:
+        - paragraph [ref=f8e61]: "7"
+        - paragraph [ref=f8e62]: Accepted This Month
+      - generic [ref=f8e63]:
+        - paragraph [ref=f8e64]: "3"
+        - paragraph [ref=f8e65]: Rejected This Month
+      - generic [ref=f8e66]:
+        - paragraph [ref=f8e67]: 58%
+        - paragraph [ref=f8e68]: Conversion Rate
+    - generic [ref=f8e69]:
+      - combobox [ref=f8e70]:
+        - 'option "Status: All" [selected]'
+        - option "Draft"
+        - option "Pending Approval"
+        - option "Sent"
+        - option "Negotiating"
+        - option "Accepted"
+        - option "Rejected"
+        - option "Converted"
+      - combobox [ref=f8e71]:
+        - 'option "Client Type: All" [selected]'
+        - option "B2B"
+        - option "D2C"
+      - combobox [ref=f8e72]:
+        - 'option "Date range: All time" [selected]'
+        - option "This week"
+        - option "This month"
+        - option "Last month"
+      - generic [ref=f8e73]:
+        - generic [ref=f8e74]: 🔍
+        - textbox "Search client name or QT number..." [ref=f8e75]
+    - table [ref=f8e77]:
+      - rowgroup [ref=f8e78]:
+        - row [ref=f8e79]:
+          - columnheader "QT Number" [ref=f8e80]
+          - columnheader "Client" [ref=f8e81]
+          - columnheader "Type" [ref=f8e82]
+          - columnheader "Items" [ref=f8e83]
+          - columnheader "Value (ex-GST)" [ref=f8e84]
+          - columnheader "Quoted (inc-GST)" [ref=f8e85]
+          - columnheader "Valid Until" [ref=f8e86]
+          - columnheader "Status" [ref=f8e87]
+          - columnheader "Actions" [ref=f8e88]
+      - rowgroup [ref=f8e89]:
+        - row [ref=f8e90] [cursor=pointer]:
+          - cell "QT-26-014" [ref=f8e91]
+          - cell "WeWork Cyber City" [ref=f8e92]
+          - cell "B2B" [ref=f8e93]
+          - cell "6 items" [ref=f8e94]
+          - cell "₹4,20,000" [ref=f8e95]
+          - cell "₹4,95,600" [ref=f8e96]
+          - cell "24-Aug-26" [ref=f8e97]
+          - cell "Negotiating" [ref=f8e98]
+          - cell "View | Edit" [ref=f8e99]:
+            - generic [ref=f8e100]:
+              - button "View" [ref=f8e101]
+              - generic [ref=f8e102]: "|"
+              - button "Edit" [ref=f8e103]
+        - row [ref=f8e104] [cursor=pointer]:
+          - cell "QT-26-013" [ref=f8e105]
+          - cell "Kavita Mehra (D2C)" [ref=f8e106]
+          - cell "D2C" [ref=f8e107]
+          - cell "2 items" [ref=f8e108]
+          - cell "₹85,000" [ref=f8e109]
+          - cell "₹1,00,300" [ref=f8e110]
+          - cell "22-Aug-26" [ref=f8e111]
+          - cell "Sent" [ref=f8e112]
+          - cell [ref=f8e113]:
+            - button "View" [ref=f8e115]
+        - row [ref=f8e116] [cursor=pointer]:
+          - cell "QT-26-012" [ref=f8e117]
+          - cell "Bata India Ltd" [ref=f8e118]
+          - cell "B2B" [ref=f8e119]
+          - cell "4 items" [ref=f8e120]
+          - cell "₹2,10,000" [ref=f8e121]
+          - cell "₹2,47,800" [ref=f8e122]
+          - cell "18-Aug-26" [ref=f8e123]
+          - cell "Pending Approval" [ref=f8e124]
+          - cell "View | Edit" [ref=f8e125]:
+            - generic [ref=f8e126]:
+              - button "View" [ref=f8e127]
+              - generic [ref=f8e128]: "|"
+              - button "Edit" [ref=f8e129]
+        - row [ref=f8e130] [cursor=pointer]:
+          - cell "QT-26-011" [ref=f8e131]
+          - cell "Hexaware Technologies" [ref=f8e132]
+          - cell "B2B" [ref=f8e133]
+          - cell "8 items" [ref=f8e134]
+          - cell "₹6,80,000" [ref=f8e135]
+          - cell "₹8,02,400" [ref=f8e136]
+          - cell "15-Aug-26" [ref=f8e137]
+          - cell "Accepted" [ref=f8e138]
+          - cell "View | Convert" [ref=f8e139]:
+            - generic [ref=f8e140]:
+              - button "View" [ref=f8e141]
+              - generic [ref=f8e142]: "|"
+              - button "Convert" [ref=f8e143]
+        - row [ref=f8e144] [cursor=pointer]:
+          - cell "QT-26-010" [ref=f8e145]
+          - cell "Rohan Verma (D2C)" [ref=f8e146]
+          - cell "D2C" [ref=f8e147]
+          - cell "1 item" [ref=f8e148]
+          - cell "₹45,000" [ref=f8e149]
+          - cell "₹53,100" [ref=f8e150]
+          - cell "10-Aug-26" [ref=f8e151]
+          - cell "Rejected" [ref=f8e152]
+          - cell "View | Duplicate" [ref=f8e153]:
+            - generic [ref=f8e154]:
+              - button "View" [ref=f8e155]
+              - generic [ref=f8e156]: "|"
+              - button "Duplicate" [ref=f8e157]
+        - row [ref=f8e158] [cursor=pointer]:
+          - cell "QT-26-009" [ref=f8e159]
+          - cell "Starbucks Saket" [ref=f8e160]
+          - cell "B2B" [ref=f8e161]
+          - cell "5 items" [ref=f8e162]
+          - cell "₹3,15,000" [ref=f8e163]
+          - cell "₹3,71,700" [ref=f8e164]
+          - cell "05-Aug-26" [ref=f8e165]
+          - cell "Converted" [ref=f8e166]
+          - cell [ref=f8e167]:
+            - button "View" [ref=f8e169]

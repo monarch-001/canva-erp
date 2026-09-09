@@ -1,0 +1,200 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - heading "Canva Concepts" [level=1] [ref=e6]
+      - paragraph [ref=e7]: Industrial ERP
+    - navigation [ref=e8]:
+      - link "dashboard Dashboard" [ref=e9] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=e10]: dashboard
+        - generic [ref=e11]: Dashboard
+      - link "manufacturing Work Orders" [ref=e12] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=e13]: manufacturing
+        - generic [ref=e14]: Work Orders
+      - link "precision_manufacturing Production" [ref=e15] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=e16]: precision_manufacturing
+        - generic [ref=e17]: Production
+      - link "group Users" [ref=e18] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=e19]: group
+        - generic [ref=e20]: Users
+      - link "payments Finance" [ref=e21] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=e22]: payments
+        - generic [ref=e23]: Finance
+    - generic [ref=e24]:
+      - link "settings Settings" [ref=e25] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e26]: settings
+        - generic [ref=e27]: Settings
+      - link "help Support" [ref=e28] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=e29]: help
+        - generic [ref=e30]: Support
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - img "Marcus Chen" [ref=e34]
+          - generic [ref=e35]:
+            - paragraph [ref=e36]: Marcus Chen
+            - paragraph [ref=e37]: Factory Manager
+        - generic [ref=e38]:
+          - generic [ref=e39]: Toggle System Role
+          - combobox [ref=e40] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=e41]:
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - heading "New Work Order" [level=2] [ref=e44]
+        - generic [ref=e45]:
+          - generic [ref=e46]: search
+          - textbox "Search orders, clients, items..." [ref=e47]
+      - generic [ref=e49]:
+        - button "notifications 3" [ref=e50] [cursor=pointer]:
+          - text: notifications
+          - generic [ref=e51]: "3"
+        - button "help" [ref=e52] [cursor=pointer]
+        - button "settings" [ref=e53] [cursor=pointer]
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - heading "Create Work Order" [level=1] [ref=e58]
+          - paragraph [ref=e59]: A Work Order is the master record for every job the factory produces.
+        - generic [ref=e60]:
+          - button "Cancel" [ref=e61] [cursor=pointer]
+          - button "Create Work Order" [ref=e62] [cursor=pointer]
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - generic [ref=e66]: person
+            - heading "Client Details" [level=3] [ref=e67]
+          - generic [ref=e68]:
+            - generic [ref=e69]:
+              - generic [ref=e70]: Client Type *
+              - generic [ref=e71]:
+                - generic [ref=e72] [cursor=pointer]:
+                  - generic [ref=e73]: Chhabee
+                  - paragraph [ref=e76]: Internal furniture program
+                - generic [ref=e77] [cursor=pointer]:
+                  - generic [ref=e78]: External B2B
+                  - paragraph [ref=e82]: Corporate / commercial client
+                - generic [ref=e83] [cursor=pointer]:
+                  - generic [ref=e84]: D2C
+                  - paragraph [ref=e87]: Direct to consumer
+            - generic [ref=e88]:
+              - generic [ref=e89]: Client Name *
+              - textbox "e.g. Acme Corp" [ref=e90]
+            - generic [ref=e91]:
+              - generic [ref=e92]: Project Name
+              - textbox "e.g. Warehouse Renovation" [ref=e93]
+            - generic [ref=e94]:
+              - generic [ref=e95]: Client PO Reference *
+              - textbox "PO-XXXXX" [ref=e96]
+            - generic [ref=e97]:
+              - generic [ref=e98]: Client PO Value (INR) *
+              - spinbutton "e.g. 150000" [ref=e99]
+        - generic [ref=e100]:
+          - generic [ref=e101]:
+            - generic [ref=e102]: priority_high
+            - heading "Manufacturing Priority" [level=3] [ref=e103]
+          - generic [ref=e104]:
+            - generic [ref=e105] [cursor=pointer]: Normal
+            - generic [ref=e108] [cursor=pointer]: High
+            - generic [ref=e111] [cursor=pointer]: Critical
+          - generic [ref=e114]:
+            - generic [ref=e115]: Special Manufacturing Notes
+            - textbox "Mention any specific engineering constraints or handling requirements..." [ref=e116]
+        - generic [ref=e117]:
+          - generic [ref=e118]:
+            - generic [ref=e119]:
+              - generic [ref=e120]: chair
+              - heading "Product Specifications" [level=3] [ref=e121]
+            - generic [ref=e122]: "ITEM #01"
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e125]:
+                - generic [ref=e126]: Item Title *
+                - textbox "Executive Oak Workstation" [ref=e127]
+              - generic [ref=e128]:
+                - generic [ref=e129]: Type
+                - generic [ref=e130]:
+                  - button "Table" [ref=e131] [cursor=pointer]
+                  - button "Cabinet" [ref=e132] [cursor=pointer]
+                  - button "Shelf" [ref=e133] [cursor=pointer]
+                  - button "Partition" [ref=e134] [cursor=pointer]
+              - generic [ref=e135]:
+                - generic [ref=e136]: Quantity
+                - generic [ref=e137]:
+                  - button "-" [ref=e138] [cursor=pointer]
+                  - spinbutton [ref=e139]: "1"
+                  - button "+" [ref=e140] [cursor=pointer]
+            - generic [ref=e142]:
+              - generic [ref=e143]: Dimensions (in mm)
+              - generic [ref=e144]:
+                - generic [ref=e145]:
+                  - generic [ref=e146]: Length (L)
+                  - generic [ref=e147]:
+                    - spinbutton "0000" [ref=e148]
+                    - generic [ref=e149]: mm
+                - generic [ref=e150]:
+                  - generic [ref=e151]: Height (H)
+                  - generic [ref=e152]:
+                    - spinbutton "0000" [ref=e153]
+                    - generic [ref=e154]: mm
+                - generic [ref=e155]:
+                  - generic [ref=e156]: Depth (D)
+                  - generic [ref=e157]:
+                    - spinbutton "0000" [ref=e158]
+                    - generic [ref=e159]: mm
+        - generic [ref=e160]:
+          - generic [ref=e161]:
+            - generic [ref=e162]: palette
+            - heading "Surface Finish" [level=3] [ref=e163]
+          - generic [ref=e164]:
+            - generic [ref=e165]:
+              - generic [ref=e166]: Finish Type
+              - combobox [ref=e167]:
+                - option "Natural Veneer" [selected]
+                - option "Matte Laminate"
+                - option "Glossy PU"
+                - option "Powder Coated Metal"
+                - option "Industrial Raw"
+            - generic [ref=e168]:
+              - generic [ref=e169]: Finish Details & Codes
+              - textbox "Specify RAL codes, texture grain direction, or specific laminate brands..." [ref=e170]
+        - generic [ref=e171]:
+          - generic [ref=e172]:
+            - generic [ref=e173]: local_shipping
+            - heading "Logistics & Delivery" [level=3] [ref=e174]
+          - generic [ref=e175]:
+            - generic [ref=e176]:
+              - generic [ref=e177]: Terms of Delivery *
+              - generic [ref=e178]:
+                - generic [ref=e182] [cursor=pointer]:
+                  - generic [ref=e183]: Included in Price
+                  - generic [ref=e184]: Delivery cost absorbed in WO price
+                - generic [ref=e187] [cursor=pointer]:
+                  - generic [ref=e188]: Billed at Actuals
+                  - generic [ref=e189]: We arrange, client pays actual cost
+                - generic [ref=e192] [cursor=pointer]:
+                  - generic [ref=e193]: Client Arranges
+                  - generic [ref=e194]: Client pays transporter directly
+            - generic [ref=e195]:
+              - generic [ref=e196]:
+                - generic [ref=e197]: Delivery Address
+                - textbox "Full street address, loading dock details, and site contact..." [ref=e198]
+              - generic [ref=e199]:
+                - generic [ref=e200]: Requested Delivery Date
+                - textbox [ref=e202]
+      - generic [ref=e205]:
+        - generic [ref=e206]:
+          - generic [ref=e207]: check_circle
+          - generic [ref=e208]: Please fill in Item Title and Client Name.
+        - generic [ref=e209]:
+          - button "Cancel" [ref=e210] [cursor=pointer]
+          - button "assignment_turned_in Create Work Order" [ref=e211] [cursor=pointer]:
+            - generic [ref=e212]: assignment_turned_in
+            - text: Create Work Order

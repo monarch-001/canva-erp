@@ -1,0 +1,106 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e7]:
+      - paragraph [ref=e8]: Canva Concepts
+      - paragraph [ref=e9]: Factory ERP
+    - navigation [ref=e10]:
+      - link "Dashboard" [ref=e11] [cursor=pointer]:
+        - /url: /super-admin
+      - link "Chhabee Work Orders" [ref=e13] [cursor=pointer]:
+        - /url: /super-admin/work-orders
+      - link "Settings" [ref=e15] [cursor=pointer]:
+        - /url: /settings
+    - generic [ref=e17]:
+      - paragraph [ref=e18]: Marcus Chen
+      - paragraph [ref=e19]: Chhabee Admin
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - heading "Chhabee Programme Summary" [level=1] [ref=e22]
+      - paragraph [ref=e23]: Read-only view — Chhabee stream only
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - paragraph [ref=e26]: "14"
+        - paragraph [ref=e27]: Active WOs
+      - generic [ref=e28]:
+        - paragraph [ref=e29]: "6"
+        - paragraph [ref=e30]: Delivered This Month
+      - generic [ref=e31]:
+        - paragraph [ref=e32]: "8"
+        - paragraph [ref=e33]: Pending Delivery
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - heading "Work Order Status" [level=2] [ref=e36]
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - text: "Status:"
+            - combobox [ref=e39] [cursor=pointer]:
+              - option "All" [selected]
+              - option "In Production"
+              - option "Material Pending"
+              - option "Pending Review"
+              - option "QC Passed"
+              - option "Delivered"
+          - generic [ref=e40]: "Date range: This month"
+      - generic [ref=e41]:
+        - paragraph [ref=e42]: WO No
+        - paragraph [ref=e43]: Description
+        - paragraph [ref=e44]: Status
+        - paragraph [ref=e45]: Committed Date
+        - paragraph [ref=e46]: Days Left / Overdue
+      - generic [ref=e47] [cursor=pointer]:
+        - paragraph [ref=e48]: WO-CHH-26-001
+        - paragraph [ref=e49]: Reception Counter — DLF Cyber Hub
+        - generic [ref=e50]: IN PRODUCTION
+        - paragraph [ref=e51]: 25-Aug-2026
+        - paragraph [ref=e52]: 6 days left
+      - generic [ref=e53] [cursor=pointer]:
+        - paragraph [ref=e54]: WO-CHH-26-003
+        - paragraph [ref=e55]: Kitchen Counter — Fortis Hospital
+        - generic [ref=e56]: MATERIAL PENDING
+        - paragraph [ref=e57]: 28-Aug-2026
+        - paragraph [ref=e58]: 9 days left
+      - generic [ref=e59] [cursor=pointer]:
+        - paragraph [ref=e60]: WO-CHH-26-005
+        - paragraph [ref=e61]: Nurses Station — Fortis Hospital
+        - generic [ref=e62]: PENDING REVIEW
+        - paragraph [ref=e63]: Not committed
+        - paragraph [ref=e64]: —
+      - generic [ref=e65] [cursor=pointer]:
+        - paragraph [ref=e66]: WO-CHH-26-009
+        - paragraph [ref=e67]: Cash Counter — QSR Fitout
+        - generic [ref=e68]: DELIVERED
+        - paragraph [ref=e69]: 15-Aug-2026
+        - paragraph [ref=e70]: Delivered
+      - generic [ref=e71] [cursor=pointer]:
+        - paragraph [ref=e72]: WO-CHH-26-011
+        - paragraph [ref=e73]: Display Counter — DLF Cyber Hub
+        - generic [ref=e74]: QC PASSED
+        - paragraph [ref=e75]: 18-Aug-2026
+        - paragraph [ref=e76]: Awaiting confirmation
+    - generic [ref=e77]:
+      - heading "Revenue Summary — Chhabee Stream Only" [level=2] [ref=e78]
+      - generic [ref=e79]:
+        - generic [ref=e80]:
+          - paragraph [ref=e81]: Billed This Month
+          - paragraph [ref=e82]: ₹8,42,000
+        - generic [ref=e83]:
+          - paragraph [ref=e84]: Outstanding
+          - paragraph [ref=e85]: ₹2,15,000
+        - generic [ref=e86]:
+          - paragraph [ref=e87]: Collected
+          - paragraph [ref=e88]: ₹6,27,000
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - heading "User Directory & Permissions" [level=2] [ref=e92]
+          - paragraph [ref=e93]: Manage user designations, profiles, and portal credentials
+        - button "+ Add User" [ref=e94] [cursor=pointer]
+      - generic [ref=e95]:
+        - paragraph [ref=e96]: Name
+        - paragraph [ref=e97]: Email ID
+        - paragraph [ref=e98]: Designation
+        - paragraph [ref=e99]: Status
+      - paragraph [ref=e100]: No user profiles found.
+    - paragraph [ref=e101]:
+      - generic [ref=e102]: ℹ
+      - generic [ref=e103]: No costs, margins, B2B/D2C data, payroll, or inventory information is visible in this view.

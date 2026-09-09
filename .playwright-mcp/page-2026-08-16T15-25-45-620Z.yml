@@ -1,0 +1,264 @@
+- generic [ref=f5e3]:
+  - complementary [ref=f5e4]:
+    - generic [ref=f5e7]:
+      - paragraph [ref=f5e8]: Canva Concepts
+      - paragraph [ref=f5e9]: Factory ERP
+    - navigation [ref=f5e10]:
+      - generic [ref=f5e11]:
+        - paragraph [ref=f5e12]: Overview
+        - generic [ref=f5e13]:
+          - link "Dashboard" [ref=f5e14] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Work Orders" [ref=f5e16] [cursor=pointer]:
+            - /url: /work-orders
+          - link "Quotations" [ref=f5e18] [cursor=pointer]:
+            - /url: /quotations
+      - generic [ref=f5e20]:
+        - paragraph [ref=f5e21]: Operations
+        - generic [ref=f5e22]:
+          - link "Change Requests" [ref=f5e23] [cursor=pointer]:
+            - /url: /change-requests
+          - link "BOM & Materials" [ref=f5e25] [cursor=pointer]:
+            - /url: /bom/templates
+          - link "Production" [ref=f5e27] [cursor=pointer]:
+            - /url: /production
+          - link "Overtime" [ref=f5e29] [cursor=pointer]:
+            - /url: /production/overtime
+          - link "Quality Control" [ref=f5e31] [cursor=pointer]:
+            - /url: /quality-control
+          - link "Dispatch & Delivery" [ref=f5e33] [cursor=pointer]:
+            - /url: /dispatch
+      - generic [ref=f5e35]:
+        - paragraph [ref=f5e36]: Procurement
+        - generic [ref=f5e37]:
+          - link "Purchase Requisitions" [ref=f5e38] [cursor=pointer]:
+            - /url: /purchase-requisitions
+          - link "Purchase Orders" [ref=f5e40] [cursor=pointer]:
+            - /url: /purchase-orders
+      - generic [ref=f5e42]:
+        - paragraph [ref=f5e43]: Finance
+        - generic [ref=f5e44]:
+          - link "Invoices" [ref=f5e45] [cursor=pointer]:
+            - /url: /invoices
+          - link "Reports" [ref=f5e47] [cursor=pointer]:
+            - /url: /reports
+    - generic [ref=f5e49]:
+      - link "Settings" [ref=f5e50] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f5e52]:
+        - generic [ref=f5e53]:
+          - img "Marcus Chen" [ref=f5e55]
+          - generic [ref=f5e56]:
+            - paragraph [ref=f5e57]: Marcus Chen
+            - paragraph [ref=f5e58]: Factory Manager
+        - generic [ref=f5e59]:
+          - generic [ref=f5e60]: Toggle Role
+          - combobox [ref=f5e61] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - generic [ref=f5e62]:
+    - banner [ref=f5e63]:
+      - generic [ref=f5e64]:
+        - generic [ref=f5e65]:
+          - heading "Overtime Management" [level=1] [ref=f5e66]
+          - paragraph [ref=f5e67]: ₹100/hour flat rate · Monthly cap 26 hours per carpenter
+        - generic [ref=f5e68]:
+          - generic [ref=f5e69]:
+            - combobox [ref=f5e70]:
+              - option "This Month" [selected]
+              - option "Last Month"
+              - option "This Quarter"
+            - button "+ Submit OT Request" [ref=f5e71] [cursor=pointer]
+          - button "Notifications" [ref=f5e73] [cursor=pointer]:
+            - generic [ref=f5e74]: notifications
+          - generic [ref=f5e76]:
+            - generic [ref=f5e77]: MC
+            - generic [ref=f5e78]:
+              - paragraph [ref=f5e79]: Marcus Chen
+              - paragraph [ref=f5e80]: Factory Manager
+    - main [ref=f5e81]:
+      - generic [ref=f5e82]:
+        - generic [ref=f5e83]:
+          - heading "Pending Approvals" [level=2] [ref=f5e84]
+          - generic [ref=f5e85]: "4"
+        - generic [ref=f5e86]:
+          - generic [ref=f5e87]:
+            - generic [ref=f5e88]:
+              - generic [ref=f5e89]:
+                - generic [ref=f5e90]: OTR-26-001
+                - generic [ref=f5e91]: "|"
+                - generic [ref=f5e92]: Ramesh Kumar
+              - generic [ref=f5e93]: "Est. Cost: ₹300"
+            - paragraph [ref=f5e94]: Today — 6:00 PM to 9:00 PM (3 hours)
+            - paragraph [ref=f5e95]:
+              - text: "WO:"
+              - generic [ref=f5e96]: WO-CHH-26-001 — Assembly work
+            - paragraph [ref=f5e97]: "Reason: Behind schedule, delivery tomorrow"
+            - generic [ref=f5e98]:
+              - button "Approve" [ref=f5e99] [cursor=pointer]
+              - button "Reject" [ref=f5e100] [cursor=pointer]
+          - generic [ref=f5e101]:
+            - generic [ref=f5e102]:
+              - generic [ref=f5e103]:
+                - generic [ref=f5e104]: OTR-26-002
+                - generic [ref=f5e105]: "|"
+                - generic [ref=f5e106]: Suresh Yadav
+              - generic [ref=f5e107]: "Est. Cost: ₹200"
+            - paragraph [ref=f5e108]: Today — 6:00 PM to 8:00 PM (2 hours)
+            - paragraph [ref=f5e109]:
+              - text: "WO:"
+              - generic [ref=f5e110]: WO-B2B-28-001 — Finishing touches before dispatch
+            - paragraph [ref=f5e111]: "Reason: Client walkthrough scheduled early tomorrow"
+            - generic [ref=f5e112]:
+              - button "Approve" [ref=f5e113] [cursor=pointer]
+              - button "Reject" [ref=f5e114] [cursor=pointer]
+          - generic [ref=f5e115]:
+            - generic [ref=f5e116]:
+              - generic [ref=f5e117]:
+                - generic [ref=f5e118]: OTR-26-003
+                - generic [ref=f5e119]: "|"
+                - generic [ref=f5e120]: Mohan Lal
+              - generic [ref=f5e121]: "Est. Cost: ₹900"
+            - paragraph [ref=f5e122]: Tomorrow (Sunday) — Full shift (9 hours)
+            - paragraph [ref=f5e123]:
+              - text: "WO:"
+              - generic [ref=f5e124]: WO-CHH-26-005 — Weekend work — hospital fitout deadline
+            - paragraph [ref=f5e125]: "Reason: Client delivery moved up, needs weekend push to stay on schedule for hospital fitout deadline."
+            - generic [ref=f5e126]:
+              - button "Approve" [ref=f5e127] [cursor=pointer]
+              - button "Reject" [ref=f5e128] [cursor=pointer]
+          - generic [ref=f5e129]:
+            - generic [ref=f5e130]:
+              - generic [ref=f5e131]:
+                - generic [ref=f5e132]: OTR-26-004
+                - generic [ref=f5e133]: "|"
+                - generic [ref=f5e134]: Deepak Verma
+                - generic [ref=f5e135]: Cap Exceeded
+              - generic [ref=f5e136]: "Est. Cost: ₹900"
+            - paragraph [ref=f5e137]: Sunday — Full shift (9 hours)
+            - paragraph [ref=f5e138]:
+              - text: "WO:"
+              - generic [ref=f5e139]: WO-CHH-26-005 — Weekend work — hospital fitout
+            - paragraph [ref=f5e140]: "Reason: Client delivery moved up, needs weekend push to stay on schedule for hospital fitout deadline."
+            - generic [ref=f5e141]:
+              - button "Review & Override" [ref=f5e142] [cursor=pointer]
+              - button "Reject" [ref=f5e143] [cursor=pointer]
+      - generic [ref=f5e144]:
+        - heading "Carpenter OT Status — August 2026" [level=2] [ref=f5e146]
+        - table [ref=f5e148]:
+          - rowgroup [ref=f5e149]:
+            - row [ref=f5e150]:
+              - columnheader "Carpenter" [ref=f5e151]
+              - columnheader "Hours Used" [ref=f5e152]
+              - columnheader "Hours Left" [ref=f5e153]
+              - columnheader "Cap" [ref=f5e154]
+              - columnheader "Status" [ref=f5e155]
+          - rowgroup [ref=f5e156]:
+            - row [ref=f5e157]:
+              - cell "Ramesh Kumar" [ref=f5e158]
+              - cell [ref=f5e159]:
+                - paragraph [ref=f5e162]: 18 / 26 hrs used
+              - cell "8 hrs" [ref=f5e163]
+              - cell "26" [ref=f5e164]
+              - cell "OK" [ref=f5e165]
+            - row [ref=f5e168]:
+              - cell "Suresh Yadav" [ref=f5e169]
+              - cell [ref=f5e170]:
+                - paragraph [ref=f5e173]: 24 / 26 hrs used
+              - cell "2 hrs" [ref=f5e174]
+              - cell "26" [ref=f5e175]
+              - cell "▲ Near Cap" [ref=f5e176]
+            - row [ref=f5e178]:
+              - cell "Vikram Singh" [ref=f5e179]
+              - cell [ref=f5e180]:
+                - paragraph [ref=f5e183]: 26 / 26 hrs used
+              - cell "0 hrs" [ref=f5e184]
+              - cell "26" [ref=f5e185]
+              - cell "CAPPED" [ref=f5e186]
+            - row [ref=f5e189]:
+              - cell "Mohan Lal" [ref=f5e190]
+              - cell [ref=f5e191]:
+                - paragraph [ref=f5e194]: 5 / 26 hrs used
+              - cell "21 hrs" [ref=f5e195]
+              - cell "26" [ref=f5e196]
+              - cell "OK" [ref=f5e197]
+            - row [ref=f5e200]:
+              - cell "Deepak Verma" [ref=f5e201]
+              - cell [ref=f5e202]:
+                - paragraph [ref=f5e205]: 29 / 26 hrs used
+              - cell "0 hrs" [ref=f5e206]
+              - cell "26" [ref=f5e207]
+              - cell "◆ Override Applied" [ref=f5e208]
+      - generic [ref=f5e210]:
+        - heading "OT History — This Month" [level=2] [ref=f5e212]
+        - generic [ref=f5e213]:
+          - combobox [ref=f5e214]:
+            - 'option "Carpenter: All" [selected]'
+            - option "Ramesh Kumar"
+            - option "Suresh Yadav"
+            - option "Mohan Lal"
+            - option "Vikram Singh"
+            - option "Anil Rawat"
+          - combobox [ref=f5e215]:
+            - 'option "Status: All" [selected]'
+            - 'option "Status: Completed"'
+            - 'option "Status: Rejected"'
+            - 'option "Status: Approved"'
+            - 'option "Status: Pending"'
+          - combobox [ref=f5e216]:
+            - 'option "Type: All" [selected]'
+            - option "Daily OT"
+            - option "Weekend Work"
+            - option "Holiday Work"
+        - table [ref=f5e218]:
+          - rowgroup [ref=f5e219]:
+            - row [ref=f5e220]:
+              - columnheader "OTR No." [ref=f5e221]
+              - columnheader "Carpenter" [ref=f5e222]
+              - columnheader "Date" [ref=f5e223]
+              - columnheader "Type" [ref=f5e224]
+              - columnheader "Hours" [ref=f5e225]
+              - columnheader "Cost" [ref=f5e226]
+              - columnheader "Status" [ref=f5e227]
+          - rowgroup [ref=f5e228]:
+            - row [ref=f5e229]:
+              - cell "OTR-25-098" [ref=f5e230]
+              - cell "Ramesh Kumar" [ref=f5e231]
+              - cell "15-Aug-2026" [ref=f5e232]
+              - cell "Daily OT" [ref=f5e233]
+              - cell "3 hrs" [ref=f5e234]
+              - cell "₹300" [ref=f5e235]
+              - cell "Completed" [ref=f5e236]
+            - row [ref=f5e237]:
+              - cell "OTR-25-095" [ref=f5e238]
+              - cell "Suresh Yadav" [ref=f5e239]
+              - cell "12-Aug-2026" [ref=f5e240]
+              - cell "Daily OT" [ref=f5e241]
+              - cell "2 hrs" [ref=f5e242]
+              - cell "₹200" [ref=f5e243]
+              - cell "Completed" [ref=f5e244]
+            - row [ref=f5e245]:
+              - cell "OTR-25-091" [ref=f5e246]
+              - cell "Mohan Lal" [ref=f5e247]
+              - cell "09-Aug-2026" [ref=f5e248]
+              - cell "Weekend Work" [ref=f5e249]
+              - cell "9 hrs" [ref=f5e250]
+              - cell "₹900" [ref=f5e251]
+              - cell "Completed" [ref=f5e252]
+            - row [ref=f5e253]:
+              - cell "OTR-25-087" [ref=f5e254]
+              - cell "Vikram Singh" [ref=f5e255]
+              - cell "05-Aug-2026" [ref=f5e256]
+              - cell "Daily OT" [ref=f5e257]
+              - cell "3 hrs" [ref=f5e258]
+              - cell "₹300" [ref=f5e259]
+              - cell "Rejected" [ref=f5e260]
+            - row [ref=f5e261]:
+              - cell "OTR-25-082" [ref=f5e262]
+              - cell "Anil Rawat" [ref=f5e263]
+              - cell "02-Aug-2026" [ref=f5e264]
+              - cell "Holiday Work" [ref=f5e265]
+              - cell "6 hrs" [ref=f5e266]
+              - cell "₹600" [ref=f5e267]
+              - cell "Completed" [ref=f5e268]

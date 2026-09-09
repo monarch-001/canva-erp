@@ -1,0 +1,60 @@
+- generic [ref=f47e3]:
+  - complementary [ref=f47e4]:
+    - generic [ref=f47e7]:
+      - paragraph [ref=f47e8]: Canva Concepts
+      - paragraph [ref=f47e9]: Factory ERP
+    - navigation [ref=f47e10]:
+      - generic [ref=f47e11]:
+        - paragraph [ref=f47e12]: Overview
+        - generic [ref=f47e13]:
+          - link "Dashboard" [ref=f47e14] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Work Orders" [ref=f47e16] [cursor=pointer]:
+            - /url: /work-orders
+          - link "Quotations" [ref=f47e18] [cursor=pointer]:
+            - /url: /quotations
+      - generic [ref=f47e20]:
+        - paragraph [ref=f47e21]: Operations
+        - generic [ref=f47e22]:
+          - link "Change Requests" [ref=f47e23] [cursor=pointer]:
+            - /url: /change-requests
+          - link "BOM & Materials" [ref=f47e25] [cursor=pointer]:
+            - /url: /bom/templates
+          - link "Production" [ref=f47e27] [cursor=pointer]:
+            - /url: /production
+          - link "Overtime" [ref=f47e29] [cursor=pointer]:
+            - /url: /production/overtime
+          - link "Quality Control" [ref=f47e31] [cursor=pointer]:
+            - /url: /quality-control
+          - link "Dispatch & Delivery" [ref=f47e33] [cursor=pointer]:
+            - /url: /dispatch
+      - generic [ref=f47e35]:
+        - paragraph [ref=f47e36]: Procurement
+        - generic [ref=f47e37]:
+          - link "Purchase Requisitions" [ref=f47e38] [cursor=pointer]:
+            - /url: /purchase-requisitions
+          - link "Purchase Orders" [ref=f47e40] [cursor=pointer]:
+            - /url: /purchase-orders
+      - generic [ref=f47e42]:
+        - paragraph [ref=f47e43]: Finance
+        - generic [ref=f47e44]:
+          - link "Invoices" [ref=f47e45] [cursor=pointer]:
+            - /url: /invoices
+          - link "Reports" [ref=f47e47] [cursor=pointer]:
+            - /url: /reports
+    - generic [ref=f47e49]:
+      - link "Settings" [ref=f47e50] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f47e52]:
+        - generic [ref=f47e53]:
+          - img "Marcus Chen" [ref=f47e55]
+          - generic [ref=f47e56]:
+            - paragraph [ref=f47e57]: Marcus Chen
+            - paragraph [ref=f47e58]: Factory Manager
+        - generic [ref=f47e59]:
+          - generic [ref=f47e60]: Toggle Role
+          - combobox [ref=f47e61] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f47e62]

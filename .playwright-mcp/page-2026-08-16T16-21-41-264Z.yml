@@ -1,0 +1,103 @@
+- generic [ref=f25e3]:
+  - complementary [ref=f25e4]:
+    - generic [ref=f25e7]:
+      - paragraph [ref=f25e8]: Canva Concepts
+      - paragraph [ref=f25e9]: Factory ERP
+    - navigation [ref=f25e10]:
+      - generic [ref=f25e11]:
+        - paragraph [ref=f25e12]: Overview
+        - generic [ref=f25e13]:
+          - link "Dashboard" [ref=f25e14] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Work Orders" [ref=f25e16] [cursor=pointer]:
+            - /url: /work-orders
+          - link "Quotations" [ref=f25e18] [cursor=pointer]:
+            - /url: /quotations
+      - generic [ref=f25e20]:
+        - paragraph [ref=f25e21]: Operations
+        - generic [ref=f25e22]:
+          - link "Change Requests" [ref=f25e23] [cursor=pointer]:
+            - /url: /change-requests
+          - link "BOM & Materials" [ref=f25e25] [cursor=pointer]:
+            - /url: /bom/templates
+          - link "Production" [ref=f25e27] [cursor=pointer]:
+            - /url: /production
+          - link "Overtime" [ref=f25e29] [cursor=pointer]:
+            - /url: /production/overtime
+          - link "Quality Control" [ref=f25e31] [cursor=pointer]:
+            - /url: /quality-control
+          - link "Dispatch & Delivery" [ref=f25e33] [cursor=pointer]:
+            - /url: /dispatch
+      - generic [ref=f25e35]:
+        - paragraph [ref=f25e36]: Procurement
+        - generic [ref=f25e37]:
+          - link "Purchase Requisitions" [ref=f25e38] [cursor=pointer]:
+            - /url: /purchase-requisitions
+          - link "Purchase Orders" [ref=f25e40] [cursor=pointer]:
+            - /url: /purchase-orders
+      - generic [ref=f25e42]:
+        - paragraph [ref=f25e43]: Finance
+        - generic [ref=f25e44]:
+          - link "Invoices" [ref=f25e45] [cursor=pointer]:
+            - /url: /invoices
+          - link "Reports" [ref=f25e47] [cursor=pointer]:
+            - /url: /reports
+    - generic [ref=f25e49]:
+      - link "Settings" [ref=f25e50] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f25e52]:
+        - generic [ref=f25e53]:
+          - img "Marcus Chen" [ref=f25e55]
+          - generic [ref=f25e56]:
+            - paragraph [ref=f25e57]: Marcus Chen
+            - paragraph [ref=f25e58]: Factory Manager
+        - generic [ref=f25e59]:
+          - generic [ref=f25e60]: Toggle Role
+          - combobox [ref=f25e61] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f25e62]:
+    - generic [ref=f25e64]:
+      - generic [ref=f25e65]:
+        - heading "MIS Reports & Analytics" [level=1] [ref=f25e66]
+        - paragraph [ref=f25e67]: Real-time Management P&L, project-level profitability, and operating performance metrics
+      - generic [ref=f25e68]:
+        - button "Notifications" [ref=f25e70] [cursor=pointer]:
+          - generic [ref=f25e71]: notifications
+        - generic [ref=f25e72]:
+          - generic [ref=f25e73]: MC
+          - generic [ref=f25e74]:
+            - paragraph [ref=f25e75]: Marcus Chen
+            - paragraph [ref=f25e76]: Factory Manager
+    - generic [ref=f25e77]:
+      - generic [ref=f25e78]:
+        - generic [ref=f25e79]:
+          - paragraph [ref=f25e80]: 22.6%
+          - paragraph [ref=f25e81]: Average Gross Margin
+        - generic [ref=f25e82]:
+          - paragraph [ref=f25e83]: ₹44,510
+          - paragraph [ref=f25e84]: Net gross profit
+        - generic [ref=f25e85]:
+          - paragraph [ref=f25e86]: 25 Days
+          - paragraph [ref=f25e87]: Average Days to Collect
+        - generic [ref=f25e88]:
+          - paragraph [ref=f25e89]: 91.4%
+          - paragraph [ref=f25e90]: QC first-time pass rate
+      - generic [ref=f25e91]:
+        - heading "Work Order P&L Directory" [level=3] [ref=f25e93]
+        - table [ref=f25e94]:
+          - rowgroup [ref=f25e95]:
+            - row [ref=f25e96]:
+              - columnheader "WO Number" [ref=f25e97]
+              - columnheader "Client" [ref=f25e98]
+              - columnheader "Furniture Item" [ref=f25e99]
+              - columnheader "Revenue (ex-GST)" [ref=f25e100]
+              - columnheader "Total Cost" [ref=f25e101]
+              - columnheader "Gross Profit" [ref=f25e102]
+              - columnheader "Margin %" [ref=f25e103]
+              - columnheader "Collect Days" [ref=f25e104]
+              - columnheader "Actions" [ref=f25e105]
+          - rowgroup [ref=f25e106]:
+            - row [ref=f25e107]:
+              - cell "Loading P&L ledger..." [ref=f25e108]

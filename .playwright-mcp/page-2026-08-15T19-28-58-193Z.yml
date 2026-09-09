@@ -1,0 +1,98 @@
+- generic [ref=f17e3]:
+  - complementary [ref=f17e5]:
+    - generic [ref=f17e8]:
+      - paragraph [ref=f17e9]: Canva Concepts
+      - paragraph [ref=f17e10]: Factory ERP
+    - navigation [ref=f17e11]:
+      - link "Dashboard" [ref=f17e12] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Work Orders" [ref=f17e14] [cursor=pointer]:
+        - /url: /work-orders
+      - link "Quotations" [ref=f17e16] [cursor=pointer]:
+        - /url: /quotations
+      - link "Change Requests" [ref=f17e18] [cursor=pointer]:
+        - /url: /change-requests
+      - link "BOM & Materials" [ref=f17e20] [cursor=pointer]:
+        - /url: /bom/templates
+      - link "Purchase Requisitions" [ref=f17e22] [cursor=pointer]:
+        - /url: /purchase-requisitions
+      - link "Purchase Orders" [ref=f17e24] [cursor=pointer]:
+        - /url: /purchase-orders
+      - link "Production" [ref=f17e26] [cursor=pointer]:
+        - /url: /production
+      - link "Overtime" [ref=f17e28] [cursor=pointer]:
+        - /url: /production/overtime
+      - link "Quality Control" [ref=f17e30] [cursor=pointer]:
+        - /url: /quality-control
+      - link "Dispatch & Delivery" [ref=f17e32] [cursor=pointer]:
+        - /url: /dispatch
+      - link "Invoices" [ref=f17e34] [cursor=pointer]:
+        - /url: /invoices
+      - link "Reports" [ref=f17e36] [cursor=pointer]:
+        - /url: /reports
+    - generic [ref=f17e38]:
+      - link "Settings" [ref=f17e39] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f17e41]:
+        - generic [ref=f17e42]:
+          - img "Marcus Chen" [ref=f17e44]
+          - generic [ref=f17e45]:
+            - paragraph [ref=f17e46]: Marcus Chen
+            - paragraph [ref=f17e47]: Factory Manager
+        - generic [ref=f17e48]:
+          - generic [ref=f17e49]: Toggle Role
+          - combobox [ref=f17e50] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - generic [ref=f17e51]:
+    - button "← Back to WO-8829-23 · Change Requests" [ref=f17e52] [cursor=pointer]:
+      - generic [ref=f17e53]: ←
+      - generic [ref=f17e54]: Back to WO-8829-23 · Change Requests
+    - generic [ref=f17e55]:
+      - generic [ref=f17e56]:
+        - generic [ref=f17e57]: CR-WO-2-119
+        - generic [ref=f17e58]: TIER 2
+        - generic [ref=f17e59]: Approved
+      - 'heading "Dimension Change: Client requested wider tabletop." [level=1] [ref=f17e60]'
+      - paragraph [ref=f17e61]: On WO-8829-23 — Executive Boardroom Suite - Walnut Series
+    - generic [ref=f17e62]:
+      - heading "Change Details" [level=2] [ref=f17e63]
+      - generic [ref=f17e64]:
+        - generic [ref=f17e65]:
+          - paragraph [ref=f17e66]: Change Type
+          - paragraph [ref=f17e67]: Dimension Change
+        - generic [ref=f17e68]:
+          - paragraph [ref=f17e69]: Delivery Impact
+          - paragraph [ref=f17e70]: "No"
+        - generic [ref=f17e71]:
+          - paragraph [ref=f17e72]: Cost Impact
+          - paragraph [ref=f17e73]: ₹0
+      - generic [ref=f17e74]:
+        - paragraph [ref=f17e75]: Description
+        - paragraph [ref=f17e76]: Approved change request. Table dimensions updated.
+      - generic [ref=f17e77]:
+        - paragraph [ref=f17e78]: Reason
+        - paragraph [ref=f17e79]: Client requested wider tabletop.
+      - generic [ref=f17e80]:
+        - paragraph [ref=f17e81]: Raised by
+        - paragraph [ref=f17e82]:
+          - text: Marcus Chen
+          - generic [ref=f17e83]: · 8/16/2026, 12:56:29 AM
+      - separator [ref=f17e84]
+      - heading "Approval Trail" [level=2] [ref=f17e85]
+      - generic [ref=f17e86]:
+        - generic [ref=f17e87]:
+          - generic [ref=f17e88]: ✓
+          - generic [ref=f17e92]:
+            - paragraph [ref=f17e93]: CR Raised
+            - paragraph [ref=f17e94]: Marcus Chen · 8/16/2026, 12:56:29 AM
+        - generic [ref=f17e95]:
+          - generic [ref=f17e96]: ✓
+          - generic [ref=f17e99]:
+            - paragraph [ref=f17e100]: Status — APPROVED
+            - paragraph [ref=f17e101]: Factory Manager · 8/16/2026, 12:58:57 AM
+            - paragraph [ref=f17e102]: "\"Approved change request. Table dimensions updated.\""
+    - generic [ref=f17e103]:
+      - paragraph [ref=f17e104]: ✓ Change Request Approved
+      - paragraph [ref=f17e105]: The change request has been fully approved. Production can proceed with this change.

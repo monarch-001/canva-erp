@@ -1,0 +1,243 @@
+- generic [ref=f3e3]:
+  - complementary [ref=f3e4]:
+    - generic [ref=f3e7]:
+      - paragraph [ref=f3e8]: Canva Concepts
+      - paragraph [ref=f3e9]: Factory ERP
+    - navigation [ref=f3e10]:
+      - generic [ref=f3e11]:
+        - paragraph [ref=f3e12]: Overview
+        - generic [ref=f3e13]:
+          - link "Dashboard" [ref=f3e14] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Work Orders" [ref=f3e16] [cursor=pointer]:
+            - /url: /work-orders
+          - link "Quotations" [ref=f3e18] [cursor=pointer]:
+            - /url: /quotations
+      - generic [ref=f3e20]:
+        - paragraph [ref=f3e21]: Operations
+        - generic [ref=f3e22]:
+          - link "Change Requests" [ref=f3e23] [cursor=pointer]:
+            - /url: /change-requests
+          - link "BOM & Materials" [ref=f3e25] [cursor=pointer]:
+            - /url: /bom/templates
+          - link "Production" [ref=f3e27] [cursor=pointer]:
+            - /url: /production
+          - link "Overtime" [ref=f3e29] [cursor=pointer]:
+            - /url: /production/overtime
+          - link "Quality Control" [ref=f3e31] [cursor=pointer]:
+            - /url: /quality-control
+          - link "Dispatch & Delivery" [ref=f3e33] [cursor=pointer]:
+            - /url: /dispatch
+      - generic [ref=f3e35]:
+        - paragraph [ref=f3e36]: Procurement
+        - generic [ref=f3e37]:
+          - link "Purchase Requisitions" [ref=f3e38] [cursor=pointer]:
+            - /url: /purchase-requisitions
+          - link "Purchase Orders" [ref=f3e40] [cursor=pointer]:
+            - /url: /purchase-orders
+      - generic [ref=f3e42]:
+        - paragraph [ref=f3e43]: Finance
+        - generic [ref=f3e44]:
+          - link "Invoices" [ref=f3e45] [cursor=pointer]:
+            - /url: /invoices
+          - link "Reports" [ref=f3e47] [cursor=pointer]:
+            - /url: /reports
+    - generic [ref=f3e49]:
+      - link "Settings" [ref=f3e50] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f3e52]:
+        - generic [ref=f3e53]:
+          - img "Marcus Chen" [ref=f3e55]
+          - generic [ref=f3e56]:
+            - paragraph [ref=f3e57]: Marcus Chen
+            - paragraph [ref=f3e58]: Factory Manager
+        - generic [ref=f3e59]:
+          - generic [ref=f3e60]: Toggle Role
+          - combobox [ref=f3e61] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f3e62]:
+    - generic [ref=f3e64]:
+      - generic [ref=f3e65]:
+        - heading "Production Floor" [level=1] [ref=f3e66]
+        - paragraph [ref=f3e67]: Sunday, 16 August 2026
+      - generic [ref=f3e68]:
+        - generic [ref=f3e69]:
+          - button "arrow_back Yesterday" [ref=f3e70] [cursor=pointer]:
+            - generic [ref=f3e71]: arrow_back
+            - text: Yesterday
+          - button "Today" [ref=f3e72] [cursor=pointer]
+          - button "Tomorrow arrow_forward" [ref=f3e73] [cursor=pointer]:
+            - text: Tomorrow
+            - generic [ref=f3e74]: arrow_forward
+        - button "Notifications" [ref=f3e76] [cursor=pointer]:
+          - generic [ref=f3e77]: notifications
+        - generic [ref=f3e79]:
+          - generic [ref=f3e80]: MC
+          - generic [ref=f3e81]:
+            - paragraph [ref=f3e82]: Marcus Chen
+            - paragraph [ref=f3e83]: Factory Manager
+    - generic [ref=f3e84]:
+      - generic [ref=f3e85]:
+        - generic [ref=f3e86]:
+          - paragraph [ref=f3e87]: 6/8
+          - paragraph [ref=f3e88]: Carpenters Present
+        - generic [ref=f3e89]:
+          - paragraph [ref=f3e90]: "12"
+          - paragraph [ref=f3e91]: Active Job Cards
+        - generic [ref=f3e92]:
+          - paragraph [ref=f3e93]: "3"
+          - paragraph [ref=f3e94]: Completed Today
+        - generic [ref=f3e95]:
+          - paragraph [ref=f3e96]: "8"
+          - paragraph [ref=f3e97]: In Progress
+        - generic [ref=f3e98]:
+          - paragraph [ref=f3e99]: "1"
+          - paragraph [ref=f3e100]: Not Started
+        - generic [ref=f3e101]:
+          - paragraph [ref=f3e102]: "1"
+          - paragraph [ref=f3e103]: Blocked / Paused
+      - generic [ref=f3e104]:
+        - heading "Carpenter Status Board" [level=2] [ref=f3e105]
+        - generic [ref=f3e106]:
+          - generic [ref=f3e107] [cursor=pointer]:
+            - generic [ref=f3e108]:
+              - paragraph [ref=f3e109]: Ramesh Kumar
+              - generic [ref=f3e110]: Present
+            - paragraph [ref=f3e112]: WO-CHH-26-001
+            - paragraph [ref=f3e113]: Reception Counter — Assembly
+            - paragraph [ref=f3e117]: "Progress: 2/3 units"
+          - generic [ref=f3e118] [cursor=pointer]:
+            - generic [ref=f3e119]:
+              - paragraph [ref=f3e120]: Suresh Yadav
+              - generic [ref=f3e121]: Present
+            - paragraph [ref=f3e123]: WO-B2B-26-001
+            - paragraph [ref=f3e124]: Workstation — Cutting
+            - paragraph [ref=f3e127]: "Progress: 0/10 units"
+            - generic [ref=f3e128]: Waiting for material
+          - generic [ref=f3e129] [cursor=pointer]:
+            - generic [ref=f3e130]:
+              - paragraph [ref=f3e131]: Vikram Singh
+              - generic [ref=f3e132]: Present
+            - paragraph [ref=f3e134]: WO-CHH-26-001
+            - paragraph [ref=f3e135]: Reception Counter — Edge Banding
+            - paragraph [ref=f3e139]: "Progress: 10/10 units"
+          - generic [ref=f3e140] [cursor=pointer]:
+            - generic [ref=f3e141]:
+              - paragraph [ref=f3e142]: Mohan Singh
+              - generic [ref=f3e143]:
+                - generic [ref=f3e144]: ×
+                - text: Absent
+            - paragraph [ref=f3e145]: No job card today
+          - generic [ref=f3e146] [cursor=pointer]:
+            - generic [ref=f3e147]:
+              - paragraph [ref=f3e148]: Deepak Verma
+              - generic [ref=f3e149]: Present
+            - paragraph [ref=f3e151]: WO-D2C-26-005
+            - paragraph [ref=f3e152]: Wardrobe — Hardware Fitting
+            - paragraph [ref=f3e156]: "Progress: 1/1 units"
+            - generic [ref=f3e157]: Issue flagged
+          - generic [ref=f3e158] [cursor=pointer]:
+            - generic [ref=f3e159]:
+              - paragraph [ref=f3e160]: Anil Rawat
+              - generic [ref=f3e161]: Present
+            - paragraph [ref=f3e163]: WO-CHH-26-004
+            - paragraph [ref=f3e164]: Nurses Station — Cutting
+            - paragraph [ref=f3e168]: "Progress: 3/6 units"
+          - generic [ref=f3e169] [cursor=pointer]:
+            - generic [ref=f3e170]:
+              - paragraph [ref=f3e171]: Sanjay Patil
+              - generic [ref=f3e172]: Present
+            - paragraph [ref=f3e174]: WO-B2B-26-002
+            - paragraph [ref=f3e175]: Cabinet — Lamination
+            - paragraph [ref=f3e179]: "Progress: 4/4 units"
+          - generic [ref=f3e180] [cursor=pointer]:
+            - generic [ref=f3e181]:
+              - paragraph [ref=f3e182]: Rakesh Thapa
+              - generic [ref=f3e183]:
+                - generic [ref=f3e184]: ×
+                - text: Absent
+            - paragraph [ref=f3e185]: No job card today
+      - generic [ref=f3e186]:
+        - heading "Work Order Progress" [level=2] [ref=f3e187]
+        - generic [ref=f3e188]:
+          - generic [ref=f3e189]:
+            - generic [ref=f3e190]:
+              - generic [ref=f3e191]:
+                - generic [ref=f3e192]: WO-CHH-26-001
+                - generic [ref=f3e193]: Reception Counter
+                - generic [ref=f3e194]: Starbucks
+              - generic [ref=f3e195]: 3 days left
+            - paragraph [ref=f3e196]: "Delivery: 25-Aug-26"
+            - paragraph [ref=f3e197]: Production Progress
+            - generic [ref=f3e198]: 5 of 10 items complete (50%)
+            - generic [ref=f3e202]:
+              - paragraph [ref=f3e203]: "Stage Breakdown:"
+              - generic [ref=f3e204]:
+                - generic [ref=f3e205]:
+                  - generic [ref=f3e206]: check_circle
+                  - generic [ref=f3e207]: "Cutting:"
+                  - generic [ref=f3e208]: 10/10 done
+                - generic [ref=f3e209]:
+                  - generic [ref=f3e210]: check_circle
+                  - generic [ref=f3e211]: "Edge Banding:"
+                  - generic [ref=f3e212]: 10/10 done
+                - generic [ref=f3e213]:
+                  - generic [ref=f3e214]: pending
+                  - generic [ref=f3e215]: "Assembly:"
+                  - generic [ref=f3e216]: 5/10 in progress
+                - generic [ref=f3e217]:
+                  - generic [ref=f3e219]: "Finishing:"
+                  - generic [ref=f3e220]: 0/10 pending
+                - generic [ref=f3e221]:
+                  - generic [ref=f3e223]: "Hardware:"
+                  - generic [ref=f3e224]: 0/10 pending
+            - paragraph [ref=f3e225]: "Assigned: Ramesh, Suresh, Vikram"
+            - generic [ref=f3e226]:
+              - button "View Job Cards" [ref=f3e227] [cursor=pointer]
+              - button "add Add Job Card" [ref=f3e228] [cursor=pointer]:
+                - generic [ref=f3e229]: add
+                - text: Add Job Card
+          - generic [ref=f3e230]:
+            - generic [ref=f3e231]:
+              - generic [ref=f3e232]:
+                - generic [ref=f3e233]: WO-B2B-26-001
+                - generic [ref=f3e234]: Office Workstations
+                - generic [ref=f3e235]: WeWork
+              - generic [ref=f3e236]: 6 days left
+            - paragraph [ref=f3e237]: "Delivery: 28-Aug-26"
+            - paragraph [ref=f3e238]: Production Progress
+            - generic [ref=f3e239]: 2 of 12 items complete (17%)
+            - generic [ref=f3e243]:
+              - generic [ref=f3e244]: warning
+              - text: 5 items waiting for material (Plywood pending — PO-26-003 due 24-Aug)
+            - generic [ref=f3e245]:
+              - paragraph [ref=f3e246]: "Stage Breakdown:"
+              - generic [ref=f3e247]:
+                - generic [ref=f3e248]:
+                  - generic [ref=f3e249]: pending
+                  - generic [ref=f3e250]: "Cutting:"
+                  - generic [ref=f3e251]: 2/12 in progress
+                - generic [ref=f3e252]:
+                  - generic [ref=f3e254]: "Assembly:"
+                  - generic [ref=f3e255]: 0/12 pending
+                - generic [ref=f3e256]:
+                  - generic [ref=f3e258]: "Finishing:"
+                  - generic [ref=f3e259]: 0/12 pending
+            - paragraph [ref=f3e260]: "Assigned: Suresh, Anil"
+            - generic [ref=f3e261]:
+              - button "View Job Cards" [ref=f3e262] [cursor=pointer]
+              - button "add Add Job Card" [ref=f3e263] [cursor=pointer]:
+                - generic [ref=f3e264]: add
+                - text: Add Job Card
+      - generic [ref=f3e265]:
+        - button "event_available Mark Attendance" [ref=f3e266] [cursor=pointer]:
+          - generic [ref=f3e267]: event_available
+          - text: Mark Attendance
+        - button "add Create Job Card" [ref=f3e268] [cursor=pointer]:
+          - generic [ref=f3e269]: add
+          - text: Create Job Card
+        - button "more_time Overtime" [ref=f3e270] [cursor=pointer]:
+          - generic [ref=f3e271]: more_time
+          - text: Overtime

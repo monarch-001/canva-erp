@@ -1,0 +1,60 @@
+- generic [ref=f2e3]:
+  - complementary [ref=f2e4]:
+    - generic [ref=f2e5]:
+      - heading "Canva Concepts" [level=1] [ref=f2e6]
+      - paragraph [ref=f2e7]: Industrial ERP
+    - navigation [ref=f2e8]:
+      - link "dashboard Dashboard" [ref=f2e9] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=f2e10]: dashboard
+        - generic [ref=f2e11]: Dashboard
+      - link "manufacturing Work Orders" [ref=f2e12] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f2e13]: manufacturing
+        - generic [ref=f2e14]: Work Orders
+      - link "precision_manufacturing Production" [ref=f2e15] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f2e16]: precision_manufacturing
+        - generic [ref=f2e17]: Production
+      - link "group Users" [ref=f2e18] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f2e19]: group
+        - generic [ref=f2e20]: Users
+      - link "payments Finance" [ref=f2e21] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f2e22]: payments
+        - generic [ref=f2e23]: Finance
+    - generic [ref=f2e24]:
+      - link "settings Settings" [ref=f2e25] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f2e26]: settings
+        - generic [ref=f2e27]: Settings
+      - link "help Support" [ref=f2e28] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f2e29]: help
+        - generic [ref=f2e30]: Support
+      - generic [ref=f2e31]:
+        - generic [ref=f2e32]:
+          - img "Marcus Chen" [ref=f2e34]
+          - generic [ref=f2e35]:
+            - paragraph [ref=f2e36]: Marcus Chen
+            - paragraph [ref=f2e37]: Factory Manager
+        - generic [ref=f2e38]:
+          - generic [ref=f2e39]: Toggle System Role
+          - combobox [ref=f2e40] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f2e41]:
+    - generic [ref=f2e42]:
+      - generic [ref=f2e43]:
+        - heading "Work Order Detail" [level=2] [ref=f2e44]
+        - generic [ref=f2e45]:
+          - generic [ref=f2e46]: search
+          - textbox "Search orders, clients, items..." [ref=f2e47]
+      - generic [ref=f2e49]:
+        - button "notifications 3" [ref=f2e50] [cursor=pointer]:
+          - text: notifications
+          - generic [ref=f2e51]: "3"
+        - button "help" [ref=f2e52] [cursor=pointer]
+        - button "settings" [ref=f2e53] [cursor=pointer]

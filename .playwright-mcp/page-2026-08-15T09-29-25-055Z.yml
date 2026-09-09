@@ -1,0 +1,238 @@
+- generic [ref=f8e3]:
+  - complementary [ref=f8e4]:
+    - generic [ref=f8e5]:
+      - heading "Canva Concepts" [level=1] [ref=f8e6]
+      - paragraph [ref=f8e7]: Industrial ERP
+    - navigation [ref=f8e8]:
+      - link "dashboard Dashboard" [ref=f8e9] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=f8e10]: dashboard
+        - generic [ref=f8e11]: Dashboard
+      - link "manufacturing Work Orders" [ref=f8e12] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f8e13]: manufacturing
+        - generic [ref=f8e14]: Work Orders
+      - link "precision_manufacturing Production" [ref=f8e15] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f8e16]: precision_manufacturing
+        - generic [ref=f8e17]: Production
+      - link "group Users" [ref=f8e18] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f8e19]: group
+        - generic [ref=f8e20]: Users
+      - link "payments Finance" [ref=f8e21] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f8e22]: payments
+        - generic [ref=f8e23]: Finance
+    - generic [ref=f8e24]:
+      - link "settings Settings" [ref=f8e25] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f8e26]: settings
+        - generic [ref=f8e27]: Settings
+      - link "help Support" [ref=f8e28] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f8e29]: help
+        - generic [ref=f8e30]: Support
+      - generic [ref=f8e31]:
+        - generic [ref=f8e32]:
+          - img "Marcus Chen" [ref=f8e34]
+          - generic [ref=f8e35]:
+            - paragraph [ref=f8e36]: Marcus Chen
+            - paragraph [ref=f8e37]: Factory Manager
+        - generic [ref=f8e38]:
+          - generic [ref=f8e39]: Toggle System Role
+          - combobox [ref=f8e40] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f8e41]:
+    - generic [ref=f8e42]:
+      - generic [ref=f8e43]:
+        - heading "Daily Attendance" [level=2] [ref=f8e44]
+        - generic [ref=f8e45]:
+          - generic [ref=f8e46]: search
+          - textbox "Search orders, clients, items..." [ref=f8e47]
+      - generic [ref=f8e49]:
+        - button "notifications 3" [ref=f8e50] [cursor=pointer]:
+          - text: notifications
+          - generic [ref=f8e51]: "3"
+        - button "help" [ref=f8e52] [cursor=pointer]
+        - button "settings" [ref=f8e53] [cursor=pointer]
+    - generic [ref=f8e55]:
+      - generic [ref=f8e56]:
+        - generic [ref=f8e57]:
+          - heading "Attendance - August 15, 2026" [level=2] [ref=f8e58]
+          - paragraph [ref=f8e59]: Daily manpower tracking for Plant Floor A1.
+        - generic [ref=f8e60]:
+          - generic [ref=f8e61]:
+            - generic [ref=f8e62]: calendar_today
+            - textbox [ref=f8e63]: 2026-08-15
+          - button "done_all Mark All Present" [ref=f8e64] [cursor=pointer]:
+            - generic [ref=f8e65]: done_all
+            - text: Mark All Present
+      - generic [ref=f8e66]:
+        - generic [ref=f8e67]:
+          - generic [ref=f8e68]: groups
+          - generic [ref=f8e70]:
+            - paragraph [ref=f8e71]: Total Staff
+            - paragraph [ref=f8e72]: "6"
+        - generic [ref=f8e73]:
+          - generic [ref=f8e74]: check_circle
+          - generic [ref=f8e76]:
+            - paragraph [ref=f8e77]: Total Present
+            - paragraph [ref=f8e78]: "6"
+        - generic [ref=f8e79]:
+          - generic [ref=f8e80]: cancel
+          - generic [ref=f8e82]:
+            - paragraph [ref=f8e83]: Absent
+            - paragraph [ref=f8e84]: "0"
+        - generic [ref=f8e85]:
+          - generic [ref=f8e86]: event_busy
+          - generic [ref=f8e88]:
+            - paragraph [ref=f8e89]: On Leave / Half
+            - paragraph [ref=f8e90]: "0"
+      - generic [ref=f8e91]:
+        - heading "Staff Roster" [level=3] [ref=f8e94]
+        - table [ref=f8e96]:
+          - rowgroup [ref=f8e97]:
+            - row [ref=f8e98]:
+              - columnheader "Name" [ref=f8e99]
+              - columnheader "Employee ID" [ref=f8e100]
+              - columnheader "Status" [ref=f8e101]
+              - columnheader "Check-In" [ref=f8e102]
+              - columnheader "Check-Out" [ref=f8e103]
+              - columnheader "OT Hours" [ref=f8e104]
+              - columnheader "Notes" [ref=f8e105]
+          - rowgroup [ref=f8e106]:
+            - row [ref=f8e107]:
+              - cell "MC Marcus Chen Factory Manager" [ref=f8e108]:
+                - generic [ref=f8e109]:
+                  - generic [ref=f8e110]: MC
+                  - generic [ref=f8e111]:
+                    - paragraph [ref=f8e112]: Marcus Chen
+                    - paragraph [ref=f8e113]: Factory Manager
+              - cell "45A4ED77" [ref=f8e114]
+              - cell [ref=f8e115]:
+                - generic [ref=f8e116]:
+                  - button "PRESENT" [ref=f8e117] [cursor=pointer]
+                  - button "ABSENT" [ref=f8e118] [cursor=pointer]
+                  - button "HALF" [ref=f8e119] [cursor=pointer]
+                  - button "LEAVE" [ref=f8e120] [cursor=pointer]
+              - cell [ref=f8e121]:
+                - textbox [ref=f8e122]: 08:00:00
+              - cell [ref=f8e123]:
+                - textbox [ref=f8e124]: 17:30:00
+              - cell [ref=f8e125]:
+                - spinbutton [ref=f8e126]: "0"
+              - cell [ref=f8e127]:
+                - textbox "Add note..." [ref=f8e128]
+            - row [ref=f8e129]:
+              - cell "SJ Sarah Jenkins Production Supervisor" [ref=f8e130]:
+                - generic [ref=f8e131]:
+                  - generic [ref=f8e132]: SJ
+                  - generic [ref=f8e133]:
+                    - paragraph [ref=f8e134]: Sarah Jenkins
+                    - paragraph [ref=f8e135]: Production Supervisor
+              - cell "F0ECDF1A" [ref=f8e136]
+              - cell [ref=f8e137]:
+                - generic [ref=f8e138]:
+                  - button "PRESENT" [ref=f8e139] [cursor=pointer]
+                  - button "ABSENT" [ref=f8e140] [cursor=pointer]
+                  - button "HALF" [ref=f8e141] [cursor=pointer]
+                  - button "LEAVE" [ref=f8e142] [cursor=pointer]
+              - cell [ref=f8e143]:
+                - textbox [ref=f8e144]: 08:00:00
+              - cell [ref=f8e145]:
+                - textbox [ref=f8e146]: 17:30:00
+              - cell [ref=f8e147]:
+                - spinbutton [ref=f8e148]: "0"
+              - cell [ref=f8e149]:
+                - textbox "Add note..." [ref=f8e150]
+            - row [ref=f8e151]:
+              - cell "DK David K. Site Manager" [ref=f8e152]:
+                - generic [ref=f8e153]:
+                  - generic [ref=f8e154]: DK
+                  - generic [ref=f8e155]:
+                    - paragraph [ref=f8e156]: David K.
+                    - paragraph [ref=f8e157]: Site Manager
+              - cell "C1B797D2" [ref=f8e158]
+              - cell [ref=f8e159]:
+                - generic [ref=f8e160]:
+                  - button "PRESENT" [ref=f8e161] [cursor=pointer]
+                  - button "ABSENT" [ref=f8e162] [cursor=pointer]
+                  - button "HALF" [ref=f8e163] [cursor=pointer]
+                  - button "LEAVE" [ref=f8e164] [cursor=pointer]
+              - cell [ref=f8e165]:
+                - textbox [ref=f8e166]: 08:00:00
+              - cell [ref=f8e167]:
+                - textbox [ref=f8e168]: 17:30:00
+              - cell [ref=f8e169]:
+                - spinbutton [ref=f8e170]: "0"
+              - cell [ref=f8e171]:
+                - textbox "Add note..." [ref=f8e172]
+            - row [ref=f8e173]:
+              - cell "RH Robert Hudson Lead Carpenter" [ref=f8e174]:
+                - generic [ref=f8e175]:
+                  - generic [ref=f8e176]: RH
+                  - generic [ref=f8e177]:
+                    - paragraph [ref=f8e178]: Robert Hudson
+                    - paragraph [ref=f8e179]: Lead Carpenter
+              - cell "6298A5EA" [ref=f8e180]
+              - cell [ref=f8e181]:
+                - generic [ref=f8e182]:
+                  - button "PRESENT" [ref=f8e183] [cursor=pointer]
+                  - button "ABSENT" [ref=f8e184] [cursor=pointer]
+                  - button "HALF" [ref=f8e185] [cursor=pointer]
+                  - button "LEAVE" [ref=f8e186] [cursor=pointer]
+              - cell [ref=f8e187]:
+                - textbox [ref=f8e188]: 08:00:00
+              - cell [ref=f8e189]:
+                - textbox [ref=f8e190]: 17:30:00
+              - cell [ref=f8e191]:
+                - spinbutton [ref=f8e192]: "0"
+              - cell [ref=f8e193]:
+                - textbox "Add note..." [ref=f8e194]
+            - row [ref=f8e195]:
+              - cell "MS Michael Santos Senior Finisher" [ref=f8e196]:
+                - generic [ref=f8e197]:
+                  - generic [ref=f8e198]: MS
+                  - generic [ref=f8e199]:
+                    - paragraph [ref=f8e200]: Michael Santos
+                    - paragraph [ref=f8e201]: Senior Finisher
+              - cell "47A193AE" [ref=f8e202]
+              - cell [ref=f8e203]:
+                - generic [ref=f8e204]:
+                  - button "PRESENT" [ref=f8e205] [cursor=pointer]
+                  - button "ABSENT" [ref=f8e206] [cursor=pointer]
+                  - button "HALF" [ref=f8e207] [cursor=pointer]
+                  - button "LEAVE" [ref=f8e208] [cursor=pointer]
+              - cell [ref=f8e209]:
+                - textbox [ref=f8e210]: 08:00:00
+              - cell [ref=f8e211]:
+                - textbox [ref=f8e212]: 17:30:00
+              - cell [ref=f8e213]:
+                - spinbutton [ref=f8e214]: "0"
+              - cell [ref=f8e215]:
+                - textbox "Add note..." [ref=f8e216]
+            - row [ref=f8e217]:
+              - cell "AW Anil Wilson Junior Woodworker" [ref=f8e218]:
+                - generic [ref=f8e219]:
+                  - generic [ref=f8e220]: AW
+                  - generic [ref=f8e221]:
+                    - paragraph [ref=f8e222]: Anil Wilson
+                    - paragraph [ref=f8e223]: Junior Woodworker
+              - cell "828F1DCD" [ref=f8e224]
+              - cell [ref=f8e225]:
+                - generic [ref=f8e226]:
+                  - button "PRESENT" [ref=f8e227] [cursor=pointer]
+                  - button "ABSENT" [ref=f8e228] [cursor=pointer]
+                  - button "HALF" [ref=f8e229] [cursor=pointer]
+                  - button "LEAVE" [ref=f8e230] [cursor=pointer]
+              - cell [ref=f8e231]:
+                - textbox [ref=f8e232]: 08:15:00
+              - cell [ref=f8e233]:
+                - textbox [ref=f8e234]: 17:30:00
+              - cell [ref=f8e235]:
+                - spinbutton [ref=f8e236]: "0"
+              - cell [ref=f8e237]:
+                - textbox "Add note..." [ref=f8e238]

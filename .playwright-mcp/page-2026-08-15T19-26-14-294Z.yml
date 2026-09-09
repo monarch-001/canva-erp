@@ -1,0 +1,126 @@
+- generic [ref=f15e3]:
+  - complementary [ref=f15e4]:
+    - generic [ref=f15e7]:
+      - paragraph [ref=f15e8]: Canva Concepts
+      - paragraph [ref=f15e9]: Factory ERP
+    - navigation [ref=f15e10]:
+      - link "Dashboard" [ref=f15e11] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Work Orders" [ref=f15e13] [cursor=pointer]:
+        - /url: /work-orders
+      - link "Quotations" [ref=f15e15] [cursor=pointer]:
+        - /url: /quotations
+      - link "Change Requests" [ref=f15e17] [cursor=pointer]:
+        - /url: /change-requests
+      - link "BOM & Materials" [ref=f15e19] [cursor=pointer]:
+        - /url: /bom/templates
+      - link "Purchase Requisitions" [ref=f15e21] [cursor=pointer]:
+        - /url: /purchase-requisitions
+      - link "Purchase Orders" [ref=f15e23] [cursor=pointer]:
+        - /url: /purchase-orders
+      - link "Production" [ref=f15e25] [cursor=pointer]:
+        - /url: /production
+      - link "Overtime" [ref=f15e27] [cursor=pointer]:
+        - /url: /production/overtime
+      - link "Quality Control" [ref=f15e29] [cursor=pointer]:
+        - /url: /quality-control
+      - link "Dispatch & Delivery" [ref=f15e31] [cursor=pointer]:
+        - /url: /dispatch
+      - link "Invoices" [ref=f15e33] [cursor=pointer]:
+        - /url: /invoices
+      - link "Reports" [ref=f15e35] [cursor=pointer]:
+        - /url: /reports
+    - generic [ref=f15e37]:
+      - link "Settings" [ref=f15e38] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f15e40]:
+        - generic [ref=f15e41]:
+          - img "Marcus Chen" [ref=f15e43]
+          - generic [ref=f15e44]:
+            - paragraph [ref=f15e45]: Marcus Chen
+            - paragraph [ref=f15e46]: Factory Manager
+        - generic [ref=f15e47]:
+          - generic [ref=f15e48]: Toggle Role
+          - combobox [ref=f15e49] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f15e50]:
+    - generic [ref=f15e51]:
+      - button "arrow_back Back to Work Orders" [ref=f15e52] [cursor=pointer]:
+        - generic [ref=f15e53]: arrow_back
+        - text: Back to Work Orders
+      - generic [ref=f15e55]:
+        - generic [ref=f15e56]:
+          - generic [ref=f15e57]:
+            - generic [ref=f15e58]: WO-8829-23
+            - generic [ref=f15e59]: in production
+            - generic [ref=f15e60]: ⚠ CRITICAL
+          - generic [ref=f15e61]:
+            - button "Edit Details" [ref=f15e62] [cursor=pointer]
+            - button "Duplicate WO" [ref=f15e63] [cursor=pointer]
+            - button "print Print / Export" [ref=f15e64] [cursor=pointer]:
+              - generic [ref=f15e65]: print
+              - text: Print / Export
+            - button "Cancel WO" [ref=f15e66] [cursor=pointer]
+        - heading "Executive Boardroom Suite - Walnut Series" [level=1] [ref=f15e67]
+        - generic [ref=f15e68]:
+          - paragraph [ref=f15e69]: "Client: Global Tech Holdings — Global Tech Headquarters"
+          - paragraph [ref=f15e70]: "Furniture: Premium Office Desk × 10"
+          - paragraph [ref=f15e71]: Created by System on 15 Aug 2026
+        - generic [ref=f15e72]:
+          - button "Details" [ref=f15e73] [cursor=pointer]
+          - button "Status History" [ref=f15e74] [cursor=pointer]
+          - button "Drawings" [ref=f15e75] [cursor=pointer]
+          - button "Change Requests" [ref=f15e76] [cursor=pointer]
+          - button "BOM" [ref=f15e78] [cursor=pointer]
+      - generic [ref=f15e79]:
+        - generic [ref=f15e80]:
+          - heading "Change Requests (1)" [level=3] [ref=f15e81]
+          - button "+ Raise Change Request" [active] [ref=f15e82] [cursor=pointer]
+        - generic [ref=f15e84]:
+          - generic [ref=f15e85]:
+            - generic [ref=f15e86]: CR-8829-01
+            - generic [ref=f15e88]: Implemented
+          - paragraph [ref=f15e89]: Increase walnut tabletop width by 200mm per client update
+          - generic [ref=f15e90]:
+            - paragraph [ref=f15e91]: Raised by Sarah Jenkins on 2026-08-15T08:53:04.205Z
+            - button "View Details" [ref=f15e92] [cursor=pointer]
+  - generic [ref=f15e95]:
+    - generic [ref=f15e96]:
+      - generic [ref=f15e97]:
+        - heading "Raise Change Request" [level=2] [ref=f15e98]
+        - paragraph [ref=f15e99]: WO-8829-23 · Executive Boardroom Suite - Walnut Series
+      - button "×" [ref=f15e100] [cursor=pointer]
+    - generic [ref=f15e101]:
+      - generic [ref=f15e102]:
+        - generic [ref=f15e103]: Change Type *
+        - combobox [ref=f15e104]:
+          - option "Dimension Change" [selected]
+          - option "Finish / Material Change"
+          - option "Additional Item"
+          - option "Design Modification"
+          - option "Scope Reduction"
+          - option "Delivery Date Change"
+          - option "Other"
+      - generic [ref=f15e105]:
+        - generic [ref=f15e106]:
+          - generic [ref=f15e107]: "SUGGESTED: TIER 2"
+          - generic [ref=f15e108]: Moderate Change
+        - paragraph [ref=f15e109]: Requires FM and Site Manager approval. Cost and time impact must be assessed.
+      - generic [ref=f15e110]:
+        - generic [ref=f15e111]: Description *
+        - textbox "Describe exactly what needs to change" [ref=f15e112]
+        - paragraph [ref=f15e113]: Minimum 20 characters
+      - generic [ref=f15e114]:
+        - generic [ref=f15e115]: Reason *
+        - textbox "Why is this change needed?" [ref=f15e116]
+        - paragraph [ref=f15e117]: Minimum 10 characters
+      - generic [ref=f15e118]:
+        - generic [ref=f15e119]: Does this affect the delivery date?
+        - button [ref=f15e120] [cursor=pointer]
+    - generic [ref=f15e122]:
+      - paragraph [ref=f15e123]: Fields marked * are required
+      - generic [ref=f15e124]:
+        - button "Cancel" [ref=f15e125] [cursor=pointer]
+        - button "Raise Change Request" [ref=f15e126] [cursor=pointer]

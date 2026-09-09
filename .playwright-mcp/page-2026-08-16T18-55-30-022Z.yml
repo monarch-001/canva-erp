@@ -1,0 +1,126 @@
+- generic [ref=f67e3]:
+  - complementary [ref=f67e4]:
+    - generic [ref=f67e7]:
+      - paragraph [ref=f67e8]: Canva Concepts
+      - paragraph [ref=f67e9]: Factory ERP
+    - navigation [ref=f67e10]:
+      - generic [ref=f67e11]:
+        - paragraph [ref=f67e12]: Overview
+        - generic [ref=f67e13]:
+          - link "Dashboard" [ref=f67e14] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Work Orders" [ref=f67e16] [cursor=pointer]:
+            - /url: /work-orders
+          - link "Quotations" [ref=f67e18] [cursor=pointer]:
+            - /url: /quotations
+      - generic [ref=f67e20]:
+        - paragraph [ref=f67e21]: Operations
+        - generic [ref=f67e22]:
+          - link "Change Requests" [ref=f67e23] [cursor=pointer]:
+            - /url: /change-requests
+          - link "BOM & Materials" [ref=f67e25] [cursor=pointer]:
+            - /url: /bom/templates
+          - link "Production" [ref=f67e27] [cursor=pointer]:
+            - /url: /production
+          - link "Overtime" [ref=f67e29] [cursor=pointer]:
+            - /url: /production/overtime
+          - link "Quality Control" [ref=f67e31] [cursor=pointer]:
+            - /url: /quality-control
+          - link "Dispatch & Delivery" [ref=f67e33] [cursor=pointer]:
+            - /url: /dispatch
+      - generic [ref=f67e35]:
+        - paragraph [ref=f67e36]: Procurement
+        - generic [ref=f67e37]:
+          - link "Purchase Requisitions" [ref=f67e38] [cursor=pointer]:
+            - /url: /purchase-requisitions
+          - link "Purchase Orders" [ref=f67e40] [cursor=pointer]:
+            - /url: /purchase-orders
+      - generic [ref=f67e42]:
+        - paragraph [ref=f67e43]: Finance
+        - generic [ref=f67e44]:
+          - link "Invoices" [ref=f67e45] [cursor=pointer]:
+            - /url: /invoices
+          - link "Reports" [ref=f67e47] [cursor=pointer]:
+            - /url: /reports
+    - generic [ref=f67e49]:
+      - link "Settings" [ref=f67e50] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f67e52]:
+        - generic [ref=f67e53]:
+          - img "Marcus Chen" [ref=f67e55]
+          - generic [ref=f67e56]:
+            - paragraph [ref=f67e57]: Marcus Chen
+            - paragraph [ref=f67e58]: Factory Manager
+        - generic [ref=f67e59]:
+          - generic [ref=f67e60]: Toggle Role
+          - combobox [ref=f67e61] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f67e62]:
+    - generic [ref=f67e64]:
+      - heading "Work Orders" [level=1] [ref=f67e66]
+      - generic [ref=f67e67]:
+        - button "add New Work Order" [ref=f67e68] [cursor=pointer]:
+          - generic [ref=f67e69]: add
+          - text: New Work Order
+        - button "Notifications" [ref=f67e71] [cursor=pointer]:
+          - generic [ref=f67e72]: notifications
+        - generic [ref=f67e73]:
+          - generic [ref=f67e74]: MC
+          - generic [ref=f67e75]:
+            - paragraph [ref=f67e76]: Marcus Chen
+            - paragraph [ref=f67e77]: Factory Manager
+    - generic [ref=f67e78]:
+      - generic [ref=f67e79]:
+        - generic [ref=f67e80]:
+          - generic [ref=f67e81]: Status
+          - combobox [ref=f67e82]:
+            - option "All Statuses" [selected]
+            - option "Draft"
+            - option "In Production"
+            - option "Material Prep"
+            - option "Quality Check"
+            - option "Cancelled"
+        - generic [ref=f67e83]:
+          - generic [ref=f67e84]: Client Type
+          - combobox [ref=f67e85]:
+            - option "All Clients" [selected]
+            - option "Chhabee"
+            - option "External B2B"
+            - option "D2C"
+        - generic [ref=f67e86]:
+          - generic [ref=f67e87]: Priority
+          - combobox [ref=f67e88]:
+            - option "Any Priority" [selected]
+            - option "Critical"
+            - option "High"
+            - option "Normal"
+        - generic [ref=f67e89]:
+          - generic [ref=f67e90]: Search
+          - generic [ref=f67e91]:
+            - generic [ref=f67e92]: search
+            - textbox "Search orders, clients..." [ref=f67e93]
+        - button "Apply Filters" [ref=f67e94] [cursor=pointer]
+      - generic [ref=f67e95]:
+        - generic [ref=f67e96]:
+          - generic [ref=f67e97]: precision_manufacturing
+          - generic [ref=f67e99]:
+            - paragraph [ref=f67e100]: Active Orders
+            - heading "0" [level=3] [ref=f67e101]
+        - generic [ref=f67e102]:
+          - generic [ref=f67e103]: schedule
+          - generic [ref=f67e105]:
+            - paragraph [ref=f67e106]: Pending QC
+            - heading "0" [level=3] [ref=f67e107]
+        - generic [ref=f67e108]:
+          - generic [ref=f67e109]: warning
+          - generic [ref=f67e111]:
+            - paragraph [ref=f67e112]: Critical Delay
+            - heading "0" [level=3] [ref=f67e113]
+        - generic [ref=f67e114]:
+          - generic [ref=f67e115]: check_circle
+          - generic [ref=f67e117]:
+            - paragraph [ref=f67e118]: Total Orders
+            - heading "0" [level=3] [ref=f67e119]
+    - generic [ref=f67e122]: "System Role: Factory Manager"

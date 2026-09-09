@@ -1,0 +1,229 @@
+- generic [ref=f10e96]:
+  - complementary [ref=f10e97]:
+    - generic [ref=f10e100]:
+      - paragraph [ref=f10e101]: Canva Concepts
+      - paragraph [ref=f10e102]: Factory ERP
+    - navigation [ref=f10e103]:
+      - link "Dashboard" [ref=f10e104] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Work Orders" [ref=f10e106] [cursor=pointer]:
+        - /url: /work-orders
+      - link "Quotations" [ref=f10e108] [cursor=pointer]:
+        - /url: /quotations
+      - link "Change Requests" [ref=f10e110] [cursor=pointer]:
+        - /url: /change-requests
+      - link "BOM & Materials" [ref=f10e112] [cursor=pointer]:
+        - /url: /bom/templates
+      - link "Purchase Requisitions" [ref=f10e114] [cursor=pointer]:
+        - /url: /purchase-requisitions
+      - link "Purchase Orders" [ref=f10e116] [cursor=pointer]:
+        - /url: /purchase-orders
+      - link "Production" [ref=f10e118] [cursor=pointer]:
+        - /url: /production
+      - link "Overtime" [ref=f10e120] [cursor=pointer]:
+        - /url: /production/overtime
+      - link "Quality Control" [ref=f10e122] [cursor=pointer]:
+        - /url: /quality-control
+      - link "Dispatch & Delivery" [ref=f10e124] [cursor=pointer]:
+        - /url: /dispatch
+      - link "Invoices" [ref=f10e126] [cursor=pointer]:
+        - /url: /invoices
+      - link "Reports" [ref=f10e128] [cursor=pointer]:
+        - /url: /reports
+    - generic [ref=f10e130]:
+      - link "Settings" [ref=f10e131] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f10e133]:
+        - generic [ref=f10e134]:
+          - img "Marcus Chen" [ref=f10e136]
+          - generic [ref=f10e137]:
+            - paragraph [ref=f10e138]: Marcus Chen
+            - paragraph [ref=f10e139]: Factory Manager
+        - generic [ref=f10e140]:
+          - generic [ref=f10e141]: Toggle Role
+          - combobox [ref=f10e142] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - generic [ref=f10e143]:
+    - button "← Back to Quotations" [ref=f10e144] [cursor=pointer]:
+      - generic [ref=f10e145]: ←
+      - generic [ref=f10e146]: Back to Quotations
+    - heading "Revise Quotation" [level=1] [ref=f10e147]
+    - paragraph [ref=f10e148]: "Modifying quotation details linked to ID: q14"
+    - generic [ref=f10e149]:
+      - generic [ref=f10e150]:
+        - heading "Client Information" [level=2] [ref=f10e151]
+        - paragraph [ref=f10e152]: Client Type *
+        - generic [ref=f10e153]:
+          - button "B2B Corporate / commercial client" [ref=f10e154] [cursor=pointer]:
+            - generic [ref=f10e155]: B2B
+            - paragraph [ref=f10e159]: Corporate / commercial client
+          - button "D2C Direct to consumer" [ref=f10e160] [cursor=pointer]:
+            - generic [ref=f10e161]: D2C
+            - paragraph [ref=f10e164]: Direct to consumer
+        - generic [ref=f10e165]:
+          - generic [ref=f10e166]:
+            - generic [ref=f10e167]: Client Name *
+            - textbox "e.g. WeWork Cyber City" [ref=f10e168]: WeWork India
+            - paragraph [ref=f10e169]: Autofills from existing organisations if matched
+          - generic [ref=f10e170]:
+            - generic [ref=f10e171]: Enquiry Source
+            - combobox [ref=f10e172]:
+              - option "Direct enquiry" [selected]
+              - option "Referral"
+              - option "Website"
+              - option "Social media"
+              - option "Returning client"
+        - generic [ref=f10e173]:
+          - generic [ref=f10e174]:
+            - generic [ref=f10e175]: Client Email
+            - textbox "contact@client.com" [ref=f10e176]: design@wework.co.in
+          - generic [ref=f10e177]:
+            - generic [ref=f10e178]: Client Phone
+            - textbox "+91 98765 43210" [ref=f10e179]: +91 99999 88888
+          - generic [ref=f10e180]:
+            - generic [ref=f10e181]: Valid Until *
+            - textbox [ref=f10e182]: 2026-08-25
+      - generic [ref=f10e183]:
+        - heading "Quotation Items" [level=2] [ref=f10e184]
+        - paragraph [ref=f10e185]: Minimum 1 item required. Items can be reordered.
+        - generic [ref=f10e186]:
+          - generic [ref=f10e187]:
+            - generic [ref=f10e188]:
+              - generic [ref=f10e189]: Item 1
+              - button "× Remove" [ref=f10e190] [cursor=pointer]
+            - generic [ref=f10e191]:
+              - generic [ref=f10e192]:
+                - generic [ref=f10e193]: Item Type
+                - combobox [ref=f10e194]:
+                  - option "Furniture" [selected]
+                  - option "Delivery"
+                  - option "Installation"
+                  - option "Hardware"
+                  - option "Other"
+              - generic [ref=f10e195]:
+                - generic [ref=f10e196]: Description *
+                - textbox "Item description" [ref=f10e197]: Executive Cabin Workstation — L-shaped (Revised)
+            - generic [ref=f10e198]:
+              - generic [ref=f10e199]:
+                - generic [ref=f10e200]: Dimensions L×H×D (mm)
+                - textbox "1800 × 750 × 1600" [ref=f10e201]
+              - generic [ref=f10e202]:
+                - generic [ref=f10e203]: Finish
+                - textbox "Laminate — Merino Oak Grey" [ref=f10e204]
+            - generic [ref=f10e205]:
+              - generic [ref=f10e206]:
+                - generic [ref=f10e207]: Quantity
+                - spinbutton [ref=f10e208]: "6"
+              - generic [ref=f10e209]:
+                - generic [ref=f10e210]: Unit Price (₹ ex-GST) *
+                - spinbutton [ref=f10e211]: "34000"
+              - generic [ref=f10e212]:
+                - generic [ref=f10e213]: Total Price
+                - generic [ref=f10e214]: ₹2,04,000
+          - generic [ref=f10e215]:
+            - generic [ref=f10e216]:
+              - generic [ref=f10e217]: Item 2
+              - button "× Remove" [ref=f10e218] [cursor=pointer]
+            - generic [ref=f10e219]:
+              - generic [ref=f10e220]:
+                - generic [ref=f10e221]: Item Type
+                - combobox [ref=f10e222]:
+                  - option "Furniture"
+                  - option "Delivery" [selected]
+                  - option "Installation"
+                  - option "Hardware"
+                  - option "Other"
+              - generic [ref=f10e223]:
+                - generic [ref=f10e224]: Description *
+                - textbox "Item description" [ref=f10e225]: Delivery to WeWork Cyber City, Gurugram
+            - generic [ref=f10e226]:
+              - generic [ref=f10e227]:
+                - generic [ref=f10e228]: Quantity
+                - spinbutton [ref=f10e229]: "1"
+              - generic [ref=f10e230]:
+                - generic [ref=f10e231]: Unit Price (₹ ex-GST) *
+                - spinbutton [ref=f10e232]: "8000"
+              - generic [ref=f10e233]:
+                - generic [ref=f10e234]: Total Price
+                - generic [ref=f10e235]: ₹8,000
+        - button "+ Add Item" [ref=f10e236] [cursor=pointer]
+      - generic [ref=f10e237]:
+        - generic [ref=f10e238]:
+          - generic [ref=f10e239]: 🔒
+          - heading "Internal Cost Analysis" [level=2] [ref=f10e240]
+          - generic [ref=f10e241]: FM ONLY — NOT SHOWN TO CLIENT
+        - generic [ref=f10e242]:
+          - generic [ref=f10e243]:
+            - generic [ref=f10e244]: Estimated Material Cost (₹)
+            - spinbutton [ref=f10e245]: "115000"
+          - generic [ref=f10e246]:
+            - generic [ref=f10e247]: Estimated Labour Cost (₹)
+            - spinbutton [ref=f10e248]: "45000"
+          - generic [ref=f10e249]:
+            - generic [ref=f10e250]: Estimated Overhead Cost (₹)
+            - spinbutton [ref=f10e251]: "22000"
+          - generic [ref=f10e252]:
+            - generic [ref=f10e253]: Total Estimated Cost (₹)
+            - generic [ref=f10e254]: 1,82,000
+        - generic [ref=f10e255]:
+          - generic [ref=f10e256]:
+            - generic [ref=f10e257]: Target Margin %
+            - spinbutton [ref=f10e258]: "20"
+          - generic [ref=f10e259]:
+            - generic [ref=f10e260]: Calculated Price (₹)
+            - generic [ref=f10e261]: 2,27,500
+            - paragraph [ref=f10e262]: = Total Cost ÷ (1 - margin%)
+          - generic [ref=f10e263]:
+            - generic [ref=f10e264]: Override Price (₹)
+            - spinbutton "Leave blank to use calculated price" [ref=f10e265]: "218000"
+            - paragraph [ref=f10e266]: Leave blank to use calculated price
+      - generic [ref=f10e267]:
+        - heading "Pricing Summary" [level=2] [ref=f10e268]
+        - generic [ref=f10e269]:
+          - paragraph [ref=f10e270]: Subtotal (ex-GST) — from items
+          - paragraph [ref=f10e271]: ₹2,12,000
+        - generic [ref=f10e272]:
+          - generic [ref=f10e273]:
+            - generic [ref=f10e274]: Delivery Charge (₹)
+            - spinbutton [ref=f10e275]: "0"
+          - generic [ref=f10e276]:
+            - generic [ref=f10e277]: Installation Charge (₹)
+            - spinbutton [ref=f10e278]: "0"
+          - generic [ref=f10e279]:
+            - generic [ref=f10e280]: Other Charges (₹)
+            - spinbutton [ref=f10e281]: "0"
+          - generic [ref=f10e282]:
+            - generic [ref=f10e283]: Other Charges Label
+            - textbox "e.g. Custom crating" [ref=f10e284]
+        - generic [ref=f10e285]:
+          - generic [ref=f10e286]:
+            - generic [ref=f10e287]: Total (ex-GST)
+            - generic [ref=f10e288]: ₹2,12,000
+          - generic [ref=f10e289]:
+            - generic [ref=f10e290]: GST @ 18%
+            - generic [ref=f10e291]: ₹38,160
+          - generic [ref=f10e292]:
+            - generic [ref=f10e293]: TOTAL (inc-GST)
+            - generic [ref=f10e294]: ₹2,50,160
+        - generic [ref=f10e295]: ⚠ You are quoting at 16.5% margin — below your 20% target.
+      - generic [ref=f10e296]:
+        - heading "Terms" [level=2] [ref=f10e297]
+        - generic [ref=f10e298]:
+          - generic [ref=f10e299]:
+            - generic [ref=f10e300]: Advance Required %
+            - spinbutton [ref=f10e301]: "50"
+          - generic [ref=f10e302]:
+            - generic [ref=f10e303]: Delivery Timeline (working days)
+            - spinbutton [ref=f10e304]: "18"
+        - generic [ref=f10e305]:
+          - generic [ref=f10e306]: Notes for Client
+          - textbox "Appears on the client PDF — e.g. warranty, care instructions" [ref=f10e307]
+        - generic [ref=f10e308]:
+          - generic [ref=f10e309]: Internal Notes
+          - textbox "Never shown on client PDF — for internal reference only" [ref=f10e310]
+  - contentinfo [ref=f10e311]:
+    - button "Save as Draft" [ref=f10e312] [cursor=pointer]
+    - button "Save & Preview PDF" [ref=f10e313] [cursor=pointer]
+    - button "Save & Send to Client" [ref=f10e314] [cursor=pointer]

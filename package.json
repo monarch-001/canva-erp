@@ -8,7 +8,8 @@
     "server": "node server/index.js",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "stream-json": "claude --output-format=stream-json"
   },
   "dependencies": {
     "cors": "^2.8.6",

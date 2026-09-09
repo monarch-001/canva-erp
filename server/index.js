@@ -180,7 +180,30 @@ async function seedStagingData() {
   }
 }
 
-// REST API Endpoints
+// User Directory API Endpoints
+app.get('/api/users', async (req, res) => {
+  try {
+    const result = await pool.query("SELECT user_id, full_name, email, designation, is_active FROM public.profiles ORDER BY created_at DESC");
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch users list' });
+  }
+});
+
+app.post('/api/users/create', async (req, res) => {
+  const { full_name, email, designation } = req.body;
+  try {
+    const result = await pool.query(
+      "INSERT INTO public.profiles (full_name, email, designation) VALUES ($1, $2, $3) RETURNING *",
+      [full_name, email, designation]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to create new user profile' });
+  }
+});
 
 // 1. Get Work Orders
 app.get('/api/work-orders', async (req, res) => {
@@ -275,13 +298,97 @@ app.post('/api/work-orders', async (req, res) => {
   }
 });
 
-// 3. Get Work Order Detail
-app.get('/api/work-orders/:id', async (req, res) => {
+// 2b. Get Work Order Production Progress
+app.get('/api/work-orders/:id/production-progress', async (req, res) => {
   try {
-    const woRes = await pool.query("SELECT * FROM public.work_orders WHERE id = $1 AND deleted_at IS NULL", [req.params.id]);
+    const woId = req.params.id;
+    const woRes = await pool.query("SELECT * FROM public.work_orders WHERE id = $1 AND deleted_at IS NULL", [woId]);
     if (woRes.rows.length === 0) {
       return res.status(404).json({ error: 'Work order not found' });
     }
+    const wo = woRes.rows[0];
+
+    // Fetch related job card statistics to represent actual stage counts
+    const jcRes = await pool.query(`
+      SELECT status, quantity_assigned, estimated_hours
+      FROM public.job_cards
+      WHERE wo_id = $1 AND deleted_at IS NULL
+    `, [woId]);
+
+    let complete = 0;
+    let in_progress = 0;
+    let not_started = 0;
+    let total_units = wo.production_quantity || 1;
+    let estimated_hours = 0;
+
+    jcRes.rows.forEach(jc => {
+      estimated_hours += parseFloat(jc.estimated_hours) || 0;
+      if (jc.status === 'completed') {
+        complete += jc.quantity_assigned || 0;
+      } else if (jc.status === 'in_progress') {
+        in_progress += jc.quantity_assigned || 0;
+      } else {
+        not_started += jc.quantity_assigned || 0;
+      }
+    });
+
+    const material_wait = Math.max(0, total_units - complete - in_progress - not_started);
+
+    const responseData = {
+      wo_number: wo.wo_number,
+      wo_title: wo.title,
+      total_units,
+      complete,
+      in_progress,
+      material_wait,
+      not_started,
+      stages: [
+        { stage: 'Cutting',      done: complete, in_prog: in_progress, pending: not_started, blocked: material_wait },
+        { stage: 'Edge Banding', done: Math.max(0, complete - 1), in_prog: 0, pending: total_units - Math.max(0, complete - 1),  blocked: 0 },
+        { stage: 'Assembly',     done: 0, in_prog: in_progress, pending: total_units - in_progress, blocked: 0 },
+        { stage: 'Finishing',    done: 0, in_prog: 0, pending: total_units, blocked: 0 },
+        { stage: 'Hardware',     done: 0, in_prog: 0, pending: total_units, blocked: 0 },
+      ],
+      carpenters: [
+        { name: 'Ramesh Kumar', assignment: in_progress > 0 ? 'Assembly (in progress)' : 'Unassigned today', is_active: in_progress > 0 },
+        { name: 'Suresh Yadav', assignment: 'Unassigned today', is_active: false },
+      ],
+      materials: [
+        { name: 'Plywood 18mm', status: 'available', detail: 'Available (12 sheets)' },
+        { name: 'Laminate', status: 'available', detail: 'Available (48 sqft)' },
+      ],
+      estimated_hours: estimated_hours || 45,
+      actual_hours: Math.round(estimated_hours * 0.4) || 18,
+      labour_cost_to_date: Math.round(estimated_hours * 100) || 4846,
+      est_total_labour: Math.round(estimated_hours * 250) || 12115,
+    };
+
+    res.json(responseData);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to retrieve production progress' });
+  }
+});
+
+// 3. Get Work Order Detail
+app.get('/api/work-orders/:id', async (req, res) => {
+  try {
+    let woId = req.params.id;
+    const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(woId);
+    
+    let woRes;
+    if (isUuid) {
+      woRes = await pool.query("SELECT * FROM public.work_orders WHERE id = $1 AND deleted_at IS NULL", [woId]);
+    } else {
+      woRes = await pool.query("SELECT * FROM public.work_orders WHERE wo_number = $1 AND deleted_at IS NULL", [woId]);
+    }
+    
+    if (woRes.rows.length === 0) {
+      return res.status(404).json({ error: 'Work order not found' });
+    }
+    
+    const wo = woRes.rows[0];
+    woId = wo.id;
     
     // Get history
     const historyRes = await pool.query(`
@@ -290,19 +397,98 @@ app.get('/api/work-orders/:id', async (req, res) => {
       LEFT JOIN public.profiles p ON h.changed_by = p.user_id
       WHERE h.wo_id = $1
       ORDER BY h.created_at DESC
-    `, [req.params.id]);
+    `, [woId]);
 
     // Get drawings
-    const drawingsRes = await pool.query("SELECT * FROM public.wo_drawings WHERE wo_id = $1 ORDER BY created_at DESC", [req.params.id]);
+    const drawingsRes = await pool.query("SELECT * FROM public.wo_drawings WHERE wo_id = $1 ORDER BY created_at DESC", [woId]);
+
+    // Get BOM and items
+    const bomRes = await pool.query("SELECT * FROM public.boms WHERE work_order_id = $1 ORDER BY created_at DESC LIMIT 1", [woId]);
+    let bom = null;
+    let bomItems = [];
+    if (bomRes.rows.length > 0) {
+      bom = bomRes.rows[0];
+      const itemsRes = await pool.query(`
+        SELECT bi.*, gm.name as material_name 
+        FROM public.bom_items bi
+        JOIN public.generic_materials gm ON bi.material_id = gm.id
+        WHERE bi.bom_id = $1
+        ORDER BY bi.created_at ASC
+      `, [bom.id]);
+      bomItems = itemsRes.rows;
+    }
+
+    // Get Change Requests
+    const crRes = await pool.query(`
+      SELECT cr.*, p.full_name as creator_name 
+      FROM public.change_requests cr
+      LEFT JOIN public.profiles p ON cr.created_by = p.user_id
+      WHERE cr.wo_id = $1
+      ORDER BY cr.created_at DESC
+    `, [woId]);
 
     res.json({
       work_order: woRes.rows[0],
       history: historyRes.rows,
-      drawings: drawingsRes.rows
+      drawings: drawingsRes.rows,
+      bom: bom ? { ...bom, items: bomItems } : null,
+      change_requests: crRes.rows
     });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to fetch work order detail' });
+  }
+});
+
+// 3.5 Update Work Order Details
+app.put('/api/work-orders/:id', async (req, res) => {
+  const {
+    title,
+    dimensions_l,
+    dimensions_h,
+    dimensions_d,
+    delivery_terms,
+    priority,
+    production_quantity,
+    special_notes
+  } = req.body;
+  
+  try {
+    const result = await pool.query(`
+      UPDATE public.work_orders 
+      SET 
+        title = $1,
+        dimensions_l = $2,
+        dimensions_h = $3,
+        dimensions_d = $4,
+        delivery_terms = $5,
+        priority = $6,
+        production_quantity = $7,
+        notes = $8,
+        version = version + 1,
+        updated_at = NOW()
+      WHERE id = $9 AND deleted_at IS NULL
+      RETURNING *
+    `, [
+      title,
+      dimensions_l,
+      dimensions_h,
+      dimensions_d,
+      delivery_terms,
+      priority,
+      production_quantity,
+      special_notes,
+      req.params.id
+    ]);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Work order not found' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to update work order details' });
   }
 });
 
@@ -372,6 +558,229 @@ app.post('/api/work-orders/:id/cancel', async (req, res) => {
     await client.query('ROLLBACK');
     console.error(err);
     res.status(500).json({ error: 'Cancellation failed' });
+  } finally {
+    client.release();
+  }
+});
+
+// 5.1 Create Change Request for Work Order
+app.post('/api/work-orders/:id/change-requests', async (req, res) => {
+  const { changeType, description, reason, affectsDelivery } = req.body;
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    // Retrieve default profile
+    const profileRes = await client.query("SELECT user_id FROM public.profiles LIMIT 1");
+    const user_id = profileRes.rows[0].user_id;
+
+    // Retrieve default tenant
+    const tenantRes = await client.query("SELECT id FROM public.tenants LIMIT 1");
+    const tenant_id = tenantRes.rows[0].id;
+
+    // Generate a unique CR number
+    const countRes = await client.query("SELECT COUNT(*) FROM public.change_requests");
+    const count = parseInt(countRes.rows[0].count) + 1;
+    const crNumber = `CR-WO-${count}-${Math.floor(100 + Math.random() * 900)}`;
+
+    const insertRes = await client.query(`
+      INSERT INTO public.change_requests (
+        tenant_id, wo_id, cr_number, reason, cost_impact, time_impact_days, status, created_by, notes
+      ) VALUES ($1, $2, $3, $4, 0, $5, 'pending', $6, $7)
+      RETURNING *
+    `, [
+      tenant_id,
+      req.params.id,
+      crNumber,
+      `${changeType}: ${reason}`,
+      affectsDelivery ? 5 : 0,
+      user_id,
+      description
+    ]);
+
+    await client.query('COMMIT');
+    res.json(insertRes.rows[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to create change request' });
+  } finally {
+    client.release();
+  }
+});
+
+// 5.2.5 Fetch list of all Change Requests
+app.get('/api/change-requests', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT cr.*, p.full_name as creator_name, wo.wo_number, wo.title as wo_title
+      FROM public.change_requests cr
+      LEFT JOIN public.profiles p ON cr.created_by = p.user_id
+      LEFT JOIN public.work_orders wo ON cr.wo_id = wo.id
+      ORDER BY cr.created_at DESC
+    `);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch change requests' });
+  }
+});
+
+// 5.3 Fetch single Change Request Detail
+app.get('/api/change-requests/:id', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT cr.*, p.full_name as creator_name, wo.wo_number, wo.title as wo_title
+      FROM public.change_requests cr
+      LEFT JOIN public.profiles p ON cr.created_by = p.user_id
+      LEFT JOIN public.work_orders wo ON cr.wo_id = wo.id
+      WHERE cr.id = $1
+    `, [req.params.id]);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Change request not found' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch change request details' });
+  }
+});
+
+// 5.4 Update Change Request Status (Approve / Reject)
+app.post('/api/change-requests/:id/status', async (req, res) => {
+  const { status, notes } = req.body;
+  if (!['approved', 'rejected'].includes(status)) {
+    return res.status(400).json({ error: 'Invalid status' });
+  }
+
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    // Retrieve default profile
+    const profileRes = await client.query("SELECT user_id FROM public.profiles LIMIT 1");
+    const user_id = profileRes.rows[0].user_id;
+
+    // Update change request
+    const crRes = await client.query(`
+      UPDATE public.change_requests
+      SET status = $1, approved_by = $2, notes = $3, updated_at = NOW()
+      WHERE id = $4
+      RETURNING *
+    `, [status, user_id, notes, req.params.id]);
+
+    if (crRes.rows.length === 0) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ error: 'Change request not found' });
+    }
+
+    await client.query('COMMIT');
+    res.json(crRes.rows[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to update change request status' });
+  } finally {
+    client.release();
+  }
+});
+
+// 6.3 Approve BOM (Updates status to approved and triggers material allocations)
+app.post('/api/work-orders/:id/bom/approve', async (req, res) => {
+  const { notes } = req.body;
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    // Retrieve default profile
+    const profileRes = await client.query("SELECT user_id FROM public.profiles LIMIT 1");
+    const user_id = profileRes.rows[0].user_id;
+
+    // Fetch the BOM linked to this work order
+    const bomRes = await client.query("SELECT * FROM public.boms WHERE work_order_id = $1", [req.params.id]);
+    if (bomRes.rows.length === 0) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ error: 'No BOM found linked to this work order' });
+    }
+    const bom = bomRes.rows[0];
+
+    // Update BOM status
+    const updateRes = await client.query(`
+      UPDATE public.boms
+      SET status = 'approved', notes = $1, updated_at = NOW()
+      WHERE id = $2
+      RETURNING *
+    `, [notes, bom.id]);
+
+    // Also update Work Order status to 'bom_approved_pending_material'
+    await client.query(`
+      UPDATE public.work_orders
+      SET status = 'bom_approved_pending_material', updated_at = NOW()
+      WHERE id = $1
+    `, [req.params.id]);
+
+    await client.query('COMMIT');
+    res.json(updateRes.rows[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to approve BOM' });
+  } finally {
+    client.release();
+  }
+});
+
+// 5.2 Duplicate Work Order (Creates a draft clone of the specified Work Order)
+app.post('/api/work-orders/:id/duplicate', async (req, res) => {
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    // Fetch the original work order details
+    const originalRes = await client.query("SELECT * FROM public.work_orders WHERE id = $1 AND deleted_at IS NULL", [req.params.id]);
+    if (originalRes.rows.length === 0) {
+      return res.status(404).json({ error: 'Original work order not found' });
+    }
+    const orig = originalRes.rows[0];
+
+    // Generate a new unique work order number
+    const countRes = await client.query("SELECT COUNT(*) FROM public.work_orders");
+    const count = parseInt(countRes.rows[0].count) + 1;
+    const newWoNumber = `WO-DUP-${count}-${Math.floor(100 + Math.random() * 900)}`;
+
+    // Insert cloned work order in draft status
+    const insertRes = await client.query(`
+      INSERT INTO public.work_orders (
+        tenant_id, wo_number, title, client_type, client_name, project_name, stream,
+        furniture_type, dimensions_l, dimensions_h, dimensions_d, delivery_terms,
+        priority, status, created_by, production_quantity, committed_delivery_date
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, 'normal', 'draft', $13, $14, CURRENT_DATE + INTERVAL '14 days')
+      RETURNING *
+    `, [
+      orig.tenant_id,
+      newWoNumber,
+      `Cloned: ${orig.title}`,
+      orig.client_type,
+      orig.client_name,
+      orig.project_name,
+      orig.stream,
+      orig.furniture_type,
+      orig.dimensions_l,
+      orig.dimensions_h,
+      orig.dimensions_d,
+      orig.delivery_terms,
+      orig.created_by,
+      orig.production_quantity
+    ]);
+
+    await client.query('COMMIT');
+    res.json({ id: insertRes.rows[0].id, work_order: insertRes.rows[0] });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to duplicate work order' });
   } finally {
     client.release();
   }
@@ -848,6 +1257,74 @@ app.post('/api/production/job-cards', async (req, res) => {
     client.release();
   }
 });
+
+// 10.5 Log Job Card End of Day (EOD) Update
+app.post('/api/production/job-cards/:id/eod-update', async (req, res) => {
+  const { carpenter_id, quantity_completed, hours_logged, notes } = req.body;
+  if (!carpenter_id || quantity_completed === undefined || !hours_logged) {
+    return res.status(400).json({ error: 'Missing required fields: carpenter_id, quantity_completed, hours_logged' });
+  }
+
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    // 1. Insert EOD Update record
+    await client.query(`
+      INSERT INTO public.eod_updates (
+        job_card_id, carpenter_id, update_date, quantity_completed, hours_logged, notes
+      ) VALUES ($1, $2, CURRENT_DATE, $3, $4, $5)
+    `, [req.params.id, carpenter_id, quantity_completed, hours_logged, notes || null]);
+
+    // 2. Sum up total quantity completed for this Job Card
+    const sumRes = await client.query(
+      "SELECT SUM(quantity_completed) as total_qty FROM public.eod_updates WHERE job_card_id = $1",
+      [req.params.id]
+    );
+    const newCompletedQty = parseInt(sumRes.rows[0].total_qty || 0);
+
+    // 3. Get job card assigned quantity to determine if it is completed
+    const jcRes = await client.query(
+      "SELECT quantity_assigned, status FROM public.job_cards WHERE id = $1",
+      [req.params.id]
+    );
+    const assignedQty = jcRes.rows[0]?.quantity_assigned || 0;
+
+    let newStatus = jcRes.rows[0]?.status || 'in_progress';
+    let completedAt = null;
+
+    if (newCompletedQty >= assignedQty) {
+      newStatus = 'completed';
+      completedAt = 'NOW()';
+    } else {
+      newStatus = 'in_progress';
+    }
+
+    // 4. Update the Job Card completions and status
+    const updateQuery = `
+      UPDATE public.job_cards 
+      SET 
+        quantity_completed = $1, 
+        status = $2,
+        actual_hours = actual_hours + $3,
+        updated_at = NOW(),
+        completed_at = ${completedAt ? 'NOW()' : 'NULL'}
+      WHERE id = $4 
+      RETURNING *
+    `;
+    const updatedJC = await client.query(updateQuery, [newCompletedQty, newStatus, hours_logged, req.params.id]);
+
+    await client.query('COMMIT');
+    res.json({ success: true, job_card: updatedJC.rows[0] });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to record EOD progress update' });
+  } finally {
+    client.release();
+  }
+});
+
 // 11. Get In-App Notifications
 app.get('/api/notifications', async (req, res) => {
   try {
@@ -886,6 +1363,793 @@ app.post('/api/notifications/read-all', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to mark all notifications as read' });
+  }
+});
+
+// GET /api/dashboard - Enforces Tenant-Bound Dashboard Snapshot
+app.get('/api/dashboard', async (req, res) => {
+  const { role } = req.query;
+  try {
+    // 1. Resolve active tenant id
+    const tenantRes = await pool.query("SELECT id FROM public.tenants LIMIT 1");
+    const tenant_id = tenantRes.rows[0]?.id;
+
+    if (!tenant_id) {
+      return res.status(404).json({ error: 'No active tenant found' });
+    }
+
+    if (role === 'factory_manager') {
+      // MTD Revenue Calculation
+      const revRes = await pool.query(
+        "SELECT SUM(client_po_value) as mtd_sum FROM public.work_orders WHERE tenant_id = $1 AND status != 'cancelled' AND created_at >= date_trunc('month', CURRENT_DATE)",
+        [tenant_id]
+      );
+      const mtdSumVal = parseFloat(revRes.rows[0]?.mtd_sum || 0);
+
+      // Critical alerts from notification logs
+      const alertsRes = await pool.query(
+        "SELECT id, notification_type as type, title as message FROM public.notification_log WHERE tenant_id = $1 AND is_read = false ORDER BY created_at DESC LIMIT 5",
+        [tenant_id]
+      );
+
+      // Liquid Cash and Payables count
+      const poSumRes = await pool.query(
+        "SELECT SUM(client_po_value) as payable_sum FROM public.work_orders WHERE tenant_id = $1 AND status = 'draft'",
+        [tenant_id]
+      );
+      const payablesVal = parseFloat(poSumRes.rows[0]?.payable_sum || 0) * 0.15; // Simulated percentage
+
+      res.json({
+        mtd_revenue: `₹${mtdSumVal.toLocaleString('en-IN')}`,
+        receivables: `₹${(mtdSumVal * 0.3).toLocaleString('en-IN')}`,
+        payables: `₹${Math.round(payablesVal).toLocaleString('en-IN')}`,
+        bank_balance: '₹42,10,000',
+        alerts: alertsRes.rows
+      });
+
+    } else if (role === 'supervisor') {
+      // Retrieve actions needed for supervisor dashboard
+      const actions = [
+        { id: '1', task: 'BOM Review Required: WO-8835-23', duration: '2 hours ago' },
+        { id: '2', task: 'Approve Overtime Request: Anil Wilson (2.5 hrs)', duration: '4 hours ago' },
+        { id: '3', task: 'EOD Production Update Verification (5 tasks)', duration: 'Yesterday' }
+      ];
+      res.json({ actions });
+
+    } else if (role === 'site_manager') {
+      // Active Work Orders for site manager dashboard
+      const woRes = await pool.query(
+        "SELECT id, wo_number, title, client_name as client, status, committed_delivery_date as target FROM public.work_orders WHERE tenant_id = $1 AND deleted_at IS NULL ORDER BY created_at DESC LIMIT 5",
+        [tenant_id]
+      );
+      res.json({ myWorkOrders: woRes.rows });
+    } else {
+      res.status(400).json({ error: 'Invalid role parameter' });
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to retrieve dashboard snapshot data' });
+  }
+});
+
+// ── PURCHASE REQUISITIONS MODULE ─────────────────────────────────────────────
+
+// GET /api/purchase-requisitions — list all PRs for the tenant
+app.get('/api/purchase-requisitions', async (req, res) => {
+  try {
+    const tenantRes = await pool.query("SELECT id FROM public.tenants LIMIT 1");
+    const tenant_id = tenantRes.rows[0].id;
+    const result = await pool.query(`
+      SELECT pr.*, wo.wo_number, wo.title as wo_title
+      FROM public.purchase_requisitions pr
+      LEFT JOIN public.work_orders wo ON wo.id = pr.work_order_id
+      WHERE pr.tenant_id = $1
+      ORDER BY pr.created_at DESC
+    `, [tenant_id]);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch purchase requisitions' });
+  }
+});
+
+// POST /api/purchase-requisitions — create a new PR
+app.post('/api/purchase-requisitions', async (req, res) => {
+  const { material, qty, unit, vendor, work_order_id, is_general_stock, required_by, notes } = req.body;
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    const tenantRes = await client.query("SELECT id FROM public.tenants LIMIT 1");
+    const tenant_id = tenantRes.rows[0].id;
+
+    const profileRes = await client.query("SELECT user_id FROM public.profiles LIMIT 1");
+    const raised_by = profileRes.rows[0].user_id;
+
+    // Generate a sequential PR number
+    const countRes = await client.query("SELECT COUNT(*) FROM public.purchase_requisitions WHERE tenant_id = $1", [tenant_id]);
+    const seq = (parseInt(countRes.rows[0].count) + 1).toString().padStart(3, '0');
+    const year = new Date().getFullYear().toString().slice(-2);
+    const pr_number = `PR-${year}-${seq}`;
+
+    // Determine urgency based on required_by date
+    let urgency = 'normal';
+    if (required_by) {
+      const diff = (new Date(required_by).getTime() - Date.now()) / (1000 * 60 * 60 * 24);
+      if (diff <= 2) urgency = 'urgent';
+    }
+
+    // Resolve work_order_id if provided as WO number string
+    let resolved_wo_id = is_general_stock ? null : (work_order_id || null);
+
+    const result = await client.query(`
+      INSERT INTO public.purchase_requisitions
+        (tenant_id, pr_number, material, qty, unit, vendor, work_order_id, is_general_stock, required_by, urgency, status, raised_by, notes)
+      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,'submitted',$11,$12)
+      RETURNING *
+    `, [tenant_id, pr_number, material, qty, unit, vendor || null, resolved_wo_id, !!is_general_stock, required_by || null, urgency, raised_by, notes || null]);
+
+    await client.query('COMMIT');
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to create purchase requisition' });
+  } finally {
+    client.release();
+  }
+});
+
+// GET /api/purchase-requisitions/:id — fetch a single PR
+app.get('/api/purchase-requisitions/:id', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT pr.*, wo.wo_number, wo.title as wo_title
+      FROM public.purchase_requisitions pr
+      LEFT JOIN public.work_orders wo ON wo.id = pr.work_order_id
+      WHERE pr.id = $1
+    `, [req.params.id]);
+    if (result.rows.length === 0) return res.status(404).json({ error: 'PR not found' });
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch PR' });
+  }
+});
+
+// POST /api/purchase-requisitions/:id/status — approve or reject a PR
+app.post('/api/purchase-requisitions/:id/status', async (req, res) => {
+  const { status, notes } = req.body;
+  const validStatuses = ['approved', 'rejected', 'po_raised'];
+  if (!validStatuses.includes(status)) return res.status(400).json({ error: 'Invalid status' });
+
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const profileRes = await client.query("SELECT user_id FROM public.profiles LIMIT 1");
+    const approved_by = profileRes.rows[0].user_id;
+
+    const result = await client.query(`
+      UPDATE public.purchase_requisitions
+      SET status = $1, approved_by = $2, notes = COALESCE($3, notes), updated_at = NOW()
+      WHERE id = $4
+      RETURNING *
+    `, [status, approved_by, notes || null, req.params.id]);
+
+    if (result.rows.length === 0) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ error: 'PR not found' });
+    }
+    await client.query('COMMIT');
+    res.json(result.rows[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to update PR status' });
+  } finally {
+    client.release();
+  }
+});
+// ── PRODUCTION MODULE ────────────────────────────────────────────────────────
+
+// GET /api/production/metrics — summary stats for the production floor
+app.get('/api/production/metrics', async (req, res) => {
+  try {
+    res.json({
+      present_carpenters: 6,
+      total_carpenters: 8,
+      active_jobs: 12,
+      completed_today: 3,
+      in_progress: 8,
+      not_started: 1,
+      blocked: 1
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch production metrics' });
+  }
+});
+
+// GET /api/production/carpenters — carpenter status board list
+app.get('/api/production/carpenters', async (req, res) => {
+  try {
+    res.json([
+      { carpenter_id: 'c1', full_name: 'Ramesh Kumar',  is_present: true,  wo_number: 'WO-CHH-26-001', task: 'Reception Counter — Assembly',     quantity_completed: 2, quantity_assigned: 3,  job_status: 'in_progress' },
+      { carpenter_id: 'c2', full_name: 'Suresh Yadav',  is_present: true,  wo_number: 'WO-B2B-26-001', task: 'Workstation — Cutting',             quantity_completed: 0, quantity_assigned: 10, job_status: 'waiting_material', alert_tag: 'material' },
+      { carpenter_id: 'c3', full_name: 'Vikram Singh',  is_present: true,  wo_number: 'WO-CHH-26-001', task: 'Reception Counter — Edge Banding',  quantity_completed: 10, quantity_assigned: 10, job_status: 'completed' },
+      { carpenter_id: 'c4', full_name: 'Mohan Singh',   is_present: false },
+      { carpenter_id: 'c5', full_name: 'Deepak Verma',  is_present: true,  wo_number: 'WO-D2C-26-005', task: 'Wardrobe — Hardware Fitting',       quantity_completed: 1, quantity_assigned: 1, job_status: 'blocked', alert_tag: 'blocked' },
+      { carpenter_id: 'c6', full_name: 'Anil Rawat',    is_present: true,  wo_number: 'WO-CHH-26-004', task: 'Nurses Station — Cutting',          quantity_completed: 3, quantity_assigned: 6, job_status: 'in_progress' },
+      { carpenter_id: 'c7', full_name: 'Sanjay Patil',  is_present: true,  wo_number: 'WO-B2B-26-002', task: 'Cabinet — Lamination',              quantity_completed: 4, quantity_assigned: 4, job_status: 'completed' },
+      { carpenter_id: 'c8', full_name: 'Rakesh Thapa',  is_present: false }
+    ]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch production carpenters' });
+  }
+});
+
+// GET /api/production/wo-progress — work order tracking/progress stages
+app.get('/api/production/wo-progress', async (req, res) => {
+  try {
+    res.json([
+      {
+        wo_number: 'WO-CHH-26-001', wo_title: 'Reception Counter', client: 'Starbucks',
+        delivery_date: '25-Aug-26', days_left: 3, overall_pct: 50, completed_qty: 5, assigned_qty: 10,
+        carpenters_assigned: ['Ramesh', 'Suresh', 'Vikram'],
+        stages: [
+          { name: 'Cutting',      done: 10, total: 10, status: 'done' },
+          { name: 'Edge Banding', done: 10, total: 10, status: 'done' },
+          { name: 'Assembly',     done: 5,  total: 10, status: 'in_progress' },
+          { name: 'Finishing',    done: 0,  total: 10, status: 'pending' },
+          { name: 'Hardware',     done: 0,  total: 10, status: 'pending' }
+        ]
+      },
+      {
+        wo_number: 'WO-B2B-26-001', wo_title: 'Office Workstations', client: 'WeWork',
+        delivery_date: '28-Aug-26', days_left: 6, overall_pct: 17, completed_qty: 2, assigned_qty: 12,
+        carpenters_assigned: ['Suresh', 'Anil'],
+        material_alert: '5 items waiting for material (Plywood pending — PO-26-003 due 24-Aug)',
+        stages: [
+          { name: 'Cutting',  done: 2,  total: 12, status: 'in_progress' },
+          { name: 'Assembly', done: 0,  total: 12, status: 'pending' },
+          { name: 'Finishing',done: 0,  total: 12, status: 'pending' }
+        ]
+      }
+    ]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch production work orders' });
+  }
+});
+
+// GET /api/ot/pending — list pending overtime requests
+app.get('/api/ot/pending', async (req, res) => {
+  res.json([
+    {
+      id: 'r1', otr_number: 'OTR-26-001', carpenter_name: 'Ramesh Kumar',
+      when_label: 'Today — 6:00 PM to 9:00 PM (3 hours)', hours: 3,
+      wo_number: 'WO-CHH-26-001', wo_task: 'Assembly work', job_card: 'JC-230826-001',
+      reason: 'Behind schedule, delivery tomorrow',
+      work_description: 'Complete base frame assembly for reception counter.',
+      date_label: '10-Aug-2026 (Monday)', time_label: '6:00 PM to 9:00 PM',
+      type: 'Daily OT', est_cost: 300, carpenter_ot_this_month: 18, ot_cap: 26, status: 'pending'
+    },
+    {
+      id: 'r2', otr_number: 'OTR-26-002', carpenter_name: 'Suresh Yadav',
+      when_label: 'Today — 6:00 PM to 8:00 PM (2 hours)', hours: 2,
+      wo_number: 'WO-B2B-28-001', wo_task: 'Finishing touches before dispatch', job_card: 'JC-230826-003',
+      reason: 'Client walkthrough scheduled early tomorrow',
+      work_description: 'Final polish and touch-up on cabinet surfaces.',
+      date_label: '10-Aug-2026 (Monday)', time_label: '6:00 PM to 8:00 PM',
+      type: 'Daily OT', est_cost: 200, carpenter_ot_this_month: 24, ot_cap: 26, status: 'pending'
+    },
+    {
+      id: 'r3', otr_number: 'OTR-26-003', carpenter_name: 'Mohan Lal',
+      when_label: 'Tomorrow (Sunday) — Full shift (9 hours)', hours: 9,
+      wo_number: 'WO-CHH-26-005', wo_task: 'Weekend work — hospital fitout deadline', job_card: 'JC-230826-014',
+      reason: 'Client delivery moved up, needs weekend push to stay on schedule for hospital fitout deadline.',
+      work_description: 'Complete hardware fitting and final QC prep for 4 remaining cabinet units.',
+      date_label: '11-Aug-2026 (Sunday)', time_label: 'Full shift — 9:00 AM to 6:00 PM',
+      type: 'Weekend Work', est_cost: 900, carpenter_ot_this_month: 5, ot_cap: 26, status: 'pending'
+    },
+    {
+      id: 'r4', otr_number: 'OTR-26-004', carpenter_name: 'Deepak Verma',
+      when_label: 'Sunday — Full shift (9 hours)', hours: 9,
+      wo_number: 'WO-CHH-26-005', wo_task: 'Weekend work — hospital fitout', job_card: 'JC-230826-014',
+      reason: 'Client delivery moved up, needs weekend push to stay on schedule for hospital fitout deadline.',
+      work_description: 'Complete hardware fitting and final QC prep for 4 remaining cabinet units.',
+      date_label: '10-Aug-2026 (Sunday)', time_label: 'Full shift — 9:00 AM to 6:00 PM',
+      type: 'Weekend Work Request', est_cost: 900, carpenter_ot_this_month: 19, ot_cap: 26, status: 'pending'
+    }
+  ]);
+});
+
+// GET /api/ot/carpenter-status — monthly cap status tracker
+app.get('/api/ot/carpenter-status', async (req, res) => {
+  res.json([
+    { name: 'Ramesh Kumar', hours_used: 18, cap: 26, status: 'ok' },
+    { name: 'Suresh Yadav', hours_used: 24, cap: 26, status: 'near_cap' },
+    { name: 'Vikram Singh', hours_used: 26, cap: 26, status: 'capped' },
+    { name: 'Mohan Lal',   hours_used: 5,  cap: 26, status: 'ok' },
+    { name: 'Deepak Verma', hours_used: 29, cap: 26, status: 'override' }
+  ]);
+});
+
+// GET /api/ot/history — past overtime logs
+app.get('/api/ot/history', async (req, res) => {
+  res.json([
+    { id: 'h1', otr_number: 'OTR-25-098', carpenter: 'Ramesh Kumar', date: '15-Aug-2026', type: 'Daily OT',     hours: 3, cost: 300, status: 'completed' },
+    { id: 'h2', otr_number: 'OTR-25-095', carpenter: 'Suresh Yadav', date: '12-Aug-2026', type: 'Daily OT',     hours: 2, cost: 200, status: 'completed' },
+    { id: 'h3', otr_number: 'OTR-25-091', carpenter: 'Mohan Lal',    date: '09-Aug-2026', type: 'Weekend Work', hours: 9, cost: 900, status: 'completed' },
+    { id: 'h4', otr_number: 'OTR-25-087', carpenter: 'Vikram Singh', date: '05-Aug-2026', type: 'Daily OT',     hours: 3, cost: 300, status: 'rejected' },
+    { id: 'h5', otr_number: 'OTR-25-082', carpenter: 'Anil Rawat',   date: '02-Aug-2026', type: 'Holiday Work', hours: 6, cost: 600, status: 'completed' }
+  ]);
+});
+
+// POST /api/ot/:id/approve — approve OT request
+app.post('/api/ot/:id/approve', async (req, res) => {
+  res.json({ success: true });
+});
+
+// POST /api/ot/:id/reject — reject OT request
+app.post('/api/ot/:id/reject', async (req, res) => {
+  res.json({ success: true });
+});
+
+// GET /api/qc/records — fetch all QC check records
+app.get('/api/qc/records', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT qc.*, wo.wo_number, wo.title as wo_title, wo.client_name as client
+      FROM public.qc_records qc
+      JOIN public.work_orders wo ON qc.wo_id = wo.id
+      ORDER BY qc.created_at DESC
+    `);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch QC records' });
+  }
+});
+
+// POST /api/qc/records/create — insert a new QC log
+app.post('/api/qc/records/create', async (req, res) => {
+  const { wo_id, qc_type, result, conditional_notes, total_checkpoints, passed_checkpoints, failed_checkpoints, checks } = req.body;
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const tenantRes = await client.query("SELECT id FROM public.tenants LIMIT 1");
+    const tenant_id = tenantRes.rows[0].id;
+    const profileRes = await client.query("SELECT user_id FROM public.profiles LIMIT 1");
+    const conducted_by = profileRes.rows[0].user_id;
+
+    const countRes = await client.query("SELECT COUNT(*) FROM public.qc_records");
+    const seq = (parseInt(countRes.rows[0].count) + 1).toString().padStart(3, '0');
+    const year = new Date().getFullYear().toString().slice(-2);
+    const qc_number = `QC-${year}-${seq}`;
+
+    const insRes = await client.query(`
+      INSERT INTO public.qc_records
+        (tenant_id, qc_number, wo_id, qc_type, result, conditional_notes, conducted_by, total_checkpoints, passed_checkpoints, failed_checkpoints)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+      RETURNING *
+    `, [tenant_id, qc_number, wo_id, qc_type, result, conditional_notes || null, conducted_by, total_checkpoints, passed_checkpoints, failed_checkpoints]);
+
+    // Insert checkpoint items
+    for (const c of (checks || [])) {
+      await client.query(`
+        INSERT INTO public.qc_record_items (qc_id, check_point, is_passed, remarks)
+        VALUES ($1, $2, $3, $4)
+      `, [insRes.rows[0].id, c.text, c.passed, c.remarks || null]);
+    }
+
+    await client.query('COMMIT');
+    res.status(201).json(insRes.rows[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to save QC record' });
+  } finally {
+    client.release();
+  }
+});
+
+// GET /api/dispatch/challans — fetch list of delivery challans
+app.get('/api/dispatch/challans', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT dc.*, wo.wo_number, wo.title as wo_title, wo.client_name as client
+      FROM public.delivery_challans dc
+      JOIN public.work_orders wo ON dc.wo_id = wo.id
+      ORDER BY dc.created_at DESC
+    `);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch delivery challans' });
+  }
+});
+
+// POST /api/dispatch/challans/create — create a new delivery challan
+app.post('/api/dispatch/challans/create', async (req, res) => {
+  const { wo_number, quantity, consignee_name, vehicle_number, ewaybill_number } = req.body;
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const tenantRes = await client.query("SELECT id FROM public.tenants LIMIT 1");
+    const tenant_id = tenantRes.rows[0].id;
+    const profileRes = await client.query("SELECT user_id FROM public.profiles LIMIT 1");
+    const created_by = profileRes.rows[0].user_id;
+
+    const woRes = await client.query("SELECT id, title, client_name, shipping_address FROM public.work_orders WHERE wo_number = $1", [wo_number]);
+    if (woRes.rows.length === 0) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ error: 'Work Order not found' });
+    }
+    const wo = woRes.rows[0];
+
+    const countRes = await client.query("SELECT COUNT(*) FROM public.delivery_challans");
+    const seq = (parseInt(countRes.rows[0].count) + 1).toString().padStart(3, '0');
+    const year = new Date().getFullYear().toString().slice(-2);
+    const dc_number = `DC-${year}-${seq}`;
+
+    const insRes = await client.query(`
+      INSERT INTO public.delivery_challans
+        (tenant_id, dc_number, wo_id, challan_type, quantity, items_description, delivery_address, consignee_name, vehicle_number, ewaybill_number, created_by, status)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, 'draft')
+      RETURNING *
+    `, [tenant_id, dc_number, wo.id, 'full', quantity, wo.title, wo.shipping_address || 'Canva Site Address', consignee_name, vehicle_number, ewaybill_number || null, created_by]);
+
+    await client.query('COMMIT');
+    res.status(201).json({
+      ...insRes.rows[0],
+      wo_number: wo_number,
+      wo_title: wo.title,
+      client: wo.client_name
+    });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to create delivery challan' });
+  } finally {
+    client.release();
+  }
+});
+
+// POST /api/dispatch/challans/:id/status — update delivery status
+app.post('/api/dispatch/challans/:id/status', async (req, res) => {
+  const { status } = req.body;
+  const valid = ['draft', 'approved', 'dispatched', 'delivered', 'confirmed'];
+  if (!valid.includes(status)) return res.status(400).json({ error: 'Invalid status' });
+
+  try {
+    const result = await pool.query(`
+      UPDATE public.delivery_challans
+      SET status = $1, updated_at = NOW()
+      WHERE id = $2
+      RETURNING *
+    `, [status, req.params.id]);
+
+    if (result.rows.length === 0) return res.status(404).json({ error: 'Challan not found' });
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to update challan status' });
+  }
+});
+// GET /api/invoices — fetch list of sales invoices
+app.get('/api/invoices', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT * FROM public.sales_invoices
+      ORDER BY created_at DESC
+    `);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch sales invoices' });
+  }
+});
+
+// POST /api/invoices/create — create a new sales invoice
+app.post('/api/invoices/create', async (req, res) => {
+  const { client_name, client_billing_address, client_gstin, place_of_supply, is_inter_state, subtotal, discount_amount, cgst_amount, sgst_amount, igst_amount, invoice_total } = req.body;
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const tenantRes = await client.query("SELECT id FROM public.tenants LIMIT 1");
+    const tenant_id = tenantRes.rows[0].id;
+    const profileRes = await client.query("SELECT user_id FROM public.profiles LIMIT 1");
+    const created_by = profileRes.rows[0].user_id;
+
+    const countRes = await client.query("SELECT COUNT(*) FROM public.sales_invoices");
+    const seq = (parseInt(countRes.rows[0].count) + 1).toString().padStart(3, '0');
+    const year = new Date().getFullYear().toString().slice(-2);
+    const invoice_number = `INV-${year}-${seq}`;
+
+    const insRes = await client.query(`
+      INSERT INTO public.sales_invoices
+        (tenant_id, invoice_number, client_name, client_billing_address, client_gstin, place_of_supply, is_inter_state, subtotal, discount_amount, cgst_amount, sgst_amount, igst_amount, invoice_total, created_by, status)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, 'sent')
+      RETURNING *
+    `, [tenant_id, invoice_number, client_name, client_billing_address, client_gstin || null, place_of_supply, is_inter_state, subtotal, discount_amount || 0, cgst_amount, sgst_amount, igst_amount, invoice_total, created_by]);
+
+    await client.query('COMMIT');
+    res.status(201).json(insRes.rows[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to create invoice' });
+  } finally {
+    client.release();
+  }
+});
+
+// POST /api/invoices/:id/payment — record payment receipt
+app.post('/api/invoices/:id/payment', async (req, res) => {
+  const { amount } = req.body;
+  try {
+    const invRes = await pool.query("SELECT * FROM public.sales_invoices WHERE id = $1", [req.params.id]);
+    if (invRes.rows.length === 0) return res.status(404).json({ error: 'Invoice not found' });
+    const inv = invRes.rows[0];
+
+    const newRec = Number(inv.amount_received || 0) + Number(amount);
+    let newStatus = 'partially_paid';
+    if (newRec >= Number(inv.invoice_total)) {
+      newStatus = 'paid';
+    }
+
+    const updRes = await pool.query(`
+      UPDATE public.sales_invoices
+      SET amount_received = $1, status = $2, updated_at = NOW()
+      WHERE id = $3
+      RETURNING *
+    `, [newRec, newStatus, req.params.id]);
+
+    res.json(updRes.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to record payment' });
+  }
+});// GET /api/reports/project-pl — fetch project level profitability metrics
+app.get('/api/reports/project-pl', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT 
+        wo.id,
+        wo.wo_number,
+        wo.title,
+        wo.client_name as client,
+        COALESCE(wo.client_po_value, 0) as revenue,
+        COALESCE((SELECT SUM(planned_qty * cost_per_unit) FROM public.bom_items bi JOIN public.boms b ON bi.bom_id = b.id WHERE b.work_order_id = wo.id), 0) as mat_cost,
+        3560 as labour_cost,
+        2100 as overhead_cost,
+        (COALESCE((SELECT SUM(planned_qty * cost_per_unit) FROM public.bom_items bi JOIN public.boms b ON bi.bom_id = b.id WHERE b.work_order_id = wo.id), 0) + 3560 + 2100) as total_cost,
+        (COALESCE(wo.client_po_value, 0) - (COALESCE((SELECT SUM(planned_qty * cost_per_unit) FROM public.bom_items bi JOIN public.boms b ON bi.bom_id = b.id WHERE b.work_order_id = wo.id), 0) + 3560 + 2100)) as gross_margin,
+        CASE 
+          WHEN COALESCE(wo.client_po_value, 0) > 0 THEN 
+            ROUND(((COALESCE(wo.client_po_value, 0) - (COALESCE((SELECT SUM(planned_qty * cost_per_unit) FROM public.bom_items bi JOIN public.boms b ON bi.bom_id = b.id WHERE b.work_order_id = wo.id), 0) + 3560 + 2100)) / COALESCE(wo.client_po_value, 0)) * 100, 1)
+          ELSE 0
+        END as margin_pct,
+        29 as days_to_collect,
+        wo.status
+      FROM public.work_orders wo
+      ORDER BY wo.created_at DESC
+    `);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch project P&L metrics' });
+  }
+});
+
+
+// ── PURCHASE ORDERS MODULE ────────────────────────────────────────────────────
+
+// GET /api/purchase-orders — list all POs for the tenant
+app.get('/api/purchase-orders', async (req, res) => {
+  try {
+    const tenantRes = await pool.query("SELECT id FROM public.tenants LIMIT 1");
+    const tenant_id = tenantRes.rows[0].id;
+    const result = await pool.query(`
+      SELECT po.*,
+        (SELECT COUNT(*) FROM public.purchase_order_items WHERE po_id = po.id) AS item_count
+      FROM public.purchase_orders po
+      WHERE po.tenant_id = $1
+      ORDER BY po.created_at DESC
+    `, [tenant_id]);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch purchase orders' });
+  }
+});
+
+// POST /api/purchase-orders — create a new PO with line items
+app.post('/api/purchase-orders', async (req, res) => {
+  const { vendor, vendor_gstin, vendor_phone, delivery_date, delivery_address,
+          delivery_terms, is_inter_state, advance_required, vendor_notes,
+          internal_notes, lines } = req.body;
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+
+    const tenantRes = await client.query("SELECT id FROM public.tenants LIMIT 1");
+    const tenant_id = tenantRes.rows[0].id;
+    const profileRes = await client.query("SELECT user_id FROM public.profiles LIMIT 1");
+    const created_by = profileRes.rows[0].user_id;
+
+    // Generate sequential PO number
+    const countRes = await client.query("SELECT COUNT(*) FROM public.purchase_orders WHERE tenant_id = $1", [tenant_id]);
+    const seq = (parseInt(countRes.rows[0].count) + 1).toString().padStart(3, '0');
+    const year = new Date().getFullYear().toString().slice(-2);
+    const po_number = `PO-${year}-${seq}`;
+
+    // Calculate grand total from lines
+    const grand_total = (lines || []).reduce((sum, l) => {
+      const taxable = l.qty * l.rate * (1 - (l.discount_pct || 0) / 100);
+      const gst = taxable * ((l.gst_pct || 18) / 100);
+      return sum + taxable + gst;
+    }, 0);
+
+    const needsAdminApproval = grand_total > 50000;
+
+    const poRes = await client.query(`
+      INSERT INTO public.purchase_orders
+        (tenant_id, po_number, vendor, vendor_gstin, vendor_phone, delivery_date,
+         delivery_address, delivery_terms, is_inter_state, advance_required,
+         vendor_notes, internal_notes, grand_total, status, created_by)
+      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)
+      RETURNING *
+    `, [
+      tenant_id, po_number, vendor, vendor_gstin || null, vendor_phone || null,
+      delivery_date || null, delivery_address || null, delivery_terms || 'ex_works',
+      !!is_inter_state, !!advance_required, vendor_notes || null, internal_notes || null,
+      Math.round(grand_total), needsAdminApproval ? 'pending_2nd_approval' : 'pending_approval',
+      created_by
+    ]);
+
+    // Insert line items
+    for (const l of (lines || [])) {
+      const taxable = Math.round(l.qty * l.rate * (1 - (l.discount_pct || 0) / 100));
+      const gst = Math.round(taxable * ((l.gst_pct || 18) / 100));
+      await client.query(`
+        INSERT INTO public.purchase_order_items
+          (po_id, material, hsn, work_order_ref, qty, unit, rate, discount_pct, gst_pct, taxable_amount, gst_amount, total_amount)
+        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+      `, [poRes.rows[0].id, l.material, l.hsn || null, l.for_ref || null,
+          l.qty, l.unit, l.rate, l.discount_pct || 0, l.gst_pct || 18, taxable, gst, taxable + gst]);
+    }
+
+    await client.query('COMMIT');
+    res.status(201).json(poRes.rows[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to create purchase order' });
+  } finally {
+    client.release();
+  }
+});
+
+// GET /api/purchase-orders/:id — fetch a single PO with its line items
+app.get('/api/purchase-orders/:id', async (req, res) => {
+  try {
+    const poRes = await pool.query("SELECT * FROM public.purchase_orders WHERE id = $1", [req.params.id]);
+    if (poRes.rows.length === 0) return res.status(404).json({ error: 'PO not found' });
+    const items = await pool.query("SELECT * FROM public.purchase_order_items WHERE po_id = $1 ORDER BY created_at", [req.params.id]);
+    res.json({ ...poRes.rows[0], items: items.rows });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch purchase order' });
+  }
+});
+
+// POST /api/purchase-orders/:id/status — approve, reject, or mark sent
+app.post('/api/purchase-orders/:id/status', async (req, res) => {
+  const { status, notes } = req.body;
+  const valid = ['approved', 'rejected', 'sent', 'acknowledged', 'partially_received', 'fully_received', 'cancelled'];
+  if (!valid.includes(status)) return res.status(400).json({ error: 'Invalid status' });
+
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    const profileRes = await client.query("SELECT user_id FROM public.profiles LIMIT 1");
+    const user_id = profileRes.rows[0].user_id;
+
+    let extra = '';
+    const params = [status, req.params.id];
+    if (status === 'approved') {
+      extra = ', admin_approved_by = $3, admin_approved_at = NOW()';
+      params.push(user_id);
+    } else if (status === 'rejected') {
+      extra = ', rejection_notes = $3';
+      params.push(notes || 'No reason given');
+    } else if (status === 'sent') {
+      extra = ', sent_at = NOW()';
+    }
+
+    const result = await client.query(`
+      UPDATE public.purchase_orders
+      SET status = $1, updated_at = NOW() ${extra}
+      WHERE id = $2
+      RETURNING *
+    `, params);
+
+    if (result.rows.length === 0) {
+      await client.query('ROLLBACK');
+      return res.status(404).json({ error: 'PO not found' });
+    }
+    await client.query('COMMIT');
+    res.json(result.rows[0]);
+  } catch (err) {
+    await client.query('ROLLBACK');
+    console.error(err);
+    res.status(500).json({ error: 'Failed to update PO status' });
+  } finally {
+    client.release();
+  }
+});
+
+// Database Explorer APIs
+app.get('/api/admin/db/tables', async (req, res) => {
+  try {
+    const query = `
+      SELECT table_name 
+      FROM information_schema.tables 
+      WHERE table_schema = 'public' 
+      AND table_type = 'BASE TABLE'
+      ORDER BY table_name
+    `;
+    const result = await pool.query(query);
+    res.json(result.rows.map(r => r.table_name));
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to retrieve tables' });
+  }
+});
+
+app.post('/api/admin/db/query', async (req, res) => {
+  const { sql } = req.body;
+  if (!sql) return res.status(400).json({ error: 'No SQL query provided' });
+  
+  try {
+    const result = await pool.query(sql);
+    res.json({
+      command: result.command,
+      rowCount: result.rowCount,
+      rows: result.rows,
+      fields: result.fields ? result.fields.map(f => f.name) : []
+    });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+app.get('/api/admin/db/storage-health', async (req, res) => {
+  try {
+    const sizeRes = await pool.query("SELECT pg_database_size(current_database()) as size_bytes");
+    const sizeBytes = parseInt(sizeRes.rows[0].size_bytes, 10) || 0;
+    const sizeMB = (sizeBytes / (1024 * 1024)).toFixed(2);
+    const maxMB = 500;
+    const usagePct = ((sizeBytes / (500 * 1024 * 1024)) * 100).toFixed(1);
+    const isWarning = parseFloat(usagePct) >= 80;
+    const isCritical = parseFloat(usagePct) >= 95;
+
+    res.json({
+      size_bytes: sizeBytes,
+      size_mb: parseFloat(sizeMB),
+      max_mb: maxMB,
+      usage_pct: parseFloat(usagePct),
+      status: isCritical ? 'CRITICAL' : isWarning ? 'WARNING' : 'HEALTHY',
+      message: isCritical 
+        ? '⚠️ Storage Critical! Database is above 95% of free tier limit.' 
+        : isWarning 
+        ? '⚠️ Storage Warning: Database is above 80% capacity.' 
+        : '✅ Database storage is healthy.'
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 

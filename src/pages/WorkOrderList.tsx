@@ -289,19 +289,19 @@ export default function WorkOrderList() {
 
                     <div className="grid grid-cols-2 gap-y-md border-t border-border-subtle pt-md">
                       <div>
-                        <p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Client</p>
+                        <p className="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Client</p>
                         <p className="text-sm">{wo.client_name}</p>
                       </div>
                       <div>
-                        <p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Furniture Type</p>
+                        <p className="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Furniture Type</p>
                         <p className="text-sm">{wo.furniture_type}</p>
                       </div>
                       <div>
-                        <p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Quantity</p>
+                        <p className="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Quantity</p>
                         <p className="text-sm">{wo.production_quantity} Units</p>
                       </div>
                       <div>
-                        <p class="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Delivery Target</p>
+                        <p className="text-xs text-on-surface-variant uppercase font-bold mb-0.5">Delivery Target</p>
                         <div className="flex items-center gap-sm">
                           <span className="text-sm font-bold">
                             {wo.committed_delivery_date ? new Date(wo.committed_delivery_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Not Set'}

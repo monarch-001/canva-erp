@@ -1,468 +1,457 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
 
-interface WorkOrder {
+/* ── Types ──────────────────────────────────────────────────────────── */
+interface ActiveWO {
   id: string;
   wo_number: string;
   title: string;
-  priority: string;
+  client_name?: string;
 }
 
-interface Carpenter {
-  user_id: string;
+interface PresentCarpenter {
+  id: string;
   full_name: string;
-  designation: string;
+  is_present: boolean;
+  active_jobs: number;
 }
 
+const STAGES = ['Cutting', 'Edge Banding', 'Assembly', 'Finishing', 'Hardware', 'QC'];
+
+const STAGE_TASK_SUGGESTIONS: Record<string, string> = {
+  'Cutting':      'Cut components',
+  'Edge Banding': 'Apply edge banding',
+  'Assembly':     'Assemble base frame',
+  'Finishing':    'Apply finishing coat',
+  'Hardware':     'Install hardware',
+  'QC':           'Quality check',
+};
+
+/* ── Priority Radio ─────────────────────────────────────────────────── */
+function PriorityOption({
+  value, label, selected, onChange,
+}: { value: string; label: string; selected: boolean; onChange: () => void }) {
+  return (
+    <label className={`flex items-center gap-2 px-4 py-2 rounded-lg border cursor-pointer transition-colors ${
+      selected ? 'border-secondary bg-gold-light/40' : 'border-border-subtle hover:border-border-strong'
+    }`}>
+      <input type="radio" name="priority" value={value} checked={selected} onChange={onChange} className="sr-only" />
+      <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
+        selected ? 'border-secondary' : 'border-ink-300'
+      }`}>
+        {selected && <span className="w-2 h-2 rounded-full bg-secondary block" />}
+      </span>
+      <span className={`text-[13px] font-medium ${selected ? 'text-ink-900' : 'text-ink-700'}`}>{label}</span>
+    </label>
+  );
+}
+
+/* ── Carpenter Card ─────────────────────────────────────────────────── */
+function CarpenterCard({
+  c, selected, isLead, onToggle,
+}: {
+  c: PresentCarpenter;
+  selected: boolean;
+  isLead: boolean;
+  onToggle: () => void;
+}) {
+  const unavailable = !c.is_present;
+  const full = c.active_jobs >= 2;
+
+  return (
+    <label className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${
+      unavailable
+        ? 'border-border-subtle bg-surface-alt opacity-60 cursor-not-allowed'
+        : selected
+        ? 'border-secondary bg-gold-light/40'
+        : 'border-border-subtle hover:border-border-strong'
+    }`}>
+      <input
+        type="checkbox"
+        checked={selected}
+        disabled={unavailable}
+        onChange={onToggle}
+        className="sr-only"
+      />
+      {/* Custom checkbox */}
+      <span className={`w-4 h-4 rounded border-2 flex items-center justify-center shrink-0 mt-0.5 ${
+        selected ? 'border-secondary bg-secondary' : 'border-ink-300'
+      }`}>
+        {selected && <span className="material-symbols-outlined text-white text-[12px]">check</span>}
+      </span>
+
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 flex-wrap">
+          <p className="text-[13px] font-semibold text-ink-900">{c.full_name}</p>
+          {isLead && (
+            <span className="px-1.5 py-0.5 bg-secondary text-white text-[9px] font-bold rounded uppercase tracking-wider">
+              Lead
+            </span>
+          )}
+        </div>
+        <p className="text-[11px] text-ink-500 mt-0.5">
+          {unavailable
+            ? 'Not available'
+            : c.active_jobs === 0
+            ? 'Available'
+            : full
+            ? `${c.active_jobs} active job — full`
+            : `${c.active_jobs} active job`}
+        </p>
+      </div>
+    </label>
+  );
+}
+
+/* ── Main Component ─────────────────────────────────────────────────── */
 export default function JobCardCreate() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [searchParams] = useSearchParams();
+  const preselectedWoId = searchParams.get('wo_id') || '';
 
-  // Options states
-  const [workOrders, setWorkOrders] = useState<WorkOrder[]>([]);
-  const [carpenters, setCarpenters] = useState<Carpenter[]>([]);
+  // Form state
+  const [woId, setWoId]             = useState(preselectedWoId);
+  const [stage, setStage]           = useState('Assembly');
+  const [date, setDate]             = useState(() => new Date().toISOString().slice(0, 10));
+  const [taskTitle, setTaskTitle]   = useState(STAGE_TASK_SUGGESTIONS['Assembly'] || '');
+  const [taskDesc, setTaskDesc]     = useState('');
+  const [selectedCarpenters, setSelectedCarpenters] = useState<string[]>([]);
+  const [quantity, setQuantity]     = useState(10);
+  const [estHours, setEstHours]     = useState(45);
+  const [hoursMode, setHoursMode]   = useState<'per_unit' | 'total'>('total');
+  const [priority, setPriority]     = useState('high');
+  const [notes, setNotes]           = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
-  // Form states
-  const [woId, setWoId] = useState('');
-  const [productionStage, setProductionStage] = useState('cutting');
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [quantity, setQuantity] = useState(1);
-  const [estimatedHours, setEstimatedHours] = useState('');
-  const [priority, setPriority] = useState('normal');
-  const [supervisorNotes, setSupervisorNotes] = useState('');
-  const [leadCarpenterId, setLeadCarpenterId] = useState('');
-  const [supportCarpenterIds, setSupportCarpenterIds] = useState<string[]>([]);
-  
-  // Rework states
-  const [isRework, setIsRework] = useState(false);
-  const [reworkReason, setReworkReason] = useState('');
-  const [originalJcId, setOriginalJcId] = useState('');
-  const [existingJobCards, setExistingJobCards] = useState<{ id: string; jc_number: string; title: string; production_stage: string }[]>([]);
+  // Data
+  const [activeWOs, setActiveWOs]         = useState<ActiveWO[]>([]);
+  const [carpenters, setCarpenters]       = useState<PresentCarpenter[]>([]);
+
+  // Today label
+  const todayStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+  const isToday  = date === new Date().toISOString().slice(0, 10);
+  const dateDisplayValue = isToday ? `${todayStr.replace(/ /g, '-')} (Today)` : date;
 
   useEffect(() => {
-    const fetchFormOptions = async () => {
-      try {
-        const response = await fetch('/api/production/job-cards/form-data');
-        if (response.ok) {
-          const data = await response.json();
-          setWorkOrders(data.work_orders);
-          setCarpenters(data.carpenters);
-        }
-      } catch (err) {
-        console.error(err);
-        setError('Failed to load active resources.');
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchFormOptions();
+    fetch('/api/work-orders?status=in_production,material_ready')
+      .then(r => r.json())
+      .then(d => setActiveWOs(d.work_orders || d || []))
+      .catch(console.error);
+
+    fetch('/api/carpenters/present')
+      .then(r => r.json())
+      .then(d => setCarpenters(d.carpenters || d || []))
+      .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    if (!woId) {
-      setExistingJobCards([]);
-      return;
-    }
-    const fetchExistingJobCards = async () => {
-      try {
-        const response = await fetch(`/api/production/work-orders/${woId}/job-cards`);
-        if (response.ok) {
-          const data = await response.json();
-          setExistingJobCards(data);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchExistingJobCards();
-  }, [woId]);
-
-  // Update priority based on selected Work Order
-  const handleWOChange = (selectedWoId: string) => {
-    setWoId(selectedWoId);
-    const selectedWo = workOrders.find(wo => wo.id === selectedWoId);
-    if (selectedWo) {
-      setPriority(selectedWo.priority);
-    }
+  const handleStageChange = (s: string) => {
+    setStage(s);
+    setTaskTitle(STAGE_TASK_SUGGESTIONS[s] || '');
   };
 
-  const handleSupportCheckbox = (carpenterId: string, checked: boolean) => {
-    if (checked) {
-      setSupportCarpenterIds(prev => [...prev, carpenterId]);
-    } else {
-      setSupportCarpenterIds(prev => prev.filter(id => id !== carpenterId));
-    }
+  const toggleCarpenter = (cid: string) => {
+    setSelectedCarpenters(prev =>
+      prev.includes(cid) ? prev.filter(id => id !== cid) : [...prev, cid]
+    );
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!woId || !title || !leadCarpenterId) {
-      setError('Work Order, Task Title, and Lead Carpenter are required.');
-      return;
-    }
-
-    setSaving(true);
-    setError(null);
-
-    const body = {
-      wo_id: woId,
-      production_stage: productionStage,
-      title,
-      description,
-      quantity_assigned: quantity,
-      estimated_hours: estimatedHours ? parseFloat(estimatedHours) : 0,
-      priority,
-      supervisor_notes: supervisorNotes,
-      lead_carpenter_id: leadCarpenterId,
-      support_carpenter_ids: supportCarpenterIds,
-      is_rework: isRework,
-      rework_reason: reworkReason || null,
-      original_jc_id: originalJcId || null
-    };
-
+    if (!woId || selectedCarpenters.length === 0) return;
+    setSubmitting(true);
     try {
-      const response = await fetch('/api/production/job-cards', {
+      const res = await fetch('/api/job-cards', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+        body: JSON.stringify({
+          wo_id: woId,
+          stage,
+          date,
+          task_title: taskTitle,
+          task_description: taskDesc,
+          carpenter_ids: selectedCarpenters,
+          lead_carpenter_id: selectedCarpenters[0] || null,
+          quantity,
+          estimated_hours: estHours,
+          hours_mode: hoursMode,
+          priority,
+          supervisor_notes: notes,
+        }),
       });
-
-      if (response.ok) {
+      if (res.ok) {
         navigate('/production');
       } else {
-        const resErr = await response.json();
-        setError(resErr.error || 'Failed to create job card.');
+        alert('Failed to create job card.');
       }
     } catch (err) {
       console.error(err);
-      setError('Failed to connect to staging server.');
     } finally {
-      setSaving(false);
+      setSubmitting(false);
     }
   };
 
   return (
-    <div className="flex min-h-screen bg-surface">
+    <div className="flex min-h-screen bg-background">
       <Sidebar />
 
-      <main className="ml-sidebar-width flex-1 min-h-screen flex flex-col bg-background">
-        <Header title="New Job Card" />
+      <main className="ml-[220px] flex-1 pb-24">
 
-        {loading ? (
-          <div className="flex-1 flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-secondary"></div>
-          </div>
-        ) : (
-          <div className="p-xl max-w-container-max mx-auto w-full flex-grow">
-            {/* Breadcrumbs */}
-            <nav className="flex items-center gap-2 text-outline font-label-md text-[12px] mb-md">
-              <span className="hover:text-primary cursor-pointer" onClick={() => navigate('/production')}>Production</span>
-              <span className="material-symbols-outlined text-[14px]">chevron_right</span>
-              <span className="text-primary font-bold">New Job Card</span>
-            </nav>
+        {/* ── Back nav ──────────────────────────────────────────────── */}
+        <div className="px-8 pt-6">
+          <button
+            onClick={() => navigate('/production')}
+            className="flex items-center gap-1.5 text-[13px] text-ink-500 hover:text-ink-900 transition-colors mb-5"
+          >
+            <span className="material-symbols-outlined text-[16px]">arrow_back</span>
+            Back to Production Floor
+          </button>
 
-            <div className="flex justify-between items-end mb-lg">
-              <div>
-                <h1 className="font-headline-lg text-headline-lg text-primary tracking-tight">Create New Job Card</h1>
-                <p className="text-on-surface-variant font-body-md mt-1 italic text-opacity-70">PRD-09 Section 4.2: Daily Morning Supervisor Allocation</p>
-              </div>
-              <div className="flex items-center gap-3 bg-surface-container p-2 rounded-lg border border-border-subtle shadow-sm">
-                <span className="material-symbols-outlined text-accent-gold">calendar_today</span>
-                <div className="text-right">
-                  <p className="text-[10px] uppercase font-bold text-outline">Allocation Date</p>
-                  <p className="font-label-md text-primary">{new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
-                </div>
-              </div>
+          {/* ── Page title ──────────────────────────────────────────── */}
+          <h1 className="text-[26px] font-bold text-ink-900 leading-tight">Create Job Card</h1>
+          <p className="text-[13px] text-ink-500 mt-1 mb-7">
+            Assign today's task to one or more carpenters — typically done every morning by 9 AM.
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="px-8 space-y-4">
+
+          {/* ── Section 1: Work Order & Stage ─────────────────────── */}
+          <div className="bg-white border border-border-subtle rounded-xl p-6">
+            <h2 className="text-[15px] font-bold text-ink-900 mb-5">Work Order &amp; Stage</h2>
+
+            <div className="mb-4">
+              <label className="block text-[12px] font-semibold text-ink-700 mb-1">
+                Work Order <span className="text-status-cancelled">*</span>
+              </label>
+              <select
+                required
+                value={woId}
+                onChange={e => setWoId(e.target.value)}
+                className="w-full h-10 border border-border-subtle rounded-lg px-3 text-[13px] focus:border-secondary outline-none bg-white"
+              >
+                <option value="">Select a Work Order…</option>
+                {activeWOs.map(wo => (
+                  <option key={wo.id} value={wo.id}>
+                    {wo.wo_number} — {wo.title}{wo.client_name ? ` (${wo.client_name})` : ''}
+                  </option>
+                ))}
+              </select>
+              <p className="text-[11px] text-ink-400 mt-1">
+                Only shows WOs with status: in_production or material_ready
+              </p>
             </div>
 
-            {error && (
-              <div className="bg-status-error/10 border-l-4 border-status-error text-status-error p-md rounded-r-lg font-body-md mb-lg">
-                {error}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-[12px] font-semibold text-ink-700 mb-1">
+                  Production Stage <span className="text-status-cancelled">*</span>
+                </label>
+                <select
+                  required
+                  value={stage}
+                  onChange={e => handleStageChange(e.target.value)}
+                  className="w-full h-10 border border-border-subtle rounded-lg px-3 text-[13px] focus:border-secondary outline-none bg-white"
+                >
+                  {STAGES.map(s => <option key={s} value={s}>{s}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="block text-[12px] font-semibold text-ink-700 mb-1">
+                  Date <span className="text-status-cancelled">*</span>
+                </label>
+                <div className="relative">
+                  <input
+                    type="date"
+                    required
+                    value={date}
+                    onChange={e => setDate(e.target.value)}
+                    className="w-full h-10 border border-border-subtle rounded-lg px-3 text-[13px] focus:border-secondary outline-none opacity-0 absolute inset-0"
+                  />
+                  <div className="w-full h-10 border border-border-subtle rounded-lg px-3 flex items-center text-[13px] text-ink-900 pointer-events-none">
+                    {dateDisplayValue}
+                  </div>
+                </div>
+                <p className="text-[11px] text-ink-400 mt-1">Can create for tomorrow in advance</p>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Section 2: Task Details ────────────────────────────── */}
+          <div className="bg-white border border-border-subtle rounded-xl p-6">
+            <h2 className="text-[15px] font-bold text-ink-900 mb-5">Task Details</h2>
+
+            <div className="mb-4">
+              <label className="block text-[12px] font-semibold text-ink-700 mb-1">
+                Task Title <span className="text-status-cancelled">*</span>
+              </label>
+              <input
+                required
+                type="text"
+                value={taskTitle}
+                onChange={e => setTaskTitle(e.target.value)}
+                className="w-full h-10 border border-border-subtle rounded-lg px-3 text-[13px] focus:border-secondary outline-none"
+              />
+              <p className="text-[11px] text-ink-400 mt-1">Auto-suggested based on stage — editable</p>
+            </div>
+
+            <div>
+              <label className="block text-[12px] font-semibold text-ink-700 mb-1">Task Description</label>
+              <textarea
+                value={taskDesc}
+                onChange={e => setTaskDesc(e.target.value)}
+                rows={3}
+                placeholder="Detailed instructions for carpenter"
+                className="w-full border border-border-subtle rounded-lg px-3 py-2.5 text-[13px] focus:border-secondary outline-none resize-none"
+              />
+            </div>
+          </div>
+
+          {/* ── Section 3: Assign Carpenters ──────────────────────── */}
+          <div className="bg-white border border-border-subtle rounded-xl p-6">
+            <h2 className="text-[15px] font-bold text-ink-900 mb-1">Assign Carpenters</h2>
+            <p className="text-[12px] text-ink-500 mb-4">Only carpenters marked present today are shown.</p>
+
+            {carpenters.length === 0 ? (
+              <p className="text-[13px] text-ink-400 italic">No carpenters available.</p>
+            ) : (
+              <div className="grid grid-cols-3 gap-3">
+                {carpenters.map((c) => (
+                  <CarpenterCard
+                    key={c.id}
+                    c={c}
+                    selected={selectedCarpenters.includes(c.id)}
+                    isLead={selectedCarpenters[0] === c.id}
+                    onToggle={() => toggleCarpenter(c.id)}
+                  />
+                ))}
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="grid grid-cols-12 gap-lg">
-              {/* Main Form Fields */}
-              <div className="col-span-12 lg:col-span-8 space-y-lg">
-                <section className="bg-surface-card border border-border-subtle rounded-xl p-xl shadow-sm space-y-xl">
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-xl">
-                    <div className="space-y-1">
-                      <label className="font-label-md text-label-md text-on-surface block">Work Order Selection *</label>
-                      <div className="relative">
-                        <select
-                          value={woId}
-                          onChange={(e) => handleWOChange(e.target.value)}
-                          className="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-accent-gold focus:ring-0 appearance-none font-body-md cursor-pointer"
-                          required
-                        >
-                          <option value="" disabled>Select Active Work Order</option>
-                          {workOrders.map((wo) => (
-                            <option key={wo.id} value={wo.id}>{wo.wo_number}: {wo.title}</option>
-                          ))}
-                        </select>
-                        <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
-                      </div>
-                    </div>
+            {selectedCarpenters.length > 0 && (
+              <p className="text-[11px] text-ink-500 mt-3">
+                First selected carpenter is automatically the <span className="font-semibold text-secondary">Lead</span>.
+              </p>
+            )}
+          </div>
 
-                    <div className="space-y-1">
-                      <label className="font-label-md text-label-md text-on-surface block">Production Stage *</label>
-                      <div className="relative">
-                        <select
-                          value={productionStage}
-                          onChange={(e) => setProductionStage(e.target.value)}
-                          className="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-accent-gold focus:ring-0 appearance-none font-body-md cursor-pointer"
-                          required
-                        >
-                          <option value="cutting">Cutting</option>
-                          <option value="edgebanding">Edge Banding</option>
-                          <option value="drilling">Drilling</option>
-                          <option value="assembly">Assembly</option>
-                          <option value="lamination">Lamination</option>
-                          <option value="finishing">Finishing</option>
-                          <option value="hardware_fitting">Hardware Fitting</option>
-                          <option value="quality_check">Quality Control</option>
-                          <option value="rework">Rework</option>
-                        </select>
-                        <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
-                      </div>
-                    </div>
-                  </div>
+          {/* ── Section 4: Quantity & Time ────────────────────────── */}
+          <div className="bg-white border border-border-subtle rounded-xl p-6">
+            <h2 className="text-[15px] font-bold text-ink-900 mb-5">Quantity &amp; Time</h2>
 
-                  {/* Rework Toggle & Selectors */}
-                  {woId && (
-                    <div className="bg-status-error/5 border border-status-error/15 p-md rounded-lg space-y-md">
-                      <label className="flex items-center gap-sm cursor-pointer group">
-                        <input
-                          type="checkbox"
-                          checked={isRework}
-                          onChange={(e) => {
-                            setIsRework(e.target.checked);
-                            if (e.target.checked) {
-                              setProductionStage('rework');
-                            } else {
-                              setProductionStage('cutting');
-                            }
-                          }}
-                          className="w-4 h-4 text-status-error border-border-subtle focus:ring-status-error"
-                        />
-                        <span className="font-label-md text-label-md text-status-error font-bold group-hover:opacity-90">
-                          Is this a QC Rework Task? (Flagged rework triggers separate hour/labor tracking)
-                        </span>
-                      </label>
+            <div className="grid grid-cols-3 gap-4">
+              <div>
+                <label className="block text-[12px] font-semibold text-ink-700 mb-1">
+                  Quantity <span className="text-status-cancelled">*</span>
+                </label>
+                <input
+                  required
+                  type="number"
+                  min={1}
+                  value={quantity}
+                  onChange={e => setQuantity(parseInt(e.target.value) || 1)}
+                  className="w-full h-10 border border-border-subtle rounded-lg px-3 text-[13px] focus:border-secondary outline-none"
+                />
+                <p className="text-[11px] text-ink-400 mt-1">Number of units for this task</p>
+              </div>
 
-                      {isRework && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-md pt-sm">
-                          <div className="space-y-1">
-                            <label className="font-label-md text-label-md text-status-error block font-bold">Referenced Parent Job Card *</label>
-                            <div className="relative">
-                              <select
-                                value={originalJcId}
-                                onChange={(e) => setOriginalJcId(e.target.value)}
-                                required={isRework}
-                                className="w-full h-[40px] px-md bg-white border border-status-error/30 rounded focus:border-status-error focus:ring-0 appearance-none font-body-md text-sm cursor-pointer text-status-error"
-                              >
-                                <option value="">Select Parent Job Card</option>
-                                {existingJobCards.map((jc) => (
-                                  <option key={jc.id} value={jc.id}>
-                                    {jc.jc_number}: {jc.title} ({jc.production_stage.toUpperCase()})
-                                  </option>
-                                ))}
-                              </select>
-                              <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-status-error opacity-60">expand_more</span>
-                            </div>
-                          </div>
-                          <div className="space-y-1">
-                            <label className="font-label-md text-label-md text-status-error block font-bold">Rework Reason *</label>
-                            <input
-                              type="text"
-                              value={reworkReason}
-                              onChange={(e) => setReworkReason(e.target.value)}
-                              required={isRework}
-                              placeholder="e.g., Lamination bubble, size mismatch"
-                              className="w-full h-[40px] px-md bg-white border border-status-error/30 rounded focus:border-status-error focus:ring-0 font-body-md text-sm text-status-error"
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
+              <div>
+                <label className="block text-[12px] font-semibold text-ink-700 mb-1">
+                  Estimated Hours <span className="text-status-cancelled">*</span>
+                </label>
+                <input
+                  required
+                  type="number"
+                  min={1}
+                  value={estHours}
+                  onChange={e => setEstHours(parseInt(e.target.value) || 1)}
+                  className="w-full h-10 border border-border-subtle rounded-lg px-3 text-[13px] focus:border-secondary outline-none"
+                />
+                <p className="text-[11px] text-ink-400 mt-1">How long should this take?</p>
+              </div>
 
-                  <div className="space-y-1">
-                    <label className="font-label-md text-label-md text-on-surface block">Task Title *</label>
-                    <input
-                      value={title}
-                      onChange={(e) => setTitle(e.target.value)}
-                      className="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-accent-gold focus:ring-0 font-body-md"
-                      placeholder="e.g., Cut plywood for base unit"
-                      type="text"
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="font-label-md text-label-md text-on-surface block">Task Description</label>
-                    <textarea
-                      value={description}
-                      onChange={(e) => setDescription(e.target.value)}
-                      className="w-full p-md bg-surface border border-border-subtle rounded focus:border-accent-gold focus:ring-0 font-body-md resize-none"
-                      placeholder="Detailed technical instructions for the team..."
-                      rows={3}
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-xl">
-                    <div className="space-y-1">
-                      <label className="font-label-md text-label-md text-on-surface block">Quantity of Units *</label>
-                      <input
-                        value={quantity}
-                        onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                        className="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-accent-gold focus:ring-0 font-body-md"
-                        min="1"
-                        type="number"
-                        required
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <label className="font-label-md text-label-md text-on-surface block">Estimated Time (Hours)</label>
-                      <div className="relative">
-                        <input
-                          value={estimatedHours}
-                          onChange={(e) => setEstimatedHours(e.target.value)}
-                          className="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-accent-gold focus:ring-0 font-body-md"
-                          placeholder="0.0"
-                          step="0.5"
-                          type="number"
-                        />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[12px] font-bold">HOURS</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Priority display (Read-only, inherited from Work Order) */}
-                  <div className="space-y-2">
-                    <label className="font-label-md text-label-md text-on-surface block">Job Priority <span className="text-outline font-normal">(Inherited from Work Order)</span></label>
-                    <div className="flex gap-md">
-                      {['normal', 'high', 'critical'].map((pr) => (
-                        <div
-                          key={pr}
-                          className={`flex-1 p-md border rounded text-center transition-all uppercase font-bold text-xs ${
-                            priority === pr
-                              ? pr === 'critical' ? 'border-status-error bg-status-error/10 text-status-error'
-                                : pr === 'high' ? 'border-status-pending bg-status-pending/10 text-on-secondary-container'
-                                : 'border-status-success bg-status-success/5 text-status-success'
-                              : 'border-border-subtle opacity-40 bg-surface-container-low'
-                          }`}
-                        >
-                          {pr}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="font-label-md text-label-md text-on-surface block">Supervisor Notes <span className="text-outline font-normal">(Internal Only)</span></label>
-                    <textarea
-                      value={supervisorNotes}
-                      onChange={(e) => setSupervisorNotes(e.target.value)}
-                      className="w-full p-md bg-surface border border-border-subtle rounded focus:border-accent-gold focus:ring-0 font-body-md resize-none"
-                      placeholder="Private notes for the Glide shift manager..."
-                      rows={2}
-                    />
-                  </div>
-                </section>
-
-                <div className="flex items-center justify-end gap-md pt-md">
+              <div>
+                <label className="block text-[12px] font-semibold text-ink-700 mb-1">Per Unit / Total</label>
+                <div className="flex h-10 border border-border-subtle rounded-lg overflow-hidden">
                   <button
-                    onClick={() => navigate('/production')}
-                    className="px-xl py-3 border border-tertiary text-tertiary font-label-md rounded hover:bg-surface-container transition-all"
                     type="button"
+                    onClick={() => setHoursMode('per_unit')}
+                    className={`flex-1 text-[12px] font-semibold transition-colors ${
+                      hoursMode === 'per_unit' ? 'bg-secondary text-white' : 'text-ink-500 hover:bg-surface-alt'
+                    }`}
                   >
-                    Cancel
+                    Per Unit
                   </button>
                   <button
-                    disabled={saving}
-                    className="px-xl py-3 bg-accent-gold text-white font-label-md rounded shadow-lg shadow-gold-accent/20 hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 disabled:opacity-50 font-bold"
-                    type="submit"
+                    type="button"
+                    onClick={() => setHoursMode('total')}
+                    className={`flex-1 text-[12px] font-semibold transition-colors border-l border-border-subtle ${
+                      hoursMode === 'total' ? 'bg-secondary text-white' : 'text-ink-500 hover:bg-surface-alt'
+                    }`}
                   >
-                    <span className="material-symbols-outlined text-[20px]">post_add</span>
-                    {saving ? 'Creating...' : 'Create Job Card'}
+                    Total
                   </button>
                 </div>
               </div>
-
-              {/* Resource Allocation Sidebar */}
-              <div className="col-span-12 lg:col-span-4 space-y-lg">
-                <section className="bg-surface-card border border-border-subtle rounded-xl p-lg shadow-sm space-y-4">
-                  <div className="flex items-center justify-between mb-md">
-                    <h3 className="font-title-md text-title-md text-primary font-bold">Resource Allocation</h3>
-                    <span className="bg-status-success/10 text-status-success text-[10px] px-2 py-0.5 rounded font-bold">{carpenters.length} PRESENT</span>
-                  </div>
-
-                  {/* Lead Carpenter */}
-                  <div className="space-y-1">
-                    <label className="font-label-md text-label-md text-on-surface block">Lead Carpenter *</label>
-                    <div className="relative">
-                      <select
-                        value={leadCarpenterId}
-                        onChange={(e) => setLeadCarpenterId(e.target.value)}
-                        className="w-full h-[40px] px-md bg-surface border border-border-subtle rounded focus:border-accent-gold focus:ring-0 appearance-none font-body-md cursor-pointer"
-                        required
-                      >
-                        <option value="" disabled>Assign Lead</option>
-                        {carpenters.map((carp) => (
-                          <option key={carp.user_id} value={carp.user_id}>{carp.full_name} ({carp.designation})</option>
-                        ))}
-                      </select>
-                      <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">person</span>
-                    </div>
-                  </div>
-
-                  {/* Support Team Checklist */}
-                  <div className="space-y-2">
-                    <label className="font-label-md text-label-md text-on-surface block">Assign Support Team</label>
-                    <div className="max-h-[300px] overflow-y-auto pr-2 space-y-2 custom-scrollbar">
-                      {carpenters.length === 0 ? (
-                        <p className="text-xs text-on-surface-variant italic">No present staff available.</p>
-                      ) : (
-                        carpenters.map((carp) => (
-                          <div 
-                            key={carp.user_id}
-                            className={`flex items-center justify-between p-3 border rounded hover:bg-surface-container-low cursor-pointer transition-all border-l-4 ${
-                              leadCarpenterId === carp.user_id ? 'border-l-status-pending bg-status-pending/5' : 'border-l-status-success bg-white'
-                            }`}
-                          >
-                            <div className="flex items-center gap-3">
-                              <input
-                                checked={supportCarpenterIds.includes(carp.user_id)}
-                                onChange={(e) => handleSupportCheckbox(carp.user_id, e.target.checked)}
-                                disabled={leadCarpenterId === carp.user_id}
-                                className="w-4 h-4 text-accent-gold border-border-subtle rounded focus:ring-0"
-                                type="checkbox"
-                              />
-                              <div>
-                                <p className="font-label-md text-primary font-bold">{carp.full_name}</p>
-                                <p className="text-[11px] text-outline italic">
-                                  {leadCarpenterId === carp.user_id ? 'Assigned as Lead' : carp.designation}
-                                </p>
-                              </div>
-                            </div>
-                            <span className="material-symbols-outlined text-outline-variant text-[20px]">construction</span>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </form>
+            </div>
           </div>
-        )}
+
+          {/* ── Section 5: Priority & Notes ───────────────────────── */}
+          <div className="bg-white border border-border-subtle rounded-xl p-6">
+            <h2 className="text-[15px] font-bold text-ink-900 mb-5">Priority &amp; Notes</h2>
+
+            <div className="mb-5">
+              <label className="block text-[12px] font-semibold text-ink-700 mb-2">Priority</label>
+              <div className="flex gap-3 flex-wrap">
+                {(['normal', 'high', 'critical'] as const).map(p => (
+                  <PriorityOption
+                    key={p}
+                    value={p}
+                    label={p.charAt(0).toUpperCase() + p.slice(1)}
+                    selected={priority === p}
+                    onChange={() => setPriority(p)}
+                  />
+                ))}
+              </div>
+              <p className="text-[11px] text-ink-400 mt-2">Default: inherited from WO priority (High)</p>
+            </div>
+
+            <div>
+              <label className="block text-[12px] font-semibold text-ink-700 mb-1">Supervisor Notes</label>
+              <textarea
+                value={notes}
+                onChange={e => setNotes(e.target.value)}
+                rows={3}
+                placeholder="Visible to carpenter on Glide app"
+                className="w-full border border-border-subtle rounded-lg px-3 py-2.5 text-[13px] focus:border-secondary outline-none resize-none"
+              />
+            </div>
+          </div>
+        </form>
+
+        {/* ── Sticky footer ────────────────────────────────────────── */}
+        <div className="fixed bottom-0 left-[220px] right-0 bg-white border-t border-border-subtle px-8 py-4 flex items-center justify-between z-30">
+          <p className="text-[12px] text-ink-400">Carpenter sees this immediately on the Glide app</p>
+          <div className="flex gap-3">
+            <button
+              type="button"
+              onClick={() => navigate('/production')}
+              className="h-10 px-5 border border-border-strong text-[13px] font-semibold rounded-lg hover:bg-surface-alt transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              form="job-card-form"
+              disabled={submitting || !woId || selectedCarpenters.length === 0}
+              onClick={handleSubmit}
+              className="h-10 px-5 bg-secondary text-white text-[13px] font-semibold rounded-lg hover:brightness-110 transition-all disabled:opacity-40 flex items-center gap-2"
+            >
+              {submitting && <span className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />}
+              Create Job Card
+            </button>
+          </div>
+        </div>
       </main>
     </div>
   );

@@ -1,0 +1,114 @@
+- generic [ref=f1e3]:
+  - complementary [ref=f1e4]:
+    - generic [ref=f1e7]:
+      - paragraph [ref=f1e8]: Canva Concepts
+      - paragraph [ref=f1e9]: Factory ERP
+    - navigation [ref=f1e10]:
+      - link "Dashboard" [ref=f1e11] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Work Orders" [ref=f1e13] [cursor=pointer]:
+        - /url: /work-orders
+      - link "Quotations" [ref=f1e15] [cursor=pointer]:
+        - /url: /quotations
+      - link "Change Requests" [ref=f1e17] [cursor=pointer]:
+        - /url: /change-requests
+      - link "BOM & Materials" [ref=f1e19] [cursor=pointer]:
+        - /url: /bom/templates
+      - link "Purchase Requisitions" [ref=f1e21] [cursor=pointer]:
+        - /url: /purchase-requisitions
+      - link "Purchase Orders" [ref=f1e23] [cursor=pointer]:
+        - /url: /purchase-orders
+      - link "Production" [ref=f1e25] [cursor=pointer]:
+        - /url: /production
+      - link "Overtime" [ref=f1e27] [cursor=pointer]:
+        - /url: /production/overtime
+      - link "Quality Control" [ref=f1e29] [cursor=pointer]:
+        - /url: /quality-control
+      - link "Dispatch & Delivery" [ref=f1e31] [cursor=pointer]:
+        - /url: /dispatch
+      - link "Invoices" [ref=f1e33] [cursor=pointer]:
+        - /url: /invoices
+      - link "Reports" [ref=f1e35] [cursor=pointer]:
+        - /url: /reports
+    - generic [ref=f1e37]:
+      - link "Settings" [ref=f1e38] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f1e40]:
+        - generic [ref=f1e41]:
+          - img "Marcus Chen" [ref=f1e43]
+          - generic [ref=f1e44]:
+            - paragraph [ref=f1e45]: Marcus Chen
+            - paragraph [ref=f1e46]: Factory Manager
+        - generic [ref=f1e47]:
+          - generic [ref=f1e48]: Toggle Role
+          - combobox [ref=f1e49] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f1e50]:
+    - generic [ref=f1e52]:
+      - heading "Work Orders" [level=1] [ref=f1e54]
+      - generic [ref=f1e55]:
+        - button "add New Work Order" [ref=f1e56] [cursor=pointer]:
+          - generic [ref=f1e57]: add
+          - text: New Work Order
+        - button "Notifications" [ref=f1e59] [cursor=pointer]:
+          - generic [ref=f1e60]: notifications
+        - generic [ref=f1e61]:
+          - generic [ref=f1e62]: MC
+          - generic [ref=f1e63]:
+            - paragraph [ref=f1e64]: Marcus Chen
+            - paragraph [ref=f1e65]: Factory Manager
+    - generic [ref=f1e66]:
+      - generic [ref=f1e67]:
+        - generic [ref=f1e68]:
+          - generic [ref=f1e69]: Status
+          - combobox [ref=f1e70]:
+            - option "All Statuses" [selected]
+            - option "Draft"
+            - option "In Production"
+            - option "Material Prep"
+            - option "Quality Check"
+            - option "Cancelled"
+        - generic [ref=f1e71]:
+          - generic [ref=f1e72]: Client Type
+          - combobox [ref=f1e73]:
+            - option "All Clients" [selected]
+            - option "Chhabee"
+            - option "External B2B"
+            - option "D2C"
+        - generic [ref=f1e74]:
+          - generic [ref=f1e75]: Priority
+          - combobox [ref=f1e76]:
+            - option "Any Priority" [selected]
+            - option "Critical"
+            - option "High"
+            - option "Normal"
+        - generic [ref=f1e77]:
+          - generic [ref=f1e78]: Search
+          - generic [ref=f1e79]:
+            - generic [ref=f1e80]: search
+            - textbox "Search orders, clients..." [ref=f1e81]
+        - button "Apply Filters" [ref=f1e82] [cursor=pointer]
+      - generic [ref=f1e83]:
+        - generic [ref=f1e84]:
+          - generic [ref=f1e85]: precision_manufacturing
+          - generic [ref=f1e87]:
+            - paragraph [ref=f1e88]: Active Orders
+            - heading "0" [level=3] [ref=f1e89]
+        - generic [ref=f1e90]:
+          - generic [ref=f1e91]: schedule
+          - generic [ref=f1e93]:
+            - paragraph [ref=f1e94]: Pending QC
+            - heading "0" [level=3] [ref=f1e95]
+        - generic [ref=f1e96]:
+          - generic [ref=f1e97]: warning
+          - generic [ref=f1e99]:
+            - paragraph [ref=f1e100]: Critical Delay
+            - heading "0" [level=3] [ref=f1e101]
+        - generic [ref=f1e102]:
+          - generic [ref=f1e103]: check_circle
+          - generic [ref=f1e105]:
+            - paragraph [ref=f1e106]: Total Orders
+            - heading "0" [level=3] [ref=f1e107]
+    - generic [ref=f1e110]: "System Role: Factory Manager"

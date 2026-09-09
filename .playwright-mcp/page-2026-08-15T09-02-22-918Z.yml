@@ -1,0 +1,152 @@
+- generic [ref=f1e3]:
+  - complementary [ref=f1e4]:
+    - generic [ref=f1e5]:
+      - heading "Canva Concepts" [level=1] [ref=f1e6]
+      - paragraph [ref=f1e7]: Industrial ERP
+    - navigation [ref=f1e8]:
+      - link "dashboard Dashboard" [ref=f1e9] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=f1e10]: dashboard
+        - generic [ref=f1e11]: Dashboard
+      - link "manufacturing Work Orders" [ref=f1e12] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f1e13]: manufacturing
+        - generic [ref=f1e14]: Work Orders
+      - link "precision_manufacturing Production" [ref=f1e15] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f1e16]: precision_manufacturing
+        - generic [ref=f1e17]: Production
+      - link "group Users" [ref=f1e18] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f1e19]: group
+        - generic [ref=f1e20]: Users
+      - link "payments Finance" [ref=f1e21] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f1e22]: payments
+        - generic [ref=f1e23]: Finance
+    - generic [ref=f1e24]:
+      - link "settings Settings" [ref=f1e25] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f1e26]: settings
+        - generic [ref=f1e27]: Settings
+      - link "help Support" [ref=f1e28] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f1e29]: help
+        - generic [ref=f1e30]: Support
+      - generic [ref=f1e31]:
+        - generic [ref=f1e32]:
+          - img "Marcus Chen" [ref=f1e34]
+          - generic [ref=f1e35]:
+            - paragraph [ref=f1e36]: Marcus Chen
+            - paragraph [ref=f1e37]: Factory Manager
+        - generic [ref=f1e38]:
+          - generic [ref=f1e39]: Toggle System Role
+          - combobox [ref=f1e40] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f1e41]:
+    - generic [ref=f1e42]:
+      - generic [ref=f1e43]:
+        - heading "Work Order Detail" [level=2] [ref=f1e44]
+        - generic [ref=f1e45]:
+          - generic [ref=f1e46]: search
+          - textbox "Search orders, clients, items..." [ref=f1e47]
+      - generic [ref=f1e49]:
+        - button "notifications 3" [ref=f1e50] [cursor=pointer]:
+          - text: notifications
+          - generic [ref=f1e51]: "3"
+        - button "help" [ref=f1e52] [cursor=pointer]
+        - button "settings" [ref=f1e53] [cursor=pointer]
+    - generic [ref=f1e54]:
+      - generic [ref=f1e55]:
+        - generic [ref=f1e56]:
+          - generic [ref=f1e57]: precision_manufacturing
+          - generic [ref=f1e59]:
+            - generic [ref=f1e60]:
+              - 'heading "WO-8829-23: Executive Boardroom Suite - Walnut Series" [level=2] [ref=f1e61]'
+              - generic [ref=f1e62]: IN PRODUCTION
+            - generic [ref=f1e63]:
+              - generic [ref=f1e64]:
+                - generic [ref=f1e65]: priority_high
+                - text: CRITICAL PRIORITY
+              - generic [ref=f1e66]: "|"
+              - generic [ref=f1e67]: "Created: 8/15/2026"
+        - generic [ref=f1e68]:
+          - button "download Export PDF" [ref=f1e69] [cursor=pointer]:
+            - generic [ref=f1e70]: download
+            - text: Export PDF
+          - button "content_copy Clone Order" [ref=f1e71] [cursor=pointer]:
+            - generic [ref=f1e72]: content_copy
+            - text: Clone Order
+          - button "cancel Cancel Order" [ref=f1e73] [cursor=pointer]:
+            - generic [ref=f1e74]: cancel
+            - text: Cancel Order
+          - button "arrow_back Back" [ref=f1e75] [cursor=pointer]:
+            - generic [ref=f1e76]: arrow_back
+            - text: Back
+      - generic [ref=f1e77]:
+        - generic [ref=f1e78]:
+          - button "info Details" [ref=f1e79] [cursor=pointer]:
+            - generic [ref=f1e80]: info
+            - text: Details
+          - button "history Status History" [ref=f1e81] [cursor=pointer]:
+            - generic [ref=f1e82]: history
+            - text: Status History
+          - button "architecture Drawings" [ref=f1e83] [cursor=pointer]:
+            - generic [ref=f1e84]: architecture
+            - text: Drawings
+          - button "description BOM & Materials" [ref=f1e85] [cursor=pointer]:
+            - generic [ref=f1e86]: description
+            - text: BOM & Materials
+          - button "rule Change Requests" [ref=f1e87] [cursor=pointer]:
+            - generic [ref=f1e88]: rule
+            - text: Change Requests
+        - generic [ref=f1e90]:
+          - generic [ref=f1e91]:
+            - heading "corporate_fare Client Information" [level=3] [ref=f1e92]:
+              - generic [ref=f1e93]: corporate_fare
+              - text: Client Information
+            - generic [ref=f1e94]:
+              - generic [ref=f1e95]: Client Name
+              - paragraph [ref=f1e96]: Global Tech Holdings
+            - generic [ref=f1e97]:
+              - generic [ref=f1e98]: Client Type
+              - paragraph [ref=f1e99]: b2b
+            - generic [ref=f1e100]:
+              - generic [ref=f1e101]: Project Name
+              - paragraph [ref=f1e102]: Global Tech Headquarters
+          - generic [ref=f1e103]:
+            - heading "chair Furniture Specs" [level=3] [ref=f1e104]:
+              - generic [ref=f1e105]: chair
+              - text: Furniture Specs
+            - generic [ref=f1e106]:
+              - generic [ref=f1e107]: Type
+              - paragraph [ref=f1e108]: Premium Office Desk
+            - generic [ref=f1e109]:
+              - generic [ref=f1e110]:
+                - generic [ref=f1e111]: Quantity
+                - paragraph [ref=f1e112]: 10 Units
+              - generic [ref=f1e113]:
+                - generic [ref=f1e114]: Finish Type
+                - paragraph
+            - generic [ref=f1e115]:
+              - generic [ref=f1e116]: Dimensions (L x H x D)
+              - paragraph [ref=f1e117]: 2400mm x 750mm x 1200mm
+          - generic [ref=f1e118]:
+            - heading "local_shipping Logistics & Committed Delivery" [level=3] [ref=f1e119]:
+              - generic [ref=f1e120]: local_shipping
+              - text: Logistics & Committed Delivery
+            - generic [ref=f1e121]:
+              - generic [ref=f1e122]:
+                - generic [ref=f1e123]:
+                  - generic [ref=f1e124]: Committed Delivery Date
+                  - paragraph [ref=f1e125]: Aug 20, 2026
+                - button "edit_calendar" [ref=f1e126] [cursor=pointer]
+              - button "Set/Update Committed Date" [ref=f1e128] [cursor=pointer]
+            - generic [ref=f1e129]:
+              - generic [ref=f1e130]: Delivery Terms
+              - paragraph [ref=f1e131]: included
+            - generic [ref=f1e132]:
+              - generic [ref=f1e133]: Delivery Address
+              - paragraph [ref=f1e134]: Sector 5, Block B, Gurgaon

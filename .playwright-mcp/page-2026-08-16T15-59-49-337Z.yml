@@ -1,0 +1,100 @@
+- generic [ref=f18e4]:
+  - generic [ref=f18e5]:
+    - generic [ref=f18e6]:
+      - heading "BOM Templates" [level=1] [ref=f18e7]
+      - paragraph [ref=f18e8]: FM only — supervisors reuse these when creating a BOM
+    - button "+ New Template" [ref=f18e9] [cursor=pointer]
+  - table [ref=f18e11]:
+    - rowgroup [ref=f18e12]:
+      - row [ref=f18e13]:
+        - columnheader "Template Name" [ref=f18e14]
+        - columnheader "Furniture" [ref=f18e15]
+        - columnheader "Base Dimensions" [ref=f18e16]
+        - columnheader "Items" [ref=f18e17]
+        - columnheader "Used" [ref=f18e18]
+        - columnheader "Last Used" [ref=f18e19]
+        - columnheader "Created By" [ref=f18e20]
+        - columnheader "Status" [ref=f18e21]
+        - columnheader "Actions" [ref=f18e22]
+    - rowgroup [ref=f18e23]:
+      - row [ref=f18e24]:
+        - cell "Standard Reception Counter" [ref=f18e25]
+        - cell "Counter" [ref=f18e26]
+        - cell "1800×900×600mm" [ref=f18e27]
+        - cell "6" [ref=f18e28]
+        - cell "6" [ref=f18e29]
+        - cell "03-Aug-26" [ref=f18e30]
+        - cell "Gaurav Raj" [ref=f18e31]
+        - cell "active" [ref=f18e32]
+        - cell "View | Edit | Archive" [ref=f18e33]:
+          - generic [ref=f18e34]:
+            - button "View" [ref=f18e35] [cursor=pointer]
+            - generic [ref=f18e36]: "|"
+            - button "Edit" [ref=f18e37] [cursor=pointer]
+            - generic [ref=f18e38]: "|"
+            - button "Archive" [ref=f18e39] [cursor=pointer]
+      - row [ref=f18e40]:
+        - cell "Premium Counter — Laminate Top" [ref=f18e41]
+        - cell "Counter" [ref=f18e42]
+        - cell "2000×1000×600mm" [ref=f18e43]
+        - cell "7" [ref=f18e44]
+        - cell "3" [ref=f18e45]
+        - cell "28-Jul-26" [ref=f18e46]
+        - cell "Gaurav Raj" [ref=f18e47]
+        - cell "active" [ref=f18e48]
+        - cell "View | Edit | Archive" [ref=f18e49]:
+          - generic [ref=f18e50]:
+            - button "View" [ref=f18e51] [cursor=pointer]
+            - generic [ref=f18e52]: "|"
+            - button "Edit" [ref=f18e53] [cursor=pointer]
+            - generic [ref=f18e54]: "|"
+            - button "Archive" [ref=f18e55] [cursor=pointer]
+      - row [ref=f18e56]:
+        - cell "Compact Counter — Budget" [ref=f18e57]
+        - cell "Counter" [ref=f18e58]
+        - cell "1500×850×550mm" [ref=f18e59]
+        - cell "5" [ref=f18e60]
+        - cell "9" [ref=f18e61]
+        - cell "10-Aug-26" [ref=f18e62]
+        - cell "Ramesh Yadav" [ref=f18e63]
+        - cell "active" [ref=f18e64]
+        - cell "View | Edit | Archive" [ref=f18e65]:
+          - generic [ref=f18e66]:
+            - button "View" [ref=f18e67] [cursor=pointer]
+            - generic [ref=f18e68]: "|"
+            - button "Edit" [ref=f18e69] [cursor=pointer]
+            - generic [ref=f18e70]: "|"
+            - button "Archive" [ref=f18e71] [cursor=pointer]
+      - row [ref=f18e72]:
+        - cell "Executive Workstation — L-Shape" [ref=f18e73]
+        - cell "Workstation" [ref=f18e74]
+        - cell "1800×750×1600mm" [ref=f18e75]
+        - cell "8" [ref=f18e76]
+        - cell "14" [ref=f18e77]
+        - cell "09-Aug-26" [ref=f18e78]
+        - cell "Gaurav Raj" [ref=f18e79]
+        - cell "active" [ref=f18e80]
+        - cell "View | Edit | Archive" [ref=f18e81]:
+          - generic [ref=f18e82]:
+            - button "View" [ref=f18e83] [cursor=pointer]
+            - generic [ref=f18e84]: "|"
+            - button "Edit" [ref=f18e85] [cursor=pointer]
+            - generic [ref=f18e86]: "|"
+            - button "Archive" [ref=f18e87] [cursor=pointer]
+      - row [ref=f18e88]:
+        - cell "3-Door Wardrobe — Legacy" [ref=f18e89]
+        - cell "Storage Unit" [ref=f18e90]
+        - cell "1800×2100×600mm" [ref=f18e91]
+        - cell "9" [ref=f18e92]
+        - cell "2" [ref=f18e93]
+        - cell "15-Jun-26" [ref=f18e94]
+        - cell "Gaurav Raj" [ref=f18e95]
+        - cell "archived" [ref=f18e96]
+        - cell "View | Duplicate" [ref=f18e97]:
+          - generic [ref=f18e98]:
+            - button "View" [ref=f18e99] [cursor=pointer]
+            - generic [ref=f18e100]: "|"
+            - button "Duplicate" [ref=f18e101] [cursor=pointer]
+  - generic [ref=f18e102]:
+    - generic [ref=f18e103]: ℹ
+    - generic [ref=f18e104]: Editing a template does not affect existing Work Order BOMs that already loaded from it — only future uses.

@@ -1,0 +1,72 @@
+- generic [ref=f23e3]:
+  - button "← Back to Purchase Requisitions" [ref=f23e5] [cursor=pointer]:
+    - generic [ref=f23e6]: ←
+    - text: Back to Purchase Requisitions
+  - generic [ref=f23e7]:
+    - heading "New Purchase Requisition" [level=1] [ref=f23e8]
+    - paragraph [ref=f23e9]: Every material purchase must start with an approved PR.
+  - generic [ref=f23e10]:
+    - generic [ref=f23e11]:
+      - heading "Material & Quantity" [level=2] [ref=f23e12]
+      - generic [ref=f23e13]:
+        - generic [ref=f23e14]:
+          - generic [ref=f23e15]: Material *
+          - textbox "🔍 Search Material Master — e.g. \"Plywood 18mm\"" [ref=f23e16]
+          - paragraph [ref=f23e17]: If not found, add free text with a note to add it to Material Master
+        - generic [ref=f23e18]:
+          - generic [ref=f23e19]:
+            - generic [ref=f23e20]: Quantity Required *
+            - spinbutton "20" [ref=f23e21]
+          - generic [ref=f23e22]:
+            - generic [ref=f23e23]: Unit *
+            - combobox [ref=f23e24]:
+              - option "sheets" [selected]
+              - option "sqft"
+              - option "metres"
+              - option "kg"
+              - option "litres"
+              - option "pcs"
+              - option "Lot"
+          - generic [ref=f23e25]:
+            - generic [ref=f23e26]: Preferred Vendor
+            - combobox [ref=f23e27]:
+              - option "— Select vendor —" [selected]
+              - option "Greenlam Laminates"
+              - option "Ramesh Hardware"
+              - option "Centuryply"
+              - option "Hafele India"
+              - option "Asian Paints"
+    - generic [ref=f23e28]:
+      - heading "Linked Work Order" [level=2] [ref=f23e29]
+      - generic [ref=f23e30]:
+        - generic [ref=f23e31]: This is general stock — not WO specific
+        - generic [ref=f23e32] [cursor=pointer]
+      - generic [ref=f23e34]:
+        - generic [ref=f23e35]: Work Order
+        - combobox [ref=f23e36]:
+          - option "WO-CHH-26-001 — Reception Counter Front" [selected]
+          - option "WO-CHH-26-002 — Modular Wardrobe Set"
+          - option "WO-B2B-26-001 — Executive Workstations x6"
+          - option "WO-B2B-26-002 — Conference Table"
+        - paragraph [ref=f23e37]: Optional — leave blank for general stock (toggle above)
+    - generic [ref=f23e38]:
+      - heading "Timing & Urgency" [level=2] [ref=f23e39]
+      - generic [ref=f23e40]:
+        - generic [ref=f23e41]: Required By Date *
+        - textbox "e.g. 15-Aug-2026" [ref=f23e42]: 15-Aug-2026
+        - paragraph [ref=f23e43]: When do you need this material?
+    - generic [ref=f23e44]:
+      - generic [ref=f23e45]: ▲
+      - generic [ref=f23e46]:
+        - paragraph [ref=f23e47]: This will be marked URGENT
+        - paragraph [ref=f23e48]: Required date is less than 2 days away. FM gets a WhatsApp notification immediately with a 30-minute approval SLA.
+    - generic [ref=f23e49]:
+      - heading "Notes" [level=2] [ref=f23e50]
+      - generic [ref=f23e51]:
+        - generic [ref=f23e52]: Notes (optional)
+        - textbox "Any additional context for the approver" [ref=f23e53]
+  - generic [ref=f23e54]:
+    - paragraph [ref=f23e55]: FM will be notified immediately upon submission
+    - generic [ref=f23e56]:
+      - button "Cancel" [ref=f23e57] [cursor=pointer]
+      - button "Submit for Approval" [ref=f23e58] [cursor=pointer]

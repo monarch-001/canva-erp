@@ -1,0 +1,104 @@
+- generic [ref=f22e4]:
+  - complementary [ref=f22e5]:
+    - generic [ref=f22e8]:
+      - paragraph [ref=f22e9]: Canva Concepts
+      - paragraph [ref=f22e10]: Factory ERP
+    - navigation [ref=f22e11]:
+      - generic [ref=f22e12]:
+        - paragraph [ref=f22e13]: Overview
+        - generic [ref=f22e14]:
+          - link "Dashboard" [ref=f22e15] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Work Orders" [ref=f22e17] [cursor=pointer]:
+            - /url: /work-orders
+          - link "Quotations" [ref=f22e19] [cursor=pointer]:
+            - /url: /quotations
+      - generic [ref=f22e21]:
+        - paragraph [ref=f22e22]: Operations
+        - generic [ref=f22e23]:
+          - link "Change Requests" [ref=f22e24] [cursor=pointer]:
+            - /url: /change-requests
+          - link "BOM & Materials" [ref=f22e26] [cursor=pointer]:
+            - /url: /bom/templates
+          - link "Production" [ref=f22e28] [cursor=pointer]:
+            - /url: /production
+          - link "Overtime" [ref=f22e30] [cursor=pointer]:
+            - /url: /production/overtime
+          - link "Quality Control" [ref=f22e32] [cursor=pointer]:
+            - /url: /quality-control
+          - link "Dispatch & Delivery" [ref=f22e34] [cursor=pointer]:
+            - /url: /dispatch
+      - generic [ref=f22e36]:
+        - paragraph [ref=f22e37]: Procurement
+        - generic [ref=f22e38]:
+          - link "Purchase Requisitions" [ref=f22e39] [cursor=pointer]:
+            - /url: /purchase-requisitions
+          - link "Purchase Orders" [ref=f22e41] [cursor=pointer]:
+            - /url: /purchase-orders
+      - generic [ref=f22e43]:
+        - paragraph [ref=f22e44]: Finance
+        - generic [ref=f22e45]:
+          - link "Invoices" [ref=f22e46] [cursor=pointer]:
+            - /url: /invoices
+          - link "Reports" [ref=f22e48] [cursor=pointer]:
+            - /url: /reports
+    - generic [ref=f22e50]:
+      - link "Settings" [ref=f22e51] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f22e53]:
+        - generic [ref=f22e54]:
+          - img "Marcus Chen" [ref=f22e56]
+          - generic [ref=f22e57]:
+            - paragraph [ref=f22e58]: Marcus Chen
+            - paragraph [ref=f22e59]: Factory Manager
+        - generic [ref=f22e60]:
+          - generic [ref=f22e61]: Toggle Role
+          - combobox [ref=f22e62] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f22e63]:
+    - generic [ref=f22e65]:
+      - generic [ref=f22e66]:
+        - heading "Billing & Invoicing" [level=1] [ref=f22e67]
+        - paragraph [ref=f22e68]: Generate GST sales invoices, track client receivables, and log payment completions
+      - generic [ref=f22e69]:
+        - button "Notifications" [ref=f22e71] [cursor=pointer]:
+          - generic [ref=f22e72]: notifications
+        - generic [ref=f22e73]:
+          - generic [ref=f22e74]: MC
+          - generic [ref=f22e75]:
+            - paragraph [ref=f22e76]: Marcus Chen
+            - paragraph [ref=f22e77]: Factory Manager
+    - generic [ref=f22e78]:
+      - generic [ref=f22e79]:
+        - generic [ref=f22e80]:
+          - paragraph [ref=f22e81]: ₹0
+          - paragraph [ref=f22e82]: Collected Payments
+        - generic [ref=f22e83]:
+          - paragraph [ref=f22e84]: ₹0
+          - paragraph [ref=f22e85]: Receivables Outstanding
+        - generic [ref=f22e86]:
+          - paragraph [ref=f22e87]: "0"
+          - paragraph [ref=f22e88]: Overdue Invoices
+      - generic [ref=f22e89]:
+        - generic [ref=f22e90]:
+          - paragraph [ref=f22e91]: GST Sales Ledger
+          - paragraph [ref=f22e92]: Total 0 invoices generated this fiscal year
+        - button "receipt New Invoice" [ref=f22e93] [cursor=pointer]:
+          - generic [ref=f22e94]: receipt
+          - text: New Invoice
+      - table [ref=f22e96]:
+        - rowgroup [ref=f22e97]:
+          - row [ref=f22e98]:
+            - columnheader "Invoice Num" [ref=f22e99]
+            - columnheader "Client" [ref=f22e100]
+            - columnheader "Invoice Date" [ref=f22e101]
+            - columnheader "Due Date" [ref=f22e102]
+            - columnheader "Total Amount" [ref=f22e103]
+            - columnheader "Collected" [ref=f22e104]
+            - columnheader "Status" [ref=f22e105]
+            - columnheader "Actions" [ref=f22e106]
+        - rowgroup [ref=f22e107]:
+          - row [ref=f22e108]:
+            - cell "Loading invoices..." [ref=f22e109]

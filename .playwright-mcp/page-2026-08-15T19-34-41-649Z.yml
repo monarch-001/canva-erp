@@ -1,0 +1,110 @@
+- generic [ref=f22e82]:
+  - generic [ref=f22e83]:
+    - generic [ref=f22e84]:
+      - heading "Purchase Requisitions" [level=1] [ref=f22e85]
+      - paragraph [ref=f22e86]: Every material purchase starts here — PR → PO → GRN
+    - button "+ New PR" [ref=f22e87] [cursor=pointer]
+  - generic [ref=f22e88]:
+    - generic [ref=f22e89]:
+      - paragraph [ref=f22e90]: "2"
+      - paragraph [ref=f22e91]: Pending Approval
+    - generic [ref=f22e92]:
+      - paragraph [ref=f22e93]: "3"
+      - paragraph [ref=f22e94]: Approved (PO not raised)
+    - generic [ref=f22e95]:
+      - paragraph [ref=f22e96]: "2"
+      - paragraph [ref=f22e97]: Urgent PRs
+  - generic [ref=f22e98]:
+    - combobox [ref=f22e99]:
+      - 'option "Status: All ·" [selected]'
+      - 'option "Status: Submitted ·"'
+      - 'option "Status: Approved ·"'
+      - 'option "Status: PO Raised ·"'
+      - 'option "Status: Rejected ·"'
+    - combobox [ref=f22e100]:
+      - 'option "Urgency: All ·" [selected]'
+      - 'option "Urgency: Urgent ·"'
+      - 'option "Urgency: Normal ·"'
+    - combobox [ref=f22e101]:
+      - 'option "WO Number: All ·" [selected]'
+    - combobox [ref=f22e102]:
+      - 'option "Date range: All time ·" [selected]'
+  - table [ref=f22e104]:
+    - rowgroup [ref=f22e105]:
+      - row [ref=f22e106]:
+        - columnheader "PR Number" [ref=f22e107]
+        - columnheader "Material" [ref=f22e108]
+        - columnheader "WO Reference" [ref=f22e109]
+        - columnheader "Qty" [ref=f22e110]
+        - columnheader "Required By" [ref=f22e111]
+        - columnheader "Urgency" [ref=f22e112]
+        - columnheader "Status" [ref=f22e113]
+        - columnheader "Raised By" [ref=f22e114]
+        - columnheader "Actions" [ref=f22e115]
+    - rowgroup [ref=f22e116]:
+      - row [ref=f22e117]:
+        - cell "PR-26-018" [ref=f22e118]
+        - cell "Fevicol SR 998" [ref=f22e119]
+        - cell "WO-CHH-26-001" [ref=f22e120]
+        - cell "4 kg" [ref=f22e121]
+        - cell "15-Aug-26" [ref=f22e122]
+        - cell "URGENT" [ref=f22e123]
+        - cell "SUBMITTED" [ref=f22e124]
+        - cell "System (BOM)" [ref=f22e125]
+        - cell [ref=f22e126]:
+          - button "View" [ref=f22e127] [cursor=pointer]
+      - row [ref=f22e128]:
+        - cell "PR-26-017" [ref=f22e129]
+        - cell "Laminate — Merino Charcoal" [ref=f22e130]
+        - cell "WO-CHH-26-001" [ref=f22e131]
+        - cell "260 sqft" [ref=f22e132]
+        - cell "18-Aug-26" [ref=f22e133]
+        - cell "Normal" [ref=f22e134]
+        - cell "SUBMITTED" [ref=f22e135]
+        - cell "System (BOM)" [ref=f22e136]
+        - cell [ref=f22e137]:
+          - button "View" [ref=f22e138] [cursor=pointer]
+      - row [ref=f22e139]:
+        - cell "PR-26-016" [ref=f22e140]
+        - cell "Plywood 18mm BWR" [ref=f22e141]
+        - cell "WO-B2B-26-001" [ref=f22e142]
+        - cell "20 sheets" [ref=f22e143]
+        - cell "20-Aug-26" [ref=f22e144]
+        - cell "Normal" [ref=f22e145]
+        - cell "APPROVED" [ref=f22e146]
+        - cell "Ramesh Yadav" [ref=f22e147]
+        - cell [ref=f22e148]:
+          - button "View" [ref=f22e149] [cursor=pointer]
+      - row [ref=f22e150]:
+        - cell "PR-26-015" [ref=f22e151]
+        - cell "Edge Tape 2mm" [ref=f22e152]
+        - cell "General Stock" [ref=f22e153]
+        - cell "100 metres" [ref=f22e154]
+        - cell "22-Aug-26" [ref=f22e155]
+        - cell "Normal" [ref=f22e156]
+        - cell "APPROVED" [ref=f22e157]
+        - cell "Suresh Yadav" [ref=f22e158]
+        - cell [ref=f22e159]:
+          - button "View" [ref=f22e160] [cursor=pointer]
+      - row [ref=f22e161]:
+        - cell "PR-26-014" [ref=f22e162]
+        - cell "SS Hinges — Heavy Duty" [ref=f22e163]
+        - cell "WO-CHH-26-005" [ref=f22e164]
+        - cell "24 pcs" [ref=f22e165]
+        - cell "14-Aug-26" [ref=f22e166]
+        - cell "URGENT" [ref=f22e167]
+        - cell "APPROVED" [ref=f22e168]
+        - cell "Ramesh Yadav" [ref=f22e169]
+        - cell [ref=f22e170]:
+          - button "View" [ref=f22e171] [cursor=pointer]
+      - row [ref=f22e172]:
+        - cell "PR-26-013" [ref=f22e173]
+        - cell "PU Polish" [ref=f22e174]
+        - cell "WO-B2B-26-002" [ref=f22e175]
+        - cell "12 litres" [ref=f22e176]
+        - cell "25-Aug-26" [ref=f22e177]
+        - cell "Normal" [ref=f22e178]
+        - cell "PO RAISED" [ref=f22e179]
+        - cell "Suresh Yadav" [ref=f22e180]
+        - cell [ref=f22e181]:
+          - button "View" [ref=f22e182] [cursor=pointer]

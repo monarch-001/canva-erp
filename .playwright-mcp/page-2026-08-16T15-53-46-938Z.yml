@@ -1,0 +1,95 @@
+- generic [ref=f13e3]:
+  - complementary [ref=f13e4]:
+    - generic [ref=f13e7]:
+      - paragraph [ref=f13e8]: Canva Concepts
+      - paragraph [ref=f13e9]: Factory ERP
+    - navigation [ref=f13e10]:
+      - generic [ref=f13e11]:
+        - paragraph [ref=f13e12]: Overview
+        - generic [ref=f13e13]:
+          - link "Dashboard" [ref=f13e14] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Work Orders" [ref=f13e16] [cursor=pointer]:
+            - /url: /work-orders
+          - link "Quotations" [ref=f13e18] [cursor=pointer]:
+            - /url: /quotations
+      - generic [ref=f13e20]:
+        - paragraph [ref=f13e21]: Operations
+        - generic [ref=f13e22]:
+          - link "Change Requests" [ref=f13e23] [cursor=pointer]:
+            - /url: /change-requests
+          - link "BOM & Materials" [ref=f13e25] [cursor=pointer]:
+            - /url: /bom/templates
+          - link "Production" [ref=f13e27] [cursor=pointer]:
+            - /url: /production
+          - link "Overtime" [ref=f13e29] [cursor=pointer]:
+            - /url: /production/overtime
+          - link "Quality Control" [ref=f13e31] [cursor=pointer]:
+            - /url: /quality-control
+          - link "Dispatch & Delivery" [ref=f13e33] [cursor=pointer]:
+            - /url: /dispatch
+      - generic [ref=f13e35]:
+        - paragraph [ref=f13e36]: Procurement
+        - generic [ref=f13e37]:
+          - link "Purchase Requisitions" [ref=f13e38] [cursor=pointer]:
+            - /url: /purchase-requisitions
+          - link "Purchase Orders" [ref=f13e40] [cursor=pointer]:
+            - /url: /purchase-orders
+      - generic [ref=f13e42]:
+        - paragraph [ref=f13e43]: Finance
+        - generic [ref=f13e44]:
+          - link "Invoices" [ref=f13e45] [cursor=pointer]:
+            - /url: /invoices
+          - link "Reports" [ref=f13e47] [cursor=pointer]:
+            - /url: /reports
+    - generic [ref=f13e49]:
+      - link "Settings" [ref=f13e50] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f13e52]:
+        - generic [ref=f13e53]:
+          - img "Marcus Chen" [ref=f13e55]
+          - generic [ref=f13e56]:
+            - paragraph [ref=f13e57]: Marcus Chen
+            - paragraph [ref=f13e58]: Factory Manager
+        - generic [ref=f13e59]:
+          - generic [ref=f13e60]: Toggle Role
+          - combobox [ref=f13e61] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f13e62]:
+    - generic [ref=f13e64]:
+      - generic [ref=f13e65]:
+        - heading "Dispatch & Delivery" [level=1] [ref=f13e66]
+        - paragraph [ref=f13e67]: Generate delivery challans, track e-Way bills, and confirm client receipts
+      - generic [ref=f13e68]:
+        - button "Notifications" [ref=f13e70] [cursor=pointer]:
+          - generic [ref=f13e71]: notifications
+        - generic [ref=f13e73]:
+          - generic [ref=f13e74]: MC
+          - generic [ref=f13e75]:
+            - paragraph [ref=f13e76]: Marcus Chen
+            - paragraph [ref=f13e77]: Factory Manager
+    - generic [ref=f13e78]:
+      - generic [ref=f13e79]:
+        - generic [ref=f13e80]:
+          - paragraph [ref=f13e81]: Delivery Status Board
+          - paragraph [ref=f13e82]: Track shipments from factory to destination site
+        - button "local_shipping New Delivery Challan" [ref=f13e83] [cursor=pointer]:
+          - generic [ref=f13e84]: local_shipping
+          - text: New Delivery Challan
+      - table [ref=f13e86]:
+        - rowgroup [ref=f13e87]:
+          - row [ref=f13e88]:
+            - columnheader "Challan Num" [ref=f13e89]
+            - columnheader "Work Order" [ref=f13e90]
+            - columnheader "Client" [ref=f13e91]
+            - columnheader "Qty" [ref=f13e92]
+            - columnheader "Consignee" [ref=f13e93]
+            - columnheader "Vehicle" [ref=f13e94]
+            - columnheader "e-Way Bill" [ref=f13e95]
+            - columnheader "Status" [ref=f13e96]
+            - columnheader "Actions" [ref=f13e97]
+        - rowgroup [ref=f13e98]:
+          - row [ref=f13e99]:
+            - cell "Loading delivery challans..." [ref=f13e100]

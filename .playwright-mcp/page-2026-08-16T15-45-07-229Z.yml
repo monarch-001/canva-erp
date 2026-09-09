@@ -1,0 +1,95 @@
+- generic [ref=f9e3]:
+  - complementary [ref=f9e4]:
+    - generic [ref=f9e7]:
+      - paragraph [ref=f9e8]: Canva Concepts
+      - paragraph [ref=f9e9]: Factory ERP
+    - navigation [ref=f9e10]:
+      - generic [ref=f9e11]:
+        - paragraph [ref=f9e12]: Overview
+        - generic [ref=f9e13]:
+          - link "Dashboard" [ref=f9e14] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Work Orders" [ref=f9e16] [cursor=pointer]:
+            - /url: /work-orders
+          - link "Quotations" [ref=f9e18] [cursor=pointer]:
+            - /url: /quotations
+      - generic [ref=f9e20]:
+        - paragraph [ref=f9e21]: Operations
+        - generic [ref=f9e22]:
+          - link "Change Requests" [ref=f9e23] [cursor=pointer]:
+            - /url: /change-requests
+          - link "BOM & Materials" [ref=f9e25] [cursor=pointer]:
+            - /url: /bom/templates
+          - link "Production" [ref=f9e27] [cursor=pointer]:
+            - /url: /production
+          - link "Overtime" [ref=f9e29] [cursor=pointer]:
+            - /url: /production/overtime
+          - link "Quality Control" [ref=f9e31] [cursor=pointer]:
+            - /url: /quality-control
+          - link "Dispatch & Delivery" [ref=f9e33] [cursor=pointer]:
+            - /url: /dispatch
+      - generic [ref=f9e35]:
+        - paragraph [ref=f9e36]: Procurement
+        - generic [ref=f9e37]:
+          - link "Purchase Requisitions" [ref=f9e38] [cursor=pointer]:
+            - /url: /purchase-requisitions
+          - link "Purchase Orders" [ref=f9e40] [cursor=pointer]:
+            - /url: /purchase-orders
+      - generic [ref=f9e42]:
+        - paragraph [ref=f9e43]: Finance
+        - generic [ref=f9e44]:
+          - link "Invoices" [ref=f9e45] [cursor=pointer]:
+            - /url: /invoices
+          - link "Reports" [ref=f9e47] [cursor=pointer]:
+            - /url: /reports
+    - generic [ref=f9e49]:
+      - link "Settings" [ref=f9e50] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f9e52]:
+        - generic [ref=f9e53]:
+          - img "Marcus Chen" [ref=f9e55]
+          - generic [ref=f9e56]:
+            - paragraph [ref=f9e57]: Marcus Chen
+            - paragraph [ref=f9e58]: Factory Manager
+        - generic [ref=f9e59]:
+          - generic [ref=f9e60]: Toggle Role
+          - combobox [ref=f9e61] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f9e62]:
+    - generic [ref=f9e64]:
+      - generic [ref=f9e65]:
+        - heading "Quality Control & Inspection" [level=1] [ref=f9e66]
+        - paragraph [ref=f9e67]: Inspect finished work orders, log results, and authorize dispatch
+      - generic [ref=f9e68]:
+        - button "Notifications" [ref=f9e70] [cursor=pointer]:
+          - generic [ref=f9e71]: notifications
+        - generic [ref=f9e72]:
+          - generic [ref=f9e73]: MC
+          - generic [ref=f9e74]:
+            - paragraph [ref=f9e75]: Marcus Chen
+            - paragraph [ref=f9e76]: Factory Manager
+    - generic [ref=f9e77]:
+      - generic [ref=f9e78]:
+        - generic [ref=f9e79]:
+          - button "All Inspections" [ref=f9e80] [cursor=pointer]
+          - button "Passed" [ref=f9e81] [cursor=pointer]
+          - button "Failed / Rework" [ref=f9e82] [cursor=pointer]
+        - button "add_task New QC Entry" [ref=f9e83] [cursor=pointer]:
+          - generic [ref=f9e84]: add_task
+          - text: New QC Entry
+      - table [ref=f9e86]:
+        - rowgroup [ref=f9e87]:
+          - row [ref=f9e88]:
+            - columnheader "QC Num" [ref=f9e89]
+            - columnheader "Work Order" [ref=f9e90]
+            - columnheader "Client" [ref=f9e91]
+            - columnheader "Date" [ref=f9e92]
+            - columnheader "Score" [ref=f9e93]
+            - columnheader "Result" [ref=f9e94]
+            - columnheader "Inspector" [ref=f9e95]
+            - columnheader "Actions" [ref=f9e96]
+        - rowgroup [ref=f9e97]:
+          - row [ref=f9e98]:
+            - cell "Loading QC logs..." [ref=f9e99]

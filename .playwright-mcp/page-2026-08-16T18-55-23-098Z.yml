@@ -1,0 +1,99 @@
+- generic [ref=f65e3]:
+  - complementary [ref=f65e4]:
+    - generic [ref=f65e7]:
+      - paragraph [ref=f65e8]: Canva Concepts
+      - paragraph [ref=f65e9]: Factory ERP
+    - navigation [ref=f65e10]:
+      - generic [ref=f65e11]:
+        - paragraph [ref=f65e12]: Overview
+        - generic [ref=f65e13]:
+          - link "Dashboard" [ref=f65e14] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Work Orders" [ref=f65e16] [cursor=pointer]:
+            - /url: /work-orders
+      - generic [ref=f65e18]:
+        - paragraph [ref=f65e19]: Operations
+        - link "Change Requests" [ref=f65e21] [cursor=pointer]:
+          - /url: /change-requests
+    - generic [ref=f65e23]:
+      - link "Settings" [ref=f65e24] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f65e26]:
+        - generic [ref=f65e27]:
+          - img "Sarah Jenkins" [ref=f65e29]
+          - generic [ref=f65e30]:
+            - paragraph [ref=f65e31]: Sarah Jenkins
+            - paragraph [ref=f65e32]: Site Manager
+        - generic [ref=f65e33]:
+          - generic [ref=f65e34]: Toggle Role
+          - combobox [ref=f65e35] [cursor=pointer]:
+            - option "Factory Manager"
+            - option "Supervisor"
+            - option "Site Manager" [selected]
+  - main [ref=f65e36]:
+    - generic [ref=f65e38]:
+      - heading "Work Orders" [level=1] [ref=f65e40]
+      - generic [ref=f65e41]:
+        - button "add New Work Order" [ref=f65e42] [cursor=pointer]:
+          - generic [ref=f65e43]: add
+          - text: New Work Order
+        - button "Notifications" [ref=f65e45] [cursor=pointer]:
+          - generic [ref=f65e46]: notifications
+        - generic [ref=f65e47]:
+          - generic [ref=f65e48]: SJ
+          - generic [ref=f65e49]:
+            - paragraph [ref=f65e50]: Sarah Jenkins
+            - paragraph [ref=f65e51]: Site Manager
+    - generic [ref=f65e52]:
+      - generic [ref=f65e53]:
+        - generic [ref=f65e54]:
+          - generic [ref=f65e55]: Status
+          - combobox [ref=f65e56]:
+            - option "All Statuses" [selected]
+            - option "Draft"
+            - option "In Production"
+            - option "Material Prep"
+            - option "Quality Check"
+            - option "Cancelled"
+        - generic [ref=f65e57]:
+          - generic [ref=f65e58]: Client Type
+          - combobox [ref=f65e59]:
+            - option "All Clients" [selected]
+            - option "Chhabee"
+            - option "External B2B"
+            - option "D2C"
+        - generic [ref=f65e60]:
+          - generic [ref=f65e61]: Priority
+          - combobox [ref=f65e62]:
+            - option "Any Priority" [selected]
+            - option "Critical"
+            - option "High"
+            - option "Normal"
+        - generic [ref=f65e63]:
+          - generic [ref=f65e64]: Search
+          - generic [ref=f65e65]:
+            - generic [ref=f65e66]: search
+            - textbox "Search orders, clients..." [ref=f65e67]
+        - button "Apply Filters" [ref=f65e68] [cursor=pointer]
+      - generic [ref=f65e69]:
+        - generic [ref=f65e70]:
+          - generic [ref=f65e71]: precision_manufacturing
+          - generic [ref=f65e73]:
+            - paragraph [ref=f65e74]: Active Orders
+            - heading "0" [level=3] [ref=f65e75]
+        - generic [ref=f65e76]:
+          - generic [ref=f65e77]: schedule
+          - generic [ref=f65e79]:
+            - paragraph [ref=f65e80]: Pending QC
+            - heading "0" [level=3] [ref=f65e81]
+        - generic [ref=f65e82]:
+          - generic [ref=f65e83]: warning
+          - generic [ref=f65e85]:
+            - paragraph [ref=f65e86]: Critical Delay
+            - heading "0" [level=3] [ref=f65e87]
+        - generic [ref=f65e88]:
+          - generic [ref=f65e89]: check_circle
+          - generic [ref=f65e91]:
+            - paragraph [ref=f65e92]: Total Orders
+            - heading "0" [level=3] [ref=f65e93]
+    - generic [ref=f65e96]: "System Role: Factory Manager"

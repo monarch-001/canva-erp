@@ -1,0 +1,148 @@
+- generic [ref=f14e3]:
+  - complementary [ref=f14e4]:
+    - generic [ref=f14e7]:
+      - paragraph [ref=f14e8]: Canva Concepts
+      - paragraph [ref=f14e9]: Factory ERP
+    - navigation [ref=f14e10]:
+      - generic [ref=f14e11]:
+        - paragraph [ref=f14e12]: Overview
+        - generic [ref=f14e13]:
+          - link "Dashboard" [ref=f14e14] [cursor=pointer]:
+            - /url: /dashboard
+          - link "Work Orders" [ref=f14e16] [cursor=pointer]:
+            - /url: /work-orders
+          - link "Quotations" [ref=f14e18] [cursor=pointer]:
+            - /url: /quotations
+      - generic [ref=f14e20]:
+        - paragraph [ref=f14e21]: Operations
+        - generic [ref=f14e22]:
+          - link "Change Requests" [ref=f14e23] [cursor=pointer]:
+            - /url: /change-requests
+          - link "BOM & Materials" [ref=f14e25] [cursor=pointer]:
+            - /url: /bom/templates
+          - link "Production" [ref=f14e27] [cursor=pointer]:
+            - /url: /production
+          - link "Overtime" [ref=f14e29] [cursor=pointer]:
+            - /url: /production/overtime
+          - link "Quality Control" [ref=f14e31] [cursor=pointer]:
+            - /url: /quality-control
+          - link "Dispatch & Delivery" [ref=f14e33] [cursor=pointer]:
+            - /url: /dispatch
+      - generic [ref=f14e35]:
+        - paragraph [ref=f14e36]: Procurement
+        - generic [ref=f14e37]:
+          - link "Purchase Requisitions" [ref=f14e38] [cursor=pointer]:
+            - /url: /purchase-requisitions
+          - link "Purchase Orders" [ref=f14e40] [cursor=pointer]:
+            - /url: /purchase-orders
+      - generic [ref=f14e42]:
+        - paragraph [ref=f14e43]: Finance
+        - generic [ref=f14e44]:
+          - link "Invoices" [ref=f14e45] [cursor=pointer]:
+            - /url: /invoices
+          - link "Reports" [ref=f14e47] [cursor=pointer]:
+            - /url: /reports
+    - generic [ref=f14e49]:
+      - link "Settings" [ref=f14e50] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f14e52]:
+        - generic [ref=f14e53]:
+          - img "Marcus Chen" [ref=f14e55]
+          - generic [ref=f14e56]:
+            - paragraph [ref=f14e57]: Marcus Chen
+            - paragraph [ref=f14e58]: Factory Manager
+        - generic [ref=f14e59]:
+          - generic [ref=f14e60]: Toggle Role
+          - combobox [ref=f14e61] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - generic [ref=f14e62]:
+    - heading "Change Requests" [level=1] [ref=f14e63]
+    - paragraph [ref=f14e64]: All change requests across every Work Order
+    - generic [ref=f14e65]:
+      - combobox [ref=f14e66]:
+        - 'option "Status: All" [selected]'
+        - option "Pending"
+        - option "IP Approved"
+        - option "Approved"
+        - option "Implemented"
+        - option "Dual Approved"
+        - option "Rejected"
+      - combobox [ref=f14e67]:
+        - 'option "Tier: All" [selected]'
+        - option "Tier 1"
+        - option "Tier 2"
+        - option "Tier 3"
+      - 'textbox "WO Number: Search" [ref=f14e69]'
+      - combobox [ref=f14e70]:
+        - 'option "Date range: All time" [selected]'
+        - option "This week"
+        - option "This month"
+        - option "Last month"
+    - table [ref=f14e72]:
+      - rowgroup [ref=f14e73]:
+        - row [ref=f14e74]:
+          - columnheader "CR Number" [ref=f14e75]
+          - columnheader "WO Number" [ref=f14e76]
+          - columnheader "Change Type" [ref=f14e77]
+          - columnheader "Tier" [ref=f14e78]
+          - columnheader "Status" [ref=f14e79]
+          - columnheader "Raised By" [ref=f14e80]
+          - columnheader "Raised Date" [ref=f14e81]
+          - columnheader "Pending From" [ref=f14e82]
+      - rowgroup [ref=f14e83]:
+        - row [ref=f14e84] [cursor=pointer]:
+          - cell "CR-WO-CHH-26-001-03" [ref=f14e85]
+          - cell "WO-CHH-26-001" [ref=f14e86]
+          - cell "Additional Item" [ref=f14e87]
+          - cell "T3" [ref=f14e88]
+          - cell "IP Approved" [ref=f14e90]
+          - cell "Neha Kapoor" [ref=f14e91]
+          - cell "09-Aug-26" [ref=f14e92]
+          - cell "Super Admin" [ref=f14e93]
+        - row [ref=f14e94] [cursor=pointer]:
+          - cell "CR-WO-B2B-26-004-01" [ref=f14e95]
+          - cell "WO-B2B-26-004" [ref=f14e96]
+          - cell "Quantity Change" [ref=f14e97]
+          - cell "T2" [ref=f14e98]
+          - cell "Pending" [ref=f14e100]
+          - cell "Ramesh Yadav" [ref=f14e101]
+          - cell "09-Aug-26" [ref=f14e102]
+          - cell "Factory Manager" [ref=f14e103]
+        - row [ref=f14e104] [cursor=pointer]:
+          - cell "CR-WO-CHH-26-005-01" [ref=f14e105]
+          - cell "WO-CHH-26-005" [ref=f14e106]
+          - cell "Dimension Change" [ref=f14e107]
+          - cell "T1" [ref=f14e108]
+          - cell "Pending" [ref=f14e110]
+          - cell "Site Team" [ref=f14e111]
+          - cell "08-Aug-26" [ref=f14e112]
+          - cell "Supervisor" [ref=f14e113]
+        - row [ref=f14e114] [cursor=pointer]:
+          - cell "CR-WO-CHH-26-001-02" [ref=f14e115]
+          - cell "WO-CHH-26-001" [ref=f14e116]
+          - cell "Finish / Material Change" [ref=f14e117]
+          - cell "T1" [ref=f14e118]
+          - cell "Implemented" [ref=f14e120]
+          - cell "Neha Kapoor" [ref=f14e121]
+          - cell "05-Aug-26" [ref=f14e122]
+          - cell "—" [ref=f14e123]
+        - row [ref=f14e124] [cursor=pointer]:
+          - cell "CR-WO-D2C-26-021-01" [ref=f14e125]
+          - cell "WO-D2C-26-021" [ref=f14e126]
+          - cell "Design Change" [ref=f14e127]
+          - cell "T3" [ref=f14e128]
+          - cell "Dual Approved" [ref=f14e130]
+          - cell "Kavita Mehra" [ref=f14e131]
+          - cell "04-Aug-26" [ref=f14e132]
+          - cell "—" [ref=f14e133]
+        - row [ref=f14e134] [cursor=pointer]:
+          - cell "CR-WO-CHH-26-001-01" [ref=f14e135]
+          - cell "WO-CHH-26-001" [ref=f14e136]
+          - cell "Dimension Change" [ref=f14e137]
+          - cell "T2" [ref=f14e138]
+          - cell "Rejected" [ref=f14e140]
+          - cell "Neha Kapoor" [ref=f14e141]
+          - cell "03-Aug-26" [ref=f14e142]
+          - cell "—" [ref=f14e143]

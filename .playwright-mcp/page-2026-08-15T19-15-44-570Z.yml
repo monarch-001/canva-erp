@@ -1,0 +1,342 @@
+- generic [ref=f13e3]:
+  - complementary [ref=f13e4]:
+    - generic [ref=f13e7]:
+      - paragraph [ref=f13e8]: Canva Concepts
+      - paragraph [ref=f13e9]: Factory ERP
+    - navigation [ref=f13e10]:
+      - link "Dashboard" [ref=f13e11] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Work Orders" [ref=f13e13] [cursor=pointer]:
+        - /url: /work-orders
+      - link "Quotations" [ref=f13e15] [cursor=pointer]:
+        - /url: /quotations
+      - link "Change Requests" [ref=f13e17] [cursor=pointer]:
+        - /url: /change-requests
+      - link "BOM & Materials" [ref=f13e19] [cursor=pointer]:
+        - /url: /bom/templates
+      - link "Purchase Requisitions" [ref=f13e21] [cursor=pointer]:
+        - /url: /purchase-requisitions
+      - link "Purchase Orders" [ref=f13e23] [cursor=pointer]:
+        - /url: /purchase-orders
+      - link "Production" [ref=f13e25] [cursor=pointer]:
+        - /url: /production
+      - link "Overtime" [ref=f13e27] [cursor=pointer]:
+        - /url: /production/overtime
+      - link "Quality Control" [ref=f13e29] [cursor=pointer]:
+        - /url: /quality-control
+      - link "Dispatch & Delivery" [ref=f13e31] [cursor=pointer]:
+        - /url: /dispatch
+      - link "Invoices" [ref=f13e33] [cursor=pointer]:
+        - /url: /invoices
+      - link "Reports" [ref=f13e35] [cursor=pointer]:
+        - /url: /reports
+    - generic [ref=f13e37]:
+      - link "Settings" [ref=f13e38] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f13e40]:
+        - generic [ref=f13e41]:
+          - img "Marcus Chen" [ref=f13e43]
+          - generic [ref=f13e44]:
+            - paragraph [ref=f13e45]: Marcus Chen
+            - paragraph [ref=f13e46]: Factory Manager
+        - generic [ref=f13e47]:
+          - generic [ref=f13e48]: Toggle Role
+          - combobox [ref=f13e49] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f13e50]:
+    - generic [ref=f13e51]:
+      - button "arrow_back Back to Work Orders" [ref=f13e52] [cursor=pointer]:
+        - generic [ref=f13e53]: arrow_back
+        - text: Back to Work Orders
+      - generic [ref=f13e55]:
+        - generic [ref=f13e56]:
+          - generic [ref=f13e57]:
+            - generic [ref=f13e58]: WO-8829-23
+            - generic [ref=f13e59]: in production
+            - generic [ref=f13e60]: ⚠ CRITICAL
+          - generic [ref=f13e61]:
+            - button "Edit Details" [active] [ref=f13e62] [cursor=pointer]
+            - button "Duplicate WO" [ref=f13e63] [cursor=pointer]
+            - button "print Print / Export" [ref=f13e64] [cursor=pointer]:
+              - generic [ref=f13e65]: print
+              - text: Print / Export
+            - button "Cancel WO" [ref=f13e66] [cursor=pointer]
+        - heading "Executive Boardroom Suite - Walnut Series" [level=1] [ref=f13e67]
+        - generic [ref=f13e68]:
+          - paragraph [ref=f13e69]: "Client: Global Tech Holdings — Global Tech Headquarters"
+          - paragraph [ref=f13e70]: "Furniture: Premium Office Desk × 10"
+          - paragraph [ref=f13e71]: Created by System on 15 Aug 2026
+        - generic [ref=f13e72]:
+          - button "Details" [ref=f13e73] [cursor=pointer]
+          - button "Status History" [ref=f13e75] [cursor=pointer]
+          - button "Drawings" [ref=f13e76] [cursor=pointer]
+          - button "Change Requests" [ref=f13e77] [cursor=pointer]
+          - button "BOM" [ref=f13e78] [cursor=pointer]
+      - generic [ref=f13e79]:
+        - generic [ref=f13e80]:
+          - heading "Client Information" [level=3] [ref=f13e81]
+          - generic [ref=f13e82]:
+            - generic [ref=f13e83]:
+              - paragraph [ref=f13e84]: Client Type
+              - paragraph [ref=f13e85]: B2b
+            - generic [ref=f13e86]:
+              - paragraph [ref=f13e87]: Stream
+              - paragraph [ref=f13e88]: external_b2b
+            - generic [ref=f13e89]:
+              - paragraph [ref=f13e90]: Client Name
+              - paragraph [ref=f13e91]: Global Tech Holdings
+            - generic [ref=f13e92]:
+              - paragraph [ref=f13e93]: Project / Site Name
+              - paragraph [ref=f13e94]: Global Tech Headquarters
+            - generic [ref=f13e95]:
+              - paragraph [ref=f13e96]: Client PO Reference
+              - paragraph [ref=f13e97]: —
+        - separator [ref=f13e98]
+        - generic [ref=f13e99]:
+          - heading "Furniture Specification" [level=3] [ref=f13e100]
+          - generic [ref=f13e101]:
+            - generic [ref=f13e102]:
+              - paragraph [ref=f13e103]: Work Order Title
+              - paragraph [ref=f13e104]: Executive Boardroom Suite - Walnut Series
+            - generic [ref=f13e105]:
+              - paragraph [ref=f13e106]: Furniture Type
+              - paragraph [ref=f13e107]: Premium Office Desk
+            - generic [ref=f13e108]:
+              - paragraph [ref=f13e109]: Quantity
+              - paragraph [ref=f13e110]: "10"
+          - generic [ref=f13e111]:
+            - generic [ref=f13e112]:
+              - paragraph [ref=f13e113]: Dimensions
+              - paragraph [ref=f13e114]: 2400mm × 750mm × 1200mm
+            - generic [ref=f13e115]:
+              - paragraph [ref=f13e116]: Finish Type
+              - paragraph [ref=f13e117]: —
+            - generic [ref=f13e118]:
+              - paragraph [ref=f13e119]: Finish Detail
+              - paragraph [ref=f13e120]: —
+        - separator [ref=f13e121]
+        - generic [ref=f13e122]:
+          - heading "Delivery" [level=3] [ref=f13e123]
+          - generic [ref=f13e124]:
+            - generic [ref=f13e125]:
+              - paragraph [ref=f13e126]: Delivery Terms
+              - paragraph [ref=f13e127]: included
+            - generic [ref=f13e128]:
+              - paragraph [ref=f13e129]: Requested Delivery Date
+              - paragraph [ref=f13e130]: —
+            - generic [ref=f13e131]:
+              - paragraph [ref=f13e132]: Committed Delivery Date
+              - generic [ref=f13e133]:
+                - generic [ref=f13e134]: 20-Aug-2026
+                - generic [ref=f13e135]: 4d left
+                - button "Edit" [ref=f13e136] [cursor=pointer]
+          - generic [ref=f13e137]:
+            - paragraph [ref=f13e138]: Delivery Address
+            - paragraph [ref=f13e139]: Sector 5, Block B, Gurgaon
+        - separator [ref=f13e140]
+        - generic [ref=f13e141]:
+          - heading "Priority & Notes" [level=3] [ref=f13e142]
+          - generic [ref=f13e143]:
+            - paragraph [ref=f13e144]: Priority
+            - generic [ref=f13e145]: ⚠ CRITICAL
+          - generic [ref=f13e146]:
+            - paragraph [ref=f13e147]: Notes
+            - paragraph [ref=f13e148]: No notes specified.
+        - separator [ref=f13e149]
+        - generic [ref=f13e150]:
+          - heading "Assignment" [level=3] [ref=f13e151]
+          - generic [ref=f13e152]:
+            - generic [ref=f13e153]:
+              - paragraph [ref=f13e154]: Created by
+              - paragraph [ref=f13e155]:
+                - text: System
+                - generic [ref=f13e156]: · 15 Aug 2026
+            - generic [ref=f13e157]:
+              - paragraph [ref=f13e158]: Assigned Supervisor
+              - paragraph [ref=f13e159]: —
+            - generic [ref=f13e160]:
+              - paragraph [ref=f13e161]: Approved by
+              - paragraph [ref=f13e162]: Pending
+      - generic [ref=f13e163]:
+        - paragraph [ref=f13e164]: Production Progress
+        - generic [ref=f13e165]:
+          - generic [ref=f13e166]:
+            - heading "WO-8829-23|Executive Boardroom Suite - Walnut Series" [level=3] [ref=f13e167]
+            - paragraph [ref=f13e168]: "Total Units: 10"
+          - generic [ref=f13e174]:
+            - generic [ref=f13e175]:
+              - generic [ref=f13e177]: "✓ Complete:"
+              - text: 0 (0%)
+            - generic [ref=f13e178]:
+              - generic [ref=f13e180]: "▶ In Progress:"
+              - text: 3 (30%)
+            - generic [ref=f13e181]:
+              - generic [ref=f13e183]: "⬛ Material Wait:"
+              - text: 2 (20%)
+            - generic [ref=f13e184]:
+              - generic [ref=f13e186]: "○ Not Started:"
+              - text: 5 (50%)
+          - separator [ref=f13e187]
+          - generic [ref=f13e188]:
+            - heading "Stage Summary" [level=4] [ref=f13e189]
+            - table [ref=f13e190]:
+              - rowgroup [ref=f13e191]:
+                - row [ref=f13e192]:
+                  - columnheader "Stage" [ref=f13e193]
+                  - columnheader "Done" [ref=f13e194]
+                  - columnheader "In Prog" [ref=f13e195]
+                  - columnheader "Pending" [ref=f13e196]
+                  - columnheader "Blocked" [ref=f13e197]
+              - rowgroup [ref=f13e198]:
+                - row [ref=f13e199]:
+                  - cell "Cutting" [ref=f13e200]
+                  - cell "0" [ref=f13e201]
+                  - cell "3" [ref=f13e202]
+                  - cell "5" [ref=f13e203]
+                  - cell "2 ▲" [ref=f13e204]:
+                    - generic [ref=f13e205]:
+                      - text: "2"
+                      - generic [ref=f13e206]: ▲
+                - row [ref=f13e207]:
+                  - cell "Edge Banding" [ref=f13e208]
+                  - cell "0" [ref=f13e209]
+                  - cell "0" [ref=f13e210]
+                  - cell "10" [ref=f13e211]
+                  - cell "0" [ref=f13e212]
+                - row [ref=f13e213]:
+                  - cell "Assembly" [ref=f13e214]
+                  - cell "0" [ref=f13e215]
+                  - cell "3" [ref=f13e216]
+                  - cell "7" [ref=f13e217]
+                  - cell "0" [ref=f13e218]
+                - row [ref=f13e219]:
+                  - cell "Finishing" [ref=f13e220]
+                  - cell "0" [ref=f13e221]
+                  - cell "0" [ref=f13e222]
+                  - cell "10" [ref=f13e223]
+                  - cell "0" [ref=f13e224]
+                - row [ref=f13e225]:
+                  - cell "Hardware" [ref=f13e226]
+                  - cell "0" [ref=f13e227]
+                  - cell "0" [ref=f13e228]
+                  - cell "10" [ref=f13e229]
+                  - cell "0" [ref=f13e230]
+          - separator [ref=f13e231]
+          - generic [ref=f13e232]:
+            - heading "Assigned Carpenters" [level=4] [ref=f13e233]
+            - generic [ref=f13e234]:
+              - paragraph [ref=f13e235]: Ramesh Kumar — Assembly (in progress)
+              - paragraph [ref=f13e236]: Suresh Yadav — Unassigned today
+          - separator [ref=f13e237]
+          - generic [ref=f13e238]:
+            - heading "Material Status" [level=4] [ref=f13e239]
+            - generic [ref=f13e240]:
+              - generic [ref=f13e241]:
+                - generic [ref=f13e242]: ✓
+                - generic [ref=f13e243]: "Plywood 18mm:"
+                - generic [ref=f13e244]: Available (12 sheets)
+              - generic [ref=f13e245]:
+                - generic [ref=f13e246]: ✓
+                - generic [ref=f13e247]: "Laminate:"
+                - generic [ref=f13e248]: Available (48 sqft)
+          - separator [ref=f13e249]
+          - generic [ref=f13e250]:
+            - heading "Time Tracking" [level=4] [ref=f13e251]
+            - generic [ref=f13e252]:
+              - generic [ref=f13e253]:
+                - paragraph [ref=f13e254]: Estimated
+                - paragraph [ref=f13e255]: 45 hours total
+              - generic [ref=f13e256]:
+                - paragraph [ref=f13e257]: Actual so far
+                - paragraph [ref=f13e258]: 18 hours
+              - generic [ref=f13e259]:
+                - paragraph [ref=f13e260]: Labour cost to date
+                - paragraph [ref=f13e261]: ₹4,846
+              - generic [ref=f13e262]:
+                - paragraph [ref=f13e263]: Est. total labour
+                - paragraph [ref=f13e264]: ₹12,115
+          - button "View All Job Cards for this WO" [ref=f13e266] [cursor=pointer]
+    - generic [ref=f13e268]:
+      - generic [ref=f13e269]:
+        - generic [ref=f13e270]:
+          - heading "Edit Work Order Details" [level=3] [ref=f13e271]
+          - paragraph [ref=f13e272]: WO-8829-23 · Same fields as Create form, pre-populated
+        - button "close" [ref=f13e273] [cursor=pointer]
+      - generic [ref=f13e275]:
+        - generic [ref=f13e276]:
+          - generic [ref=f13e277]: info
+          - paragraph [ref=f13e278]: WO Number, Client Type, Stream, Status, and Created By cannot be changed here.
+        - generic [ref=f13e279]:
+          - generic [ref=f13e280]:
+            - generic [ref=f13e281]:
+              - text: WO Number
+              - generic [ref=f13e282]: lock
+              - generic [ref=f13e283]: not editable
+            - generic [ref=f13e284]: WO-8829-23
+          - generic [ref=f13e285]:
+            - generic [ref=f13e286]:
+              - text: Client Type
+              - generic [ref=f13e287]: lock
+              - generic [ref=f13e288]: not editable
+            - generic [ref=f13e289]: B2b
+          - generic [ref=f13e290]:
+            - generic [ref=f13e291]:
+              - text: Status
+              - generic [ref=f13e292]: lock
+              - generic [ref=f13e293]: not editable
+            - generic [ref=f13e294]: In Production
+        - generic [ref=f13e295]:
+          - generic [ref=f13e296]: Work Order Title
+          - textbox [ref=f13e297]: Executive Boardroom Suite - Walnut Series
+        - generic [ref=f13e298]:
+          - generic [ref=f13e299]:
+            - generic [ref=f13e300]: Client Name
+            - textbox [ref=f13e301]: Global Tech Holdings
+          - generic [ref=f13e302]:
+            - generic [ref=f13e303]: Project / Site Name
+            - textbox [ref=f13e304]: Global Tech Headquarters
+        - generic [ref=f13e305]:
+          - generic [ref=f13e306]:
+            - generic [ref=f13e307]: Furniture Type
+            - textbox [ref=f13e308]: Premium Office Desk
+          - generic [ref=f13e309]:
+            - generic [ref=f13e310]: Number of Units
+            - spinbutton [ref=f13e311]: "10"
+        - generic [ref=f13e312]:
+          - generic [ref=f13e313]:
+            - generic [ref=f13e314]: Finish Type
+            - textbox [ref=f13e315]
+          - generic [ref=f13e316]:
+            - generic [ref=f13e317]: Finish Detail
+            - textbox [ref=f13e318]
+        - generic [ref=f13e319]:
+          - generic [ref=f13e320]:
+            - generic [ref=f13e321]: Delivery Terms
+            - combobox [ref=f13e322]:
+              - option "Select..." [selected]
+              - option "Included in Price"
+              - option "Ex-Factory"
+              - option "Client Arranged"
+          - generic [ref=f13e323]:
+            - generic [ref=f13e324]: Requested Delivery Date
+            - textbox [ref=f13e325]
+        - generic [ref=f13e326]:
+          - generic [ref=f13e327]: Delivery Address
+          - textbox [ref=f13e328]: Sector 5, Block B, Gurgaon
+        - generic [ref=f13e329]:
+          - generic [ref=f13e330]: Priority
+          - combobox [ref=f13e331]:
+            - option "Low"
+            - option "Medium"
+            - option "High"
+            - option "Critical" [selected]
+        - generic [ref=f13e332]:
+          - generic [ref=f13e333]: Notes
+          - textbox "Add manufacturing notes or special client instructions..." [ref=f13e334]
+      - generic [ref=f13e335]:
+        - paragraph [ref=f13e336]: Version 2 · Last updated 15 Aug 2026
+        - generic [ref=f13e337]:
+          - button "Cancel" [ref=f13e338] [cursor=pointer]
+          - button "Save Changes" [ref=f13e339] [cursor=pointer]

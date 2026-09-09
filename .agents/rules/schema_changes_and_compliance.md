@@ -11,6 +11,8 @@ Even if testing on a dummy database, schema changes must be treated with the hig
 1. **Tenant Isolation**: Does the table have `tenant_id`? If it is a child table (like `job_card_assignments` or `eod_updates`), does it cascade properly under a parent table with `tenant_id`?
 2. **No Duplication**: Double check `schema/chaabee_sql.sql` and `schema/shared_schema.md`. Do not create new tables if Chhabee's main tables (e.g., `projects`, `documents`, `purchase_orders`) can be extended.
 3. **Enum Safety**: Avoid adding values to main Chhabee enums (like `project_status`). Instead, use text fields with CHECK constraints or separate Canva ERP status fields on child/referenced tables to keep the main system clean.
+4. **Schema Conservatism (No Unilateral Changes)**: You must work strictly within and around the existing database schema structure. Do not deviate or introduce new tables unilaterally.
+5. **Mandatory Notification for New Tables**: If there are proper technical or business reasons to create new tables, you MUST halt and notify the user/PM FIRST. Provide the exact business reason, the proposed SQL DDL schema solution, and wait for explicit confirmation to align before execution.
 
 ---
 

@@ -1,0 +1,106 @@
+- generic [ref=f7e132]:
+  - complementary [ref=f7e133]:
+    - generic [ref=f7e136]:
+      - paragraph [ref=f7e137]: Canva Concepts
+      - paragraph [ref=f7e138]: Factory ERP
+    - navigation [ref=f7e139]:
+      - link "Dashboard" [ref=f7e140] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Work Orders" [ref=f7e142] [cursor=pointer]:
+        - /url: /work-orders
+      - link "Quotations" [ref=f7e144] [cursor=pointer]:
+        - /url: /quotations
+      - link "Change Requests" [ref=f7e146] [cursor=pointer]:
+        - /url: /change-requests
+      - link "BOM & Materials" [ref=f7e148] [cursor=pointer]:
+        - /url: /bom/templates
+      - link "Purchase Requisitions" [ref=f7e150] [cursor=pointer]:
+        - /url: /purchase-requisitions
+      - link "Purchase Orders" [ref=f7e152] [cursor=pointer]:
+        - /url: /purchase-orders
+      - link "Production" [ref=f7e154] [cursor=pointer]:
+        - /url: /production
+      - link "Overtime" [ref=f7e156] [cursor=pointer]:
+        - /url: /production/overtime
+      - link "Quality Control" [ref=f7e158] [cursor=pointer]:
+        - /url: /quality-control
+      - link "Dispatch & Delivery" [ref=f7e160] [cursor=pointer]:
+        - /url: /dispatch
+      - link "Invoices" [ref=f7e162] [cursor=pointer]:
+        - /url: /invoices
+      - link "Reports" [ref=f7e164] [cursor=pointer]:
+        - /url: /reports
+    - generic [ref=f7e166]:
+      - link "Settings" [ref=f7e167] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f7e169]:
+        - generic [ref=f7e170]:
+          - img "Marcus Chen" [ref=f7e172]
+          - generic [ref=f7e173]:
+            - paragraph [ref=f7e174]: Marcus Chen
+            - paragraph [ref=f7e175]: Factory Manager
+        - generic [ref=f7e176]:
+          - generic [ref=f7e177]: Toggle Role
+          - combobox [ref=f7e178] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - generic [ref=f7e179]:
+    - button "← Back to WO-CHH-26-001 · Change Requests" [ref=f7e180] [cursor=pointer]:
+      - generic [ref=f7e181]: ←
+      - generic [ref=f7e182]: Back to WO-CHH-26-001 · Change Requests
+    - generic [ref=f7e183]:
+      - generic [ref=f7e184]:
+        - generic [ref=f7e185]: CR-WO-CHH-26-001-03
+        - generic [ref=f7e186]: TIER 3
+        - generic [ref=f7e187]: IP Approved
+      - heading "Additional Item — Reception Side Table" [level=1] [ref=f7e188]
+      - paragraph [ref=f7e189]: On WO-CHH-26-001 — Reception Counter Front
+    - generic [ref=f7e190]:
+      - heading "Change Details" [level=2] [ref=f7e191]
+      - generic [ref=f7e192]:
+        - generic [ref=f7e193]:
+          - paragraph [ref=f7e194]: Change Type
+          - paragraph [ref=f7e195]: Additional Item
+        - generic [ref=f7e196]:
+          - paragraph [ref=f7e197]: Delivery Impact
+          - paragraph [ref=f7e198]: Yes — 5 days
+        - generic [ref=f7e199]:
+          - paragraph [ref=f7e200]: Cost Impact
+          - paragraph [ref=f7e201]: ₹18,500
+      - generic [ref=f7e202]:
+        - paragraph [ref=f7e203]: Description
+        - paragraph [ref=f7e204]: Client requests an additional matching side table to be added to the reception area, coordinating with the existing counter finish and hardware.
+      - generic [ref=f7e205]:
+        - paragraph [ref=f7e206]: Reason
+        - paragraph [ref=f7e207]: Client's interior designer identified a gap in the layout during final walkthrough that needs a complementary piece.
+      - generic [ref=f7e208]:
+        - paragraph [ref=f7e209]: Raised by
+        - paragraph [ref=f7e210]:
+          - text: Neha Kapoor (Site Manager)
+          - generic [ref=f7e211]: · 09-Aug-2026, 11:20 AM
+      - separator [ref=f7e212]
+      - heading "Approval Trail" [level=2] [ref=f7e213]
+      - generic [ref=f7e214]:
+        - generic [ref=f7e215]:
+          - generic [ref=f7e216]: ✓
+          - generic [ref=f7e220]:
+            - paragraph [ref=f7e221]: CR Raised
+            - paragraph [ref=f7e222]: Neha Kapoor (Site Manager) · 09-Aug-2026, 11:20 AM
+        - generic [ref=f7e223]:
+          - generic [ref=f7e224]: ✓
+          - generic [ref=f7e228]:
+            - paragraph [ref=f7e229]: Factory Manager — Approved
+            - paragraph [ref=f7e230]: Gaurav Raj · 09-Aug-2026, 2:45 PM
+            - paragraph [ref=f7e231]: "\"Approved — this is a reasonable addition, coordinate with design team on finish match.\""
+        - generic [ref=f7e236]:
+          - paragraph [ref=f7e237]: Super Admin — Pending
+          - paragraph [ref=f7e238]: Awaiting review
+    - generic [ref=f7e239]:
+      - heading "Actions — Super Admin Approval" [level=2] [ref=f7e240]
+      - paragraph [ref=f7e241]: Factory Manager has approved this Tier 3 change. Your approval is now required to proceed.
+      - generic [ref=f7e242]: Notes (optional)
+      - textbox "Add any notes for the approval record" [ref=f7e243]
+      - generic [ref=f7e244]:
+        - button "Approve" [ref=f7e245] [cursor=pointer]
+        - button "Reject" [ref=f7e246] [cursor=pointer]

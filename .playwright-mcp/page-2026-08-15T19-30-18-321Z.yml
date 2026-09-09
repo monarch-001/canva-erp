@@ -1,0 +1,58 @@
+- generic [ref=f18e111]:
+  - button "← Back to WO-CHH-26-001" [ref=f18e113] [cursor=pointer]:
+    - generic [ref=f18e114]: ←
+    - generic [ref=f18e115]: Back to WO-CHH-26-001
+  - generic [ref=f18e116]:
+    - generic [ref=f18e117]:
+      - generic [ref=f18e118]:
+        - generic [ref=f18e119]: BOM-WO-CHH-26-001
+        - generic [ref=f18e120]: SUBMITTED — AWAITING APPROVAL
+      - paragraph [ref=f18e121]: Reception Counter Front · 96 sqft billing · Submitted by Ramesh Yadav on 09-Aug-2026
+    - generic [ref=f18e122]:
+      - generic [ref=f18e123]:
+        - heading "BOM Summary" [level=2] [ref=f18e124]
+        - generic [ref=f18e125]:
+          - generic [ref=f18e126]:
+            - paragraph [ref=f18e127]: Total Line Items
+            - paragraph [ref=f18e128]: 6 materials
+          - generic [ref=f18e129]:
+            - paragraph [ref=f18e130]: Estimated Cost
+            - paragraph [ref=f18e131]: ₹77,110
+          - generic [ref=f18e132]:
+            - paragraph [ref=f18e133]: Estimated Margin
+            - paragraph [ref=f18e134]: 33.1%
+          - generic [ref=f18e135]:
+            - paragraph [ref=f18e136]: Template Used
+            - paragraph [ref=f18e137]: Standard Reception Counter
+      - generic [ref=f18e138]:
+        - heading "Notable Variances from Template" [level=2] [ref=f18e139]
+        - list [ref=f18e140]:
+          - listitem [ref=f18e141]:
+            - generic [ref=f18e142]: ▲
+            - generic [ref=f18e143]: "Plywood: 12 sheets vs template 10 (+2 sheets, +₹3,700)"
+          - listitem [ref=f18e144]:
+            - generic [ref=f18e145]: ▲
+            - generic [ref=f18e146]: "Laminate: 480 sqft vs template 440 (+40 sqft, +₹3,200)"
+          - listitem [ref=f18e147]:
+            - generic [ref=f18e148]: ▼
+            - generic [ref=f18e149]: "SS Hinges: 6 pcs vs template 8 (-2 pcs, -₹170)"
+      - generic [ref=f18e150]:
+        - heading "Stock Impact Preview" [level=2] [ref=f18e151]
+        - generic [ref=f18e152]:
+          - generic [ref=f18e153]: ℹ
+          - paragraph [ref=f18e154]: Stock check runs automatically the moment you approve. Any shortfalls will auto-draft Purchase Requisitions.
+      - generic [ref=f18e155]:
+        - heading "Approve BOM" [level=2] [ref=f18e156]
+        - generic [ref=f18e157]:
+          - generic [ref=f18e158]:
+            - generic [ref=f18e159]: Notes (optional)
+            - textbox "Any comments for the record" [ref=f18e160]
+          - generic [ref=f18e161] [cursor=pointer]: Save as Template (default off)
+          - button "Approve BOM" [ref=f18e165] [cursor=pointer]
+      - generic [ref=f18e166]:
+        - heading "Send Back for Revision" [level=2] [ref=f18e167]
+        - generic [ref=f18e168]:
+          - generic [ref=f18e169]:
+            - generic [ref=f18e170]: Reason *
+            - textbox "Explain what needs to change before this BOM can be approved" [ref=f18e171]
+          - button "Send Back for Revision" [ref=f18e172] [cursor=pointer]

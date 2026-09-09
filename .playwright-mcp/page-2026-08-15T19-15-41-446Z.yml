@@ -1,0 +1,48 @@
+- generic [ref=f13e3]:
+  - complementary [ref=f13e4]:
+    - generic [ref=f13e7]:
+      - paragraph [ref=f13e8]: Canva Concepts
+      - paragraph [ref=f13e9]: Factory ERP
+    - navigation [ref=f13e10]:
+      - link "Dashboard" [ref=f13e11] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Work Orders" [ref=f13e13] [cursor=pointer]:
+        - /url: /work-orders
+      - link "Quotations" [ref=f13e15] [cursor=pointer]:
+        - /url: /quotations
+      - link "Change Requests" [ref=f13e17] [cursor=pointer]:
+        - /url: /change-requests
+      - link "BOM & Materials" [ref=f13e19] [cursor=pointer]:
+        - /url: /bom/templates
+      - link "Purchase Requisitions" [ref=f13e21] [cursor=pointer]:
+        - /url: /purchase-requisitions
+      - link "Purchase Orders" [ref=f13e23] [cursor=pointer]:
+        - /url: /purchase-orders
+      - link "Production" [ref=f13e25] [cursor=pointer]:
+        - /url: /production
+      - link "Overtime" [ref=f13e27] [cursor=pointer]:
+        - /url: /production/overtime
+      - link "Quality Control" [ref=f13e29] [cursor=pointer]:
+        - /url: /quality-control
+      - link "Dispatch & Delivery" [ref=f13e31] [cursor=pointer]:
+        - /url: /dispatch
+      - link "Invoices" [ref=f13e33] [cursor=pointer]:
+        - /url: /invoices
+      - link "Reports" [ref=f13e35] [cursor=pointer]:
+        - /url: /reports
+    - generic [ref=f13e37]:
+      - link "Settings" [ref=f13e38] [cursor=pointer]:
+        - /url: /settings/notifications
+      - generic [ref=f13e40]:
+        - generic [ref=f13e41]:
+          - img "Marcus Chen" [ref=f13e43]
+          - generic [ref=f13e44]:
+            - paragraph [ref=f13e45]: Marcus Chen
+            - paragraph [ref=f13e46]: Factory Manager
+        - generic [ref=f13e47]:
+          - generic [ref=f13e48]: Toggle Role
+          - combobox [ref=f13e49] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f13e50]

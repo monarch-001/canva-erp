@@ -1,0 +1,86 @@
+- generic [ref=f9e3]:
+  - complementary [ref=f9e4]:
+    - generic [ref=f9e5]:
+      - heading "Canva Concepts" [level=1] [ref=f9e6]
+      - paragraph [ref=f9e7]: Industrial ERP
+    - navigation [ref=f9e8]:
+      - link "dashboard Dashboard" [ref=f9e9] [cursor=pointer]:
+        - /url: /dashboard
+        - generic [ref=f9e10]: dashboard
+        - generic [ref=f9e11]: Dashboard
+      - link "manufacturing Work Orders" [ref=f9e12] [cursor=pointer]:
+        - /url: /work-orders
+        - generic [ref=f9e13]: manufacturing
+        - generic [ref=f9e14]: Work Orders
+      - link "precision_manufacturing Production" [ref=f9e15] [cursor=pointer]:
+        - /url: /production
+        - generic [ref=f9e16]: precision_manufacturing
+        - generic [ref=f9e17]: Production
+      - link "group Users" [ref=f9e18] [cursor=pointer]:
+        - /url: /users
+        - generic [ref=f9e19]: group
+        - generic [ref=f9e20]: Users
+      - link "payments Finance" [ref=f9e21] [cursor=pointer]:
+        - /url: /finance
+        - generic [ref=f9e22]: payments
+        - generic [ref=f9e23]: Finance
+    - generic [ref=f9e24]:
+      - link "settings Settings" [ref=f9e25] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f9e26]: settings
+        - generic [ref=f9e27]: Settings
+      - link "help Support" [ref=f9e28] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f9e29]: help
+        - generic [ref=f9e30]: Support
+      - generic [ref=f9e31]:
+        - generic [ref=f9e32]:
+          - img "Marcus Chen" [ref=f9e34]
+          - generic [ref=f9e35]:
+            - paragraph [ref=f9e36]: Marcus Chen
+            - paragraph [ref=f9e37]: Factory Manager
+        - generic [ref=f9e38]:
+          - generic [ref=f9e39]: Toggle System Role
+          - combobox [ref=f9e40] [cursor=pointer]:
+            - option "Factory Manager" [selected]
+            - option "Supervisor"
+            - option "Site Manager"
+  - main [ref=f9e41]:
+    - generic [ref=f9e42]:
+      - generic [ref=f9e43]:
+        - heading "Daily Attendance" [level=2] [ref=f9e44]
+        - generic [ref=f9e45]:
+          - generic [ref=f9e46]: search
+          - textbox "Search orders, clients, items..." [ref=f9e47]
+      - generic [ref=f9e49]:
+        - button "notifications" [ref=f9e50] [cursor=pointer]
+        - button "help" [ref=f9e51] [cursor=pointer]
+        - button "settings" [ref=f9e52] [cursor=pointer]
+    - generic [ref=f9e53]:
+      - generic [ref=f9e54]:
+        - generic [ref=f9e55]:
+          - heading "Attendance — August 15, 2026" [level=1] [ref=f9e56]
+          - paragraph [ref=f9e57]: Mark today's attendance before 9 AM to enable job card assignment.
+        - generic [ref=f9e58]:
+          - generic [ref=f9e59]:
+            - generic [ref=f9e60]: calendar_today
+            - textbox [ref=f9e61]: 2026-08-15
+          - button "Mark All Present" [ref=f9e62] [cursor=pointer]
+          - button "Save Attendance" [ref=f9e63] [cursor=pointer]
+      - heading "Quick Mark" [level=3] [ref=f9e65]
+      - generic [ref=f9e68]:
+        - heading "Monthly Summary — August 2026" [level=3] [ref=f9e69]
+        - table [ref=f9e71]:
+          - rowgroup [ref=f9e72]:
+            - row [ref=f9e73]:
+              - columnheader "Name" [ref=f9e74]
+              - columnheader "Present" [ref=f9e75]
+              - columnheader "Absent" [ref=f9e76]
+              - columnheader "Half Days" [ref=f9e77]
+              - columnheader "Leave" [ref=f9e78]
+              - columnheader "OT Hours" [ref=f9e79]
+              - columnheader "Payable Days" [ref=f9e80]
+          - rowgroup
+      - generic [ref=f9e81]:
+        - generic [ref=f9e82]: info
+        - paragraph [ref=f9e83]: Supervisor can approve Casual and Sick leave directly. Festival leave requires Factory Manager approval.

@@ -8,7 +8,7 @@
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
-    @apply bg-surface text-on-surface;
+    @apply bg-background text-on-surface;
   }
 }
 
@@ -18,7 +18,7 @@
 }
 
 .sidebar-active {
-  background-color: #C8A84B;
+  background-color: #B8892B; /* Gold Accent Hex */
   color: white;
   border-left: 4px solid white;
 }
