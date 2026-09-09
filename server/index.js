@@ -12,13 +12,19 @@ app.use(cors());
 app.use(express.json());
 
 // Postgres Pool Connection
-const pool = new pg.Pool({
-  host: 'localhost',
-  port: 5432,
-  database: 'canva_erp_staging',
-  user: 'postgres',
-  password: 'postgres'
-});
+const pool = process.env.DATABASE_URL
+  ? new pg.Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    })
+  : new pg.Pool({
+      host: 'localhost',
+      port: 5432,
+      database: 'canva_erp_staging',
+      user: 'postgres',
+      password: 'postgres'
+    });
+
 
 // Seed some test data to the staging database on server startup
 async function seedStagingData() {
